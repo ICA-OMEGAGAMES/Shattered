@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c9fe3fd6d55ae8a48a8e48c7001d4dc8
-timeCreated: 1523980346
+guid: c3df527e86bc7364eb1c194a33655bc2
+timeCreated: 1523989761
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -149,7 +149,7 @@ ModelImporter:
     2100002: Alpha_Joints_MAT
     4300000: Alpha_Surface
     4300002: Alpha_Joints
-    7400000: crouched_walking
+    7400000: mixamo.com
     9500000: //RootNode
     13700000: Alpha_Joints
     13700002: Alpha_Surface
@@ -179,54 +179,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: crouched_walking
-      takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 62
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves:
-      - name: Curve
-        curve:
-          serializedVersion: 2
-          curve:
-          - serializedVersion: 2
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-          - serializedVersion: 2
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-          preInfinity: 3
-          postInfinity: 3
-          rotationOrder: 0
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []

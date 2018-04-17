@@ -73,6 +73,8 @@ ModelImporter:
     100130: mixamorig:Spine1
     100132: mixamorig:Spine2
     100134: //RootNode
+    100136: Alpha_Joints
+    100138: Alpha_Surface
     400000: mixamorig:Head
     400002: mixamorig:HeadTop_End
     400004: mixamorig:Hips
@@ -141,8 +143,16 @@ ModelImporter:
     400130: mixamorig:Spine1
     400132: mixamorig:Spine2
     400134: //RootNode
+    400136: Alpha_Joints
+    400138: Alpha_Surface
+    2100000: Alpha_Body_MAT
+    2100002: Alpha_Joints_MAT
+    4300000: Alpha_Surface
+    4300002: Alpha_Joints
     7400000: mixamo.com
     9500000: //RootNode
+    13700000: Alpha_Joints
+    13700002: Alpha_Surface
   externalObjects: {}
   materials:
     importMaterials: 1
