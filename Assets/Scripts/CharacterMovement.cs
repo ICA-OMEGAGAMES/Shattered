@@ -45,6 +45,13 @@ public class CharacterMovement : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
+
+    bool isGrounded()
+    {
+        float distToGround = 0.1f;
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround);
+    }
+
     void Start()
     {
         animator = this.transform.GetComponent<Animator>();
@@ -53,8 +60,9 @@ public class CharacterMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-        if (characterController.isGrounded)
+    {     
+        
+        if (isGrounded())
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
@@ -71,6 +79,11 @@ public class CharacterMovement : MonoBehaviour
                 Jump();
                 moveDirection.y = movement.jumpSpeed;
             }
+        }
+        else{
+            
+            characterController.Move(Vector3.down * 2 * Time.deltaTime);
+            print("notGrounded");
         }
 
         Animate(Input.GetAxis("Vertical") * getSpeed(), Input.GetAxis("Horizontal")* getSpeed());
@@ -98,7 +111,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (characterController.isGrounded)
+        if (isGrounded())
         {
             jumping = true;
             StartCoroutine(StopJump());
