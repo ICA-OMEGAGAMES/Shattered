@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     [System.Serializable]
     public class AnimationSettings
     {
+        //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
         public string groundedBool = "isGrounded";
@@ -98,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            characterController.Move(Vector3.down * 2 * Time.deltaTime);
+           // characterController.Move(Vector3.down * 2 * Time.deltaTime);
         }
 
         //apply
