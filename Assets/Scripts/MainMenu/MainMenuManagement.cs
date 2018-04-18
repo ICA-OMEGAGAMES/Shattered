@@ -8,11 +8,20 @@ public class MainMenuManagement : MonoBehaviour {
 
 	void Start () {
 		LoadGraphicsSettings();
+		LoadSoundSettings();
 	}
 
 	//Loads and applies stored settings from the config file	
 	void LoadGraphicsSettings(){
-		string json = File.ReadAllText(Application.persistentDataPath + "/gamesettings.json");
+		string json = null;
+		try
+		{
+			json = File.ReadAllText(Application.persistentDataPath + "/graphicsettings.json");		
+		} catch(FileNotFoundException e)
+		{
+			Debug.Log(e.Message + " - No saved settings found.");
+		}
+		
 		
 		if(json == null)
 		{
@@ -32,5 +41,25 @@ public class MainMenuManagement : MonoBehaviour {
 		QualitySettings.antiAliasing = GraphicSettings.Instance.antialiasing = JsonUtility.FromJson<GraphicSettings>(json).antialiasing;
 		QualitySettings.masterTextureLimit = GraphicSettings.Instance.textureQuality = JsonUtility.FromJson<GraphicSettings>(json).textureQuality;
 		QualitySettings.vSyncCount = GraphicSettings.Instance.vSync = JsonUtility.FromJson<GraphicSettings>(json).vSync;
+	}
+
+	void LoadSoundSettings(){
+		string json = null;
+		try
+		{
+			json = File.ReadAllText(Application.persistentDataPath + "/soundsettings.json");
+		} catch(FileNotFoundException e)
+		{
+			Debug.Log(e.Message + " - No saved settings found.");
+		}
+		
+		if(json == null)
+		{
+			return;
+		}
+
+		SoundSettings.Instance.masterVolume = JsonUtility.FromJson<SoundSettings>(json).masterVolume;
+		SoundSettings.Instance.musicVolume = JsonUtility.FromJson<SoundSettings>(json).musicVolume;
+		SoundSettings.Instance.soundEffectsVolume = JsonUtility.FromJson<SoundSettings>(json).soundEffectsVolume;
 	}
 }

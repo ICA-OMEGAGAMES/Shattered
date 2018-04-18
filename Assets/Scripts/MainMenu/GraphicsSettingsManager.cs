@@ -128,7 +128,7 @@ public class GraphicsSettingsManager : MonoBehaviour {
 	public void SaveSettings()
 	{
 		string jsonData = JsonUtility.ToJson (GraphicSettings.Instance, true);
-  		File.WriteAllText (Application.persistentDataPath + "/gamesettings.json", jsonData);
+  		File.WriteAllText (Application.persistentDataPath + "/graphicsettings.json", jsonData);
 	}
 
 }
