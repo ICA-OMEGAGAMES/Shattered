@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     Animator animator;
     CharacterController characterController;
     
+    //Serialized classes
     [System.Serializable]
     public class AnimationSettings
     {
@@ -42,10 +43,11 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     public MovementSettings movement;
 
+    //private variables
     bool jumping;
     bool crouching;
     private float speed;
-    private float originalColliderSize;
+    //private float originalColliderSize;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -60,7 +62,7 @@ public class CharacterMovement : MonoBehaviour
     {
         animator = this.transform.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        originalColliderSize = characterController.height;
+        //originalColliderSize = characterController.height;
     }
 
     // Update is called once per frame
@@ -76,15 +78,13 @@ public class CharacterMovement : MonoBehaviour
             else
             {
                 crouching = false;
-             //   characterController.height = originalColliderSize;
+                //characterController.height = originalColliderSize;
             }
 
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
-            //walk/run
-
+  
             speed = GetSpeed();
-
             moveDirection *= speed;
 
             //jump
@@ -93,17 +93,18 @@ public class CharacterMovement : MonoBehaviour
                 Jump();
                 moveDirection.y = movement.jumpSpeed;
             }
-        }else{
-            
+        }
+        else
+        {
             characterController.Move(Vector3.down * 2 * Time.deltaTime);
-            print("notGrounded");
         }
 
-        Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
         //apply
+        Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
+
     //Animates the character and root motion handles the movement
     public void Animate(float forward, float strafe)
     {
@@ -134,7 +135,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    //Stops us from jumping
+    //Stops from jumping
     IEnumerator StopJump()
     {
         yield return new WaitForSeconds(movement.jumpTime);
