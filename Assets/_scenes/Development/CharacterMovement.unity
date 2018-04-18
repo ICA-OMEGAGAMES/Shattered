@@ -3087,6 +3087,7 @@ MonoBehaviour:
     runSpeed: 8
     jumpSpeed: 8
     jumpTime: 0.25
+    dodgeDistance: 10
 --- !u!95 &1920520601
 Animator:
   serializedVersion: 3
