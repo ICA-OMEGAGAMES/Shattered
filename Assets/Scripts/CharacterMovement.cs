@@ -50,14 +50,8 @@ public class CharacterMovement : MonoBehaviour
     private bool dodging;
     private bool crouching;
     private float speed;
-    //private float originalColliderSize;
-    //Bool to check if the player is rolling.
-    
-    
-
     private Vector3 moveDirection = Vector3.zero;
-
-
+    
     private bool IsGrounded()
     {
         float distToGround = 0.1f;
@@ -68,7 +62,6 @@ public class CharacterMovement : MonoBehaviour
     {
         animator = this.transform.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        //originalColliderSize = characterController.height;
     }
 
     // Update is called once per frame
@@ -79,12 +72,10 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetButton("Crouch"))
             {
                 crouching = true;
-                //characterController.height = originalColliderSize / 2;
             }
             else
             {
                 crouching = false;
-                //characterController.height = originalColliderSize;
             }
 
             if (Input.GetButton("Dodge"))
@@ -173,19 +164,6 @@ public class CharacterMovement : MonoBehaviour
     {
         print("dodging");
         dodging = true;
-        /* not needed anymore
-        Vector3 current_position = this.transform.position;
-       
-        if (horizontal == true)
-        {
-        //    current_position.x += movement.dodgeDistance * direction;
-        }
-        else if (horizontal == false)
-        {
-         //   current_position.z += movement.dodgeDistance * direction;
-        }
-       // this.transform.Translate(current_position * Time.deltaTime);
-       */
         yield return new WaitForSeconds(0.5f);
         StopCoroutine(Roll(horizontal, direction));
         dodging = false;
