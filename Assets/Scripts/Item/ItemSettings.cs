@@ -6,8 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu (menuName = "Shattered/Item")]
 public class ItemSettings : ScriptableObject {
 
-	public string name = "Item name.";
-	public string description = "Item description.";
+	public string itemName = "Item name.";
+	public string itemDescription = "Item description.";
 
 	public bool interactable = false;
 

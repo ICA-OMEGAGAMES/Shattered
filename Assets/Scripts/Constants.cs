@@ -15,4 +15,7 @@ public static class Constants{
 	public const string DODGE_BUTTON = "Dodge";
 	public const string JUMP_BUTTON = "Jump";
 
+	// SETTINGS
+	public const int PLAYER_HEALTH = 100;
+
 }

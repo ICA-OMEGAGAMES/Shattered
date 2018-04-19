@@ -13,8 +13,8 @@ public class Item : MonoBehaviour {
 	void Start () { GenerateItemCode ();}
 
 	public string GetItemCode(){return itemCode;}
-	public string GetName(){return item.name;}
-	public string GetDescription(){return item.description;}
+	public string GetName(){return item.itemName;}
+	public string GetDescription(){return item.itemDescription;}
 	public Image GetImage(){return item.image;}
 	public bool CanBePickedUp(){return item.interactable;}
 
