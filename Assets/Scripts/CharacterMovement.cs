@@ -5,9 +5,6 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
-    Animator animator;
-    CharacterController characterController;
-    
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -50,38 +47,29 @@ public class CharacterMovement : MonoBehaviour
     private bool dodging;
     private bool crouching;
     private float speed;
-    private Vector3 moveDirection = Vector3.zero;
-    
-    private bool IsGrounded()
-    {
-        float distToGround = 0.1f;
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround);
-    }
+	private Animator animator;
+	private CharacterController characterController;
+	private Vector3 moveDirection;
 
     void Start()
     {
         animator = this.transform.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+		moveDirection = Vector3.zero;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (IsGrounded())
         {
-            if (Input.GetButton("Crouch"))
-            {
+			if (Input.GetButton(Constants.CROUCH_BUTTON))
                 crouching = true;
-            }
             else
-            {
                 crouching = false;
-            }
 
-            if (Input.GetButton("Dodge"))
-            {
-                dodge();
-            }
+			if (Input.GetButton(Constants.DODGE_BUTTON))
+                Dodge();
 
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
@@ -89,19 +77,18 @@ public class CharacterMovement : MonoBehaviour
             speed = GetSpeed();
             moveDirection *= speed;
 
-            //jump
-            if (Input.GetButton("Jump"))
+			if (Input.GetButton(Constants.JUMP_BUTTON))
             {
                 Jump();
                 moveDirection.y = movement.jumpSpeed;
             }
         }
-
-        //apply
+			
         Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
+		
 
     //Animates the character and root motion handles the movement
     public void Animate(float forward, float strafe)
@@ -114,11 +101,17 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.dodgeBool, dodging);
     }
 
+	private bool IsGrounded()
+	{
+		float distToGround = 0.1f;
+		return Physics.Raycast(transform.position, -Vector3.up, distToGround);
+	}
+
     private float GetSpeed()
     {
-        if (Input.GetButton("Run"))
+		if (Input.GetButton(Constants.RUN_BUTTON))
             speed = movement.runSpeed;
-        else if (Input.GetButton("Crouch"))
+		else if (Input.GetButton(Constants.CROUCH_BUTTON))
             speed = movement.crouchSpeed;
         else
             speed = movement.walkSpeed;
@@ -141,11 +134,11 @@ public class CharacterMovement : MonoBehaviour
         jumping = false;
     }
 
-    private void dodge()
+    private void Dodge()
     {
         if (!dodging)
         {
-            if (Input.GetAxis("Horizontal") !=0)
+            if (Input.GetAxis("Horizontal") != 0)
             {
                 StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
             }
