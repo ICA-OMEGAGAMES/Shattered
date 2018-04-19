@@ -3,14 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu (menuName = "Shattered/Item")]
-public class ItemScriptableObject : ScriptableObject {
+public class Item : MonoBehaviour {
 
-	public string name = "Item name.";
-	public string description = "Item description.";
+	public ItemSettings item;
 
-	public bool interactable = false;
+	// Not in the settings because this is specific for this item only. 
+	private string 	itemCode = "";
 
-	public Image image = null;
+	void Start () { GenerateItemCode ();}
+
+	public string GetItemCode(){return itemCode;}
+	public string GetName(){return item.name;}
+	public string GetDescription(){return item.description;}
+	public Image GetImage(){return item.image;}
+	public bool CanBePickedUp(){return item.interactable;}
+
+	private void GenerateItemCode(){
+
+		int itemCodeLength = 5;
+		var characters = "ABCDEFGHIJKLMNOPQRSTUVW0123456789".ToCharArray();
+
+		while (itemCode.Length < itemCodeLength)
+			itemCode += characters [Random.Range (0, characters.Length)]; 
+	}
 
 }
