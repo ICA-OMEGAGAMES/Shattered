@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -815,9 +815,10 @@ GameObject:
   - component: {fileID: 295941773}
   - component: {fileID: 295941772}
   - component: {fileID: 295941771}
+  - component: {fileID: 295941775}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,10 +864,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 295941770}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4, y: 4, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &295941773
 MeshFilter:
@@ -888,6 +889,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295941775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 295941770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f16339016edf848bd1b4f6adae2369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4906e6daeffdf5f47bdde24c81de10de, type: 2}
 --- !u!1 &313944377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,8 +3102,9 @@ GameObject:
   - component: {fileID: 1920520602}
   - component: {fileID: 1920520601}
   - component: {fileID: 1920520605}
-  - component: {fileID: 1920520600}
   - component: {fileID: 1920520603}
+  - component: {fileID: 1920520600}
+  - component: {fileID: 1920520604}
   m_Layer: 0
   m_Name: Mannequin
   m_TagString: Untagged
@@ -3177,6 +3191,17 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!114 &1920520604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920520599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f5b5be316190442873344c1bc9ac4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &1920520605
 CharacterController:
   m_ObjectHideFlags: 0
