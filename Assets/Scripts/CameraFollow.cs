@@ -37,17 +37,17 @@ public class CameraFollow : MonoBehaviour
         // Setup the rotation of the sticks here --> Supports also the Controller
         float inputX = Input.GetAxis("RightStickHorizontal");
         float inputZ = Input.GetAxis("RightStickVertical");
-        myFollowData.mouseX = Input.GetAxis("Mouse X");
-        myFollowData.mouseY = Input.GetAxis("Mouse Y");
-        myFollowData.finalInputX = inputX + myFollowData.mouseX;
-        myFollowData.finalInputZ = inputZ + myFollowData.mouseY;
+		cameraFollowSetting.mouseX = Input.GetAxis("Mouse X");
+		cameraFollowSetting.mouseY = Input.GetAxis("Mouse Y");
+		cameraFollowSetting.finalInputX = inputX + cameraFollowSetting.mouseX;
+		cameraFollowSetting.finalInputZ = inputZ + cameraFollowSetting.mouseY;
 
         // Rotate the stick, depending where we pushing
-        rotY += myFollowData.finalInputX * myFollowData.inputSensitivity * Time.deltaTime;
-        rotX += myFollowData.finalInputZ * myFollowData.inputSensitivity * Time.deltaTime;
+		rotY += cameraFollowSetting.finalInputX * cameraFollowSetting.inputSensitivity * Time.deltaTime;
+		rotX += cameraFollowSetting.finalInputZ * cameraFollowSetting.inputSensitivity * Time.deltaTime;
 
         // Clamp that value, so it can't go higher or lower --> stop it from going around and around in circles
-        rotX = Mathf.Clamp(rotX, -myFollowData.clampAngle, myFollowData.clampAngle);
+		rotX = Mathf.Clamp(rotX, -cameraFollowSetting.clampAngle, cameraFollowSetting.clampAngle);
 
         Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
         transform.rotation = localRotation;
@@ -61,10 +61,10 @@ public class CameraFollow : MonoBehaviour
     private void UpdateCamera()
     {
         // set the target object to follow
-        Transform target = cameraFollowObj.transform;
+		Transform target = gameObjectToFollow.transform;
 
         // move towards the game object that is the target
-        float step = myFollowData.cameraMoveSpeed * Time.deltaTime;
+		float step = cameraFollowSetting.cameraMoveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
 }
