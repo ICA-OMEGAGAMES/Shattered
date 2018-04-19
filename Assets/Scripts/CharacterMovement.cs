@@ -50,8 +50,6 @@ public class CharacterMovement : MonoBehaviour
 	private Animator animator;
 	private CharacterController characterController;
 	private Vector3 moveDirection;
-    
-
 
     void Start()
     {
@@ -60,7 +58,7 @@ public class CharacterMovement : MonoBehaviour
 		moveDirection = Vector3.zero;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (IsGrounded())
@@ -79,15 +77,13 @@ public class CharacterMovement : MonoBehaviour
             speed = GetSpeed();
             moveDirection *= speed;
 
-            //jump
 			if (Input.GetButton(Constants.JUMP_BUTTON))
             {
                 Jump();
                 moveDirection.y = movement.jumpSpeed;
             }
         }
-
-        //apply
+			
         Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);

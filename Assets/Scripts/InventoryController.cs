@@ -18,17 +18,16 @@ public class InventoryController : MonoBehaviour {
 				inventory.Add (item);
 			}
 		
+			// TODO: Display text on screen once dialog is implemented.
 			if(Input.GetButtonDown(Constants.EXAMINE_BUTTON))
 				print(item.GetName() + ": " + item.GetDescription());	
 		}
 			
 	}
 
-
-	// TODO: Might be a better way to do this than with a foreach. Check List doc.
 	void RemoveItemFromInventory(string itemCode){
 		foreach(Item item in inventory){
-			if (item.GetItemCode ().CompareTo (itemCode) == 1)
+			if (item.GetItemCode () == itemCode)
 				inventory.Remove (item);
 		}
 	}
