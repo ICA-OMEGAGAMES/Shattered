@@ -12,20 +12,11 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-	[SerializeField] CameraFollowSetting myFollowData;
-    [SerializeField] GameObject cameraFollowObj;
-    // [SerializeField] GameObject cameraObj;
-    // [SerializeField] GameObject playerObj;
-    private Vector3 followPOS;
+	[SerializeField] CameraFollowSetting cameraFollowSetting;
+    [SerializeField] GameObject gameObjectToFollow;
+
 	private float rotY = 0.0f;
     private float rotX = 0.0f;
-
-    // public float smoothX;
-    // public float smoothY;
-	// public float camDistanceXToPlayer;
-    // public float camDistanceYToPlayer;
-    // public float camDistanceZToPlayer;
-
 
     // Use this for initialization
     void Start()
@@ -64,10 +55,10 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        CameraUpdater();
+        UpdateCamera();
     }
 
-    private void CameraUpdater()
+    private void UpdateCamera()
     {
         // set the target object to follow
         Transform target = cameraFollowObj.transform;
