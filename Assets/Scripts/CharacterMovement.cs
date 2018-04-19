@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
-
     Animator animator;
     CharacterController characterController;
     
@@ -97,10 +96,6 @@ public class CharacterMovement : MonoBehaviour
                 moveDirection.y = movement.jumpSpeed;
             }
         }
-        else
-        {
-           // characterController.Move(Vector3.down * 2 * Time.deltaTime);
-        }
 
         //apply
         Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
@@ -163,7 +158,6 @@ public class CharacterMovement : MonoBehaviour
 
     IEnumerator Roll(bool horizontal, float direction)
     {
-        print("dodging");
         dodging = true;
         yield return new WaitForSeconds(0.5f);
         StopCoroutine(Roll(horizontal, direction));
