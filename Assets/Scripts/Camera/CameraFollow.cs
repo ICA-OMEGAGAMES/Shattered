@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
 {
 	[SerializeField] CameraFollowSetting cameraFollowSetting;
     [SerializeField] GameObject gameObjectToFollow;
-    [SerializeField] DialogueRunner dialogueRunner;
+    //[SerializeField] DialogueRunner dialogueRunner;
 
 	private float rotY = 0.0f;
     private float rotX = 0.0f;
@@ -35,11 +35,11 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueRunner.isDialogueRunning) {
-            // Unlock the cursor if dialogue is running.
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        } else {
+       // if (dialogueRunner.isDialogueRunning) {
+       //     // Unlock the cursor if dialogue is running.
+        //    Cursor.lockState = CursorLockMode.None;
+       //     Cursor.visible = true;
+       // } else {
             // Lock Cursor, if Camera is active
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -61,7 +61,7 @@ public class CameraFollow : MonoBehaviour
 
             Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
             transform.rotation = localRotation;
-        }
+       // }
     }
 
     void LateUpdate()
