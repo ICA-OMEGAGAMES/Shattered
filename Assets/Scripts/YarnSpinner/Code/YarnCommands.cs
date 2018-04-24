@@ -13,7 +13,8 @@ namespace Yarn.Unity.Shattered
             Debug.Log("Command --> doJump");
 
             // simulate the Jump function
-            transform.position = new Vector3(0.0f, 1.5f, 0.0f);
+            Vector3 originalPos = transform.position;
+            transform.position = new Vector3(originalPos.x, originalPos.y + 1.0f, originalPos.z);
         }
 
         [YarnCommand("startPressureTimer")]
