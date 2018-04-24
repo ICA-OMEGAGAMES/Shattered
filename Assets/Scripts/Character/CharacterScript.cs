@@ -1,231 +1,214 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(UnityEngine.CharacterController))]
-public class CharacterScript : MonoBehaviour
-{
-    //Serialized classes
-    [System.Serializable]
-    public class AnimationSettings
+
+public class CharacterScript : CharacterMovement {
+
+    //Sterialized classes
+    [Serializable]
+    public class UnarmedCombatSettings
     {
-        //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
-        public string verticalVelocityFloat = "Forward";
-        public string horizontalVelocityFloat = "Strafe";
-        public string groundedBool = "isGrounded";
-        public string jumpBool = "isJumping";
-        public string crouchBool = "isCrouching";
-        public string dodgeBool = "isDodging";
-        public string punch = "Punch";
-        public string kick = "Kick";
-        public string isInCombat = "isInCombat";
+        public float punshDuration = 0.5f;
+        public float kickDuration = 0.5f;
+        public bool rootAble = true;
     }
     [SerializeField]
-    public AnimationSettings animations;
+    public UnarmedCombatSettings unarmedCombatSettings;
 
-    [System.Serializable]
-    public class PhysicsSettings
+    [Serializable]
+    public class LightMeleeCombatSettings
     {
-        public float gravity = 20.0F;
-        public LayerMask groundLayers;
+        public float stabDuration = 0.5f;
+        public float slashDuration = 0.5f;
+        public bool rootAble = true;
     }
     [SerializeField]
-    public PhysicsSettings physics;
+    public LightMeleeCombatSettings lightMeleeCombatSettings;
 
-    [System.Serializable]
-    public class MovementSettings
+    [Serializable]
+    public class HeavyMeleeCombatSettings
     {
-        public float walkSpeed = 4.0F;
-        public float crouchSpeed = 2.0F;
-        public float runSpeed = 8.0F;
-        public float jumpSpeed = 8.0F;
-        public float jumpTime = 0.5f;
-        public float jumpCooldown = 1;
-        public float dodgeDistance = 10;
+        public float hitDuration = 1;
+        public float smashDuration = 2f;
+        public bool rootAble = true;
     }
     [SerializeField]
-    public MovementSettings movement;
+    public HeavyMeleeCombatSettings heavyMeleeCombatSettings;
 
-    [System.Serializable]
-    public class UnarmedCombat
+
+    //State machine for the different combat sets
+    public enum FSMState
     {
-        public float punchCooldown = 1;
-        public float kickCooldown = 0.5f;
-        public float toggleCombatCooldown = 1;
+        Unarmed,
+        LightMeleeWeapon,
+        HeavyMeleeWeapon,
+        LightGun,
+        HeavyGun,
     }
-    [SerializeField]
-    public UnarmedCombat combat;
+    public FSMState curCombatSet = FSMState.Unarmed;
 
-    //public variables
-    public float characterActionTimeStamp;
-
-    //private variables
-    private bool jumping;
-    private bool dodging;
-    private bool crouching;
-    private float speed;
-    private bool combatState = false;
-    public bool characterRooted = true;
-
-    public Animator animator;
-	private CharacterController characterController;
-	private Vector3 moveDirection;
-
-    void Start()
+    //switch for the different combat systems
+    private ICombatSet setCombatSet(Animator animator, AnimationSettings animations)
     {
-        animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
-        moveDirection = Vector3.zero;
-    }
-
-    void Update()
-    {
-        //actions only available durring
-        if (IsGrounded())
+        switch (curCombatSet)
         {
-            //instant actions
-			if (Input.GetButton(Constants.CROUCH_BUTTON))
-                crouching = true;
-            else
-                crouching = false;
-
-			if (Input.GetButton(Constants.DODGE_BUTTON))
-                Dodge();
-
-            //set speed
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= GetSpeed();
-
-            //cooldown based actions 
-            if (characterActionTimeStamp <= Time.time)
-            {
-                characterRooted = false;
-                if (Input.GetButton(Constants.JUMP_BUTTON))
-                {
-                    Jump();
-                    moveDirection.y = movement.jumpSpeed;
-                }
-                if (Input.GetButton(Constants.COMBAT_BUTTON))
-                {
-                    SwitchCombatState();
-                }
-                if (Input.GetButton(Constants.ATTACK1_BUTTON))
-                {
-                    print("gopunch");
-                    punch();
-                }
-                else if (Input.GetButton(Constants.ATTACK2_BUTTON))
-                {
-                    kick();
-                }
-            }
-        }
-        //movement
-        if (characterRooted == false) { 
-            Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
-            moveDirection.y -= physics.gravity * Time.deltaTime;
-            characterController.Move(moveDirection * Time.deltaTime);
+            case FSMState.Unarmed:
+                return new UnarmedCombat(animator, animations, unarmedCombatSettings);
+            case FSMState.LightMeleeWeapon:
+                return new LightMeleeCombat(animator, animations, lightMeleeCombatSettings);
+            case FSMState.HeavyMeleeWeapon:
+                return new HeavyMeleeCombat(animator, animations, heavyMeleeCombatSettings);
+            default:
+                return new UnarmedCombat(animator, animations, unarmedCombatSettings);
         }
     }
 
-    //Animates the character and root motion handles the movement
-    public void Animate(float forward, float strafe)
+    //interface for the different combat sets
+    public interface ICombatSet
     {
-        animator.SetFloat(animations.verticalVelocityFloat, forward);
-        animator.SetFloat(animations.horizontalVelocityFloat, strafe);
-        animator.SetBool(animations.jumpBool, jumping);
-        animator.SetBool(animations.groundedBool, IsGrounded());
-        animator.SetBool(animations.crouchBool, crouching);
-        animator.SetBool(animations.dodgeBool, dodging);
+        CharacterAttack Attack1(Animator animator);
+        CharacterAttack Attack2(Animator animator);
     }
+    public ICombatSet combatSet;
 
-	private bool IsGrounded()
-	{
-		float distToGround = 0.1f;
-		return Physics.Raycast(transform.position, -Vector3.up, distToGround);
-	}
-
-    private float GetSpeed()
+    /// <summary>
+    /// Unarmed combat set
+    /// </summary>
+    public class UnarmedCombat : ICombatSet
     {
-		if (Input.GetButton(Constants.RUN_BUTTON))
-            speed = movement.runSpeed;
-		else if (Input.GetButton(Constants.CROUCH_BUTTON))
-            speed = movement.crouchSpeed;
-        else
-            speed = movement.walkSpeed;
-        return speed;
-    }
+        public UnarmedCombatSettings combatSettings;
+        private AnimationSettings animations;
+        private Animator animator;
 
-    private void Jump()
-    {
-        if (IsGrounded())
+        public UnarmedCombat(Animator animator, AnimationSettings animations, UnarmedCombatSettings combatSettings)
         {
-            jumping = true;
-            characterActionTimeStamp = Time.time + movement.jumpCooldown;
-            StartCoroutine(StopJump());
+            this.animator = animator;
+            this.animations = animations;
+            this.combatSettings = combatSettings;
         }
-    }
 
-    //Stops from jumping
-    IEnumerator StopJump()
-    {
-        yield return new WaitForSeconds(movement.jumpTime);
-        jumping = false;
-    }
-
-    private void Dodge()
-    {
-        if (!dodging)
+        public CharacterAttack Attack1(Animator AM)
         {
-            if (Input.GetAxis("Horizontal") != 0)
-            {
-                StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
-            }
-            else if(Input.GetButton("Vertical"))
-            {
-                StartCoroutine(Roll(false, Input.GetAxis("Vertical")));
-            }
+            //proc the animation
+            AM.SetTrigger(animations.punch);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.punshDuration, combatSettings.rootAble);
+        }
+
+        public CharacterAttack Attack2(Animator AM)
+        {
+            //proc the animation
+            AM.SetTrigger(animations.kick);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.punshDuration, combatSettings.rootAble);
+        }
+    }
+    /// <summary>
+    /// LightMelee combat set
+    /// </summary>
+    public class LightMeleeCombat : ICombatSet
+    {
+       public LightMeleeCombatSettings combatSettings;
+        private AnimationSettings animations;
+        private Animator animator;
+
+        public LightMeleeCombat(Animator animator, AnimationSettings animations, LightMeleeCombatSettings combatSettings)
+        {
+            this.animator = animator;
+            this.animations = animations;
+            this.combatSettings = combatSettings;
+        }
+
+        public CharacterAttack Attack1(Animator AM)
+        {
+            //proc the animation
+            AM.SetTrigger(animations.punch);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.slashDuration, combatSettings.rootAble);
+        }
+
+        public CharacterAttack Attack2(Animator AM)
+        {
+            //proc the animation
+            AM.SetTrigger(animations.punch);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.stabDuration, combatSettings.rootAble);
+        }
+    }
+    //add other combat sets here
+    /// <summary>
+    /// HeavyMelee combat set
+    /// </summary>
+    public class HeavyMeleeCombat : ICombatSet
+    {
+        public HeavyMeleeCombatSettings combatSettings;
+        private AnimationSettings animations;
+        private Animator animator;
+
+        public HeavyMeleeCombat(Animator animator, AnimationSettings animations, HeavyMeleeCombatSettings combatSettings)
+        {
+            this.animator = animator;
+            this.animations = animations;
+            this.combatSettings = combatSettings;
+        }
+
+        public CharacterAttack Attack1(Animator AM)
+        {
+            //proc the animation
+            AM.SetTrigger(animations.kick);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.hitDuration, combatSettings.rootAble);
+        }
+
+        public CharacterAttack Attack2(Animator AM)
+        {
+            //proc the animation
+            AM.SetTrigger(animations.kick);
+            //set the cooldown and if the character is rooted durring this skill
+            return new CharacterAttack(combatSettings.smashDuration, combatSettings.rootAble);
         }
     }
 
-    IEnumerator Roll(bool horizontal, float direction)
+    //combatStart
+    protected override void CombatInitialize()
     {
-        dodging = true;
-        yield return new WaitForSeconds(0.5f);
-        StopCoroutine(Roll(horizontal, direction));
-        dodging = false;
+        combatSet = setCombatSet(animator, animations);
     }
 
-
-    private void punch()
+    // combatUpdate seperatly so the combatactions are only checked when inteded
+    protected override void CombatActionUpdate()
     {
-        characterRooted = true;
-        print("punch");
         if (combatState == false)
             SwitchCombatState();
-        characterActionTimeStamp = Time.time + combat.punchCooldown;
-        animator.SetTrigger(animations.punch);
+        //Select the correct action
+        if (Input.GetButton(Constants.ATTACK1_BUTTON))
+        {
+            CharacterAttack attack= combatSet.Attack1(animator);
+            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterRooted = attack.rootAble;
+        }
+        else if (Input.GetButton(Constants.ATTACK2_BUTTON))
+        {
+            CharacterAttack attack = combatSet.Attack1(animator);
+            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterRooted = attack.rootAble;
+        }
     }
 
-    private void kick()
+    //constant update of the CombatSet
+    protected override void CombatSetUpdate()
     {
-        characterRooted = true;
-        print("kick");
-        if (combatState == false)
-            SwitchCombatState();
-        characterActionTimeStamp = Time.time + combat.kickCooldown;
-        animator.SetTrigger(animations.kick);
-    }
-
-    public void SwitchCombatState()
-    {
-        if (combatState)
-            combatState = false;
-        else
-            combatState = true;
-
-        animator.SetBool(animations.isInCombat, combatState);
-        characterActionTimeStamp = Time.time + combat.toggleCombatCooldown;
+        //select the correct combatset
+        if (Input.GetButton("UnarmedSet"))
+        {
+            curCombatSet = FSMState.Unarmed;
+        }
+        if (Input.GetButton("ArmedSet"))
+        {
+            curCombatSet = FSMState.LightMeleeWeapon;
+        }
+        combatSet = setCombatSet(animator,animations);
     }
 }

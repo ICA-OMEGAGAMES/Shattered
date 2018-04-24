@@ -3103,6 +3103,7 @@ GameObject:
   - component: {fileID: 1920520601}
   - component: {fileID: 1920520605}
   - component: {fileID: 1920520603}
+  - component: {fileID: 1920520600}
   - component: {fileID: 1920520604}
   m_Layer: 0
   m_Name: Mannequin
@@ -3111,6 +3112,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1920520600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920520599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bdf350e2995794a9251fa6e6afd5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations:
+    verticalVelocityFloat: Forward
+    horizontalVelocityFloat: Strafe
+    groundedBool: isGrounded
+    jumpBool: isJumping
+    crouchBool: isCrouching
+    dodgeBool: isDodging
+    punch: Punch
+    kick: Kick
+    isInCombat: isInCombat
+  physics:
+    gravity: 20
+    groundLayers:
+      serializedVersion: 2
+      m_Bits: 0
+  movement:
+    walkSpeed: 4
+    crouchSpeed: 2
+    runSpeed: 8
+    jumpSpeed: 8
+    jumpTime: 0.5
+    jumpCooldown: 1
+    dodgeDistance: 10
+    toggleCombatCooldown: 1
+  characterActionTimeStamp: 0
+  animator: {fileID: 0}
+  unarmedCombatSettings:
+    punchCooldown: 1
+    kickCooldown: 0.5
+    rootAble: 1
+  lightMeleeCombatSettings:
+    punchCooldown: 1
+    kickCooldown: 0.5
+    rootAble: 1
+  curCombatSet: 0
 --- !u!95 &1920520601
 Animator:
   serializedVersion: 3
