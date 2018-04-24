@@ -48,15 +48,16 @@ public class CharacterMovement : MonoBehaviour
     public MovementSettings movement;
 
     //public variables
-    public float characterActionTimeStamp;
+    public float characterActionTimeStamp =0;
+    public bool crouching;
 
     //private variables
     private bool jumping;
     private bool dodging;
-    private bool crouching;
     private float speed;
     protected bool combatState = false;
     protected bool characterRooted = true;
+    private float characterToggleCombatTimeStamp = 0;
 
     public Animator animator;
 	private CharacterController characterController;
@@ -88,9 +89,14 @@ public class CharacterMovement : MonoBehaviour
             else
                 crouching = false;
 
-            if (Input.GetButton(Constants.DODGE_BUTTON))
-                Dodge();
+            if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
+                SwitchCombatState();
+            //Apply movementDirections
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= GetSpeed();
 
+            //limit actions to the in/out combat state
             switch (combatState)
             {
                 case (false):
@@ -100,11 +106,6 @@ public class CharacterMovement : MonoBehaviour
                     inCombatUpdate();
                     break;
             }
-            //set speed
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= GetSpeed();
-
         }
         //movement
         if (characterRooted == false) { 
@@ -120,30 +121,27 @@ public class CharacterMovement : MonoBehaviour
         if (characterActionTimeStamp <= Time.time)
         {
             characterRooted = false;
-            if (Input.GetButton(Constants.JUMP_BUTTON))
+            if (Input.GetButton(Constants.JUMP_BUTTON) && crouching == false)
             {
                 Jump();
                 moveDirection.y = movement.jumpSpeed;
-            }
-            if (Input.GetButton(Constants.COMBAT_BUTTON))
-            {
-                SwitchCombatState();
             }
         }
     }
 
     void inCombatUpdate() {
+        if (Input.GetButton(Constants.DODGE_BUTTON))
+            Dodge();
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
         {
             characterRooted = false;
-            if (Input.GetButton(Constants.COMBAT_BUTTON))
+            if (combatState == true && crouching == false)
             {
-                SwitchCombatState();
-            }
-            if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
-            {
-                CombatActionUpdate();
+                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
+                {
+                    CombatActionUpdate();
+                }
             }
         }
     }
@@ -226,6 +224,6 @@ public class CharacterMovement : MonoBehaviour
             combatState = true;
 
         animator.SetBool(animations.isInCombat, combatState);
-        characterActionTimeStamp = Time.time + movement.toggleCombatCooldown;
+        characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }
 }
