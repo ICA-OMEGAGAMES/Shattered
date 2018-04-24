@@ -39,7 +39,7 @@ public class CharacterMovement : MonoBehaviour
         public float crouchSpeed = 2.0F;
         public float runSpeed = 8.0F;
         public float jumpSpeed = 8.0F;
-        public float jumpTime = 0.5f;
+        public float jumpTime = 0.25f;
         public float jumpCooldown = 1;
         public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
@@ -83,42 +83,68 @@ public class CharacterMovement : MonoBehaviour
         if (IsGrounded())
         {
             //instant actions
-			if (Input.GetButton(Constants.CROUCH_BUTTON))
+            if (Input.GetButton(Constants.CROUCH_BUTTON))
                 crouching = true;
             else
                 crouching = false;
 
-			if (Input.GetButton(Constants.DODGE_BUTTON))
+            if (Input.GetButton(Constants.DODGE_BUTTON))
                 Dodge();
 
+            switch (combatState)
+            {
+                case (false):
+                    outOfCombatUpdate();
+                    break;
+                case (true):
+                    inCombatUpdate();
+                    break;
+            }
             //set speed
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= GetSpeed();
-            //cooldown based actions 
-            if (characterActionTimeStamp <= Time.time)
-            {
-                characterRooted = false;
-                if (Input.GetButton(Constants.JUMP_BUTTON))
-                {
-                    Jump();
-                    moveDirection.y = movement.jumpSpeed;
-                }
-                if (Input.GetButton(Constants.COMBAT_BUTTON))
-                {
-                    SwitchCombatState();
-                }
-                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
-                {
-                    CombatActionUpdate();
-                }
-            }
+
         }
         //movement
         if (characterRooted == false) { 
             Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
+        }
+    }
+
+    void outOfCombatUpdate()
+    {
+        //cooldown based actions 
+        if (characterActionTimeStamp <= Time.time)
+        {
+            characterRooted = false;
+            if (Input.GetButton(Constants.JUMP_BUTTON))
+            {
+                Jump();
+                moveDirection.y = movement.jumpSpeed;
+            }
+            if (Input.GetButton(Constants.COMBAT_BUTTON))
+            {
+                SwitchCombatState();
+            }
+        }
+    }
+
+    void inCombatUpdate() {
+        //cooldown based actions 
+        if (characterActionTimeStamp <= Time.time)
+        {
+            characterRooted = false;
+            if (Input.GetButton(Constants.COMBAT_BUTTON))
+            {
+                SwitchCombatState();
+            }
+            if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
+            {
+                CombatActionUpdate();
+            }
         }
     }
 

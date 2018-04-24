@@ -180,8 +180,6 @@ public class CharacterScript : CharacterMovement {
     // combatUpdate seperatly so the combatactions are only checked when inteded
     protected override void CombatActionUpdate()
     {
-        if (combatState == false)
-            SwitchCombatState();
         //Select the correct action
         if (Input.GetButton(Constants.ATTACK1_BUTTON))
         {

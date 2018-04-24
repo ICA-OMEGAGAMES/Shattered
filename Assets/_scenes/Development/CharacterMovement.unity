@@ -3143,19 +3143,23 @@ MonoBehaviour:
     crouchSpeed: 2
     runSpeed: 8
     jumpSpeed: 8
-    jumpTime: 0.5
+    jumpTime: 0
     jumpCooldown: 1
     dodgeDistance: 10
     toggleCombatCooldown: 1
   characterActionTimeStamp: 0
   animator: {fileID: 0}
   unarmedCombatSettings:
-    punchCooldown: 1
-    kickCooldown: 0.5
+    punshDuration: 1
+    kickDuration: 0.5
     rootAble: 1
   lightMeleeCombatSettings:
-    punchCooldown: 1
-    kickCooldown: 0.5
+    stabDuration: 1
+    slashDuration: 0.5
+    rootAble: 1
+  heavyMeleeCombatSettings:
+    hitDuration: 1
+    smashDuration: 2
     rootAble: 1
   curCombatSet: 0
 --- !u!95 &1920520601
