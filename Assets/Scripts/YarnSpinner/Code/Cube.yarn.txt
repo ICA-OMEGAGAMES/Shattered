@@ -1,0 +1,75 @@
+title: Cube
+tags: 
+colorID: 0
+position: 96,-370
+---
+Player: Hey, Cube.
+<<doJump NPC 2>>
+Cube: Oh! Hi.
+Cube: You frightened me, do not sneak me like that!
+Player: Sorry, I will not do that anymore :)
+Cube: I hope so, how are you today?
+[[I'm Good.|good]]
+[[Not good!|notGood]]
+===
+title: good
+tags: 
+colorID: 0
+position: 318,-86
+---
+Cube: Nice, I'm glad to hear that from you ;)
+Cube: How do you think the weather will be tomorrow?
+<<startHelpTimer NPC 5>>
+// <<set $helpTimerFinished to true>>
+<<startPressureTimer NPC 5,1>>
+[[Sunny.|sunny]]
+[[Rainy!|rainy]]
+<<if $helpTimerFinished is true>>
+    [[I don't know, dude.|dontKnow]]
+<<endif>>
+===
+title: notGood
+tags: 
+colorID: 0
+position: -40,-83
+---
+Cube: Oh that's bad. Whats wrong mate?
+<<startPressureTimer NPC 5,1>>
+[[I don't want to talk about it :/|dontWantToTalk]]
+[[Ohh man, today is to crazy!|girlfriendCrazy]]
+===
+title: dontWantToTalk
+tags: 
+colorID: 0
+position: -215,236
+---
+Test - Don't want to Tak!
+===
+title: girlfriendCrazy
+tags: 
+colorID: 0
+position: 134,235
+---
+Test - Today is crazy!
+===
+title: sunny
+tags: 
+colorID: 0
+position: 898,-25
+---
+Test - sunny!
+===
+title: rainy
+tags: 
+colorID: 0
+position: 874,249
+---
+Test - rainy!
+===
+title: dontKnow
+tags: 
+colorID: 0
+position: 558,333
+---
+Text - dontKnow!
+===
