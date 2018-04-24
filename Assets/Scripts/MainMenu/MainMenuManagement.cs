@@ -9,6 +9,7 @@ public class MainMenuManagement : MonoBehaviour {
 	void Start () {
 		LoadGraphicsSettings();
 		LoadSoundSettings();
+		LoadControlSettings();
 	}
 
 	//Loads and applies stored settings from the config file	
@@ -61,5 +62,37 @@ public class MainMenuManagement : MonoBehaviour {
 		SoundSettings.Instance.masterVolume = JsonUtility.FromJson<SoundSettings>(json).masterVolume;
 		SoundSettings.Instance.musicVolume = JsonUtility.FromJson<SoundSettings>(json).musicVolume;
 		SoundSettings.Instance.soundEffectsVolume = JsonUtility.FromJson<SoundSettings>(json).soundEffectsVolume;
+	}
+
+	void LoadControlSettings(){
+		string[] json = null;
+		try
+		{
+			json = File.ReadAllLines(Application.persistentDataPath + "/controlSettings.json");
+		} catch(FileNotFoundException e)
+		{
+			Debug.Log(e.Message + " - No saved settings found.");
+		}
+		
+		if(json == null)
+		{
+			return;
+		}
+		foreach(string setting in json)
+		{
+			string key = setting;
+			key = key.Replace("\"", "");
+			key = key.Replace(" ", "");
+			key = key.Replace("{", "");
+			key = key.Replace("}", "");
+			key = key.Replace(",", "");
+
+			if(key.Length < 1)
+			{
+				continue;
+			}
+			
+			ControlsSettings.Instance.Add(new KeyValuePair<string, KeyCode>(key.Split(':')[0], (KeyCode)System.Enum.Parse(typeof(KeyCode), key.Split(':')[1], true)));
+		}
 	}
 }
