@@ -5,71 +5,67 @@ position: 96,-370
 ---
 Player: Hey, Cube.
 <<doJump NPC 2>>
-Cube: Oh! Hi.
-Cube: You frightened me, do not sneak me like that!
-Player: Sorry, I will not do that anymore :)
-Cube: I hope so, how are you today?
-[[I'm Good.|good]]
-[[Not good!|notGood]]
+Cube: Oh! You frightened me, do not sneak me like that!
+Cube: Wanna try the Dialogue System?
+[[Let's try the Help-Timer.|helpTimer]]
+[[Let's try the Pressure-Timer!|pressureTimer]]
+[[Bye!|bye]]
 ===
-title: good
+title: helpTimer
 tags: 
 colorID: 0
-position: 318,-86
+position: 301,-34
 ---
-Cube: Nice, I'm glad to hear that from you ;)
-Cube: How do you think the weather will be tomorrow?
-<<startHelpTimer NPC 5>>
-// <<set $helpTimerFinished to true>>
-<<startPressureTimer NPC 5,1>>
-[[Sunny.|sunny]]
-[[Rainy!|rainy]]
-<<if $helpTimerFinished is true>>
-    [[I don't know, dude.|dontKnow]]
-<<endif>>
+Cube: Do you need some help? Wait 5 seconds.
+//here we start the Help Timer who goes 5 seconds, and after that he choose the option 3 --> see 5,3 in the command
+<<startHelpTimer NPC 5,3>>
+//options to choose
+[[Sunny.|sunny]] //1
+[[Rainy!|rainy]] //2
+[[I don't know, dude.|dontKnow]] //3
 ===
-title: notGood
+title: pressureTimer
 tags: 
 colorID: 0
-position: -40,-83
+position: -129,-42
 ---
-Cube: Oh that's bad. Whats wrong mate?
+Cube: Ohh, now the Pressure-Timer started? In 5 seconds it will happen!
 <<startPressureTimer NPC 5,1>>
 [[I don't want to talk about it :/|dontWantToTalk]]
-[[Ohh man, today is to crazy!|girlfriendCrazy]]
+[[Ohh man, today is to crazy!|todayIsCrazy]]
 ===
 title: dontWantToTalk
 tags: 
 colorID: 0
-position: -215,236
+position: -560,160
 ---
-Test - Don't want to Tak!
-===
-title: girlfriendCrazy
-tags: 
-colorID: 0
-position: 134,235
----
-Test - Today is crazy!
-===
-title: sunny
-tags: 
-colorID: 0
-position: 898,-25
----
-Test - sunny!
+Test - dontWantToTalk
 ===
 title: rainy
 tags: 
 colorID: 0
-position: 874,249
+position: 167,297
 ---
-Test - rainy!
+Test - rainy
+===
+title: sunny
+tags: 
+colorID: 6
+position: 658,288
+---
+Test - sunny
 ===
 title: dontKnow
 tags: 
 colorID: 0
-position: 558,333
+position: 715,-44
 ---
-Text - dontKnow!
+Test - dontKnow
+===
+title: bye
+tags: 
+colorID: 0
+position: -342,-361
+---
+Cube: See you!
 ===

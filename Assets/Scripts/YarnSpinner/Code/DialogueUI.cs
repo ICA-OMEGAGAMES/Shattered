@@ -127,7 +127,15 @@ namespace Yarn.Unity.Shattered
             int i = 0;
             foreach (var optionString in optionsCollection.options)
             {
-                optionButtons[i].gameObject.SetActive(true);
+                // this is here, because if we have the help timer, we need to disable one option
+                if (i == HelpTimer.Instance.optionForHelping && HelpTimer.Instance.isActive)
+                {
+                    optionButtons[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    optionButtons[i].gameObject.SetActive(true);
+                }
                 optionButtons[i].GetComponentInChildren<Text>().text = optionString;
                 i++;
             }
@@ -136,34 +144,30 @@ namespace Yarn.Unity.Shattered
             SetSelectedOption = optionChooser;
 
             // Default time value, later we can calculate the remaining time from the corruption level
-            float time = PressureTimer.Instance.time;
+            float timeForPressureTimer = PressureTimer.Instance.time;
+            float timeForHelpTimer = HelpTimer.Instance.time;
 
             // Wait until the chooser has been used and then removed (see SetOption below)
             while (SetSelectedOption != null)
             {
-                // If the timer is active, start the timer.
+                // If the pressureTimer is active, start the timer.
                 if (PressureTimer.Instance.isActive)
                 {
-                    time -= Time.deltaTime;
-                    if (time <= 0)
+                    timeForPressureTimer -= Time.deltaTime;
+                    if (timeForPressureTimer <= 0)
                     {
                         SetOption(PressureTimer.Instance.selectedOption);
                         PressureTimer.Instance.isActive = false;
-
-                        // forTesting to show the third Option
-                        // VariableStorage defaultVariable = GetComponent<VariableStorage>();
-                        // defaultVariable.SetValue("helpTimerFinished", new Yarn.Value(true));
-                        // Debug.Log("SetValueToTrue");
-                        // Debug.Log(defaultVariable);
-                        // Debug.Log(defaultVariable.GetValue("helpTimerFinished"));
-
-                        // RunOptions(optionsCollection, optionChooser);
-                        // this.RunOptions(optionsCollection, optionChooser);
-                        // yield return StartCoroutine (
-                        //     this.RunOptions (
-                        //     optionsCollection,
-                        //     optionChooser
-                        // ));
+                    }
+                }
+                // If the HelpTimer is active, start the timer.
+                else if (HelpTimer.Instance.isActive)
+                {
+                    timeForHelpTimer -= Time.deltaTime;
+                    if (timeForHelpTimer <= 0)
+                    {
+                        optionButtons[HelpTimer.Instance.optionForHelping].gameObject.SetActive(true);
+                        HelpTimer.Instance.isActive = false;
                     }
                 }
                 yield return null;
