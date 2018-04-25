@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DummyScript : MonoBehaviour {
-    Renderer renderer;
+    new Renderer renderer;
     bool red = false;
 	// Use this for initialization
 	void Start () {

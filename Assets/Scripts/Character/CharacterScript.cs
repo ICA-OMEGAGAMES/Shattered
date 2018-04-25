@@ -82,11 +82,10 @@ public class CharacterScript : CharacterMovement {
     {
         public UnarmedCombatSettings combatSettings;
         private AnimationSettings animations;
-        private Animator animator;
+
 
         public UnarmedCombat(Animator animator, AnimationSettings animations, UnarmedCombatSettings combatSettings)
         {
-            this.animator = animator;
             this.animations = animations;
             this.combatSettings = combatSettings;
         }
@@ -114,11 +113,9 @@ public class CharacterScript : CharacterMovement {
     {
        public LightMeleeCombatSettings combatSettings;
         private AnimationSettings animations;
-        private Animator animator;
 
         public LightMeleeCombat(Animator animator, AnimationSettings animations, LightMeleeCombatSettings combatSettings)
         {
-            this.animator = animator;
             this.animations = animations;
             this.combatSettings = combatSettings;
         }
@@ -147,11 +144,9 @@ public class CharacterScript : CharacterMovement {
     {
         public HeavyMeleeCombatSettings combatSettings;
         private AnimationSettings animations;
-        private Animator animator;
 
         public HeavyMeleeCombat(Animator animator, AnimationSettings animations, HeavyMeleeCombatSettings combatSettings)
         {
-            this.animator = animator;
             this.animations = animations;
             this.combatSettings = combatSettings;
         }
@@ -191,7 +186,7 @@ public class CharacterScript : CharacterMovement {
         }
         else if (Input.GetButton(Constants.ATTACK2_BUTTON))
         {
-            CharacterAttack attack = combatSet.Attack1(animator);
+            CharacterAttack attack = combatSet.Attack2(animator);
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootAble;
         }

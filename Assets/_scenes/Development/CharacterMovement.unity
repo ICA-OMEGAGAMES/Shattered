@@ -268,11 +268,11 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 152452496}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0.1, y: 0, z: 0}
+  m_Radius: 0.08
+  m_Center: {x: 0.05, y: 0, z: 0}
 --- !u!114 &152452499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543432088}
   - component: {fileID: 543432089}
+  - component: {fileID: 543432090}
   m_Layer: 0
   m_Name: mixamorig:LeftFoot
   m_TagString: Untagged
@@ -1399,6 +1400,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.3}
   m_Center: {x: -0.01, y: -0.06, z: 0.08}
+--- !u!114 &543432090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543432087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a972741da6d9d714e820c2c0455de991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &564318602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1626,6 @@ GameObject:
   m_Component:
   - component: {fileID: 791253151}
   - component: {fileID: 791253152}
-  - component: {fileID: 791253153}
   m_Layer: 0
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
@@ -1647,22 +1658,11 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 791253150}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Center: {x: -0.1, y: 0, z: 0}
---- !u!114 &791253153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 791253150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a972741da6d9d714e820c2c0455de991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &842554943
 GameObject:
   m_ObjectHideFlags: 0
