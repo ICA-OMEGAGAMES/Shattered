@@ -6,12 +6,9 @@ using System.Collections;
 public class CharacterMovement : MonoBehaviour
 {
 
-	[SerializeField]
-	public AnimationSettings animations;
-	[SerializeField]
-	public PhysicsSettings physics;
-	[SerializeField]
-	public MovementSettings movement;
+
+
+
 
     //Serialized classes
     [System.Serializable]
@@ -25,6 +22,8 @@ public class CharacterMovement : MonoBehaviour
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
     }
+	[SerializeField]
+	public AnimationSettings animations;
 
 	[System.Serializable]
 	public class PhysicsSettings
@@ -32,6 +31,8 @@ public class CharacterMovement : MonoBehaviour
 		public float gravity = 20.0F;
 		public LayerMask groundLayers;
 	}
+	[SerializeField]
+	public PhysicsSettings physics;
 		
     [System.Serializable]
     public class MovementSettings
@@ -43,6 +44,8 @@ public class CharacterMovement : MonoBehaviour
         public float jumpTime = 0.25f;
         public float dodgeDistance = 10;
     }
+	[SerializeField]
+	public MovementSettings movement;
 
     //private variables
     private bool jumping;
