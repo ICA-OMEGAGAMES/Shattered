@@ -5,6 +5,14 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
+
+	[SerializeField]
+	public AnimationSettings animations;
+	[SerializeField]
+	public PhysicsSettings physics;
+	[SerializeField]
+	public MovementSettings movement;
+
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -17,18 +25,14 @@ public class CharacterMovement : MonoBehaviour
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
     }
-    [SerializeField]
-    public AnimationSettings animations;
 
-    [System.Serializable]
-    public class PhysicsSettings
-    {
-        public float gravity = 20.0F;
-        public LayerMask groundLayers;
-    }
-    [SerializeField]
-    public PhysicsSettings physics;
-
+	[System.Serializable]
+	public class PhysicsSettings
+	{
+		public float gravity = 20.0F;
+		public LayerMask groundLayers;
+	}
+		
     [System.Serializable]
     public class MovementSettings
     {
@@ -39,8 +43,6 @@ public class CharacterMovement : MonoBehaviour
         public float jumpTime = 0.25f;
         public float dodgeDistance = 10;
     }
-    [SerializeField]
-    public MovementSettings movement;
 
     //private variables
     private bool jumping;
@@ -88,7 +90,16 @@ public class CharacterMovement : MonoBehaviour
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
-		
+
+	void FixedUpdate(){
+		RotateCharacterWithCamera ();
+	}
+
+	private void RotateCharacterWithCamera(){
+		Vector3 newRotation = transform.eulerAngles;
+		newRotation.y = Camera.main.transform.eulerAngles.y;
+		transform.eulerAngles = newRotation;
+	}
 
     //Animates the character and root motion handles the movement
     public void Animate(float forward, float strafe)

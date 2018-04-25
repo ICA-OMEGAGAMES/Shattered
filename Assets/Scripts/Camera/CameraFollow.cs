@@ -1,12 +1,4 @@
-﻿//-------------------------------------------------------------------------
-// Author:			Benjamin Grabherr                    Date: 16.04.2018
-// Description:		This is a camera Follow Script in
-// 					a third person view.
-// Source:			https://www.youtube.com/watch?v=LbDQHv9z-F0&t=127s
-//
-//-------------------------------------------------------------------------
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,14 +25,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Setup the rotation of the sticks here --> Supports also the Controller
-        float inputX = Input.GetAxis("RightStickHorizontal");
-        float inputZ = Input.GetAxis("RightStickVertical");
 		cameraFollowSetting.mouseX = Input.GetAxis("Mouse X");
 		cameraFollowSetting.mouseY = Input.GetAxis("Mouse Y");
-		cameraFollowSetting.finalInputX = inputX + cameraFollowSetting.mouseX;
-		cameraFollowSetting.finalInputZ = inputZ + cameraFollowSetting.mouseY;
+		cameraFollowSetting.finalInputX = cameraFollowSetting.mouseX;
+		cameraFollowSetting.finalInputZ = cameraFollowSetting.mouseY;
 
         // Rotate the stick, depending where we pushing
 		rotY += cameraFollowSetting.finalInputX * cameraFollowSetting.inputSensitivity * Time.deltaTime;

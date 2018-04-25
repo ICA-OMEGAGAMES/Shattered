@@ -7,7 +7,10 @@ public class Statistics : MonoBehaviour {
 	private int maxHealth;
 	private int health;
 
-	void Start(){health = maxHealth;}
+	void Start(){
+		maxHealth = Constants.PLAYER_HEALTH;
+		health = maxHealth;
+	}
 
 	public int GetHealth(){return health;}
 	public void IncreaseMaxHealth(int amount){maxHealth += amount;}

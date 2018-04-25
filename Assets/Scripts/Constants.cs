@@ -16,6 +16,6 @@ public static class Constants{
 	public const string JUMP_BUTTON = "Jump";
 
 	// SETTINGS
-	public const int PLAYER_HEALTH = 100;
+	public const int PLAYER_HEALTH = 200;
 
 }
