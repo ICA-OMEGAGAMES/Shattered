@@ -1,0 +1,100 @@
+# 3ds Max Wavefront OBJ Exporter v0.94b - (c)2007 guruware
+# File Created: 16.08.2012 11:55:43
+
+newmtl 01
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_15.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_15.jpg
+
+newmtl 02
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_16.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_16.jpg
+
+newmtl 03
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_17.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_17.jpg
+
+newmtl 04
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_18.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_18.jpg
+
+newmtl 07
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_21.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_21.jpg
+
+newmtl 08
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_22.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_22.jpg
+
+newmtl 13
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.1569 0.1569 0.1569
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_08.jpg
+	map_Kd D:\K_Shop\K_Buildings_A\UPLOAD\K_Buildings_A\Textures\K_BuildingsA_08.jpg

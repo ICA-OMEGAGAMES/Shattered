@@ -1,0 +1,239 @@
+fileFormatVersion: 2
+guid: 9e44cc715ba91cf48853d45f440d4ef9
+timeCreated: 1524214177
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1angled_slat_am02
+    100002: chimney_am00
+    100004: doors_main_am00
+    100006: doors_terrace01_am00
+    100008: doors_terrace02_am00
+    100010: floor01_am02
+    100012: //RootNode
+    100014: frontterrace_am00
+    100016: fundaments_am00
+    100018: gutter__am00_01
+    100020: gutter__am00_02
+    100022: gutter__am00_03
+    100024: gutter__am00_04
+    100026: inside_walls_am02
+    100028: outsidewalls_am02
+    100030: roof_am00
+    100032: roof_top_am02
+    100034: subroof_am00
+    100036: window_back01_am00
+    100038: window_back02_am00
+    100040: window_front02_am00
+    100042: window_left01_am00
+    100044: window_left02_am00
+    100046: window_right01_am00
+    100048: window_right02_am00
+    100050: window_up01_am00
+    400000: 1angled_slat_am02
+    400002: chimney_am00
+    400004: doors_main_am00
+    400006: doors_terrace01_am00
+    400008: doors_terrace02_am00
+    400010: floor01_am02
+    400012: //RootNode
+    400014: frontterrace_am00
+    400016: fundaments_am00
+    400018: gutter__am00_01
+    400020: gutter__am00_02
+    400022: gutter__am00_03
+    400024: gutter__am00_04
+    400026: inside_walls_am02
+    400028: outsidewalls_am02
+    400030: roof_am00
+    400032: roof_top_am02
+    400034: subroof_am00
+    400036: window_back01_am00
+    400038: window_back02_am00
+    400040: window_front02_am00
+    400042: window_left01_am00
+    400044: window_left02_am00
+    400046: window_right01_am00
+    400048: window_right02_am00
+    400050: window_up01_am00
+    2100000: 1angled_slat_am02Mat
+    2100002: chimney_am00Mat
+    2100004: doors_main_am00Mat
+    2100006: doors_terrace01_am00Mat
+    2100008: doors_terrace02_am00Mat
+    2100010: floor01_am02Mat
+    2100012: frontterrace_am00Mat
+    2100014: fundaments_am00Mat
+    2100016: gutter__am00_01Mat
+    2100018: gutter__am00_02Mat
+    2100020: gutter__am00_03Mat
+    2100022: gutter__am00_04Mat
+    2100024: inside_walls_am02Mat
+    2100026: outsidewalls_am02Mat
+    2100028: roof_am00Mat
+    2100030: roof_top_am02Mat
+    2100032: subroof_am00Mat
+    2100034: window_back01_am00Mat
+    2100036: window_back02_am00Mat
+    2100038: window_front02_am00Mat
+    2100040: window_left01_am00Mat
+    2100042: window_left02_am00Mat
+    2100044: window_right01_am00Mat
+    2100046: window_right02_am00Mat
+    2100048: window_up01_am00Mat
+    2300000: 1angled_slat_am02
+    2300002: chimney_am00
+    2300004: doors_main_am00
+    2300006: doors_terrace01_am00
+    2300008: doors_terrace02_am00
+    2300010: floor01_am02
+    2300012: frontterrace_am00
+    2300014: fundaments_am00
+    2300016: gutter__am00_01
+    2300018: gutter__am00_02
+    2300020: gutter__am00_03
+    2300022: gutter__am00_04
+    2300024: inside_walls_am02
+    2300026: outsidewalls_am02
+    2300028: roof_am00
+    2300030: roof_top_am02
+    2300032: subroof_am00
+    2300034: window_back01_am00
+    2300036: window_back02_am00
+    2300038: window_front02_am00
+    2300040: window_left01_am00
+    2300042: window_left02_am00
+    2300044: window_right01_am00
+    2300046: window_right02_am00
+    2300048: window_up01_am00
+    3300000: 1angled_slat_am02
+    3300002: chimney_am00
+    3300004: doors_main_am00
+    3300006: doors_terrace01_am00
+    3300008: doors_terrace02_am00
+    3300010: floor01_am02
+    3300012: frontterrace_am00
+    3300014: fundaments_am00
+    3300016: gutter__am00_01
+    3300018: gutter__am00_02
+    3300020: gutter__am00_03
+    3300022: gutter__am00_04
+    3300024: inside_walls_am02
+    3300026: outsidewalls_am02
+    3300028: roof_am00
+    3300030: roof_top_am02
+    3300032: subroof_am00
+    3300034: window_back01_am00
+    3300036: window_back02_am00
+    3300038: window_front02_am00
+    3300040: window_left01_am00
+    3300042: window_left02_am00
+    3300044: window_right01_am00
+    3300046: window_right02_am00
+    3300048: window_up01_am00
+    4300000: 1angled_slat_am02
+    4300002: chimney_am00
+    4300004: doors_main_am00
+    4300006: doors_terrace01_am00
+    4300008: doors_terrace02_am00
+    4300010: floor01_am02
+    4300012: frontterrace_am00
+    4300014: fundaments_am00
+    4300016: gutter__am00_01
+    4300018: gutter__am00_02
+    4300020: gutter__am00_03
+    4300022: gutter__am00_04
+    4300024: inside_walls_am02
+    4300026: outsidewalls_am02
+    4300028: roof_am00
+    4300030: roof_top_am02
+    4300032: subroof_am00
+    4300034: window_back01_am00
+    4300036: window_back02_am00
+    4300038: window_front02_am00
+    4300040: window_left01_am00
+    4300042: window_left02_am00
+    4300044: window_right01_am00
+    4300046: window_right02_am00
+    4300048: window_up01_am00
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
