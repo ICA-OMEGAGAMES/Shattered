@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-	[SerializeField] CameraFollowSetting cameraFollowSetting;
+	[SerializeField] CameraFollowSettings cameraFollowSetting;
     [SerializeField] GameObject gameObjectToFollow;
 
 	private float rotY = 0.0f;
@@ -25,8 +25,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		cameraFollowSetting.mouseX = Input.GetAxis("Mouse X");
-		cameraFollowSetting.mouseY = Input.GetAxis("Mouse Y");
+		cameraFollowSetting.mouseX = Input.GetAxis(Constants.MOUSE_X_AXIS);
+		cameraFollowSetting.mouseY = Input.GetAxis(Constants.MOUSE_Y_AXIS);
 		cameraFollowSetting.finalInputX = cameraFollowSetting.mouseX;
 		cameraFollowSetting.finalInputZ = cameraFollowSetting.mouseY;
 

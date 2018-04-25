@@ -6,6 +6,8 @@ using UnityEngine;
 // Manages setup and configuration of main menu itself
 public class MainMenuManagement : MonoBehaviour {
 
+	private string noSettingsFoundMessage = " - No saved settings found.";
+
 	void Start () {
 		LoadGraphicsSettings();
 		LoadSoundSettings();
@@ -16,10 +18,10 @@ public class MainMenuManagement : MonoBehaviour {
 		string json = null;
 		try
 		{
-			json = File.ReadAllText(Application.persistentDataPath + "/graphicsettings.json");		
+			json = File.ReadAllText(Application.persistentDataPath + Constants.GRAPHICS_JSON);		
 		} catch(FileNotFoundException e)
 		{
-			Debug.Log(e.Message + " - No saved settings found.");
+			Debug.Log(e.Message + noSettingsFoundMessage);
 		}
 		
 		
@@ -47,10 +49,10 @@ public class MainMenuManagement : MonoBehaviour {
 		string json = null;
 		try
 		{
-			json = File.ReadAllText(Application.persistentDataPath + "/soundsettings.json");
+			json = File.ReadAllText(Application.persistentDataPath + Constants.SOUND_JSON);
 		} catch(FileNotFoundException e)
 		{
-			Debug.Log(e.Message + " - No saved settings found.");
+			Debug.Log(e.Message + noSettingsFoundMessage);
 		}
 		
 		if(json == null)

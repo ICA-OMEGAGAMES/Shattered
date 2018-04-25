@@ -73,7 +73,7 @@ public class CharacterMovement : MonoBehaviour
 			if (Input.GetButton(Constants.DODGE_BUTTON))
                 Dodge();
 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
             moveDirection = transform.TransformDirection(moveDirection);
   
             speed = GetSpeed();
@@ -86,7 +86,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 			
-        Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
+		Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
@@ -149,13 +149,13 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dodging)
         {
-            if (Input.GetAxis("Horizontal") != 0)
+			if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
+				StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
             }
-            else if(Input.GetButton("Vertical"))
+			else if(Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(false, Input.GetAxis("Vertical")));
+				StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
             }
         }
     }

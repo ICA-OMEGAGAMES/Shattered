@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 //Manages selection of configurations, storing configurations and changing them
 public class GraphicsSettingsManager : MonoBehaviour {
+
 	public Toggle fullscreenToggle;
-	
 	public Dropdown resolutionDropdown;
 	public Dropdown graphicsQualityDropdown;
 	public Dropdown textureQualityDropdown;
@@ -128,7 +128,7 @@ public class GraphicsSettingsManager : MonoBehaviour {
 	public void SaveSettings()
 	{
 		string jsonData = JsonUtility.ToJson (GraphicSettings.Instance, true);
-  		File.WriteAllText (Application.persistentDataPath + "/graphicsettings.json", jsonData);
+		File.WriteAllText (Application.persistentDataPath + Constants.GRAPHICS_JSON, jsonData);
 	}
 
 }

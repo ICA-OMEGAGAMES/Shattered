@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-	[SerializeField] CameraCollisionSetting cameraCollisionSetting;
+	[SerializeField] CameraCollisionSettings cameraCollisionSetting;
     private Vector3 dollyDir;
 
     // Use this for initialization
