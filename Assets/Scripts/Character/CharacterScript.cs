@@ -42,10 +42,8 @@ public class CharacterScript : CharacterMovement {
     public enum FSMState
     {
         Unarmed,
-        LightMeleeWeapon,
-        HeavyMeleeWeapon,
-        LightGun,
-        HeavyGun,
+        LightMeleeWeapon, //knifes and daggers
+        HeavyMeleeWeapon, //batts and maces
     }
     public FSMState curCombatSet = FSMState.Unarmed;
 
@@ -55,12 +53,16 @@ public class CharacterScript : CharacterMovement {
         switch (curCombatSet)
         {
             case FSMState.Unarmed:
+                animator.SetInteger("WeaponSet", 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
             case FSMState.LightMeleeWeapon:
+                animator.SetInteger("WeaponSet", 1);
                 return new LightMeleeCombat(animator, animations, lightMeleeCombatSettings);
             case FSMState.HeavyMeleeWeapon:
+                animator.SetInteger("WeaponSet", 2);
                 return new HeavyMeleeCombat(animator, animations, heavyMeleeCombatSettings);
             default:
+                animator.SetInteger("WeaponSet", 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
         }
     }
