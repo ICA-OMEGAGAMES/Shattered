@@ -34,7 +34,8 @@ namespace Yarn.Unity.Shattered
 {
 
     [System.Serializable]
-    public class LocalisedStringGroup {
+    public class LocalisedStringGroup
+    {
         public SystemLanguage language;
         public TextAsset[] stringFiles;
     }
@@ -76,18 +77,23 @@ namespace Yarn.Unity.Shattered
         /** Automatically created on first access
          */
         private Dialogue _dialogue;
-        public Dialogue dialogue {
-            get {
-                if (_dialogue == null) {
+        public Dialogue dialogue
+        {
+            get
+            {
+                if (_dialogue == null)
+                {
                     // Create the main Dialogue runner, and pass our variableStorage to it
-                    _dialogue = new Yarn.Dialogue (variableStorage);
+                    _dialogue = new Yarn.Dialogue(variableStorage);
 
                     // Set up the logging system.
-                    _dialogue.LogDebugMessage = delegate (string message) {
-                        Debug.Log (message);
+                    _dialogue.LogDebugMessage = delegate (string message)
+                    {
+                        Debug.Log(message);
                     };
-                    _dialogue.LogErrorMessage = delegate (string message) {
-                        Debug.LogError (message);
+                    _dialogue.LogErrorMessage = delegate (string message)
+                    {
+                        Debug.LogError(message);
                     };
                 }
                 return _dialogue;
@@ -95,43 +101,51 @@ namespace Yarn.Unity.Shattered
         }
 
         /// Start the dialogue
-        void Start ()
+        void Start()
         {
             // Ensure that we have our Implementation object
-            if (dialogueUI == null) {
-                Debug.LogError ("Implementation was not set! Can't run the dialogue!");
+            if (dialogueUI == null)
+            {
+                Debug.LogError("Implementation was not set! Can't run the dialogue!");
                 return;
             }
 
             // And that we have our variable storage object
-            if (variableStorage == null) {
-                Debug.LogError ("Variable storage was not set! Can't run the dialogue!");
+            if (variableStorage == null)
+            {
+                Debug.LogError("Variable storage was not set! Can't run the dialogue!");
                 return;
             }
 
             // Ensure that the variable storage has the right stuff in it
-            variableStorage.ResetToDefaults ();
+            variableStorage.ResetToDefaults();
 
             // Load all scripts
-            if (sourceText != null) {
-                foreach (var source in sourceText) {
+            if (sourceText != null)
+            {
+                foreach (var source in sourceText)
+                {
                     // load and compile the text
-                    dialogue.LoadString (source.text, source.name);
+                    dialogue.LoadString(source.text, source.name);
                 }
             }
 
-            if (startAutomatically) {
+            if (startAutomatically)
+            {
                 StartDialogue();
             }
 
-            if (stringGroups != null) {
+            if (stringGroups != null)
+            {
                 // Load the string table for this language, if appropriate
                 var stringsGroup = new List<LocalisedStringGroup>(stringGroups).Find(
                     entry => entry.language == (shouldOverrideLanguage ? overrideLanguage : Application.systemLanguage)
                 );
 
-                if (stringsGroup != null) {
-                    foreach (var table in stringsGroup.stringFiles) {
+                if (stringsGroup != null)
+                {
+                    foreach (var table in stringsGroup.stringFiles)
+                    {
                         this.AddStringTable(table.text);
                     }
                 }
@@ -140,33 +154,40 @@ namespace Yarn.Unity.Shattered
         }
 
         /// Add a string of text to a script
-        public void AddScript(string text) {
+        public void AddScript(string text)
+        {
             dialogue.LoadString(text);
         }
 
         /// Add a TextAsset to a script
-        public void AddScript(TextAsset asset) {
+        public void AddScript(TextAsset asset)
+        {
             dialogue.LoadString(asset.text);
         }
 
         /// Loads a string table, replacing any existing strings with the same
         /// key.
-        public void AddStringTable(Dictionary<string,string> stringTable) {
+        public void AddStringTable(Dictionary<string, string> stringTable)
+        {
             dialogue.AddStringTable(stringTable);
         }
 
         /// Add a string of text to a table
-        public void AddStringTable(string text) {
+        public void AddStringTable(string text)
+        {
 
             // Create the dictionary that will contain these values
-            var stringTable = new Dictionary<string,string>();
+            var stringTable = new Dictionary<string, string>();
 
-            using (var reader = new System.IO.StringReader(text)) {
-                using (var csv = new CsvHelper.CsvReader(reader)) {
+            using (var reader = new System.IO.StringReader(text))
+            {
+                using (var csv = new CsvHelper.CsvReader(reader))
+                {
 
                     var records = csv.GetRecords<Yarn.LocalisedLine>();
 
-                    foreach (var record in records) {
+                    foreach (var record in records)
+                    {
                         stringTable[record.LineCode] = record.LineText;
                     }
 
@@ -178,35 +199,37 @@ namespace Yarn.Unity.Shattered
         }
 
         /// Add a TextAsset to a table
-        public void AddStringTable(TextAsset text) {
+        public void AddStringTable(TextAsset text)
+        {
             AddStringTable(text.text);
         }
 
         /// Destroy the variable store and start again
-        public void ResetDialogue ()
+        public void ResetDialogue()
         {
-            variableStorage.ResetToDefaults ();
-            StartDialogue ();
+            variableStorage.ResetToDefaults();
+            StartDialogue();
         }
 
         /// Start the dialogue
-        public void StartDialogue () {
+        public void StartDialogue()
+        {
             StartDialogue(startNode);
         }
 
         /// Start the dialogue from a given node
-        public void StartDialogue (string startNode)
+        public void StartDialogue(string startNode)
         {
 
             // Stop any processes that might be running already
-            StopAllCoroutines ();
-            dialogueUI.StopAllCoroutines ();
+            StopAllCoroutines();
+            dialogueUI.StopAllCoroutines();
 
             // Get it going
-            StartCoroutine (RunDialogue (startNode));
+            StartCoroutine(RunDialogue(startNode));
         }
 
-        IEnumerator RunDialogue (string startNode = "Start")
+        IEnumerator RunDialogue(string startNode = "Start")
         {
             // Mark that we're in conversation.
             isDialogueRunning = true;
@@ -216,48 +239,58 @@ namespace Yarn.Unity.Shattered
 
             // Get lines, options and commands from the Dialogue object,
             // one at a time.
-            foreach (Yarn.Dialogue.RunnerResult step in dialogue.Run(startNode)) {
+            foreach (Yarn.Dialogue.RunnerResult step in dialogue.Run(startNode))
+            {
 
-                if (step is Yarn.Dialogue.LineResult) {
+                if (step is Yarn.Dialogue.LineResult)
+                {
 
                     // Wait for line to finish displaying
                     var lineResult = step as Yarn.Dialogue.LineResult;
-                    yield return StartCoroutine (this.dialogueUI.RunLine (lineResult.line));
+                    yield return StartCoroutine(this.dialogueUI.RunLine(lineResult.line));
 
-                } else if (step is Yarn.Dialogue.OptionSetResult) {
+                }
+                else if (step is Yarn.Dialogue.OptionSetResult)
+                {
 
                     // Wait for user to finish picking an option
                     var optionSetResult = step as Yarn.Dialogue.OptionSetResult;
-                    // if (YarnCommandAttribute.tex == startPressureTimer)
-                    yield return StartCoroutine (
-                        this.dialogueUI.RunOptions (
+                    yield return StartCoroutine(
+                        this.dialogueUI.RunOptions(
                         optionSetResult.options,
                         optionSetResult.setSelectedOptionDelegate
                     ));
 
-                } else if (step is Yarn.Dialogue.CommandResult) {
+                }
+                else if (step is Yarn.Dialogue.CommandResult)
+                {
 
                     // Wait for command to finish running
 
                     var commandResult = step as Yarn.Dialogue.CommandResult;
 
-                    if (DispatchCommand(commandResult.command.text) == true) {
+                    if (DispatchCommand(commandResult.command.text) == true)
+                    {
                         // command was dispatched
-                    } else {
-                        yield return StartCoroutine (this.dialogueUI.RunCommand (commandResult.command));
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(this.dialogueUI.RunCommand(commandResult.command));
                     }
 
 
-                } else if(step is Yarn.Dialogue.NodeCompleteResult) {
+                }
+                else if (step is Yarn.Dialogue.NodeCompleteResult)
+                {
 
                     // Wait for post-node action
                     var nodeResult = step as Yarn.Dialogue.NodeCompleteResult;
-                    yield return StartCoroutine (this.dialogueUI.NodeComplete (nodeResult.nextNode));
+                    yield return StartCoroutine(this.dialogueUI.NodeComplete(nodeResult.nextNode));
                 }
             }
 
             // No more results! The dialogue is done.
-            yield return StartCoroutine (this.dialogueUI.DialogueComplete ());
+            yield return StartCoroutine(this.dialogueUI.DialogueComplete());
 
             // Clear the 'is running' flag. We do this after DialogueComplete returns,
             // to allow time for any animations that might run while transitioning
@@ -266,9 +299,11 @@ namespace Yarn.Unity.Shattered
         }
 
         /// Clear the dialogue system
-        public void Clear() {
+        public void Clear()
+        {
 
-            if (isDialogueRunning) {
+            if (isDialogueRunning)
+            {
                 throw new System.InvalidOperationException("You cannot clear the dialogue system while a dialogue is running.");
             }
 
@@ -276,19 +311,23 @@ namespace Yarn.Unity.Shattered
         }
 
         /// Stop the dialogue
-        public void Stop() {
+        public void Stop()
+        {
             isDialogueRunning = false;
             dialogue.Stop();
         }
 
         /// Test to see if a node name exists
-        public bool NodeExists(string nodeName) {
+        public bool NodeExists(string nodeName)
+        {
             return dialogue.NodeExists(nodeName);
         }
 
         /// Return the current node name
-        public string currentNodeName {
-            get {
+        public string currentNodeName
+        {
+            get
+            {
                 return dialogue.currentNode;
             }
         }
@@ -301,13 +340,14 @@ namespace Yarn.Unity.Shattered
          * 2. the second word is the name of an object
          * 3. that object has components that have methods with the YarnCommand attribute that have the correct commandString set
          */
-        public bool DispatchCommand(string command) {
+        public bool DispatchCommand(string command)
+        {
 
             var words = command.Split(' ');
 
             // need 2 parameters in order to have both a command name
             // and the name of an object to find
-            if (words.Length < 2) 
+            if (words.Length < 2)
                 //TODO here we can change how many params we want
                 return false;
 
@@ -326,39 +366,46 @@ namespace Yarn.Unity.Shattered
 
             List<string> parameters;
 
-            if (words.Length > 2) {
+            if (words.Length > 2)
+            {
                 parameters = new List<string>(words);
                 parameters.RemoveRange(0, 2);
-            } else {
+            }
+            else
+            {
                 parameters = new List<string>();
             }
 
             // Find every MonoBehaviour (or subclass) on the object
-            foreach (var component in sceneObject.GetComponents<MonoBehaviour>()) {
+            foreach (var component in sceneObject.GetComponents<MonoBehaviour>())
+            {
                 var type = component.GetType();
 
                 // Find every method in this component
-                foreach (var method in type.GetMethods()) {
+                foreach (var method in type.GetMethods())
+                {
 
                     // Find the YarnCommand attributes on this method
-                    var attributes = (YarnCommandAttribute[]) method.GetCustomAttributes(typeof(YarnCommandAttribute), true);
+                    var attributes = (YarnCommandAttribute[])method.GetCustomAttributes(typeof(YarnCommandAttribute), true);
 
                     // Find the YarnCommand whose commandString is equal to the command name
-                    foreach (var attribute in attributes) {
-                        if (attribute.commandString == commandName) {
+                    foreach (var attribute in attributes)
+                    {
+                        if (attribute.commandString == commandName)
+                        {
 
 
                             var methodParameters = method.GetParameters();
                             bool paramsMatch = false;
                             // Check if this is a params array
                             if (methodParameters.Length == 1 && methodParameters[0].ParameterType.IsAssignableFrom(typeof(string[])))
-                                {
-                                    // Cool, we can send the command!
-                                    string[][] paramWrapper = new string[1][];
-                                    paramWrapper[0] = parameters.ToArray();
-                                    method.Invoke(component, paramWrapper);
-                                    numberOfMethodsFound++;
-                                    paramsMatch = true;
+                            {
+                                // Cool, we can send the command!
+                                string[][] paramWrapper = new string[1][];
+                                paramWrapper[0] = parameters.ToArray();
+                                method.Invoke(component, paramWrapper);
+                                numberOfMethodsFound++;
+                                paramsMatch = true;
 
                             }
                             // Otherwise, verify that this method has the right number of parameters
@@ -394,12 +441,16 @@ namespace Yarn.Unity.Shattered
 
             // Warn if we found multiple things that could respond
             // to this command.
-            if (numberOfMethodsFound > 1) {
+            if (numberOfMethodsFound > 1)
+            {
                 Debug.LogWarningFormat(sceneObject, "The command \"{0}\" found {1} targets. " +
                     "You should only have one - check your scripts.", command, numberOfMethodsFound);
-            } else if (numberOfMethodsFound == 0) {
+            }
+            else if (numberOfMethodsFound == 0)
+            {
                 //list all of the near-miss methods only if a proper match is not found, but correctly-named methods are.
-                foreach (string[] errorVal in errorValues) {
+                foreach (string[] errorVal in errorValues)
+                {
                     Debug.LogErrorFormat(sceneObject, "Method \"{0}\" wants to respond to Yarn command \"{1}\", but it has a different number of parameters ({2}) to those provided ({3}), or is not a string array!", errorVal[0], errorVal[1], errorVal[2], errorVal[3]);
                 }
             }
@@ -422,7 +473,8 @@ namespace Yarn.Unity.Shattered
     {
         public string commandString { get; private set; }
 
-        public YarnCommandAttribute(string commandString) {
+        public YarnCommandAttribute(string commandString)
+        {
             this.commandString = commandString;
         }
     }
@@ -431,29 +483,32 @@ namespace Yarn.Unity.Shattered
     public abstract class DialogueUIBehaviour : MonoBehaviour
     {
         /// A conversation has started.
-        public virtual IEnumerator DialogueStarted() {
+        public virtual IEnumerator DialogueStarted()
+        {
             // Default implementation does nothing.
             yield break;
         }
 
         /// Display a line.
-        public abstract IEnumerator RunLine (Yarn.Line line);
+        public abstract IEnumerator RunLine(Yarn.Line line);
 
         /// Display the options, and call the optionChooser when done.
-        public abstract IEnumerator RunOptions (Yarn.Options optionsCollection,
+        public abstract IEnumerator RunOptions(Yarn.Options optionsCollection,
                                                 Yarn.OptionChooser optionChooser);
 
         /// Perform some game-specific command.
-        public abstract IEnumerator RunCommand (Yarn.Command command);
+        public abstract IEnumerator RunCommand(Yarn.Command command);
 
         /// The node has ended.
-        public virtual IEnumerator NodeComplete(string nextNode) {
+        public virtual IEnumerator NodeComplete(string nextNode)
+        {
             // Default implementation does nothing.
             yield break;
         }
 
         /// The conversation has ended.
-        public virtual IEnumerator DialogueComplete () {
+        public virtual IEnumerator DialogueComplete()
+        {
             // Default implementation does nothing.
             yield break;
         }
@@ -464,34 +519,36 @@ namespace Yarn.Unity.Shattered
     {
 
         /// Not implemented here
-        public virtual void SetNumber (string variableName, float number)
+        public virtual void SetNumber(string variableName, float number)
         {
-            throw new System.NotImplementedException ();
+            throw new System.NotImplementedException();
         }
 
         /// Not implemented here
-        public virtual float GetNumber (string variableName)
+        public virtual float GetNumber(string variableName)
         {
-            throw new System.NotImplementedException ();
+            throw new System.NotImplementedException();
         }
 
         /// Get a value
-        public virtual Value GetValue(string variableName) {
+        public virtual Value GetValue(string variableName)
+        {
             return new Yarn.Value(this.GetNumber(variableName));
         }
 
         /// Set a value
-        public virtual void SetValue(string variableName, Value value) {
+        public virtual void SetValue(string variableName, Value value)
+        {
             this.SetNumber(variableName, value.AsNumber);
         }
 
         /// Not implemented here
-        public virtual void Clear ()
+        public virtual void Clear()
         {
-            throw new System.NotImplementedException ();
+            throw new System.NotImplementedException();
         }
 
-        public abstract void ResetToDefaults ();
+        public abstract void ResetToDefaults();
 
     }
 
