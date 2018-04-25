@@ -3225,6 +3225,7 @@ GameObject:
   - component: {fileID: 1920520603}
   - component: {fileID: 1920520600}
   - component: {fileID: 1920520604}
+  - component: {fileID: 1920520606}
   m_Layer: 0
   m_Name: Mannequin
   m_TagString: Untagged
@@ -3244,15 +3245,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-    verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
     groundedBool: isGrounded
     jumpBool: isJumping
     crouchBool: isCrouching
     dodgeBool: isDodging
+    isInCombat: isInCombat
+    verticalVelocityFloat: Forward
+    horizontalVelocityFloat: Strafe
     punch: Punch
     kick: Kick
-    isInCombat: isInCombat
+    weaponSet: WeaponSet
   physics:
     gravity: 20
     groundLayers:
@@ -3271,16 +3273,16 @@ MonoBehaviour:
   crouching: 0
   animator: {fileID: 0}
   unarmedCombatSettings:
-    punshDuration: 1
-    kickDuration: 0.5
+    lightAttackDuration: 0.5
+    heavyAttackDuration: 0.5
     rootAble: 1
   lightMeleeCombatSettings:
-    stabDuration: 1
-    slashDuration: 0.5
+    lightAttackDuration: 0.5
+    heavyAttackDuration: 0.5
     rootAble: 1
   heavyMeleeCombatSettings:
-    hitDuration: 1
-    smashDuration: 2
+    lightAttackDuration: 1
+    heavyAttackDuration: 2
     rootAble: 1
   curCombatSet: 0
 --- !u!95 &1920520601
@@ -3360,6 +3362,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &1920520606
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1920520599}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1928449804
 GameObject:
   m_ObjectHideFlags: 0

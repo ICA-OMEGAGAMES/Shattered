@@ -10,15 +10,16 @@ public class CharacterMovement : MonoBehaviour
     public class AnimationSettings
     {
         //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
-        public string verticalVelocityFloat = "Forward";
-        public string horizontalVelocityFloat = "Strafe";
         public string groundedBool = "isGrounded";
         public string jumpBool = "isJumping";
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
+        public string isInCombat = "isInCombat";
+        public string verticalVelocityFloat = "Forward";
+        public string horizontalVelocityFloat = "Strafe";
         public string punch = "Punch";
         public string kick = "Kick";
-        public string isInCombat = "isInCombat";
+        public string weaponSet = "WeaponSet";
     }
     [SerializeField]
     public AnimationSettings animations;
@@ -100,10 +101,10 @@ public class CharacterMovement : MonoBehaviour
             switch (combatState)
             {
                 case (false):
-                    outOfCombatUpdate();
+                    OutOfCombatUpdate();
                     break;
                 case (true):
-                    inCombatUpdate();
+                    InCombatUpdate();
                     break;
             }
         }
@@ -115,7 +116,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void outOfCombatUpdate()
+    void OutOfCombatUpdate()
     {
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
@@ -129,7 +130,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void inCombatUpdate() {
+    void InCombatUpdate() {
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Dodge();
         //cooldown based actions 
@@ -152,16 +153,23 @@ public class CharacterMovement : MonoBehaviour
         animator.SetFloat(animations.verticalVelocityFloat, forward);
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
         animator.SetBool(animations.jumpBool, jumping);
-        animator.SetBool(animations.groundedBool, IsGrounded());
+        animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
     }
 
+    //returns if the player is falling or not (Has to be slightly bigger as IsGrounded()
+    private bool IsFalling()
+    {
+        float distToGround = 0.2f;
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround);
+    }
+
     //returns if the player is grounded or not
-	private bool IsGrounded()
+    private bool IsGrounded()
 	{
 		float distToGround = 0.1f;
-		return Physics.Raycast(transform.position, -Vector3.up, distToGround);
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround);
 	}
 
     //select correct movement speed
@@ -197,7 +205,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dodging)
         {
-            if (Input.GetAxis("Horizontal") != 0)
+            if (Input.GetButton("Horizontal"))
             {
                 StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
             }

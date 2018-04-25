@@ -10,8 +10,8 @@ public class CharacterScript : CharacterMovement {
     [Serializable]
     public class UnarmedCombatSettings
     {
-        public float punshDuration = 0.5f;
-        public float kickDuration = 0.5f;
+        public float lightAttackDuration = 0.5f;
+        public float heavyAttackDuration = 0.5f;
         public bool rootAble = true;
     }
     [SerializeField]
@@ -20,8 +20,8 @@ public class CharacterScript : CharacterMovement {
     [Serializable]
     public class LightMeleeCombatSettings
     {
-        public float stabDuration = 0.5f;
-        public float slashDuration = 0.5f;
+        public float lightAttackDuration = 0.5f;
+        public float heavyAttackDuration = 0.5f;
         public bool rootAble = true;
     }
     [SerializeField]
@@ -30,8 +30,8 @@ public class CharacterScript : CharacterMovement {
     [Serializable]
     public class HeavyMeleeCombatSettings
     {
-        public float hitDuration = 1;
-        public float smashDuration = 2f;
+        public float lightAttackDuration = 1;
+        public float heavyAttackDuration = 2f;
         public bool rootAble = true;
     }
     [SerializeField]
@@ -43,7 +43,7 @@ public class CharacterScript : CharacterMovement {
     {
         Unarmed,
         LightMeleeWeapon, //knifes and daggers
-        HeavyMeleeWeapon, //batts and maces
+        HeavyMeleeWeapon, //bats and maces
     }
     public FSMState curCombatSet = FSMState.Unarmed;
 
@@ -53,16 +53,16 @@ public class CharacterScript : CharacterMovement {
         switch (curCombatSet)
         {
             case FSMState.Unarmed:
-                animator.SetInteger("WeaponSet", 0);
+                animator.SetInteger(animations.weaponSet, 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
             case FSMState.LightMeleeWeapon:
-                animator.SetInteger("WeaponSet", 1);
+                animator.SetInteger(animations.weaponSet, 1);
                 return new LightMeleeCombat(animator, animations, lightMeleeCombatSettings);
             case FSMState.HeavyMeleeWeapon:
-                animator.SetInteger("WeaponSet", 2);
+                animator.SetInteger(animations.weaponSet, 2);
                 return new HeavyMeleeCombat(animator, animations, heavyMeleeCombatSettings);
             default:
-                animator.SetInteger("WeaponSet", 0);
+                animator.SetInteger(animations.weaponSet, 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
         }
     }
@@ -96,7 +96,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.punch);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.punshDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.lightAttackDuration, combatSettings.rootAble);
         }
 
         public CharacterAttack Attack2(Animator AM)
@@ -104,7 +104,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.punshDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.lightAttackDuration, combatSettings.rootAble);
         }
     }
     /// <summary>
@@ -128,7 +128,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.punch);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.slashDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.heavyAttackDuration, combatSettings.rootAble);
         }
 
         public CharacterAttack Attack2(Animator AM)
@@ -136,7 +136,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.punch);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.stabDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.lightAttackDuration, combatSettings.rootAble);
         }
     }
     //add other combat sets here
@@ -161,7 +161,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.hitDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.lightAttackDuration, combatSettings.rootAble);
         }
 
         public CharacterAttack Attack2(Animator AM)
@@ -169,7 +169,7 @@ public class CharacterScript : CharacterMovement {
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.smashDuration, combatSettings.rootAble);
+            return new CharacterAttack(combatSettings.heavyAttackDuration, combatSettings.rootAble);
         }
     }
 
