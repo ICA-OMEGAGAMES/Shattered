@@ -61,6 +61,11 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        //Rotate the player with camera
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.y = Camera.main.transform.eulerAngles.y;
+        transform.eulerAngles = newRotation;
+
         if (IsGrounded())
         {
 			if (Input.GetButton(Constants.CROUCH_BUTTON))
