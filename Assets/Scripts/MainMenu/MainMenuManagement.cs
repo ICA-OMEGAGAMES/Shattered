@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 // Manages setup and configuration of main menu itself
@@ -10,6 +11,25 @@ public class MainMenuManagement : MonoBehaviour {
 		LoadGraphicsSettings();
 		LoadSoundSettings();
 		LoadControlSettings();
+	}
+
+	void Update()
+	{
+		if(ControlSettings.Instance.GetButtonDown("Jump")){
+			Debug.Log("Jump");
+		}
+		if(ControlSettings.Instance.GetAxisRaw("Horizontal") > 0){
+			Debug.Log("Right");
+		}
+		if(ControlSettings.Instance.GetAxisRaw("Horizontal") < 0){
+			Debug.Log("Left");
+		}
+		if(ControlSettings.Instance.GetAxisRaw("Vertical") > 0){
+			Debug.Log("Forward");
+		}
+		if(ControlSettings.Instance.GetAxisRaw("Vertical") < 0){
+			Debug.Log("Backward");
+		}
 	}
 
 	//Loads and applies stored settings from the config file	
@@ -69,7 +89,8 @@ public class MainMenuManagement : MonoBehaviour {
 		try
 		{
 			json = File.ReadAllLines(Application.persistentDataPath + "/controlSettings.json");
-		} catch(FileNotFoundException e)
+		} 
+		catch(FileNotFoundException e)
 		{
 			Debug.Log(e.Message + " - No saved settings found.");
 		}
@@ -78,21 +99,43 @@ public class MainMenuManagement : MonoBehaviour {
 		{
 			return;
 		}
+
 		foreach(string setting in json)
 		{
 			string key = setting;
-			key = key.Replace("\"", "");
-			key = key.Replace(" ", "");
-			key = key.Replace("{", "");
-			key = key.Replace("}", "");
-			key = key.Replace(",", "");
-
+			key = Regex.Replace(key,  "[\"{} ]", "");
+			
 			if(key.Length < 1)
 			{
 				continue;
 			}
 			
-			ControlsSettings.Instance.Add(new KeyValuePair<string, KeyCode>(key.Split(':')[0], (KeyCode)System.Enum.Parse(typeof(KeyCode), key.Split(':')[1], true)));
+			if(key.Contains("[") && key.Contains("]"))
+			{
+				key = Regex.Replace(key, "[][]", "");
+				if(key.EndsWith(","))
+				{
+					key = key.Substring(0, key.Length - 1);
+				}
+
+				string name = key.Split(':')[0];
+				key = key.Replace(name + ":", "");
+
+				ControlAxis axis = new ControlAxis();
+				axis.axisName = name;
+				axis.positiveKey = key.Split(',')[0];
+				axis.negativeKey =  key.Split(',')[1];
+				ControlSettings.Instance.AddAxis(axis);
+				
+				continue;
+			}
+
+			key = key.Replace(",", "");
+
+			ControlButton button = new ControlButton();
+			button.buttonName = key.Split(':')[0];
+			button.assignedKey = key.Split(':')[1];
+			ControlSettings.Instance.AddButton(button);
 		}
 	}
 }

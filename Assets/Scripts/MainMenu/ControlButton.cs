@@ -3,7 +3,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ControlButton
 {
-    public string name;
-    public Button button;
-    public string key;
+    public string buttonName;
+    public Button assignmentButton;
+    public string assignedKey;
 }
