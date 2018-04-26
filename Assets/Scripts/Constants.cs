@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public static class Constants{
+﻿public static class Constants{
 
 	// TAGS
 	public const string ITEM_TAG = "Item";
@@ -18,4 +14,7 @@ public static class Constants{
     public const string ATTACK1_BUTTON = "Attack1";
     public const string ATTACK2_BUTTON = "Attack2";
     public const string TRANSFORM_BUTTON = "SwitchForm";
+
+	// SETTINGS
+	public const int PLAYER_HEALTH = 100;
 }

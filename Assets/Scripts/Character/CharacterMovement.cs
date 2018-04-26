@@ -81,6 +81,12 @@ public class CharacterMovement : MonoBehaviour
         //todo: IF(pickupItem) setCombatStance(itemSorth);
         CombatSetUpdate();
 
+        
+        //Rotate the player with camera
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.y = Camera.main.transform.eulerAngles.y;
+        transform.eulerAngles = newRotation;
+
         //actions only available durring
         if (IsGrounded())
         {
