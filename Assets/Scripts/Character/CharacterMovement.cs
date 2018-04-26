@@ -44,6 +44,7 @@ public class CharacterMovement : MonoBehaviour
         public float jumpCooldown = 1;
         public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
+        public float rotateSpeed = 5;
     }
     [SerializeField]
     public MovementSettings movement;
@@ -81,12 +82,6 @@ public class CharacterMovement : MonoBehaviour
         //todo: IF(pickupItem) setCombatStance(itemSorth);
         CombatSetUpdate();
 
-        
-        //Rotate the player with camera
-        Vector3 newRotation = transform.eulerAngles;
-        newRotation.y = Camera.main.transform.eulerAngles.y;
-        transform.eulerAngles = newRotation;
-
         //actions only available durring
         if (IsGrounded())
         {
@@ -112,6 +107,16 @@ public class CharacterMovement : MonoBehaviour
                 case (true):
                     InCombatUpdate();
                     break;
+            }
+
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) { 
+            //Rotate the player with camera
+            Vector3 newRotation = transform.eulerAngles;
+            newRotation.y = Camera.main.transform.eulerAngles.y;
+
+             Quaternion targetRotation = Quaternion.Euler(newRotation);
+             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
+
             }
         }
         //movement
