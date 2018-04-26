@@ -69,7 +69,6 @@ namespace Yarn.Unity.Shattered
             // Show the text
             lineText.gameObject.SetActive(true);
 
-
             if (textSpeed > 0.0f)
             {
                 // Display the line one character at a time
@@ -86,20 +85,16 @@ namespace Yarn.Unity.Shattered
             {
                 // Display the line immediately if textSpeed == 0
                 lineText.text = line.text;
+                yield return new WaitForSeconds(textSpeed);
             }
 
             // Show the 'press any key' prompt when done, if we have one
             if (continuePrompt != null)
-            {
                 continuePrompt.SetActive(true);
-            }
-            //Timer setzen optional
 
             // Wait for any user input
             while (Input.anyKeyDown == false)
             {
-                // Time.timeSinceLevelLoad
-                //überprüfen ob timer > 0 ist, dann null, sonst aus while
                 yield return null;
             }
 
@@ -183,6 +178,11 @@ namespace Yarn.Unity.Shattered
         /// Called by buttons to make a selection.
         public void SetOption(int selectedOption)
         {
+            // Set the Timer to not active, because otherwise, he will run again
+            // after we choose an option before the timer is finished.
+            HelpTimer.Instance.isActive = false;
+            PressureTimer.Instance.isActive = false;
+
             // Call the delegate to tell the dialogue system that we've
             // selected an option.
             SetSelectedOption(selectedOption);

@@ -70,3 +70,10 @@ position: -342,-361
 ---
 Cube: See you!
 ===
+title: todayIsCrazy
+tags: 
+colorID: 0
+position: -342,-361
+---
+Test - todayIsCrazy
+===

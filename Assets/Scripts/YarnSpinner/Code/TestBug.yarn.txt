@@ -1,0 +1,37 @@
+title: TestBug
+tags: 
+colorID: 0
+position: 547,282
+---
+Bug: Hi, let's find the bug ;)
+Player: 1.
+Player: 2.
+Player: 3.
+Player: 4.
+Player: 5.
+Player: 6.
+[[Option 1|option1]]
+[[Option 2|option2]]
+===
+title: option1
+tags: 
+colorID: 0
+position: 854,551
+---
+Bug: 1_1.
+Bug: 1_2.
+Bug: 1_3.
+Bug: 1_4.
+Bug: 1_5.
+===
+title: option2
+tags: 
+colorID: 0
+position: 287,574
+---
+Bug: 2_1.
+Bug: 2_2.
+Bug: 2_3.
+Bug: 2_4.
+Bug: 2_5.
+===
