@@ -13,25 +13,6 @@ public class MainMenuManagement : MonoBehaviour {
 		LoadControlSettings();
 	}
 
-	void Update()
-	{
-		if(ControlSettings.Instance.GetButtonDown("Jump")){
-			Debug.Log("Jump");
-		}
-		if(ControlSettings.Instance.GetAxisRaw("Horizontal") > 0){
-			Debug.Log("Right");
-		}
-		if(ControlSettings.Instance.GetAxisRaw("Horizontal") < 0){
-			Debug.Log("Left");
-		}
-		if(ControlSettings.Instance.GetAxisRaw("Vertical") > 0){
-			Debug.Log("Forward");
-		}
-		if(ControlSettings.Instance.GetAxisRaw("Vertical") < 0){
-			Debug.Log("Backward");
-		}
-	}
-
 	//Loads and applies stored settings from the config file	
 	void LoadGraphicsSettings(){
 		string json = null;
