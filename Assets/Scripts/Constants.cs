@@ -17,4 +17,5 @@ public static class Constants{
     public const string COMBAT_BUTTON = "CombatStance";
     public const string ATTACK1_BUTTON = "Attack1";
     public const string ATTACK2_BUTTON = "Attack2";
+    public const string TRANSFORM_BUTTON = "SwitchForm";
 }

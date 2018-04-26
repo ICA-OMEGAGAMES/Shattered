@@ -8,10 +8,10 @@ public class FistCollisionScript : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         print(other.name);
-        if (other.tag == "Enemy")
-        {
-            print("triggered on enemy");
-            other.GetComponent<DummyScript>().ChangeColour();
-        }
+        if (other.tag != "Enemy")
+            return;
+        
+         print("triggered on enemy");
+         other.GetComponent<DummyScript>().ChangeColour();        
     }
 }
