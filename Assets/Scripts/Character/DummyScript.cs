@@ -15,7 +15,7 @@ public class DummyScript : MonoBehaviour {
         transform.position = transform.position + Vector3.zero;
     }
 
-    public void ChangeColour()
+    public void TakeDamage()
     {
         if (red == false)
         {

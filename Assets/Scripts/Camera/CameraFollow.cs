@@ -1,14 +1,4 @@
-﻿//-------------------------------------------------------------------------
-// Author:			Benjamin Grabherr                    Date: 16.04.2018
-// Description:		This is a camera Follow Script in
-// 					a third person view.
-// Source:			https://www.youtube.com/watch?v=LbDQHv9z-F0&t=127s
-//
-//-------------------------------------------------------------------------
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Yarn.Unity.Shattered;
 
 public class CameraFollow : MonoBehaviour
@@ -35,6 +25,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckActiveCamera();
         if (dialogueRunner.isDialogueRunning) {
             // Unlock the cursor if dialogue is running.
             Cursor.lockState = CursorLockMode.None;
@@ -61,6 +52,14 @@ public class CameraFollow : MonoBehaviour
 
             Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
             transform.rotation = localRotation;
+        }
+    }
+
+    private void CheckActiveCamera()
+    {
+        if (!gameObjectToFollow.active)
+        {
+            gameObjectToFollow = GameObject.Find("CameraFollowPoint");
         }
     }
 
