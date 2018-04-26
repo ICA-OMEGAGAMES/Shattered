@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CharacterScript : CharacterMovement {
+public class DevonScript : CharacterMovement {
 
     //Sterialized classes
     [Serializable]

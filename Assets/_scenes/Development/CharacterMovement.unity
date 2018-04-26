@@ -1877,9 +1877,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414912372}
   - component: {fileID: 414912371}
-  - component: {fileID: 414912370}
-  - component: {fileID: 414912368}
   - component: {fileID: 414912367}
+  - component: {fileID: 414912370}
   - component: {fileID: 414912366}
   m_Layer: 0
   m_Name: Mannequin (M)
@@ -1911,18 +1910,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 414912365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f5b5be316190442873344c1bc9ac4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &414912368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414912365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77bdf350e2995794a9251fa6e6afd5da, type: 3}
+  m_Script: {fileID: 11500000, guid: f3741b4aef098b94094ea5e02121216a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
@@ -1946,26 +1934,13 @@ MonoBehaviour:
     crouchSpeed: 2
     runSpeed: 8
     jumpSpeed: 8
-    jumpTime: 0
+    jumpTime: 0.25
     jumpCooldown: 1
     dodgeDistance: 10
     toggleCombatCooldown: 1
   characterActionTimeStamp: 0
   crouching: 0
   animator: {fileID: 0}
-  unarmedCombatSettings:
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    rootAble: 1
-  lightMeleeCombatSettings:
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    rootAble: 1
-  heavyMeleeCombatSettings:
-    lightAttackDuration: 1
-    heavyAttackDuration: 2
-    rootAble: 1
-  curCombatSet: 0
 --- !u!143 &414912370
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4030,6 +4005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c42e83ed844d94caab7cb1059335a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transformationSettings:
+    transformationDuration: 0.5
   devon: {fileID: 1920520599}
   malphas: {fileID: 414912365}
   transformation: {fileID: 321955177}
