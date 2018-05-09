@@ -90,7 +90,7 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.position = devon.transform.position;
                 transformation.transform.rotation = devon.transform.rotation;
 
-                StartCoroutine(startTransformation(characterForm.malphas));
+                StartCoroutine(StartTransformation(characterForm.malphas));
                 break;
             case (characterForm.malphas):
                 //Change from Transformation to Malphas
@@ -112,12 +112,12 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.position = malphas.transform.position;
                 transformation.transform.rotation = malphas.transform.rotation;
 
-                StartCoroutine(startTransformation(characterForm.devon));
+                StartCoroutine(StartTransformation(characterForm.devon));
                 break;
         }
     }
 
-    private IEnumerator startTransformation(characterForm targetForm)
+    private IEnumerator StartTransformation(characterForm targetForm)
     {
         yield return new WaitForSeconds(transformationSettings.transformationDuration);
         currentForm = targetForm;

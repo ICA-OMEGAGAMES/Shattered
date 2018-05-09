@@ -67,7 +67,7 @@ public class CharacterMovement : MonoBehaviour
 
     protected virtual void CombatInitialize() { }
     protected virtual void CombatActionUpdate() { }
-    protected virtual void CombatSetUpdate() { }
+    protected virtual void CombatsetUpdate() { }
 
     void Start()
     {
@@ -80,7 +80,7 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         //todo: IF(pickupItem) setCombatStance(itemSorth);
-        CombatSetUpdate();
+        CombatsetUpdate();
 
         //actions only available durring
         if (IsGrounded())

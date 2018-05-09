@@ -3632,7 +3632,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Grounded
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -3694,7 +3694,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Grounded
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -3750,7 +3750,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Kick
+  m_Name: Attack1
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -3828,7 +3828,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Punch
+  m_Name: Attack2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -4137,7 +4137,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Grounded
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -4272,7 +4272,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Punch
+  m_Name: Attack2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -4426,7 +4426,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Kick
+  m_Name: Attack1
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -4452,7 +4452,7 @@ AnimatorState:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Grounded
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -4586,9 +4586,9 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 576, y: 84, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 552, y: -60, z: 0}
+  m_EntryPosition: {x: 564, y: 120, z: 0}
+  m_ExitPosition: {x: 564, y: 216, z: 0}
+  m_ParentStateMachinePosition: {x: 564, y: 12, z: 0}
   m_DefaultState: {fileID: 1102934862605760208}
 --- !u!1107 &1107449624155484116
 AnimatorStateMachine:
@@ -4640,6 +4640,10 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
+  - first: {fileID: 1107644290339173998}
+    second:
+    - {fileID: 1109394374613497016}
+    - {fileID: 1109819656267723854}
   - first: {fileID: 1107247016020341158}
     second:
     - {fileID: 1109957504469642808}
@@ -4648,10 +4652,6 @@ AnimatorStateMachine:
     second:
     - {fileID: 1109082195793502286}
     - {fileID: 1109506358661463294}
-  - first: {fileID: 1107644290339173998}
-    second:
-    - {fileID: 1109394374613497016}
-    - {fileID: 1109819656267723854}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 36, y: -72, z: 0}
   m_EntryPosition: {x: 312, y: 216, z: 0}
@@ -4736,17 +4736,17 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 1107618681231702642}
-    second:
-    - {fileID: 1109867393174383124}
   - first: {fileID: 1107784533122782244}
     second:
     - {fileID: 1109128824672827190}
+  - first: {fileID: 1107618681231702642}
+    second:
+    - {fileID: 1109867393174383124}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 120, y: 132, z: 0}
+  m_EntryPosition: {x: 96, y: 132, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 312, y: 24, z: 0}
+  m_ParentStateMachinePosition: {x: 348, y: 108, z: 0}
   m_DefaultState: {fileID: 1102032886791538690}
 --- !u!1109 &1109074159758358644
 AnimatorTransition:

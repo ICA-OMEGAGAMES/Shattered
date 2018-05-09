@@ -48,7 +48,7 @@ public class DevonScript : CharacterMovement {
     public FSMState curCombatSet = FSMState.Unarmed;
 
     //switch for the different combat systems
-    private ICombatSet setCombatSet(Animator animator, AnimationSettings animations)
+    private ICombatSet SetCombatSet(Animator animator, AnimationSettings animations)
     {
         switch (curCombatSet)
         {
@@ -171,7 +171,7 @@ public class DevonScript : CharacterMovement {
     //combatStart
     protected override void CombatInitialize()
     {
-        combatSet = setCombatSet(animator, animations);
+        combatSet = SetCombatSet(animator, animations);
     }
 
     // combatUpdate seperatly so the combatactions are only checked when inteded
@@ -193,7 +193,7 @@ public class DevonScript : CharacterMovement {
     }
 
     //constant update of the CombatSet
-    protected override void CombatSetUpdate()
+    protected override void CombatsetUpdate()
     {
         //select the correct combatset
         if (Input.GetButton("UnarmedSet"))
@@ -204,6 +204,6 @@ public class DevonScript : CharacterMovement {
         {
             curCombatSet = FSMState.LightMeleeWeapon;
         }
-        combatSet = setCombatSet(animator,animations);
+        combatSet = SetCombatSet(animator,animations);
     }
 }
