@@ -8,10 +8,9 @@ public class MarkerScript : MonoBehaviour {
 
     private MarkerManager markerManager;
 
-    List<GameObject> hitBySwing = new List<GameObject>();
-
     void Start() {
         markerManager = GetManager();
+        this.GetComponent<MeshRenderer>().enabled = false;
     }
 
     // Use this for initialization
@@ -22,14 +21,12 @@ public class MarkerScript : MonoBehaviour {
     // Update is called once per frame
     public void DisableHit() {
         isEnabled = false;
-        hitBySwing.Clear();
     }
 
     public void OnTriggerStay(Collider other)
     {
-        if (isEnabled && !hitBySwing.Contains(other.gameObject)) {
+        if (isEnabled) {
             markerManager.NotifyHit(other.gameObject);
-            hitBySwing.Add(other.gameObject);
         }
     }
 

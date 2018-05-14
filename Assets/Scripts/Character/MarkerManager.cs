@@ -7,10 +7,11 @@ public class MarkerManager : MonoBehaviour{
 
     List<GameObject> markers = new List<GameObject>();
 
+    List<GameObject> hitBySwing = new List<GameObject>();
+
     public void SetMarkers()
     {
         markers = FindMarkers();
-        print(markers.Count);
     }
 
     private List<GameObject> FindMarkers()
@@ -50,6 +51,7 @@ public class MarkerManager : MonoBehaviour{
             MarkerScript markerscript = mark.GetComponent<MarkerScript>();
             markerscript.DisableHit();
         }
+        hitBySwing.Clear();
     }
 
     public void NotifyHit(GameObject hitTarget)
@@ -57,6 +59,10 @@ public class MarkerManager : MonoBehaviour{
         if (hitTarget.tag != "Enemy")
             return;
         //TODO: apply damage of the item
-        hitTarget.GetComponent<DummyScript>().TakeDamage(10);
+        if (!hitBySwing.Contains(hitTarget))
+        {
+            hitBySwing.Add(hitTarget.gameObject);
+            hitTarget.GetComponent<DummyScript>().TakeDamage(10);
+        }
     }
 }
