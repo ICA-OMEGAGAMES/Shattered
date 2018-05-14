@@ -30,6 +30,7 @@ public class MarkerManager : MonoBehaviour{
                     child.gameObject.AddComponent<MarkerScript>();
                 }
                 markers.Add(child.gameObject);
+                child.gameObject.SetActive(false);
             }
         }
         return markers;
@@ -39,6 +40,7 @@ public class MarkerManager : MonoBehaviour{
     {
         foreach (GameObject mark in markers)
         {
+            mark.SetActive(true);
             MarkerScript markerscript = mark.GetComponent<MarkerScript>();
             markerscript.EnableHit();
         }
@@ -50,6 +52,7 @@ public class MarkerManager : MonoBehaviour{
         {
             MarkerScript markerscript = mark.GetComponent<MarkerScript>();
             markerscript.DisableHit();
+            mark.SetActive(false);
         }
         hitBySwing.Clear();
     }
