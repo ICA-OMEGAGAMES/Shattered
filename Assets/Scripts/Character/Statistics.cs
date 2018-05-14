@@ -7,7 +7,10 @@ public class Statistics : MonoBehaviour {
 	private int maxHealth;
 	private int health;
 
-	void Start(){health = maxHealth;}
+	void Start(){
+		maxHealth = Constants.MAX_PLAYER_HEALTH;
+		health = maxHealth;
+	}
 
 	public int GetHealth(){return health;}
 	public void IncreaseMaxHealth(int amount){maxHealth += amount;}
@@ -16,8 +19,8 @@ public class Statistics : MonoBehaviour {
 		health -= amount;
 
 		// TODO: implement dying action (respawn)
-		if (health <= 0) 
-			health = 0;
+		if (health <= Constants.MIN_PLAYER_HEALTH) 
+			health = Constants.MIN_PLAYER_HEALTH;
 	}
 
 	public void IncreaseHealth (int amount){

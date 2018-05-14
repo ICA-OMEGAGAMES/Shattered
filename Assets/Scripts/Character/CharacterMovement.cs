@@ -5,6 +5,11 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
+
+
+
+
+
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -17,18 +22,18 @@ public class CharacterMovement : MonoBehaviour
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
     }
-    [SerializeField]
-    public AnimationSettings animations;
+	[SerializeField]
+	public AnimationSettings animations;
 
-    [System.Serializable]
-    public class PhysicsSettings
-    {
-        public float gravity = 20.0F;
-        public LayerMask groundLayers;
-    }
-    [SerializeField]
-    public PhysicsSettings physics;
-
+	[System.Serializable]
+	public class PhysicsSettings
+	{
+		public float gravity = 20.0F;
+		public LayerMask groundLayers;
+	}
+	[SerializeField]
+	public PhysicsSettings physics;
+		
     [System.Serializable]
     public class MovementSettings
     {
@@ -39,8 +44,8 @@ public class CharacterMovement : MonoBehaviour
         public float jumpTime = 0.25f;
         public float dodgeDistance = 10;
     }
-    [SerializeField]
-    public MovementSettings movement;
+	[SerializeField]
+	public MovementSettings movement;
 
     //private variables
     private bool jumping;
@@ -71,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
 			if (Input.GetButton(Constants.DODGE_BUTTON))
                 Dodge();
 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
             moveDirection = transform.TransformDirection(moveDirection);
   
             speed = GetSpeed();
@@ -84,11 +89,20 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 			
-        Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
+		Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
         moveDirection.y -= physics.gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
     }
-		
+
+	void FixedUpdate(){
+		RotateCharacterWithCamera ();
+	}
+
+	private void RotateCharacterWithCamera(){
+		Vector3 newRotation = transform.eulerAngles;
+		newRotation.y = Camera.main.transform.eulerAngles.y;
+		transform.eulerAngles = newRotation;
+	}
 
     //Animates the character and root motion handles the movement
     public void Animate(float forward, float strafe)
@@ -138,13 +152,13 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dodging)
         {
-            if (Input.GetAxis("Horizontal") != 0)
+			if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
+				StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
             }
-            else if(Input.GetButton("Vertical"))
+			else if(Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(false, Input.GetAxis("Vertical")));
+				StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
             }
         }
     }
