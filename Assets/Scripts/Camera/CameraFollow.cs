@@ -57,7 +57,7 @@ public class CameraFollow : MonoBehaviour
 
     private void CheckActiveCamera()
     {
-        if (!gameObjectToFollow.active)
+        if (!gameObjectToFollow.activeInHierarchy)
         {
             gameObjectToFollow = GameObject.Find("CameraFollowPoint");
         }
