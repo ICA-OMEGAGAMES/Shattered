@@ -20,6 +20,14 @@ public class MarkerManager : MonoBehaviour{
         {
             if (child.tag == "Marker")
             {
+                try
+                {
+                    child.gameObject.GetComponent<MarkerScript>();
+                }
+                catch
+                {
+                    child.gameObject.AddComponent<MarkerScript>();
+                }
                 markers.Add(child.gameObject);
             }
         }
@@ -28,11 +36,27 @@ public class MarkerManager : MonoBehaviour{
 
     public void EnableMarkers()
     {
-        print("activate");
+        foreach (GameObject mark in markers)
+        {
+            MarkerScript markerscript = mark.GetComponent<MarkerScript>();
+            markerscript.EnableHit();
+        }
     }
 
     public void DisableMarkers()
     {
-        print("deactivate");
+        foreach (GameObject mark in markers)
+        {
+            MarkerScript markerscript = mark.GetComponent<MarkerScript>();
+            markerscript.DisableHit();
+        }
+    }
+
+    public void NotifyHit(GameObject hitTarget)
+    {
+        if (hitTarget.tag != "Enemy")
+            return;
+        //TODO: apply damage of the item
+        hitTarget.GetComponent<DummyScript>().TakeDamage(10);
     }
 }

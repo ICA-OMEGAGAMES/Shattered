@@ -8496,10 +8496,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1891256535964688, guid: fffab95d99b031d4a959782db269cb71, type: 2}
-      propertyPath: m_TagString
-      value: Marker
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fffab95d99b031d4a959782db269cb71, type: 2}
   m_IsPrefabParent: 0

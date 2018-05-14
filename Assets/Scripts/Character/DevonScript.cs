@@ -185,7 +185,7 @@ public class DevonScript : CharacterMovement
     protected override void CombatInitialize()
     {
         combatSet = SetCombatSet(animator, animations);
-        markerManager = GetComponent<MarkerManager>();
+        markerManager = this.transform.parent.GetComponent<MarkerManager>();
         markerManager.SetMarkers();
     }
 
@@ -210,7 +210,6 @@ public class DevonScript : CharacterMovement
     //TODO: read picked up item and set type
     protected override void ChangeCombatSet()
     {
-
         //select the correct combatset
         if (Input.GetButton("UnarmedSet"))
         {
@@ -221,6 +220,16 @@ public class DevonScript : CharacterMovement
             curCombatSet = FSMState.LightMeleeWeapon;
         }
         combatSet = SetCombatSet(animator, animations);
-       //markerManager.SetMarkers();
+        //markerManager.SetMarkers(); commented out due to not existing weapon pickup, (continuous call)
+    }
+
+    public void EnableMarkers()
+    {
+        markerManager.EnableMarkers();
+    }
+
+    public void DisableMarkers()
+    {
+        markerManager.DisableMarkers();
     }
 }

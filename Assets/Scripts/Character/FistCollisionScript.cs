@@ -18,6 +18,6 @@ public class FistCollisionScript : MonoBehaviour {
         if (other.tag != "Enemy")
             return;
         if(enabled)
-         other.GetComponent<DummyScript>().TakeDamage();        
+         other.GetComponent<DummyScript>().TakeDamage(10);        
     }
 }
