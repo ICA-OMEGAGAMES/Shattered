@@ -12,6 +12,7 @@ public class MarkerManager : MonoBehaviour{
     public void SetMarkers()
     {
         markers = FindMarkers();
+        print(markers.Count);
     }
 
     private List<GameObject> FindMarkers()
@@ -19,7 +20,7 @@ public class MarkerManager : MonoBehaviour{
         Transform[] Children = gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in Children)
         {
-            if (child.tag == "Marker")
+            if (child.tag == Constants.MARKER_TAG)
             {
                 try
                 {
@@ -59,7 +60,7 @@ public class MarkerManager : MonoBehaviour{
 
     public void NotifyHit(GameObject hitTarget)
     {
-        if (hitTarget.tag != "Enemy")
+        if (hitTarget.tag != Constants.ENEMY_TAG)
             return;
         //TODO: apply damage of the item
         if (!hitBySwing.Contains(hitTarget))

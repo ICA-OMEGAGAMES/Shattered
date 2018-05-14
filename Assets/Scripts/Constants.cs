@@ -2,6 +2,9 @@
 
 	// TAGS
 	public const string ITEM_TAG = "Item";
+    public const string WEAPON_TAG = "Weapon";
+    public const string ENEMY_TAG = "Enemy";
+    public const string MARKER_TAG = "Marker"; 
 
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";

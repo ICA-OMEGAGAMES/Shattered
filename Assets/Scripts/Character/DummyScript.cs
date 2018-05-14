@@ -5,7 +5,7 @@ using UnityEngine;
 public class DummyScript : MonoBehaviour {
     new Renderer renderer;
     bool red = false;
-	// Use this for initialization
+
 	void Start () {
         renderer = GetComponent<Renderer>();
 	}

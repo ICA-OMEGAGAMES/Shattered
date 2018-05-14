@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MarkerManager))]
+[RequireComponent(typeof(InventoryController))]
 public class DevonScript : CharacterMovement
 {
 
@@ -208,17 +208,9 @@ public class DevonScript : CharacterMovement
     }
 
     //TODO: read picked up item and set type
-    protected override void ChangeCombatSet()
+    public void ChangeCombatSet(Weapon weapon)
     {
-        //select the correct combatset
-        if (Input.GetButton("UnarmedSet"))
-        {
-            curCombatSet = FSMState.Unarmed;
-        }
-        if (Input.GetButton("ArmedSet"))
-        {
-            curCombatSet = FSMState.LightMeleeWeapon;
-        }
+        curCombatSet = weapon.weaponType;
         combatSet = SetCombatSet(animator, animations);
         //markerManager.SetMarkers(); commented out due to not existing weapon pickup, (continuous call)
     }

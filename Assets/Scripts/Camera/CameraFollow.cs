@@ -18,7 +18,6 @@ public class CameraFollow : MonoBehaviour
         rotX = rot.x;
 
         // Block the cursor & make him unvisible
-        // Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 

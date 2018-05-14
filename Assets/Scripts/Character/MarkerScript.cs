@@ -12,13 +12,11 @@ public class MarkerScript : MonoBehaviour {
         markerManager = GetManager();
         this.GetComponent<MeshRenderer>().enabled = false;
     }
-
-    // Use this for initialization
+    
     public void EnableHit() {
         isEnabled = true;
     }
-
-    // Update is called once per frame
+    
     public void DisableHit() {
         isEnabled = false;
     }

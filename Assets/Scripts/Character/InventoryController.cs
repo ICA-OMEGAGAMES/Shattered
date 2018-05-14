@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InventoryController : MonoBehaviour {
 
-
+    public GameObject equipedWeapon = null;
 
 	private List<Item> inventory = new List<Item> ();
 
@@ -22,6 +23,16 @@ public class InventoryController : MonoBehaviour {
 			if(Input.GetButtonDown(Constants.EXAMINE_BUTTON))
 				print(item.GetName() + ": " + item.GetDescription());	
 		}
+        if (other.gameObject.CompareTag(Constants.WEAPON_TAG))
+        {
+            var weapon = other.GetComponent<Weapon>();
+            if (Input.GetButtonDown(Constants.PICKUP_BUTTON) && weapon.CanBePickedUp())
+            {
+                equipedWeapon = weapon.gameObject;
+                GetComponent<DevonScript>().ChangeCombatSet(weapon);
+                other.gameObject.SetActive(false);
+            }
+        }
 			
 	}
 
