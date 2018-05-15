@@ -76,7 +76,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack1(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.punch);
+            AM.SetTrigger(animations.attack1);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(combatSettings.attack1Damage, combatSettings.attack1Duration, combatSettings.attack1Rootable);
         }
@@ -84,7 +84,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack2(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.kick);
+            AM.SetTrigger(animations.attack2);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack2Duration, combatSettings.attack2Rootable);
         }
@@ -106,7 +106,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack1(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.punch);
+            AM.SetTrigger(animations.attack1);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(weapon.Attack1Damage, weapon.Attack1Duration, weapon.Attack1Rootable);
         }
@@ -114,7 +114,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack2(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.kick);
+            AM.SetTrigger(animations.attack2);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
         }
@@ -136,7 +136,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack1(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.kick);
+            AM.SetTrigger(animations.attack1);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(weapon.Attack1Damage, weapon.Attack1Duration, weapon.Attack1Rootable);
         }
@@ -144,7 +144,7 @@ public class DevonScript : CharacterMovement
         public CharacterAttack Attack2(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.kick);
+            AM.SetTrigger(animations.attack2);
             //set the cooldown and if the character is rooted durring this skill
             return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
         }

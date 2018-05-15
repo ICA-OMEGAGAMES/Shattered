@@ -29,16 +29,27 @@ public class InventoryController : MonoBehaviour {
             if (Input.GetButtonDown(Constants.PICKUP_BUTTON) && weapon.CanBePickedUp())
             {
                 WeaponHandler weaponHandler = GameObject.Find("WeaponHandler").GetComponent<WeaponHandler>();
-                print(weaponHandler.currentWeapon);
                 
                 if (weaponHandler.currentWeapon == null)
                 {
                     weaponHandler.EquipWeapon(other.gameObject);
+                    GetComponent<DevonScript>().ChangeCombatSet(weapon);
+
                 }
                 else if (weaponHandler.currentWeapon != other.gameObject)
                 {
                     weaponHandler.EquipWeapon(other.gameObject);
+                    GetComponent<DevonScript>().ChangeCombatSet(weapon);
                 }
+                /*
+                equipedWeapon = weapon.gameObject;
+                GetComponent<DevonScript>().ChangeCombatSet(weapon);
+
+                
+                other.transform.position = weaponHandler.transform.position;
+                other.transform.rotation = weaponHandler.transform.rotation;
+                other.transform.parent = weaponHandler.transform;
+                */
             }
         }
 	}

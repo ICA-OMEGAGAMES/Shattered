@@ -11,6 +11,7 @@ public class MarkerManager : MonoBehaviour{
 
     public void SetMarkers()
     {
+        markers.Clear();
         markers = FindMarkers();
         print(markers.Count);
     }

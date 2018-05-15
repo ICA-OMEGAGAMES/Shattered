@@ -18,8 +18,8 @@ public class CharacterMovement : MonoBehaviour
         public string isInCombat = "isInCombat";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
-        public string punch = "Punch";
-        public string kick = "Kick";
+        public string attack1 = "Attack1";
+        public string attack2 = "Attack2";
         public string weaponSet = "WeaponSet";
     }
 	[SerializeField]

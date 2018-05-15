@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56f272c10bac2df43b0f460d6cd7bd2f, type: 3}
-  m_Name: BaseballBatCS
+  m_Name: Rabar
   m_EditorClassIdentifier: 
-  itemName: Baseball bat
-  itemDescription: Slap your enemies with wood
+  itemName: Rabar
+  itemDescription: slapslapslapslapslapslap
   interactable: 1
   image: {fileID: 0}
-  attack1Damage: 20
-  attack1Duration: 0.5
+  attack1Damage: 50
+  attack1Duration: 1
   attack1Rootable: 1
-  attack2Damage: 30
+  attack2Damage: 80
   attack2Duration: 2
   attack2Rootable: 1
-  weaponType: 1
+  weaponType: 2
