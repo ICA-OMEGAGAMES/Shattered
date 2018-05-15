@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
+
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -21,18 +22,18 @@ public class CharacterMovement : MonoBehaviour
         public string kick = "Kick";
         public string weaponSet = "WeaponSet";
     }
-    [SerializeField]
-    public AnimationSettings animations;
+	[SerializeField]
+	public AnimationSettings animations;
 
-    [System.Serializable]
-    public class PhysicsSettings
-    {
-        public float gravity = 20.0F;
-        public LayerMask groundLayers;
-    }
-    [SerializeField]
-    public PhysicsSettings physics;
-
+	[System.Serializable]
+	public class PhysicsSettings
+	{
+		public float gravity = 20.0F;
+		public LayerMask groundLayers;
+	}
+	[SerializeField]
+	public PhysicsSettings physics;
+		
     [System.Serializable]
     public class MovementSettings
     {
@@ -46,8 +47,8 @@ public class CharacterMovement : MonoBehaviour
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
     }
-    [SerializeField]
-    public MovementSettings movement;
+	[SerializeField]
+	public MovementSettings movement;
 
     //public variables
     public float characterActionTimeStamp =0;
@@ -90,7 +91,7 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
                 SwitchCombatState();
             //Apply movementDirections
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= GetSpeed();
 
@@ -105,19 +106,18 @@ public class CharacterMovement : MonoBehaviour
                     break;
             }
 
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) { 
-            //Rotate the player with camera
-            Vector3 newRotation = transform.eulerAngles;
-            newRotation.y = Camera.main.transform.eulerAngles.y;
+            if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS)) { 
+                //Rotate the player with camera
+                Vector3 newRotation = transform.eulerAngles;
+                newRotation.y = Camera.main.transform.eulerAngles.y;
 
-             Quaternion targetRotation = Quaternion.Euler(newRotation);
-             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
-
+                Quaternion targetRotation = Quaternion.Euler(newRotation);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
             }
         }
         //movement
-        if (characterRooted == false) { 
-            Animate(Input.GetAxis("Vertical") * GetSpeed(), Input.GetAxis("Horizontal")* GetSpeed());
+        if (characterRooted == false) {
+            Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
         }
@@ -212,13 +212,13 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dodging)
         {
-            if (Input.GetButton("Horizontal"))
+			if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(true, Input.GetAxis("Horizontal")));
+				StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
             }
-            else if(Input.GetButton("Vertical"))
+			else if(Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(false, Input.GetAxis("Vertical")));
+				StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
             }
         }
     }

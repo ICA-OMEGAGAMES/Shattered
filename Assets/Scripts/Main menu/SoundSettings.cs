@@ -4,12 +4,12 @@ using UnityEngine;
 
 //Stores the settings for the sound
 public class SoundSettings {
+
 	public float masterVolume;
 	public float musicVolume;
 	public float soundEffectsVolume;
 
 	private static SoundSettings soundSettings;
-	
 	private SoundSettings() {}
 
    public static SoundSettings Instance

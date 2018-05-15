@@ -1,15 +1,4 @@
-﻿//-------------------------------------------------------------------------
-// Author:			Benjamin Grabherr                    Date: 17.04.2018
-// Description:		This is a camera Collision Script in
-// 					a third person view. If the player-camera
-//					hit an object, the cam will automaticly 
-//					go near the player.
-// Source:			https://www.youtube.com/watch?v=LbDQHv9z-F0&t=127s
-//
-//-------------------------------------------------------------------------
-
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class CameraCollision : MonoBehaviour

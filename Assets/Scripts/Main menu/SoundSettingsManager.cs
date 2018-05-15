@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 //Controls for sound settings
 public class SoundSettingsManager : MonoBehaviour {
+
 	public Slider masterVolumeSlider;
 	public Slider musicVolumeSlider;
 	public Slider soundEffectsVolumeSlider;
 	public Button backButton;
-
 	public AudioSource musicSource;
 	public AudioSource soundEffectsSource;
 
@@ -43,7 +43,7 @@ public class SoundSettingsManager : MonoBehaviour {
 	public void SaveSettings()
 	{
 		string jsonData = JsonUtility.ToJson (SoundSettings.Instance, true);
-  		File.WriteAllText (Application.persistentDataPath + "/soundsettings.json", jsonData);
+		File.WriteAllText (Application.persistentDataPath + Constants.SOUND_JSON, jsonData);
 	}
 }
 

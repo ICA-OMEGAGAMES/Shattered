@@ -4,14 +4,15 @@ using UnityEngine;
 
 //Singleton for storing current graphic configuration
 public class GraphicSettings {
+	
 	public bool fullscreen;
 	public int graphicsQuality;
 	public int textureQuality;
 	public int antialiasing;
 	public int vSync;
 	public int resolutionIndex;
+
 	private static GraphicSettings graphicSettings;
-	
 	private GraphicSettings() {}
 
    public static GraphicSettings Instance

@@ -7,13 +7,13 @@ public class Statistics : MonoBehaviour {
 
 	public Slider healthbar;
 
+
 	private float maxHealth = 100f;
 	private float health;
 
 	void Start(){
+		maxHealth = Constants.MAX_PLAYER_HEALTH;
 		health = maxHealth;
-
-		healthbar.value = CalculateHealth ();
 	}
 
 	public float GetHealth(){return health;}
@@ -23,11 +23,10 @@ public class Statistics : MonoBehaviour {
 		health -= amount;
 
 		// TODO: implement dying action (respawn)
-		if (health <= 0) 
-			health = 0;
-
-		healthbar.value = CalculateHealth();
-	}
+        if (health <= Constants.MIN_PLAYER_HEALTH) 
+			health = Constants.MIN_PLAYER_HEALTH;
+        healthbar.value = CalculateHealth();
+    }
 
 	public void IncreaseHealth (float amount){
 		health += amount;

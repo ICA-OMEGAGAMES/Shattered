@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 //Script to start the game by clicking on play
 public class LoadSceneOnClick : MonoBehaviour {
+
 	public Button startButton;
 	public int sceneIndex;
 

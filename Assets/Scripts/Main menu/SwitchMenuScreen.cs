@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 //Script that enables the new and disables the previous menu screen when selecting a settings menu
 public class SwitchMenuScreen : MonoBehaviour {
+
 	public Button button;
 	public GameObject objectToEnable;
 	public GameObject objectToDisable;
