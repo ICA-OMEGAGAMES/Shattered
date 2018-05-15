@@ -28,12 +28,19 @@ public class InventoryController : MonoBehaviour {
             var weapon = other.GetComponent<Weapon>();
             if (Input.GetButtonDown(Constants.PICKUP_BUTTON) && weapon.CanBePickedUp())
             {
-                equipedWeapon = weapon.gameObject;
-                GetComponent<DevonScript>().ChangeCombatSet(weapon);
-                other.gameObject.SetActive(false);
+                WeaponHandler weaponHandler = GameObject.Find("WeaponHandler").GetComponent<WeaponHandler>();
+                print(weaponHandler.currentWeapon);
+                
+                if (weaponHandler.currentWeapon == null)
+                {
+                    weaponHandler.EquipWeapon(other.gameObject);
+                }
+                else if (weaponHandler.currentWeapon != other.gameObject)
+                {
+                    weaponHandler.EquipWeapon(other.gameObject);
+                }
             }
         }
-			
 	}
 
 	void RemoveItemFromInventory(string itemCode){

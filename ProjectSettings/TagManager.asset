@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - RainPlatform
   - Marker
+  - Weapon
   layers:
   - Default
   - TransparentFX

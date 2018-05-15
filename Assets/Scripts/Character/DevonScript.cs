@@ -11,42 +11,15 @@ public class DevonScript : CharacterMovement
     [Serializable]
     public class UnarmedCombatSettings
     {
+        public float attack1Damage = 10;
         public float attack1Duration = 0.5f;
         public bool attack1Rootable = true;
-        public float attack1Damage = 10;
+        public float attack2Damage = 20;
         public float attack2Duration = 0.5f;
         public bool attack2Rootable = true;
-        public float attack2Damage = 20;
     }
     [SerializeField]
     public UnarmedCombatSettings unarmedCombatSettings;
-
-    [Serializable]
-    public class LightMeleeCombatSettings
-    {
-        public float attack1Duration = 0.5f;
-        public bool attack1Rootable = true;
-        public float attack1Damage = 10;
-        public float attack2Duration = 0.5f;
-        public bool attack2Rootable = true;
-        public float attack2Damage = 20;
-    }
-    [SerializeField]
-    public LightMeleeCombatSettings lightMeleeCombatSettings;
-
-    [Serializable]
-    public class HeavyMeleeCombatSettings
-    {
-        public float attack1Duration = 0.5f;
-        public bool attack1Rootable = true;
-        public float attack1Damage = 10;
-        public float attack2Duration = 0.5f;
-        public bool attack2Rootable = true;
-        public float attack2Damage = 20;
-    }
-    [SerializeField]
-    public HeavyMeleeCombatSettings heavyMeleeCombatSettings;
-
 
     //State machine for the different combat sets
     public enum FSMState
@@ -58,7 +31,7 @@ public class DevonScript : CharacterMovement
     public FSMState curCombatSet = FSMState.Unarmed;
 
     //switch for the different combat systems
-    private ICombatSet SetCombatSet(Animator animator, AnimationSettings animations)
+    private ICombatSet SetCombatSet(Animator animator, AnimationSettings animations, Weapon weapon)
     {
         switch (curCombatSet)
         {
@@ -67,10 +40,10 @@ public class DevonScript : CharacterMovement
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
             case FSMState.LightMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 1);
-                return new LightMeleeCombat(animator, animations, lightMeleeCombatSettings);
+                return new LightMeleeCombat(animator, animations, weapon);
             case FSMState.HeavyMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 2);
-                return new HeavyMeleeCombat(animator, animations, heavyMeleeCombatSettings);
+                return new HeavyMeleeCombat(animator, animations, weapon);
             default:
                 animator.SetInteger(animations.weaponSet, 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
@@ -92,7 +65,7 @@ public class DevonScript : CharacterMovement
     {
         public UnarmedCombatSettings combatSettings;
         private AnimationSettings animations;
-
+        private Weapon weapon;
 
         public UnarmedCombat(Animator animator, AnimationSettings animations, UnarmedCombatSettings combatSettings)
         {
@@ -113,7 +86,7 @@ public class DevonScript : CharacterMovement
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack1Duration, combatSettings.attack2Rootable);
+            return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack2Duration, combatSettings.attack2Rootable);
         }
     }
     /// <summary>
@@ -121,13 +94,13 @@ public class DevonScript : CharacterMovement
     /// </summary>
     public class LightMeleeCombat : ICombatSet
     {
-        public LightMeleeCombatSettings combatSettings;
         private AnimationSettings animations;
+        private Weapon weapon;
 
-        public LightMeleeCombat(Animator animator, AnimationSettings animations, LightMeleeCombatSettings combatSettings)
+        public LightMeleeCombat(Animator animator, AnimationSettings animations, Weapon weapon)
         {
             this.animations = animations;
-            this.combatSettings = combatSettings;
+            this.weapon = weapon;
         }
 
         public CharacterAttack Attack1(Animator AM)
@@ -135,15 +108,15 @@ public class DevonScript : CharacterMovement
             //proc the animation
             AM.SetTrigger(animations.punch);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.attack1Damage, combatSettings.attack2Duration, combatSettings.attack1Rootable);
+            return new CharacterAttack(weapon.Attack1Damage, weapon.Attack1Duration, weapon.Attack1Rootable);
         }
 
         public CharacterAttack Attack2(Animator AM)
         {
             //proc the animation
-            AM.SetTrigger(animations.punch);
+            AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack1Duration, combatSettings.attack2Rootable);
+            return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
         }
     }
     /// <summary>
@@ -151,13 +124,13 @@ public class DevonScript : CharacterMovement
     /// </summary>
     public class HeavyMeleeCombat : ICombatSet
     {
-        public HeavyMeleeCombatSettings combatSettings;
         private AnimationSettings animations;
+        private Weapon weapon;
 
-        public HeavyMeleeCombat(Animator animator, AnimationSettings animations, HeavyMeleeCombatSettings combatSettings)
+        public HeavyMeleeCombat(Animator animator, AnimationSettings animations, Weapon weapon)
         {
             this.animations = animations;
-            this.combatSettings = combatSettings;
+            this.weapon = weapon;
         }
 
         public CharacterAttack Attack1(Animator AM)
@@ -165,7 +138,7 @@ public class DevonScript : CharacterMovement
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.attack1Damage, combatSettings.attack1Duration, combatSettings.attack1Rootable);
+            return new CharacterAttack(weapon.Attack1Damage, weapon.Attack1Duration, weapon.Attack1Rootable);
         }
 
         public CharacterAttack Attack2(Animator AM)
@@ -173,7 +146,7 @@ public class DevonScript : CharacterMovement
             //proc the animation
             AM.SetTrigger(animations.kick);
             //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack2Duration, combatSettings.attack2Rootable);
+            return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
         }
     }
     //add other combat sets here
@@ -184,7 +157,7 @@ public class DevonScript : CharacterMovement
     //combatStart
     protected override void CombatInitialize()
     {
-        combatSet = SetCombatSet(animator, animations);
+        combatSet = SetCombatSet(animator, animations, null);
         markerManager = this.transform.parent.GetComponent<MarkerManager>();
         markerManager.SetMarkers();
     }
@@ -207,17 +180,17 @@ public class DevonScript : CharacterMovement
         }
     }
 
-    //TODO: read picked up item and set type
     public void ChangeCombatSet(Weapon weapon)
     {
-        curCombatSet = weapon.weaponType;
-        combatSet = SetCombatSet(animator, animations);
-        //markerManager.SetMarkers(); commented out due to not existing weapon pickup, (continuous call)
+
+        curCombatSet = weapon.WeaponType;
+        combatSet = SetCombatSet(animator, animations, weapon);
+        markerManager.SetMarkers();
     }
 
     public void EnableMarkers()
     {
-        markerManager.EnableMarkers();
+        markerManager.EnableMarkers(attack.damage);
     }
 
     public void DisableMarkers()

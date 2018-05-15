@@ -8,12 +8,20 @@ public class MarkerScript : MonoBehaviour {
 
     private MarkerManager markerManager;
 
+    private float markerDamage;
+
     void Start() {
+        SetMarkerManager();
+    }
+
+    public void SetMarkerManager()
+    {
         markerManager = GetManager();
         this.GetComponent<MeshRenderer>().enabled = false;
     }
     
-    public void EnableHit() {
+    public void EnableHit(float damage) {
+        markerDamage = damage;
         isEnabled = true;
     }
     
@@ -24,7 +32,7 @@ public class MarkerScript : MonoBehaviour {
     public void OnTriggerStay(Collider other)
     {
         if (isEnabled) {
-            markerManager.NotifyHit(other.gameObject);
+            markerManager.NotifyHit(other.gameObject, markerDamage);
         }
     }
 

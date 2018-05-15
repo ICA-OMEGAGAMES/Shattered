@@ -30,6 +30,7 @@ public class MarkerManager : MonoBehaviour{
                 {
                     child.gameObject.AddComponent<MarkerScript>();
                 }
+                child.gameObject.GetComponent<MarkerScript>().SetMarkerManager();
                 markers.Add(child.gameObject);
                 child.gameObject.SetActive(false);
             }
@@ -37,13 +38,13 @@ public class MarkerManager : MonoBehaviour{
         return markers;
     }
 
-    public void EnableMarkers()
+    public void EnableMarkers(float damage)
     {
         foreach (GameObject mark in markers)
         {
             mark.SetActive(true);
             MarkerScript markerscript = mark.GetComponent<MarkerScript>();
-            markerscript.EnableHit();
+            markerscript.EnableHit(damage);
         }
     }
 
@@ -58,7 +59,7 @@ public class MarkerManager : MonoBehaviour{
         hitBySwing.Clear();
     }
 
-    public void NotifyHit(GameObject hitTarget)
+    public void NotifyHit(GameObject hitTarget, float damage)
     {
         if (hitTarget.tag != Constants.ENEMY_TAG)
             return;
@@ -66,7 +67,7 @@ public class MarkerManager : MonoBehaviour{
         if (!hitBySwing.Contains(hitTarget))
         {
             hitBySwing.Add(hitTarget.gameObject);
-            hitTarget.GetComponent<DummyScript>().TakeDamage(10);
+            hitTarget.GetComponent<DummyScript>().TakeDamage(damage);
         }
     }
 }

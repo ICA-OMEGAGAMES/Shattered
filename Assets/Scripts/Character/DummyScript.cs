@@ -15,8 +15,9 @@ public class DummyScript : MonoBehaviour {
         transform.position = transform.position + Vector3.zero;
     }
 
-    public void TakeDamage(int amountOfDamage)
+    public void TakeDamage(float amountOfDamage)
     {
+        print("autch," + amountOfDamage + " damage recieved");
         if (red == false)
         {
             renderer.material.color = Color.red;
