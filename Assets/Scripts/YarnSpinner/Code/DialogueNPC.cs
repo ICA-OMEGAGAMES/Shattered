@@ -7,7 +7,6 @@ namespace Yarn.Unity.Shattered
 {
     public class DialogueNPC : MonoBehaviour
     {
-
         public string characterName = "";
 
         [FormerlySerializedAs("startNode")]
@@ -15,20 +14,13 @@ namespace Yarn.Unity.Shattered
 
         [Header("Optional")]
         public TextAsset scriptToLoad;
-
-        // Use this for initialization
+        
         void Start()
         {
             if (scriptToLoad != null)
             {
                 FindObjectOfType<Yarn.Unity.Shattered.DialogueRunner>().AddScript(scriptToLoad);
             }
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
 
         }
     }
