@@ -3,11 +3,21 @@ using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-	[SerializeField] CameraCollisionSetting cameraCollisionSetting;
+	[System.Serializable]
+	public class CameraCollisionSettings
+	{
+		public float minDistance = 1.0f;
+		public float maxDistance = 4.0f;
+		public float smooth = 10.0f;
+		public float distance;
+	}
+	[SerializeField]
+	public CameraCollisionSettings cameraCollisionSetting;
+
     private Vector3 dollyDir;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         dollyDir = transform.localPosition.normalized;
 		cameraCollisionSetting.distance = transform.localPosition.magnitude;
