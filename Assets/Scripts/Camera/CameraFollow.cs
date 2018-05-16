@@ -32,6 +32,8 @@ public class CameraFollow : MonoBehaviour
         rotY = rot.y;
         rotX = rot.x;
 
+        cameraFollowSetting = ScriptableObject.CreateInstance<CameraFollowSetting>();
+
         // Block the cursor & make him unvisible
         Cursor.visible = false;
     }
