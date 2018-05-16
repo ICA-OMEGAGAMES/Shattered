@@ -40,4 +40,8 @@
     // OBJECTNAMES
     public const string WEAPONHANDLER = "WeaponHandler";
     public const string CAMERAFOLLOWPOINT = "CameraFollowPoint";
+
+    // ANIMATIONS
+    // ANIMATIONSTATES
+    public const string ANIMATIONSTATE_DEAD = "Dead";
 }
