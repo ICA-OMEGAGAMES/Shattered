@@ -34,22 +34,21 @@ public class InventoryController : MonoBehaviour {
                 {
                     weaponHandler.EquipWeapon(other.gameObject);
                     GetComponent<DevonScript>().ChangeCombatSet(weapon);
-
                 }
                 else if (weaponHandler.currentWeapon != other.gameObject)
                 {
                     weaponHandler.EquipWeapon(other.gameObject);
                     GetComponent<DevonScript>().ChangeCombatSet(weapon);
                 }
-                /*
-                equipedWeapon = weapon.gameObject;
-                GetComponent<DevonScript>().ChangeCombatSet(weapon);
-
-                
-                other.transform.position = weaponHandler.transform.position;
-                other.transform.rotation = weaponHandler.transform.rotation;
-                other.transform.parent = weaponHandler.transform;
-                */
+            }
+        }
+        if (other.gameObject.CompareTag(Constants.EQUIPPEDWEAPON_TAG))
+        {
+            if (Input.GetButtonDown(Constants.DROPWEAPON_BUTTON))
+            {
+                WeaponHandler weaponHandler = GameObject.Find("WeaponHandler").GetComponent<WeaponHandler>();
+                weaponHandler.DropWeapon(other.gameObject);
+                GetComponent<DevonScript>().ChangeCombatSet(null);
             }
         }
 	}

@@ -16,11 +16,19 @@ public class WeaponHandler : MonoBehaviour {
     public void EquipWeapon(GameObject weapon)
     {
         if (currentWeapon != null)
-            Destroy(currentWeapon);
+        {
+            DropWeapon(currentWeapon);
+        }
         currentWeapon = weapon;
         currentWeapon.transform.position = this.transform.position;
         currentWeapon.transform.rotation = this.transform.rotation;
         currentWeapon.transform.parent = this.transform;
-        currentWeapon.transform.tag = Constants.UNTAGGED;
+        currentWeapon.transform.tag = Constants.EQUIPPEDWEAPON_TAG;
+    }
+
+    public void DropWeapon(GameObject weapon)
+    {
+        Destroy(weapon);
+        weapon.transform.parent = null;
     }
 }

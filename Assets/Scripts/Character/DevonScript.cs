@@ -182,8 +182,10 @@ public class DevonScript : CharacterMovement
 
     public void ChangeCombatSet(Weapon weapon)
     {
-
-        curCombatSet = weapon.WeaponType;
+        if(!weapon)
+            curCombatSet = FSMState.Unarmed;
+        else
+            curCombatSet = weapon.WeaponType;
         combatSet = SetCombatSet(animator, animations, weapon);
         markerManager.SetMarkers();
     }

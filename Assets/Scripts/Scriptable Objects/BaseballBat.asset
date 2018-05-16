@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56f272c10bac2df43b0f460d6cd7bd2f, type: 3}
-  m_Name: BaseballBatCS
+  m_Name: BaseballBat
   m_EditorClassIdentifier: 
   itemName: Baseball bat
   itemDescription: Slap your enemies with wood
