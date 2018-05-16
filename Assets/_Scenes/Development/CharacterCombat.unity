@@ -6157,9 +6157,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1299068898}
   - component: {fileID: 1299068897}
-  - component: {fileID: 1299068896}
   - component: {fileID: 1299068895}
   - component: {fileID: 1299068894}
+  - component: {fileID: 1299068896}
   m_Layer: 0
   m_Name: Mannequin (M)
   m_TagString: Player
@@ -6207,7 +6207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299068893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3741b4aef098b94094ea5e02121216a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0854f4278bb5ae447aa9de0777184290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
@@ -6227,17 +6227,18 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
   movement:
-    walkSpeed: 4
-    crouchSpeed: 2
-    runSpeed: 8
-    jumpSpeed: 8
+    walkSpeed: 8
+    crouchSpeed: 4
+    runSpeed: 16
+    jumpSpeed: 16
     jumpTime: 0.25
-    jumpCooldown: 1
-    dodgeDistance: 10
+    jumpCooldown: 2
+    dodgeDistance: 20
     toggleCombatCooldown: 1
     rotateSpeed: 5
   characterActionTimeStamp: 0
   crouching: 0
+  dodging: 0
   animator: {fileID: 0}
 --- !u!95 &1299068897
 Animator:
@@ -7505,6 +7506,7 @@ MonoBehaviour:
     rotateSpeed: 5
   characterActionTimeStamp: 0
   crouching: 0
+  dodging: 0
   animator: {fileID: 0}
   unarmedCombatSettings:
     attack1Damage: 5

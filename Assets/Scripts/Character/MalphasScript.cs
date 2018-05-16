@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalphusScript : CharacterMovement {
+public class MalphasScript : CharacterMovement {
 
 
     //Make interface for the different ability's.
