@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-	[SerializeField] CameraCollisionSettings cameraCollisionSetting;
+	[SerializeField] CameraCollisionSetting cameraCollisionSetting;
     private Vector3 dollyDir;
 
     // Use this for initialization

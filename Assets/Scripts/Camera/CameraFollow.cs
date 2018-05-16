@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Yarn.Unity.Shattered;
 
 public class CameraFollow : MonoBehaviour
 {
-	[SerializeField] CameraFollowSettings cameraFollowSetting;
+	[SerializeField] CameraFollowSetting cameraFollowSetting;
     [SerializeField] GameObject gameObjectToFollow;
+    [SerializeField] DialogueRunner dialogueRunner;
 
 	private float rotY = 0.0f;
     private float rotX = 0.0f;
-
-    // Use this for initialization
+    
     void Start()
     {
         Vector3 rot = transform.localRotation.eulerAngles;
@@ -18,27 +17,47 @@ public class CameraFollow : MonoBehaviour
         rotX = rot.x;
 
         // Block the cursor & make him unvisible
-        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-		cameraFollowSetting.mouseX = Input.GetAxis(Constants.MOUSE_X_AXIS);
-		cameraFollowSetting.mouseY = Input.GetAxis(Constants.MOUSE_Y_AXIS);
-		cameraFollowSetting.finalInputX = cameraFollowSetting.mouseX;
-		cameraFollowSetting.finalInputZ = cameraFollowSetting.mouseY;
+        CheckActiveCamera();
+        if (dialogueRunner.isDialogueRunning) {
+            // Unlock the cursor if dialogue is running.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        } else {
+            // Lock Cursor, if Camera is active
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        // Rotate the stick, depending where we pushing
-		rotY += cameraFollowSetting.finalInputX * cameraFollowSetting.inputSensitivity * Time.deltaTime;
-		rotX += cameraFollowSetting.finalInputZ * cameraFollowSetting.inputSensitivity * Time.deltaTime;
+            // Setup the rotation of the sticks here --> Supports also the Controller
+            float inputX = Input.GetAxis("RightStickHorizontal");
+            float inputZ = Input.GetAxis("RightStickVertical");
+            cameraFollowSetting.mouseX = Input.GetAxis(Constants.MOUSE_X_AXIS);
+            cameraFollowSetting.mouseY = Input.GetAxis(Constants.MOUSE_Y_AXIS);
+            cameraFollowSetting.finalInputX = inputX + cameraFollowSetting.mouseX;
+            cameraFollowSetting.finalInputZ = inputZ + cameraFollowSetting.mouseY;
 
-        // Clamp that value, so it can't go higher or lower --> stop it from going around and around in circles
-		rotX = Mathf.Clamp(rotX, -cameraFollowSetting.clampAngle, cameraFollowSetting.clampAngle);
+            // Rotate the stick, depending where we pushing
+            rotY += cameraFollowSetting.finalInputX * cameraFollowSetting.inputSensitivity * Time.deltaTime;
+            rotX += cameraFollowSetting.finalInputZ * cameraFollowSetting.inputSensitivity * Time.deltaTime;
 
-        Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
-        transform.rotation = localRotation;
+            // Clamp that value, so it can't go higher or lower --> stop it from going around and around in circles
+            rotX = Mathf.Clamp(rotX, -cameraFollowSetting.clampAngle, cameraFollowSetting.clampAngle);
+
+            Quaternion localRotation = Quaternion.Euler(rotX, rotY, 0.0f);
+            transform.rotation = localRotation;
+        }
+    }
+
+    private void CheckActiveCamera()
+    {
+        if (!gameObjectToFollow.activeInHierarchy)
+        {
+            gameObjectToFollow = GameObject.Find("CameraFollowPoint");
+        }
     }
 
     void LateUpdate()
