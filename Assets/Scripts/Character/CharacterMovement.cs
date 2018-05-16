@@ -259,6 +259,8 @@ public class CharacterMovement : MonoBehaviour
         characterControllable = false;
         //start animation death scene
         animator.SetBool(animations.deadBool,true);
+        //force death animation
+        animator.Play("Dead");
         StartCoroutine(Respawn());
     }
 
@@ -267,6 +269,7 @@ public class CharacterMovement : MonoBehaviour
         yield return new WaitForSeconds(death.respawnTime);
         this.transform.position = statistics.spawnpoint.transform.position;
         statistics.IncreaseHealth(death.respawnHealth);
+        animator.SetBool(animations.deadBool, false);
         characterControllable = true;
     }
 }
