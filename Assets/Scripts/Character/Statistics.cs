@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Statistics : MonoBehaviour {
 
 	public Slider healthbar;
-
+    public GameObject spawnpoint;
 
 	private float maxHealth = 100f;
 	private float health;
@@ -41,5 +41,9 @@ public class Statistics : MonoBehaviour {
 		return health / maxHealth;
 	}
 
-
+    public GameObject Spawnpoint
+    {
+        get { return spawnpoint; }
+        set { spawnpoint = value; }
+    }
 }
