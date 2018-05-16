@@ -19,6 +19,12 @@
     public const string COMBAT_BUTTON = "CombatStance";
     public const string ATTACK1_BUTTON = "Attack1";
     public const string ATTACK2_BUTTON = "Attack2";
+    public const string SKILL1_BUTTON = "Skill1";
+    public const string SKILL2_BUTTON = "Skill2";
+    public const string SKILL3_BUTTON = "Skill3";
+    public const string SKILL4_BUTTON = "Skill4";
+    public const string SKILL5_BUTTON = "Skill5";
+    public const string SKILL6_BUTTON = "Skill6";
     public const string TRANSFORM_BUTTON = "SwitchForm";
 
 	// AXIS

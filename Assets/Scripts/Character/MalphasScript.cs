@@ -22,9 +22,21 @@ public class MalphasScript : CharacterMovement {
     protected override void CharacterInCombatUpdate()
     {
         //special skills
-        //press Q
-        //press E
-        //press R
+        if (Input.GetButton(Constants.SKILL1_BUTTON))
+        {
+        }
+        if (Input.GetButton(Constants.SKILL2_BUTTON))
+        {
+        }
+        if (Input.GetButton(Constants.SKILL3_BUTTON))
+        {
+        }
+        if (Input.GetButton(Constants.SKILL4_BUTTON))
+        {
+        }
+        if (Input.GetButton(Constants.SKILL5_BUTTON))
+        {
+        }
     }
 
     protected override void CombatActionUpdate()
