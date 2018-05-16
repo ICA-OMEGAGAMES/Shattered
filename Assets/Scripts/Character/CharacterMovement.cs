@@ -56,7 +56,7 @@ public class CharacterMovement : MonoBehaviour
 
     //private variables
     private bool jumping;
-    private bool dodging;
+    public bool dodging;
     private float speed;
     protected bool combatState = false;
     protected bool characterRooted = true;
@@ -66,15 +66,17 @@ public class CharacterMovement : MonoBehaviour
 	private CharacterController characterController;
 	private Vector3 moveDirection;
 
-    protected virtual void CombatInitialize() { }
+    protected virtual void CharactertInitialize() { }
     protected virtual void CombatActionUpdate() { }
+    protected virtual void CharacterInCombatUpdate() { }
+    protected virtual void CharacterOutOfCombatUpdate() { }
 
     void Start()
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
-        CombatInitialize();
+        CharactertInitialize();
     }
 
     void Update()
@@ -125,6 +127,9 @@ public class CharacterMovement : MonoBehaviour
 
     void OutOfCombatUpdate()
     {
+        //call out of combat update of specific character
+        CharacterOutOfCombatUpdate();
+        //out of combat actions for both characters
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
         {
@@ -137,9 +142,11 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void InCombatUpdate() {
-        if (Input.GetButton(Constants.DODGE_BUTTON))
-            Dodge();
+    void InCombatUpdate()
+    {
+        //call in combat update of specific character
+        CharacterInCombatUpdate();
+        //incombat actions for both characters
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
         {
@@ -206,29 +213,6 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(movement.jumpTime);
         jumping = false;
-    }
-
-    private void Dodge()
-    {
-        if (!dodging)
-        {
-			if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
-            {
-				StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
-            }
-			else if(Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
-            {
-				StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
-            }
-        }
-    }
-
-    IEnumerator Roll(bool horizontal, float direction)
-    {
-        dodging = true;
-        yield return new WaitForSeconds(0.5f);
-        StopCoroutine(Roll(horizontal, direction));
-        dodging = false;
     }
     
     public void SwitchCombatState()
