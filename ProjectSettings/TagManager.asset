@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - Enemy
+  - RainPlatform
+  - Marker
+  - Weapon
+  - EquippedWeapon
   layers:
   - Default
   - TransparentFX
