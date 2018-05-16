@@ -108,13 +108,9 @@ public class CharacterMovement : MonoBehaviour
                     break;
             }
 
-            if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS)) { 
-                //Rotate the player with camera
-                Vector3 newRotation = transform.eulerAngles;
-                newRotation.y = Camera.main.transform.eulerAngles.y;
-
-                Quaternion targetRotation = Quaternion.Euler(newRotation);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
+            if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS))
+            {
+                RotateToCamera();
             }
         }
         //movement
@@ -123,6 +119,15 @@ public class CharacterMovement : MonoBehaviour
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
         }
+    }
+
+    private void RotateToCamera()
+    {
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.y = Camera.main.transform.eulerAngles.y;
+
+        Quaternion targetRotation = Quaternion.Euler(newRotation);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
     }
 
     void OutOfCombatUpdate()
