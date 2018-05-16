@@ -172,6 +172,24 @@ public class DevonScript : CharacterMovement
             Dodge();
     }
 
+    // combatUpdate seperatly so the combatactions are only checked when inteded
+    protected override void CombatActionUpdate()
+    {
+        //Select the correct action
+        if (Input.GetButton(Constants.ATTACK1_BUTTON))
+        {
+            attack = combatSet.Attack1(animator);
+            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterRooted = attack.rootAble;
+        }
+        else if (Input.GetButton(Constants.ATTACK2_BUTTON))
+        {
+            attack = combatSet.Attack2(animator);
+            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterRooted = attack.rootAble;
+        }
+    }
+
     private void Dodge()
     {
         if (!dodging)
@@ -193,24 +211,6 @@ public class DevonScript : CharacterMovement
         yield return new WaitForSeconds(0.5f);
         StopCoroutine(Roll(horizontal, direction));
         dodging = false;
-    }
-
-    // combatUpdate seperatly so the combatactions are only checked when inteded
-    protected override void CombatActionUpdate()
-    {
-        //Select the correct action
-        if (Input.GetButton(Constants.ATTACK1_BUTTON))
-        {
-            attack = combatSet.Attack1(animator);
-            characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
-        }
-        else if (Input.GetButton(Constants.ATTACK2_BUTTON))
-        {
-            attack = combatSet.Attack2(animator);
-            characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
-        }
     }
 
     public void ChangeCombatSet(Weapon weapon)
