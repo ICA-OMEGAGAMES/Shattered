@@ -47,10 +47,18 @@ public class CharacterMovement : MonoBehaviour
         public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
-        public float respawnTime = 5;
     }
 	[SerializeField]
 	public MovementSettings movement;
+
+    [System.Serializable]
+    public class deathSettings
+    {
+        public float respawnTime = 5;
+        public float respawnHealth = 50;
+    }
+    [SerializeField]
+    public deathSettings death;
 
     //protected variables
     protected bool combatState = false;
@@ -252,13 +260,13 @@ public class CharacterMovement : MonoBehaviour
         //start animation death scene
         animator.SetBool(animations.deadBool,true);
         StartCoroutine(Respawn());
-        ///find last checkpoint. after X respawn, set controllable true
-
     }
 
     IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(movement.respawnTime);
+        yield return new WaitForSeconds(death.respawnTime);
         this.transform.position = statistics.spawnpoint.transform.position;
+        statistics.IncreaseHealth(death.respawnHealth);
+        characterControllable = true;
     }
 }

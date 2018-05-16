@@ -9,7 +9,7 @@ public class Statistics : MonoBehaviour {
     public GameObject spawnpoint;
 
 	private float maxHealth = 100f;
-	private float health;
+	public float health;
 
 	void Start(){
 		maxHealth = Constants.MAX_PLAYER_HEALTH;
