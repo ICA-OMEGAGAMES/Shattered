@@ -3,16 +3,7 @@ using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-	[System.Serializable]
-	public class CameraCollisionSettings
-	{
-		public float minDistance = 1.0f;
-		public float maxDistance = 4.0f;
-		public float smooth = 10.0f;
-		public float distance;
-	}
-	[SerializeField]
-	public CameraCollisionSettings cameraCollisionSetting;
+	private CameraCollisionSettings cameraCollisionSettings;
 
     private Vector3 dollyDir;
 
@@ -21,26 +12,26 @@ public class CameraCollision : MonoBehaviour
     {
         dollyDir = transform.localPosition.normalized;
 
-        cameraCollisionSetting = ScriptableObject.CreateInstance<CameraCollisionSetting>(); 
+        cameraCollisionSettings = ScriptableObject.CreateInstance<CameraCollisionSettings>(); 
 
-		cameraCollisionSetting.distance = transform.localPosition.magnitude;
+		cameraCollisionSettings.distance = transform.localPosition.magnitude;
     }
 
     // Update is called once per frame
     void Update()
     {
-		Vector3 desiredCameraPos = transform.parent.TransformPoint(dollyDir * cameraCollisionSetting.maxDistance);
+		Vector3 desiredCameraPos = transform.parent.TransformPoint(dollyDir * cameraCollisionSettings.maxDistance);
         RaycastHit hit;
 
         if (Physics.Linecast(transform.parent.position, desiredCameraPos, out hit))
         {
-			cameraCollisionSetting.distance = Mathf.Clamp((hit.distance * 0.87f), cameraCollisionSetting.minDistance, cameraCollisionSetting.maxDistance);
+			cameraCollisionSettings.distance = Mathf.Clamp((hit.distance * 0.87f), cameraCollisionSettings.minDistance, cameraCollisionSettings.maxDistance);
         }
         else
         {
-			cameraCollisionSetting.distance = cameraCollisionSetting.maxDistance;
+			cameraCollisionSettings.distance = cameraCollisionSettings.maxDistance;
         }
 
-		transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * cameraCollisionSetting.distance, Time.deltaTime * cameraCollisionSetting.smooth);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * cameraCollisionSettings.distance, Time.deltaTime * cameraCollisionSettings.smooth);
     }
 }
