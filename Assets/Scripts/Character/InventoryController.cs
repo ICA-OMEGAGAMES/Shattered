@@ -28,7 +28,7 @@ public class InventoryController : MonoBehaviour {
             var weapon = other.GetComponent<Weapon>();
             if (Input.GetButtonDown(Constants.PICKUP_BUTTON) && weapon.CanBePickedUp())
             {
-                WeaponHandler weaponHandler = GameObject.Find("WeaponHandler").GetComponent<WeaponHandler>();
+                WeaponHandler weaponHandler = GameObject.Find(Constants.WEAPONHANDLER).GetComponent<WeaponHandler>();
                 
                 if (weaponHandler.currentWeapon == null)
                 {
@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour {
         {
             if (Input.GetButtonDown(Constants.DROPWEAPON_BUTTON))
             {
-                WeaponHandler weaponHandler = GameObject.Find("WeaponHandler").GetComponent<WeaponHandler>();
+                WeaponHandler weaponHandler = GameObject.Find(Constants.WEAPONHANDLER).GetComponent<WeaponHandler>();
                 weaponHandler.DropWeapon(other.gameObject);
                 GetComponent<DevonScript>().ChangeCombatSet(null);
             }

@@ -33,8 +33,8 @@ public class CameraFollow : MonoBehaviour
             Cursor.visible = false;
 
             // Setup the rotation of the sticks here --> Supports also the Controller
-            float inputX = Input.GetAxis("RightStickHorizontal");
-            float inputZ = Input.GetAxis("RightStickVertical");
+            float inputX = Input.GetAxis(Constants.RIGHTSTICKHORIZONTAL);
+            float inputZ = Input.GetAxis(Constants.RIGHTSTICKVERTICAL);
             cameraFollowSetting.mouseX = Input.GetAxis(Constants.MOUSE_X_AXIS);
             cameraFollowSetting.mouseY = Input.GetAxis(Constants.MOUSE_Y_AXIS);
             cameraFollowSetting.finalInputX = inputX + cameraFollowSetting.mouseX;
@@ -56,7 +56,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (!gameObjectToFollow.activeInHierarchy)
         {
-            gameObjectToFollow = GameObject.Find("CameraFollowPoint");
+            gameObjectToFollow = GameObject.Find(Constants.CAMERAFOLLOWPOINT);
         }
     }
 

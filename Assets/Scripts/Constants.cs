@@ -26,13 +26,18 @@
 	public const string VERTICAL_AXIS = "Vertical";
 	public const string MOUSE_X_AXIS = "Mouse X";
 	public const string MOUSE_Y_AXIS = "Mouse Y";
+    public const string RIGHTSTICKHORIZONTAL = "RightStickHorizontal";
+    public const string RIGHTSTICKVERTICAL = "RightStickVertical";
 
-
-	// SETTINGS
-	public const int MAX_PLAYER_HEALTH = 200;
+    // SETTINGS
+    public const int MAX_PLAYER_HEALTH = 200;
 	public const int MIN_PLAYER_HEALTH = 0;
 
 	// CONFIG
 	public const string GRAPHICS_JSON = "/graphicsettings.json";
 	public const string SOUND_JSON = "/soundsettings.json";
+
+    // OBJECTNAMES
+    public const string WEAPONHANDLER = "WeaponHandler";
+    public const string CAMERAFOLLOWPOINT = "CameraFollowPoint";
 }
