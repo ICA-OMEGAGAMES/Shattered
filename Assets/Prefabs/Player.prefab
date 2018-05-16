@@ -6748,6 +6748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
   spawnpoint: {fileID: 0}
+  health: 0
 --- !u!114 &114400422862753870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6797,7 +6798,9 @@ MonoBehaviour:
     dodgeDistance: 20
     toggleCombatCooldown: 1
     rotateSpeed: 5
+  death:
     respawnTime: 5
+    respawnHealth: 50
   characterActionTimeStamp: 0
   crouching: 0
   dodging: 0
@@ -6876,7 +6879,9 @@ MonoBehaviour:
     dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
+  death:
     respawnTime: 5
+    respawnHealth: 50
   characterActionTimeStamp: 0
   crouching: 0
   dodging: 0
