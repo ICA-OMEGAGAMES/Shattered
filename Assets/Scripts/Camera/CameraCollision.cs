@@ -10,6 +10,9 @@ public class CameraCollision : MonoBehaviour
     void Awake()
     {
         dollyDir = transform.localPosition.normalized;
+
+        cameraCollisionSetting = ScriptableObject.CreateInstance<CameraCollisionSetting>(); 
+
 		cameraCollisionSetting.distance = transform.localPosition.magnitude;
     }
 
