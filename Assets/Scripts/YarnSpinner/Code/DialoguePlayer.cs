@@ -7,9 +7,8 @@ namespace Yarn.Unity.Shattered {
 
         public float interactionRadius = 2.0f;
 
-        public float movementFromButtons {get;set;}
-
-        /// Update is called once per frame
+        public float MovementFromButtons {get;set;}
+        
         void Update () {
 
             // Remove all player control when we're in dialogue
