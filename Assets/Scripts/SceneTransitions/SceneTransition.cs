@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour {
 
     //index of the current string
-    private int current_scene;
+    private int currentScene;
 
 	// Use this for initialization
 	void Start () {
