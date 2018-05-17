@@ -15,9 +15,7 @@ public class SkillTreeReader : MonoBehaviour
         {
             return instance;
         }
-        set
-        {
-        }
+        set {}
     }
 
     // Array with all the skills in our skilltree

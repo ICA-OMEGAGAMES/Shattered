@@ -25,7 +25,6 @@ public class SkillButton : MonoBehaviour
 
     void Start()
     {
-        // image = GetComponent<Image>();
         button = GetComponent<Button>();
     }
 
@@ -41,17 +40,11 @@ public class SkillButton : MonoBehaviour
             var colors = button.colors;
             colors.normalColor = Color.yellow;
             button.colors = colors;
-            // image.color = unlockedColor;
         }
         else if (!SkillTreeReader.Instance.CanSkillBeUnlocked(skillId))
-        {
             button.interactable = false;
-        }
         else
-        {
-            // image.color = Color.white;
             button.interactable = true;
-        }
     }
 
     public void updateSkillDetails()
