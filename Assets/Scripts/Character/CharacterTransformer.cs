@@ -73,14 +73,15 @@ public class CharacterTransformer : MonoBehaviour {
         switch (currentForm)
         {
             case (CharacterForm.devon):
+                //set position and rotation to the previous character
+                devon.transform.position = transformation.transform.position;
+                devon.transform.rotation = transformation.transform.rotation;
+
                 //Change from Malphas to Devon
                 devon.SetActive(true);
                 malphas.SetActive(false);
                 transformation.SetActive(false);
 
-                //set position and rotation to the previous character
-                devon.transform.position = malphas.transform.position;
-                devon.transform.rotation = malphas.transform.rotation;
                 break;
             case (CharacterForm.transformToMalphas):
                 //Change from Davon to Transformation

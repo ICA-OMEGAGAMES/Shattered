@@ -66,9 +66,9 @@ public class CharacterMovement : MonoBehaviour
     protected bool characterRooted = true;
 
     //public variables
-    public float characterActionTimeStamp =0;
-    public bool crouching;
-    public bool dodging;
+    protected float characterActionTimeStamp =0;
+    protected bool crouching;
+    protected bool dodging;
     public bool characterControllable = true;
 
     //private variables
@@ -106,6 +106,10 @@ public class CharacterMovement : MonoBehaviour
             {
                 Die();
             }
+
+            if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
+                SwitchCombatState();
+
             if (IsGrounded())
             {
                 //instant actions
@@ -114,8 +118,6 @@ public class CharacterMovement : MonoBehaviour
                 else
                     crouching = false;
 
-                if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
-                    SwitchCombatState();
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
                 moveDirection = transform.TransformDirection(moveDirection);
