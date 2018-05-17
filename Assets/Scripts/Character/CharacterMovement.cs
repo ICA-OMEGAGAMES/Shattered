@@ -16,12 +16,13 @@ public class CharacterMovement : MonoBehaviour
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
         public string isInCombat = "isInCombat";
+        public string deadBool = "isDead";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
+        public string weaponSet = "WeaponSet";
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
-        public string weaponSet = "WeaponSet";
-        public string deadBool = "isDead";
+        public string blink = "Blink";
     }
 	[SerializeField]
 	public AnimationSettings animations;
@@ -76,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
     private float characterToggleCombatTimeStamp = 0;
 
     public Animator animator;
-	private CharacterController characterController;
+	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
 
@@ -85,6 +86,8 @@ public class CharacterMovement : MonoBehaviour
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
     protected virtual void CharacterOutOfCombatUpdate() { }
+    protected virtual void CharacterInCombatFixedUpdate() { }
+    protected virtual void CharacterOutOfCombatFixedUpdate() { }
 
     void Start()
     {
@@ -140,6 +143,19 @@ public class CharacterMovement : MonoBehaviour
             Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        switch (combatState)
+        {
+            case (false):
+                CharacterOutOfCombatFixedUpdate();
+                break;
+            case (true):
+                CharacterInCombatFixedUpdate();
+                break;
         }
     }
 
@@ -248,7 +264,6 @@ public class CharacterMovement : MonoBehaviour
             combatState = false;
         else
             combatState = true;
-
         animator.SetBool(animations.isInCombat, combatState);
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }

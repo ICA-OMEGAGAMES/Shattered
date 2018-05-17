@@ -172,6 +172,14 @@ public class DevonScript : CharacterMovement
             Dodge();
     }
 
+    protected override void CharacterOutOfCombatFixedUpdate()
+    {
+    }
+
+    protected override void CharacterInCombatFixedUpdate()
+    {
+    }
+
     // combatUpdate seperatly so the combatactions are only checked when inteded
     protected override void CombatActionUpdate()
     {

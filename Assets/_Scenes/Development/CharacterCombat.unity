@@ -1304,7 +1304,7 @@ Prefab:
     - target: {fileID: 224553125744422876, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -25.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224553125744422876, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1314,7 +1314,7 @@ Prefab:
     - target: {fileID: 224553125744422876, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224947990082673602, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1334,7 +1334,7 @@ Prefab:
     - target: {fileID: 224947990082673602, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224947990082673602, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1344,7 +1344,7 @@ Prefab:
     - target: {fileID: 224947990082673602, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224650570623485718, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1364,7 +1364,7 @@ Prefab:
     - target: {fileID: 224650570623485718, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -111
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224650570623485718, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1374,7 +1374,7 @@ Prefab:
     - target: {fileID: 224650570623485718, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224664387576391292, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1394,7 +1394,7 @@ Prefab:
     - target: {fileID: 224664387576391292, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224664387576391292, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1404,7 +1404,7 @@ Prefab:
     - target: {fileID: 224664387576391292, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224903704269292220, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1424,7 +1424,7 @@ Prefab:
     - target: {fileID: 224903704269292220, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -201
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224903704269292220, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
@@ -1434,12 +1434,12 @@ Prefab:
     - target: {fileID: 224903704269292220, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224117584153724860, guid: 0de6d49d72cb0094db4ba029be98d64d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 231
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1980055473075544, guid: 0de6d49d72cb0094db4ba029be98d64d, type: 2}
       propertyPath: m_IsActive
@@ -2413,6 +2413,16 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ac2cdc0f9b2c19344b59f4cb8d00036c, type: 2}
+    - target: {fileID: 114436989689413652, guid: d704fe904ce8f7340a9967243569483a,
+        type: 2}
+      propertyPath: basicCombatSettings.blinkDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114436989689413652, guid: d704fe904ce8f7340a9967243569483a,
+        type: 2}
+      propertyPath: basicCombatSettings.blinkCooldown
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d704fe904ce8f7340a9967243569483a, type: 2}
   m_IsPrefabParent: 0
