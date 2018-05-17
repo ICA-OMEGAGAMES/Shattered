@@ -5,6 +5,7 @@
     public const string WEAPON_TAG = "Weapon";
     public const string EQUIPPEDWEAPON_TAG = "EquippedWeapon";
     public const string ENEMY_TAG = "Enemy";
+    public const string PLAYER_TAG = "Player";
     public const string MARKER_TAG = "Marker";
     public const string UNTAGGED = "Untagged";
 
