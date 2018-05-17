@@ -187,13 +187,13 @@ public class DevonScript : CharacterMovement
         if (Input.GetButton(Constants.ATTACK1_BUTTON))
         {
             attack = combatSet.Attack1(animator);
-            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterActionTimeStamp = Time.deltaTime + attack.cooldown;
             characterRooted = attack.rootAble;
         }
         else if (Input.GetButton(Constants.ATTACK2_BUTTON))
         {
             attack = combatSet.Attack2(animator);
-            characterActionTimeStamp = Time.time + attack.cooldown;
+            characterActionTimeStamp = Time.deltaTime + attack.cooldown;
             characterRooted = attack.rootAble;
         }
     }

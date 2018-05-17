@@ -20,164 +20,24 @@ public class MalphasScript : CharacterMovement {
     }
     [SerializeField]
     public BasicCombatSettings basicCombatSettings;
-
-    //Sterialized classes
+    
     [Serializable]
-    public class SkillSettings
+    public class SkillsSettings
     {
-        [Serializable]
-        public class Barier
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public Barier barier;
-
-        [Serializable]
-        public class PsychicScream
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public PsychicScream psychicScream;
-
-        [Serializable]
-        public class DivineAura
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public DivineAura divineAura;
-
-        [Serializable]
-        public class DarkClaw
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public DarkClaw darkClaw;
-
-        [Serializable]
-        public class DemonicWave
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public DemonicWave demonicWave;
-
-        [Serializable]
-        public class Possess
-        {
-            public float duration = 10;
-            public float cooldown = 2;
-        }
-        [SerializeField]
-        public Possess possess;
+        public SkillSettings barierSettings;
+        public SkillSettings phychicScreamSettings;
+        public SkillSettings divineAuraSettings;
+        public SkillSettings darkClawSettings;
+        public SkillSettings demonicWaveSettings;
+        public SkillSettings PossessSettings;
     }
     [SerializeField]
-    public SkillSettings skillSettings;
-
-    public interface ISkill
-    {
-        void Execute(Animator animator);
-    }
-    public ISkill skill;
+    public SkillsSettings skillSettings;
 
     private float blinkTimeStamp = 0;
     private CharacterAttack attack;
     private MarkerManager markerManager;
     private List<ISkill> skills = new List<ISkill>();
-
-
-    //skills
-    [Serializable]
-    public class Barrier : ISkill
-    {
-        SkillSettings.Barier settings;
-        public Barrier(SkillSettings settings)
-        {
-            this.settings = settings.barier;
-        }
-        public void Execute(Animator animator)
-        {
-            print("Barrier Used");
-        }
-    }
-
-    public class PsychicScream : ISkill
-    {
-        SkillSettings.PsychicScream settings;
-        public PsychicScream(SkillSettings settings)
-        {
-            this.settings = settings.psychicScream;
-        }
-
-        public void Execute(Animator animator)
-        {
-            print("PsychicScream Used");
-        }
-    }
-
-    public class DivineAura : ISkill
-    {
-        SkillSettings.DivineAura settings;
-        public DivineAura(SkillSettings settings)
-        {
-            this.settings = settings.divineAura;
-        }
-
-        public void Execute(Animator animator)
-        {
-            print("devineAura Used");
-        }
-    }
-
-    public class DarkClaw : ISkill
-    {
-        SkillSettings.DarkClaw settings;
-        public DarkClaw(SkillSettings settings)
-        {
-            this.settings = settings.darkClaw;
-        }
-
-        public void Execute(Animator animator)
-        {
-            print("shadowStep Used");
-        }
-    }
-
-    public class DemonicWave : ISkill
-    {
-        SkillSettings.DemonicWave settings;
-        public DemonicWave(SkillSettings settings)
-        {
-            this.settings = settings.demonicWave;
-        }
-
-        public void Execute(Animator animator)
-        {
-            print("demonicWave Used");
-        }
-    }
-
-    public class Possess : ISkill
-    {
-        SkillSettings.DemonicWave settings;
-        public Possess(SkillSettings settings)
-        {
-            this.settings = settings.demonicWave;
-        }
-
-        public void Execute(Animator animator)
-        {
-            print("possess Used");
-        }
-    }
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
@@ -186,15 +46,16 @@ public class MalphasScript : CharacterMovement {
         markerManager.SetMarkers();
 
         //for development purposes
-        skills.Add(new Barrier(skillSettings));
-        skills.Add(new PsychicScream(skillSettings));
-        skills.Add(new DivineAura(skillSettings));
-        skills.Add(new DarkClaw(skillSettings));
-        skills.Add(new DemonicWave(skillSettings));
+        skills.Add(new Barrier(skillSettings.barierSettings));
+        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings));
+        skills.Add(new DivineAura(skillSettings.divineAuraSettings));
+        skills.Add(new DarkClaw(skillSettings.darkClawSettings));
+       // skills.Add(new DemonicWave(skillSettings.demonicWaveSettings));
     }
 
     protected override void CharacterOutOfCombatUpdate()
     {
+        //todo: teleport skill
         //press aim teleport
         //press teleport
     }
@@ -290,7 +151,7 @@ public class MalphasScript : CharacterMovement {
 
     public void LearnSkill(string skil)
     {
-        //select correct skill, add to list
+        //TODO: learnSkill from skilltree
         //skills.Add();
     }
 
