@@ -2,12 +2,12 @@
 {
     public float damage;
     public float cooldown;
-    public bool rootAble;
+    public bool rootable;
 
-    public CharacterAttack(float damage, float cooldown, bool rootAble)
+    public CharacterAttack(float damage, float cooldown, bool rootable)
     {
         this.damage = damage;
         this.cooldown = cooldown;
-        this.rootAble = rootAble;
+        this.rootable = rootable;
     }
 }

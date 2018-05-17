@@ -41,6 +41,9 @@ public class InventoryController : MonoBehaviour {
                     GetComponent<DevonScript>().ChangeCombatSet(weapon);
                 }
             }
+			// TODO: Display text on screen once dialog is implemented.
+			if(Input.GetButtonDown(Constants.EXAMINE_BUTTON))
+				print(weapon.GetName() + ": " + weapon.GetDescription());	
         }
         if (other.gameObject.CompareTag(Constants.EQUIPPEDWEAPON_TAG))
         {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DummyScript : MonoBehaviour {
-    new Renderer renderer;
+    
+	new Renderer renderer;
     bool red = false;
 
 	void Start () {
@@ -17,7 +18,7 @@ public class DummyScript : MonoBehaviour {
 
     public void TakeDamage(float amountOfDamage)
     {
-        print("autch," + amountOfDamage + " damage recieved");
+        print("auch," + amountOfDamage + " damage recieved");
         if (red == false)
         {
             renderer.material.color = Color.red;

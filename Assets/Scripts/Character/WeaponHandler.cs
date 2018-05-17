@@ -6,7 +6,6 @@ public class WeaponHandler : MonoBehaviour {
 
     public GameObject currentWeapon;
 
-
     public GameObject CurrentWeapon
     {
         set { currentWeapon = CurrentWeapon;}

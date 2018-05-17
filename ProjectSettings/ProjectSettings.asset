@@ -48,7 +48,7 @@ PlayerSettings:
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
-  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  m_StackTraceTypes: 020000000200000002000000020000000200000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   tizenShowActivityIndicatorOnLoading: -1
@@ -639,9 +639,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 32fd20c6-ec27-41e4-81ae-7cae058caf90
-  projectName: ShatteredGame (1)
-  organizationId: sandervanuum
+  cloudProjectId: fedcb6a4-b6d1-4405-852e-dc00b0a428db
+  projectName: ShatteredGame
+  organizationId: zlittlecrown
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
