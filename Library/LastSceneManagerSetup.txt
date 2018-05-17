@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Shattered_Development.unity
+- path: Assets/_Scenes/Development/CharacterCombat.unity
   isLoaded: 1
   isActive: 1
