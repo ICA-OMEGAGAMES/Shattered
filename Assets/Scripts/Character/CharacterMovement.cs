@@ -5,7 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : MonoBehaviour
 {
-
+    
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -21,6 +21,7 @@ public class CharacterMovement : MonoBehaviour
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
         public string weaponSet = "WeaponSet";
+        public string deadBool = "isDead";
     }
 	[SerializeField]
 	public AnimationSettings animations;
@@ -50,69 +51,88 @@ public class CharacterMovement : MonoBehaviour
 	[SerializeField]
 	public MovementSettings movement;
 
+    [System.Serializable]
+    public class deathSettings
+    {
+        public float respawnTime = 5;
+        public float respawnHealth = 50;
+    }
+    [SerializeField]
+    public deathSettings death;
+
+    //protected variables
+    protected bool combatState = false;
+    protected bool characterRooted = true;
+
     //public variables
     public float characterActionTimeStamp =0;
     public bool crouching;
+    public bool dodging;
+    public bool characterControllable = true;
 
     //private variables
     private bool jumping;
-    private bool dodging;
     private float speed;
-    protected bool combatState = false;
-    protected bool characterRooted = true;
     private float characterToggleCombatTimeStamp = 0;
 
     public Animator animator;
 	private CharacterController characterController;
 	private Vector3 moveDirection;
+    private Statistics statistics;
 
-    protected virtual void CombatInitialize() { }
+    //characterscript spesific updates
+    protected virtual void CharactertInitialize() { }
     protected virtual void CombatActionUpdate() { }
+    protected virtual void CharacterInCombatUpdate() { }
+    protected virtual void CharacterOutOfCombatUpdate() { }
 
     void Start()
     {
+        statistics = this.transform.root.GetComponent<Statistics>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
-        CombatInitialize();
+        CharactertInitialize();
     }
 
     void Update()
     {
-        //actions only available durring
-        if (IsGrounded())
-        {
-            //instant actions
-            if (Input.GetButton(Constants.CROUCH_BUTTON))
-                crouching = true;
-            else
-                crouching = false;
-
-            if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
-                SwitchCombatState();
-            //Apply movementDirections
-			moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= GetSpeed();
-
-            //limit actions to the in/out combat state
-            switch (combatState)
+        if (characterControllable) {
+            //actions only available durring
+            if (statistics.GetHealth() == 0)
             {
-                case (false):
-                    OutOfCombatUpdate();
-                    break;
-                case (true):
-                    InCombatUpdate();
-                    break;
+                Die();
             }
+            if (IsGrounded())
+            {
+                //instant actions
+                if (Input.GetButton(Constants.CROUCH_BUTTON))
+                    crouching = true;
+                else
+                    crouching = false;
 
-            if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS)) { 
-                //Rotate the player with camera
-                Vector3 newRotation = transform.eulerAngles;
-                newRotation.y = Camera.main.transform.eulerAngles.y;
+                if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
+                    SwitchCombatState();
+                //Apply movementDirections
+                moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
+                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection *= GetSpeed();
 
-                Quaternion targetRotation = Quaternion.Euler(newRotation);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
+                //limit actions to the in/out combat state
+                switch (combatState)
+                {
+                    case (false):
+                        OutOfCombatUpdate();
+                        break;
+                    case (true):
+                        InCombatUpdate();
+                        break;
+                }
+
+                if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS))
+                {
+                    RotateToCamera();
+                }
             }
         }
         //movement
@@ -123,8 +143,20 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void RotateToCamera()
+    {
+        Vector3 newRotation = transform.eulerAngles;
+        newRotation.y = Camera.main.transform.eulerAngles.y;
+
+        Quaternion targetRotation = Quaternion.Euler(newRotation);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * movement.rotateSpeed);
+    }
+
     void OutOfCombatUpdate()
     {
+        //call out of combat update of specific character
+        CharacterOutOfCombatUpdate();
+        //out of combat actions for both characters
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
         {
@@ -137,9 +169,11 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void InCombatUpdate() {
-        if (Input.GetButton(Constants.DODGE_BUTTON))
-            Dodge();
+    void InCombatUpdate()
+    {
+        //call in combat update of specific character
+        CharacterInCombatUpdate();
+        //incombat actions for both characters
         //cooldown based actions 
         if (characterActionTimeStamp <= Time.time)
         {
@@ -207,29 +241,6 @@ public class CharacterMovement : MonoBehaviour
         yield return new WaitForSeconds(movement.jumpTime);
         jumping = false;
     }
-
-    private void Dodge()
-    {
-        if (!dodging)
-        {
-			if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
-            {
-				StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
-            }
-			else if(Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
-            {
-				StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
-            }
-        }
-    }
-
-    IEnumerator Roll(bool horizontal, float direction)
-    {
-        dodging = true;
-        yield return new WaitForSeconds(0.5f);
-        StopCoroutine(Roll(horizontal, direction));
-        dodging = false;
-    }
     
     public void SwitchCombatState()
     {
@@ -240,5 +251,25 @@ public class CharacterMovement : MonoBehaviour
 
         animator.SetBool(animations.isInCombat, combatState);
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
+    }
+
+    private void Die()
+    {
+        //disable input
+        characterControllable = false;
+        //start animation death scene
+        animator.SetBool(animations.deadBool,true);
+        //force death animation
+        animator.Play("Dead");
+        StartCoroutine(Respawn());
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(death.respawnTime);
+        this.transform.position = statistics.spawnpoint.transform.position;
+        statistics.IncreaseHealth(death.respawnHealth);
+        animator.SetBool(animations.deadBool, false);
+        characterControllable = true;
     }
 }

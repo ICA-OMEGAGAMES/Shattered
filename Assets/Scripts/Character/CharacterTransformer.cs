@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(MarkerManager))]
+[RequireComponent(typeof(Statistics))]
 public class CharacterTransformer : MonoBehaviour {
 
     [System.Serializable]
@@ -16,14 +18,14 @@ public class CharacterTransformer : MonoBehaviour {
     public GameObject transformation;
 
     //forms
-    public enum characterForm
+    public enum CharacterForm
     {
         devon,
         transformToMalphas, 
         malphas,
         transformToDevon,
     }
-    public characterForm currentForm = characterForm.devon;
+    public CharacterForm currentForm = CharacterForm.devon;
 
 
     private float transformationTimeStamp = 0;
@@ -46,20 +48,20 @@ public class CharacterTransformer : MonoBehaviour {
     {
         switch (currentForm)
         {
-            case (characterForm.devon):
-                currentForm = characterForm.transformToMalphas;
+            case (CharacterForm.devon):
+                currentForm = CharacterForm.transformToMalphas;
                 SelectCharacter();
                 break;
-            case (characterForm.transformToMalphas):
-                currentForm = characterForm.malphas;
+            case (CharacterForm.transformToMalphas):
+                currentForm = CharacterForm.malphas;
                 SelectCharacter();
                 break;
-            case (characterForm.malphas):
-                currentForm = characterForm.transformToDevon;
+            case (CharacterForm.malphas):
+                currentForm = CharacterForm.transformToDevon;
                 SelectCharacter();
                 break;
-            case (characterForm.transformToDevon):
-                currentForm = characterForm.devon;
+            case (CharacterForm.transformToDevon):
+                currentForm = CharacterForm.devon;
                 SelectCharacter();
                 break;
         }
@@ -70,7 +72,7 @@ public class CharacterTransformer : MonoBehaviour {
         //switch the active states of the player character
         switch (currentForm)
         {
-            case (characterForm.devon):
+            case (CharacterForm.devon):
                 //Change from Malphas to Devon
                 devon.SetActive(true);
                 malphas.SetActive(false);
@@ -80,7 +82,7 @@ public class CharacterTransformer : MonoBehaviour {
                 devon.transform.position = malphas.transform.position;
                 devon.transform.rotation = malphas.transform.rotation;
                 break;
-            case (characterForm.transformToMalphas):
+            case (CharacterForm.transformToMalphas):
                 //Change from Davon to Transformation
                 devon.SetActive(false);
                 malphas.SetActive(false);
@@ -90,9 +92,9 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.position = devon.transform.position;
                 transformation.transform.rotation = devon.transform.rotation;
 
-                StartCoroutine(StartTransformation(characterForm.malphas));
+                StartCoroutine(StartTransformation(CharacterForm.malphas));
                 break;
-            case (characterForm.malphas):
+            case (CharacterForm.malphas):
                 //Change from Transformation to Malphas
                 devon.SetActive(false);
                 malphas.SetActive(true);
@@ -102,7 +104,7 @@ public class CharacterTransformer : MonoBehaviour {
                 malphas.transform.position = transformation.transform.position;
                 malphas.transform.rotation = transformation.transform.rotation;
                 break;
-            case (characterForm.transformToDevon):
+            case (CharacterForm.transformToDevon):
                 //Change from Davon to Transformation
                 devon.SetActive(false);
                 malphas.SetActive(false);
@@ -112,12 +114,12 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.position = malphas.transform.position;
                 transformation.transform.rotation = malphas.transform.rotation;
 
-                StartCoroutine(StartTransformation(characterForm.devon));
+                StartCoroutine(StartTransformation(CharacterForm.devon));
                 break;
         }
     }
 
-    private IEnumerator StartTransformation(characterForm targetForm)
+    private IEnumerator StartTransformation(CharacterForm targetForm)
     {
         yield return new WaitForSeconds(transformationSettings.transformationDuration);
         currentForm = targetForm;
