@@ -134,18 +134,6 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="Antlr4.Runtime.Standard">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
- </Reference>
- <Reference Include="CsvHelper">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="YarnSpinner">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -166,6 +154,18 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="Antlr4.Runtime.Standard">
+ <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
+ </Reference>
+ <Reference Include="YarnSpinner">
+ <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
+ </Reference>
+ <Reference Include="CsvHelper">
+ <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
