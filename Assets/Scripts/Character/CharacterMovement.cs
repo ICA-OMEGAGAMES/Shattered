@@ -53,16 +53,16 @@ public class CharacterMovement : MonoBehaviour
 	public MovementSettings movement;
 
     [System.Serializable]
-    public class deathSettings
+    public class DeathSettings
     {
         public float respawnTime = 5;
         public float respawnHealth = 50;
     }
     [SerializeField]
-    public deathSettings death;
+    public DeathSettings death;
 
     //protected variables
-    protected bool combatState = false;
+    public bool combatState = false;
     protected bool characterRooted = true;
 
     //public variables
@@ -213,6 +213,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
+        animator.SetBool(animations.isInCombat, combatState);
     }
 
     //returns if the player is falling or not (Has to be slightly bigger as IsGrounded()
@@ -264,7 +265,6 @@ public class CharacterMovement : MonoBehaviour
             combatState = false;
         else
             combatState = true;
-        animator.SetBool(animations.isInCombat, combatState);
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }
 
@@ -275,7 +275,7 @@ public class CharacterMovement : MonoBehaviour
         //start animation death scene
         animator.SetBool(animations.deadBool,true);
         //force death animation
-        animator.Play("Dead");
+        animator.Play(Constants.ANIMATIONSTATE_DEAD);
         StartCoroutine(Respawn());
     }
 
@@ -286,5 +286,17 @@ public class CharacterMovement : MonoBehaviour
         statistics.IncreaseHealth(death.respawnHealth);
         animator.SetBool(animations.deadBool, false);
         characterControllable = true;
+    }
+
+    public bool CombatState
+    {
+        get
+        {
+            return this.combatState;
+        }
+        set
+        {
+            this.combatState = value;
+        }
     }
 }

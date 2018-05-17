@@ -93,6 +93,10 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.rotation = devon.transform.rotation;
 
                 StartCoroutine(StartTransformation(CharacterForm.malphas));
+
+                //give combat status
+                if (malphas.GetComponent<CharacterMovement>().CombatState != devon.GetComponent<CharacterMovement>().CombatState)
+                    malphas.GetComponent<CharacterMovement>().SwitchCombatState();
                 break;
             case (CharacterForm.malphas):
                 //Change from Transformation to Malphas
@@ -115,6 +119,9 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.rotation = malphas.transform.rotation;
 
                 StartCoroutine(StartTransformation(CharacterForm.devon));
+                //give combat status
+                if (malphas.GetComponent<CharacterMovement>().CombatState != devon.GetComponent<CharacterMovement>().CombatState)
+                    devon.GetComponent<CharacterMovement>().SwitchCombatState();
                 break;
         }
     }
