@@ -36,8 +36,11 @@
 	// CONFIG
 	public const string GRAPHICS_JSON = "/graphicsettings.json";
 	public const string SOUND_JSON = "/soundsettings.json";
+	public const string SKILLTREE_JSON = "Assets/Scripts/Skill Tree/TreeData/skilltree.json";
 
     // OBJECTNAMES
     public const string WEAPONHANDLER = "WeaponHandler";
     public const string CAMERAFOLLOWPOINT = "CameraFollowPoint";
+
+
 }

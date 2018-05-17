@@ -62,12 +62,11 @@ public class SkillTreeReader : MonoBehaviour
 
     public void LoadSkillTree()
     {
-        string path = "Assets/Scripts/SkillTree/TreeData/skilltree.json";
         string dataAsJson;
-        if (File.Exists(path))
+		if (File.Exists(Constants.SKILLTREE_JSON))
         {
             // Read the json from the file into a string
-            dataAsJson = File.ReadAllText(path);
+			dataAsJson = File.ReadAllText(Constants.SKILLTREE_JSON);
 
             // Pass the json to JsonUtility, and tell it to create a SkillTree object from it
             SkillTree loadedData = JsonUtility.FromJson<SkillTree>(dataAsJson);
