@@ -1,2 +1,2 @@
 # Shattered
-read me
+edit me
