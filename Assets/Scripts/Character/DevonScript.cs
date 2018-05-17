@@ -155,11 +155,21 @@ public class DevonScript : CharacterMovement
     MarkerManager markerManager;
 
     //combatStart
-    protected override void CombatInitialize()
+    protected override void CharactertInitialize()
     {
         combatSet = SetCombatSet(animator, animations, null);
         markerManager = this.transform.parent.GetComponent<MarkerManager>();
         markerManager.SetMarkers();
+    }
+
+    protected override void CharacterOutOfCombatUpdate()
+    {
+    }
+
+    protected override void CharacterInCombatUpdate()
+    {
+        if (Input.GetButton(Constants.DODGE_BUTTON))
+            Dodge();
     }
 
     // combatUpdate seperatly so the combatactions are only checked when inteded
@@ -170,14 +180,37 @@ public class DevonScript : CharacterMovement
         {
             attack = combatSet.Attack1(animator);
             characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
+            characterRooted = attack.rootable;
         }
         else if (Input.GetButton(Constants.ATTACK2_BUTTON))
         {
             attack = combatSet.Attack2(animator);
             characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
+            characterRooted = attack.rootable;
         }
+    }
+
+    private void Dodge()
+    {
+        if (!dodging)
+        {
+            if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
+            {
+                StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
+            }
+            else if (Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
+            {
+                StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
+            }
+        }
+    }
+
+    IEnumerator Roll(bool horizontal, float direction)
+    {
+        dodging = true;
+        yield return new WaitForSeconds(0.5f);
+        StopCoroutine(Roll(horizontal, direction));
+        dodging = false;
     }
 
     public void ChangeCombatSet(Weapon weapon)
