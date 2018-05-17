@@ -10,22 +10,15 @@ public class SceneTransition : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        int current_scene = SceneManager.GetActiveScene().buildIndex;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    //if (Input.GetButton("Pickup"))
-     //   {
-     //       SceneManager.LoadScene(next_scene);
-     //   }	
+        currentScene = SceneManager.GetActiveScene().buildIndex;
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == Constants.PLAYER_TAG)
         {
-            SceneManager.LoadScene(current_scene +1);
+            //increment by 1 to load the next scene.
+            SceneManager.LoadScene(currentScene +1);
         }
     }
 

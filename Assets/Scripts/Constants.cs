@@ -7,6 +7,7 @@
     public const string ENEMY_TAG = "Enemy";
     public const string MARKER_TAG = "Marker";
     public const string UNTAGGED = "Untagged";
+    public const string PLAYER_TAG = "Player";
 
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";
