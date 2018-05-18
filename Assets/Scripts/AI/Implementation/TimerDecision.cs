@@ -13,10 +13,10 @@ public class TimerDecision : Decision {
 
     private bool CheckTimer(AIManager manager)
     {
-        if(!manager.IsTimerSet())
+        if(!manager.IsTimestampSet())
         {
-            manager.SetTimer(Seconds);
+            manager.SetTimestamp(Seconds);
         }
-        return manager.IsTimerExpired();
+        return manager.IsTimestampExpired();
     }
 }

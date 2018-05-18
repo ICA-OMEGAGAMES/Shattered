@@ -17,6 +17,7 @@ public class UnarmedAttackAction : Action
         if(manager.IsNavMeshAgentMoving())
         {
             return;
+            //if the ai is moving (approaching) it is out of combat
         }
 
         if (!manager.IsCombatEnabled())
@@ -35,6 +36,7 @@ public class UnarmedAttackAction : Action
             } else {
                 manager.animationManager.SetFightingAnimation(0, 2);
             }
+            //kick or punch based on chance
 
             manager.SetAttackCooldown(manager.unarmedCombatSettings.cooldown);
         }

@@ -20,9 +20,9 @@ public class AIManager : MonoBehaviour
     private MarkerManager markerManager;
     private bool isInCombat = false;
     protected bool characterRooted = true;
-    private float attackCooldown;
-    private float timer;
-    private bool isTimerSet;
+    private float attackCooldownTimestamp;
+    private float timestamp;
+    private bool isTimestampSet;
     private float health = 100;
 
     [System.Serializable]
@@ -97,17 +97,17 @@ public class AIManager : MonoBehaviour
 
      public void SetAttackCooldown(float time)
     {
-        attackCooldown = Time.time + time;
+        attackCooldownTimestamp = Time.time + time;
     }
 
     public void ResetAttackCooldown()
     {
-        attackCooldown = 0;
+        attackCooldownTimestamp = 0;
     }
 
     public bool IsCooldownExpired()
     {
-        return Time.time > attackCooldown;
+        return Time.time > attackCooldownTimestamp;
     }
 
     public bool IsCombatEnabled()
@@ -144,24 +144,24 @@ public class AIManager : MonoBehaviour
 		navMeshAgent.isStopped = false;
     }
 
-    public bool IsTimerSet()
+    public bool IsTimestampSet()
     {
-        return isTimerSet;
+        return isTimestampSet;
     }
 
-    public void SetTimer(float seconds)
+    public void SetTimestamp(float seconds)
     {
-        timer = Time.time + seconds;
-        isTimerSet = true;
+        timestamp = Time.time + seconds;
+        isTimestampSet = true;
     }
 
-    public bool IsTimerExpired(){
-        bool expired = timer < Time.time;
+    public bool IsTimestampExpired(){
+        bool expired = timestamp < Time.time;
         if(expired)
         {
-            isTimerSet = false;
+            isTimestampSet = false;
         }
-        return expired && isTimerSet;
+        return expired && isTimestampSet;
     }
 
     public void TakeDamage(float amount)

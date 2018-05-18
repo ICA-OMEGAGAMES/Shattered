@@ -16,6 +16,7 @@ public class AIAnimationManager : MonoBehaviour
     public class AnimationSettings
     {
         //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
+        //TODO: Add dying animation
         public string groundedBool = "isGrounded";
         public string jumpBool = "isJumping";
         public string crouchBool = "isCrouching";
@@ -38,7 +39,7 @@ public class AIAnimationManager : MonoBehaviour
     public void Animate(float walkingSpeed)
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
-        animator.SetFloat(animations.horizontalVelocityFloat, 0.0f);
+        animator.SetFloat(animations.horizontalVelocityFloat, 0.0f); // TODO: not sure right now if the strafing is needed
         animator.SetBool(animations.jumpBool, jumping);
         animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.crouchBool, crouching);

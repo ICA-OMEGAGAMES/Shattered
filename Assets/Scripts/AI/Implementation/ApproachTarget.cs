@@ -15,7 +15,8 @@ public class ApproachTarget : Action {
 		 Vector3 targetPosition = manager.GetTargetPosition();
 
         if(!manager.IsCooldownExpired() || Vector3.Distance(targetPosition, manager.transform.position) <= (manager.aiStats.reachedDistance * manager.aiStats.reachedTollerance)){
-            manager.StopMovement();
+			// if the cooldown is not expired yet or the target is reached stop
+		    manager.StopMovement();
             return;
         }
 
