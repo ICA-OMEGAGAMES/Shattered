@@ -29,7 +29,7 @@ public class MarkerScript : MonoBehaviour {
         isEnabled = false;
     }
 
-    public void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (isEnabled) {
             markerManager.NotifyHit(other.gameObject, markerDamage);

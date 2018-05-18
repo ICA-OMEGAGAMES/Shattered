@@ -9,7 +9,6 @@
 	public const string UNTAGGED = "Untagged";
 	public const string PLAYER_TAG = "Player";
 
-
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";
 	public const string DROPWEAPON_BUTTON = "DropWeapon";
