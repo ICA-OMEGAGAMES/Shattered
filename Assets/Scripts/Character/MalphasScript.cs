@@ -24,6 +24,7 @@ public class MalphasScript : CharacterMovement {
     [Serializable]
     public class SkillsSettings
     {
+        public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
         public SkillSettings phychicScreamSettings;
         public SkillSettings divineAuraSettings;
@@ -46,6 +47,7 @@ public class MalphasScript : CharacterMovement {
         markerManager.SetMarkers();
 
         //for development purposes
+        skills.Add(new Teleport(skillSettings.teleportSettings));
         skills.Add(new Barrier(skillSettings.barierSettings));
         skills.Add(new PhychicScream(skillSettings.phychicScreamSettings));
         skills.Add(new DivineAura(skillSettings.divineAuraSettings));
@@ -58,6 +60,8 @@ public class MalphasScript : CharacterMovement {
         //todo: teleport skill
         //press aim teleport
         //press teleport
+        //(possible by Iskill?)
+
     }
 
     protected override void CharacterInCombatUpdate()
@@ -66,27 +70,27 @@ public class MalphasScript : CharacterMovement {
         if (Input.GetButton(Constants.SKILL1_BUTTON))
         {
             if (skills.Count >= 1)
-                skills[0].Execute(animator);
+                skills[1].Execute(animator);
         }
         if (Input.GetButton(Constants.SKILL2_BUTTON))
         {
             if (skills.Count >= 2) 
-                skills[1].Execute(animator);
+                skills[2].Execute(animator);
         }
         if (Input.GetButton(Constants.SKILL3_BUTTON))
         {
             if (skills.Count >= 3)
-                skills[2].Execute(animator);
+                skills[3].Execute(animator);
         }
         if (Input.GetButton(Constants.SKILL4_BUTTON))
         {
             if (skills.Count >= 4)
-                skills[3].Execute(animator);
+                skills[4].Execute(animator);
         }
         if (Input.GetButton(Constants.SKILL5_BUTTON))
         {
             if (skills.Count >= 5)
-                skills[4].Execute(animator);
+                skills[5].Execute(animator);
         }
     }
 

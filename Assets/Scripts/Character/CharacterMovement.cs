@@ -62,14 +62,14 @@ public class CharacterMovement : MonoBehaviour
     public DeathSettings death;
 
     //protected variables
-    public bool combatState = false;
     protected bool characterRooted = true;
-
-    //public variables
-    protected float characterActionTimeStamp =0;
+    protected float characterActionTimeStamp = 0;
     protected bool crouching;
     protected bool dodging;
-    public bool characterControllable = true;
+    protected bool characterControllable = true;
+
+    //public variables
+    public bool combatState = false;
 
     //private variables
     private bool jumping;
@@ -100,7 +100,9 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (characterControllable) {
+        if (characterControllable)
+        {
+            SetControllable(true);
             //actions only available durring
             if (statistics.GetHealth() == 0)
             {
@@ -140,6 +142,9 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
         }
+        else
+            SetControllable(false);
+
         //movement
         if (characterRooted == false) {
             Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
@@ -196,13 +201,16 @@ public class CharacterMovement : MonoBehaviour
         if (characterActionTimeStamp <= Time.time)
         {
             characterRooted = false;
+            SetControllable(true);
             if (combatState == true && crouching == false)
             {
                 if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
                 {
                     CombatActionUpdate();
+                    SetControllable(false);
                 }
             }
+
         }
     }
 
@@ -216,6 +224,14 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
         animator.SetBool(animations.isInCombat, combatState);
+    }
+
+    private void SetControllable(bool active)
+    {
+        if (active)
+            this.GetComponent<CharacterController>().enabled = true;
+        else
+            this.GetComponent<CharacterController>().enabled = false;
     }
 
     //returns if the player is falling or not (Has to be slightly bigger as IsGrounded()
