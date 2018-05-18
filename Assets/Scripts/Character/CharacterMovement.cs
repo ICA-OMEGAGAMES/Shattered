@@ -16,12 +16,13 @@ public class CharacterMovement : MonoBehaviour
         public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
         public string isInCombat = "isInCombat";
+        public string deadBool = "isDead";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
+        public string weaponSet = "WeaponSet";
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
-        public string weaponSet = "WeaponSet";
-        public string deadBool = "isDead";
+        public string blink = "Blink";
     }
 	[SerializeField]
 	public AnimationSettings animations;
@@ -52,23 +53,23 @@ public class CharacterMovement : MonoBehaviour
 	public MovementSettings movement;
 
     [System.Serializable]
-    public class deathSettings
+    public class DeathSettings
     {
         public float respawnTime = 5;
         public float respawnHealth = 50;
     }
     [SerializeField]
-    public deathSettings death;
+    public DeathSettings death;
 
     //protected variables
-    protected bool combatState = false;
     protected bool characterRooted = true;
+    protected float characterActionTimeStamp = 0;
+    protected bool crouching;
+    protected bool dodging;
+    protected bool characterControllable = true;
 
     //public variables
-    public float characterActionTimeStamp =0;
-    public bool crouching;
-    public bool dodging;
-    public bool characterControllable = true;
+    public bool combatState = false;
 
     //private variables
     private bool jumping;
@@ -76,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
     private float characterToggleCombatTimeStamp = 0;
 
     public Animator animator;
-	private CharacterController characterController;
+	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
 
@@ -85,6 +86,8 @@ public class CharacterMovement : MonoBehaviour
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
     protected virtual void CharacterOutOfCombatUpdate() { }
+    protected virtual void CharacterInCombatFixedUpdate() { }
+    protected virtual void CharacterOutOfCombatFixedUpdate() { }
 
     void Start()
     {
@@ -97,12 +100,18 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (characterControllable) {
+        if (characterControllable)
+        {
+            SetControllable(true);
             //actions only available durring
             if (statistics.GetHealth() == 0)
             {
                 Die();
             }
+
+            if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
+                SwitchCombatState();
+
             if (IsGrounded())
             {
                 //instant actions
@@ -111,8 +120,6 @@ public class CharacterMovement : MonoBehaviour
                 else
                     crouching = false;
 
-                if (Input.GetButton(Constants.COMBAT_BUTTON) && characterToggleCombatTimeStamp <= Time.time)
-                    SwitchCombatState();
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
                 moveDirection = transform.TransformDirection(moveDirection);
@@ -135,11 +142,27 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
         }
+        else
+            SetControllable(false);
+
         //movement
         if (characterRooted == false) {
             Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        switch (combatState)
+        {
+            case (false):
+                CharacterOutOfCombatFixedUpdate();
+                break;
+            case (true):
+                CharacterInCombatFixedUpdate();
+                break;
         }
     }
 
@@ -178,13 +201,16 @@ public class CharacterMovement : MonoBehaviour
         if (characterActionTimeStamp <= Time.time)
         {
             characterRooted = false;
+            SetControllable(true);
             if (combatState == true && crouching == false)
             {
                 if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
                 {
                     CombatActionUpdate();
+                    SetControllable(false);
                 }
             }
+
         }
     }
 
@@ -197,6 +223,15 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
+        animator.SetBool(animations.isInCombat, combatState);
+    }
+
+    private void SetControllable(bool active)
+    {
+        if (active)
+            this.GetComponent<CharacterController>().enabled = true;
+        else
+            this.GetComponent<CharacterController>().enabled = false;
     }
 
     //returns if the player is falling or not (Has to be slightly bigger as IsGrounded()
@@ -248,8 +283,6 @@ public class CharacterMovement : MonoBehaviour
             combatState = false;
         else
             combatState = true;
-
-        animator.SetBool(animations.isInCombat, combatState);
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }
 
@@ -260,7 +293,7 @@ public class CharacterMovement : MonoBehaviour
         //start animation death scene
         animator.SetBool(animations.deadBool,true);
         //force death animation
-        animator.Play("Dead");
+        animator.Play(Constants.ANIMATIONSTATE_DEAD);
         StartCoroutine(Respawn());
     }
 
@@ -271,5 +304,17 @@ public class CharacterMovement : MonoBehaviour
         statistics.IncreaseHealth(death.respawnHealth);
         animator.SetBool(animations.deadBool, false);
         characterControllable = true;
+    }
+
+    public bool CombatState
+    {
+        get
+        {
+            return this.combatState;
+        }
+        set
+        {
+            this.combatState = value;
+        }
     }
 }
