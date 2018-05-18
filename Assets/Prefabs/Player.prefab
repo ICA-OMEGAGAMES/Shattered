@@ -2969,6 +2969,8 @@ GameObject:
   - component: {fileID: 114005256783479890}
   - component: {fileID: 114735655093412054}
   - component: {fileID: 114253749765196884}
+  - component: {fileID: 143240922920473442}
+  - component: {fileID: 95532133875570728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6664,10 +6666,27 @@ Animator:
   m_GameObject: {fileID: 1733460588785598}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4f240fe7280d06e47bcc9fa820b17a1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3e0d2c217c67a724385f901728dda868, type: 2}
+  m_Controller: {fileID: 9100000, guid: ac2cdc0f9b2c19344b59f4cb8d00036c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95532133875570728
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894981521280070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -6681,7 +6700,7 @@ Animator:
   m_GameObject: {fileID: 1590010507006490}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4f240fe7280d06e47bcc9fa820b17a1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3e0d2c217c67a724385f901728dda868, type: 2}
+  m_Controller: {fileID: 9100000, guid: ea198619b3c3e4f4eb7fc877f9d0d231, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -6698,7 +6717,7 @@ Animator:
   m_GameObject: {fileID: 1470322177924190}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4f240fe7280d06e47bcc9fa820b17a1a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3e0d2c217c67a724385f901728dda868, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3c9958feeda64d64eb0b8b9df9b18b9b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -6777,12 +6796,13 @@ MonoBehaviour:
     crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
+    deadBool: isDead
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
+    weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    weaponSet: WeaponSet
-    deadBool: isDead
+    blink: Blink
   physics:
     gravity: 20
     groundLayers:
@@ -6806,6 +6826,16 @@ MonoBehaviour:
   dodging: 0
   characterControllable: 1
   animator: {fileID: 0}
+  characterController: {fileID: 0}
+  basicCombatSettings:
+    attack1Damage: 10
+    attack1Duration: 0.5
+    attack1Rootable: 1
+    attack2Damage: 20
+    attack2Duration: 0.5
+    attack2Rootable: 1
+    blinkCooldown: 1
+    blinkDistance: 3
 --- !u!114 &114453318923123256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6858,12 +6888,13 @@ MonoBehaviour:
     crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
+    deadBool: isDead
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
+    weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    weaponSet: WeaponSet
-    deadBool: isDead
+    blink: Blink
   physics:
     gravity: 20
     groundLayers:
@@ -6887,6 +6918,7 @@ MonoBehaviour:
   dodging: 0
   characterControllable: 1
   animator: {fileID: 0}
+  characterController: {fileID: 0}
   unarmedCombatSettings:
     attack1Damage: 5
     attack1Duration: 0.5
@@ -7598,6 +7630,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!143 &143240922920473442
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894981521280070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143250293330375360
 CharacterController:
   m_ObjectHideFlags: 1
