@@ -28,6 +28,7 @@ public class AIManager : MonoBehaviour
     [System.Serializable]
     public class AIStats
     {
+        //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
         public float maxHealth = 100;
         public float moveSpeed = 4f;
         public float strafeSpeed = 5f;
