@@ -44,7 +44,7 @@ public class CharacterMovement : MonoBehaviour
         public float runSpeed = 8.0F;
         public float jumpSpeed = 8.0F;
         public float jumpTime = 0.25f;
-        public float jumpCooldown = 1;
+        public float jumpCooldown = 0.5f;
         public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
@@ -141,6 +141,9 @@ public class CharacterMovement : MonoBehaviour
                     RotateToCamera();
                 }
             }
+            else
+                characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
+
         }
         else
             SetControllable(false);

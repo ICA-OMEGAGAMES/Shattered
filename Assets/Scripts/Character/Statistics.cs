@@ -22,7 +22,6 @@ public class Statistics : MonoBehaviour {
 	public void ReduceHealth (float amount){
 		health -= amount;
 
-		// TODO: implement dying action (respawn)
         if (health <= Constants.MIN_PLAYER_HEALTH) 
 			health = Constants.MIN_PLAYER_HEALTH;
         healthbar.value = CalculateHealth();
