@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MarkerManager : MonoBehaviour{
 
-
     List<GameObject> markers = new List<GameObject>();
-
     List<GameObject> hitBySwing = new List<GameObject>();
 
     public void SetMarkers()

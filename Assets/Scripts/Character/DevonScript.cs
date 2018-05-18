@@ -154,7 +154,6 @@ public class DevonScript : CharacterMovement
     CharacterAttack attack;
     MarkerManager markerManager;
 
-    //combatStart
     protected override void CharactertInitialize()
     {
         combatSet = SetCombatSet(animator, animations, null);
@@ -164,12 +163,23 @@ public class DevonScript : CharacterMovement
 
     protected override void CharacterOutOfCombatUpdate()
     {
+        //Davon outOfCombat actions update
     }
 
     protected override void CharacterInCombatUpdate()
     {
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Dodge();
+    }
+
+    protected override void CharacterOutOfCombatFixedUpdate()
+    {
+        //Davon outOfCombat actions fixedupdate
+    }
+
+    protected override void CharacterInCombatFixedUpdate()
+    {
+        //Davon InCombat actions fixedupdate
     }
 
     // combatUpdate seperatly so the combatactions are only checked when inteded
