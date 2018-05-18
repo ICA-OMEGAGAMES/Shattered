@@ -156,7 +156,7 @@ public class MalphasScript : CharacterMovement {
         }
     }
 
-    public void LearnSkill(string skil)
+    public void LearnSkill(string skill)
     {
         //TODO: learnSkill from skilltree
         //skills.Add();
