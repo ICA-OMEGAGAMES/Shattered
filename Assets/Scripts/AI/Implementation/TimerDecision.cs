@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu (menuName = "PluggableAI/Decisions/Timer")]
 public class TimerDecision : Decision {
-    public float Seconds;
 
     public override bool Decide(AIManager manager)
     {
@@ -15,7 +14,7 @@ public class TimerDecision : Decision {
     {
         if(!manager.IsTimestampSet())
         {
-            manager.SetTimestamp(Seconds);
+            manager.SetTimestamp(manager.aiStats.searchTime);
         }
         return manager.IsTimestampExpired();
     }

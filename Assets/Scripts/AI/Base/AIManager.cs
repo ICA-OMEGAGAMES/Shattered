@@ -23,11 +23,12 @@ public class AIManager : MonoBehaviour
     private float attackCooldownTimestamp;
     private float timestamp;
     private bool isTimestampSet;
-    private float health = 100;
+    private float currentHealth;
 
     [System.Serializable]
     public class AIStats
     {
+        public float maxHealth = 100;
         public float moveSpeed = 4f;
         public float strafeSpeed = 5f;
         public float crouchSpeed = 2.0F;
@@ -70,6 +71,7 @@ public class AIManager : MonoBehaviour
     public bool SetUpAiManager()
     {
         bool active = false;
+        currentHealth = aiStats.maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent> ();
         animationManager = GetComponent<AIAnimationManager>();
         GameObject target = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG);
@@ -166,8 +168,8 @@ public class AIManager : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        if(health <= 0)
+        currentHealth -= amount;
+        if(currentHealth <= 0)
         {
             transform.root.gameObject.SetActive(false);
         }
