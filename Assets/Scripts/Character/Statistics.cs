@@ -21,7 +21,7 @@ public class Statistics : MonoBehaviour {
 
 	public void ReduceHealth (float amount){
 		health -= amount;
-
+        
         if (health <= Constants.MIN_PLAYER_HEALTH) 
 			health = Constants.MIN_PLAYER_HEALTH;
         healthbar.value = CalculateHealth();
