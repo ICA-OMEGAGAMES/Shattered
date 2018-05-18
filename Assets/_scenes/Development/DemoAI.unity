@@ -997,8 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286be108e686220429dbc02da2bb59e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFollowSetting: {fileID: 11400000, guid: 70485a6000857704fbf5be8e12f4d29a,
-    type: 2}
   gameObjectToFollow: {fileID: 1303963537}
   dialogueRunner: {fileID: 1758168263}
 --- !u!4 &163601886
@@ -1702,6 +1700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 367186103}
+  spawnpoint: {fileID: 0}
+  health: 0
 --- !u!114 &333482294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,11 +1733,13 @@ MonoBehaviour:
     crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
+    deadBool: isDead
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
+    weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    weaponSet: WeaponSet
+    blink: Blink
   physics:
     gravity: 20
     groundLayers:
@@ -1753,9 +1755,12 @@ MonoBehaviour:
     dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
-  characterActionTimeStamp: 0
-  crouching: 0
+  death:
+    respawnTime: 5
+    respawnHealth: 50
+  combatState: 0
   animator: {fileID: 0}
+  characterController: {fileID: 0}
   unarmedCombatSettings:
     attack1Damage: 10
     attack1Duration: 0.5
@@ -3433,11 +3438,13 @@ MonoBehaviour:
     crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
+    deadBool: isDead
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
+    weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    weaponSet: WeaponSet
+    blink: Blink
   physics:
     gravity: 20
     groundLayers:
@@ -3453,9 +3460,12 @@ MonoBehaviour:
     dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
-  characterActionTimeStamp: 0
-  crouching: 0
+  death:
+    respawnTime: 5
+    respawnHealth: 50
+  combatState: 0
   animator: {fileID: 0}
+  characterController: {fileID: 0}
 --- !u!95 &680700795
 Animator:
   serializedVersion: 3
@@ -5374,6 +5384,11 @@ Prefab:
       propertyPath: wayPointList.Array.data[3]
       value: 
       objectReference: {fileID: 633220570}
+    - target: {fileID: 95243927105523738, guid: 5fd2963e7055dca4ea013cead80a6786,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f6a82825474afe54dbe487111c5c6320, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fd2963e7055dca4ea013cead80a6786, type: 2}
   m_IsPrefabParent: 0
@@ -7026,6 +7041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
+  spawnpoint: {fileID: 0}
+  health: 0
 --- !u!1 &1506846094
 GameObject:
   m_ObjectHideFlags: 0
@@ -10348,8 +10365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599759d18ca575347b442b01f44e9b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraCollisionSetting: {fileID: 11400000, guid: 0c436434c09c4c148818f0227b9065f5,
-    type: 2}
 --- !u!81 &2037342564
 AudioListener:
   m_ObjectHideFlags: 0
