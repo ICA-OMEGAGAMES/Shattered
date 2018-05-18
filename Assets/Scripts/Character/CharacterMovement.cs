@@ -88,7 +88,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Start()
     {
-        statistics = this.transform.root.GetComponent<Statistics>();
+        statistics = this.transform.root.GetComponentInChildren<Statistics>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
