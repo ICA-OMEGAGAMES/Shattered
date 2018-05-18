@@ -3,35 +3,31 @@ using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
-	private CameraCollisionSettings cameraCollisionSettings;
-
+	[SerializeField] CameraCollisionSetting cameraCollisionSetting;
     private Vector3 dollyDir;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         dollyDir = transform.localPosition.normalized;
-
-        cameraCollisionSettings = ScriptableObject.CreateInstance<CameraCollisionSettings>(); 
-
-		cameraCollisionSettings.distance = transform.localPosition.magnitude;
+		cameraCollisionSetting.distance = transform.localPosition.magnitude;
     }
 
     // Update is called once per frame
     void Update()
     {
-		Vector3 desiredCameraPos = transform.parent.TransformPoint(dollyDir * cameraCollisionSettings.maxDistance);
+		Vector3 desiredCameraPos = transform.parent.TransformPoint(dollyDir * cameraCollisionSetting.maxDistance);
         RaycastHit hit;
 
         if (Physics.Linecast(transform.parent.position, desiredCameraPos, out hit))
         {
-			cameraCollisionSettings.distance = Mathf.Clamp((hit.distance * 0.87f), cameraCollisionSettings.minDistance, cameraCollisionSettings.maxDistance);
+			cameraCollisionSetting.distance = Mathf.Clamp((hit.distance * 0.87f), cameraCollisionSetting.minDistance, cameraCollisionSetting.maxDistance);
         }
         else
         {
-			cameraCollisionSettings.distance = cameraCollisionSettings.maxDistance;
+			cameraCollisionSetting.distance = cameraCollisionSetting.maxDistance;
         }
 
-		transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * cameraCollisionSettings.distance, Time.deltaTime * cameraCollisionSettings.smooth);
+		transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * cameraCollisionSetting.distance, Time.deltaTime * cameraCollisionSetting.smooth);
     }
 }
