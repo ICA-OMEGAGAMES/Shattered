@@ -136,6 +136,7 @@ public class CharacterMovement : MonoBehaviour
                         break;
                 }
 
+                print("rotating");
                 if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS))
                 {
                     RotateToCamera();
