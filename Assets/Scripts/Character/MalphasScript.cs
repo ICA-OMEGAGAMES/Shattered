@@ -112,7 +112,7 @@ public class MalphasScript : CharacterMovement {
             //prefform attack1
             attack = Attack1(animator);
             characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
+            characterRooted = attack.rootable;
 
         }
         else if (Input.GetButton(Constants.ATTACK2_BUTTON))
@@ -120,7 +120,7 @@ public class MalphasScript : CharacterMovement {
             //prefform attack2
             attack = Attack2(animator);
             characterActionTimeStamp = Time.time + attack.cooldown;
-            characterRooted = attack.rootAble;
+            characterRooted = attack.rootable;
         }
     }
 
