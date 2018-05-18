@@ -16,6 +16,7 @@ public class AIManager : MonoBehaviour
     [HideInInspector] public Vector3 lastKnownTargetPosition;
 
 
+    private StateController controller;
     private Transform chaseTarget;
     private MarkerManager markerManager;
     private bool isInCombat = false;
@@ -69,9 +70,10 @@ public class AIManager : MonoBehaviour
     [SerializeField]
     public UnarmedCombatSettings unarmedCombatSettings;
 
-    public bool SetUpAiManager()
+    public bool SetUpAiManager(StateController controller)
     {
         bool active = false;
+        this.controller = controller;
         currentHealth = aiStats.maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent> ();
         animationManager = GetComponent<AIAnimationManager>();
@@ -172,7 +174,10 @@ public class AIManager : MonoBehaviour
         currentHealth -= amount;
         if(currentHealth <= 0)
         {
-            transform.root.gameObject.SetActive(false);
+            StopMovement();
+            SwitchCombatState(false);
+            controller.Die();
+            animationManager.Die();
         }
     }
      public void EnableMarkers()

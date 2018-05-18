@@ -20,7 +20,7 @@ public class StateController : MonoBehaviour {
     void Start () 
     {
         manager = GetComponent<AIManager>();
-        aiActive = manager.SetUpAiManager();
+        aiActive = manager.SetUpAiManager(this);
         animationManager = GetComponent<AIAnimationManager>();
         animationManager.SetUpAIAnimationManager();
     }
@@ -41,6 +41,11 @@ public class StateController : MonoBehaviour {
             currentState = nextState;
             OnExitState ();
         }
+    }
+
+    public void Die()
+    {
+        aiActive = false;
     }
 
     private void OnExitState()
