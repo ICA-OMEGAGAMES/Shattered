@@ -30,7 +30,7 @@ public class MalphasScript : CharacterMovement {
         public SkillSettings divineAuraSettings;
         public SkillSettings darkClawSettings;
         public SkillSettings demonicWaveSettings;
-        public SkillSettings PossessSettings;
+        public SkillSettings possessSettings;
     }
     [SerializeField]
     public SkillsSettings skillSettings;
@@ -52,7 +52,8 @@ public class MalphasScript : CharacterMovement {
         skills.Add(new PhychicScream(skillSettings.phychicScreamSettings));
         skills.Add(new DivineAura(skillSettings.divineAuraSettings));
         skills.Add(new DarkClaw(skillSettings.darkClawSettings));
-       // skills.Add(new DemonicWave(skillSettings.demonicWaveSettings));
+        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings));
+        skills.Add(new Possess(skillSettings.possessSettings));
     }
 
     protected override void CharacterOutOfCombatUpdate()
@@ -96,10 +97,12 @@ public class MalphasScript : CharacterMovement {
 
     protected override void CharacterOutOfCombatFixedUpdate()
     {
+        //Malphas out of combat fixed updates
     }
 
     protected override void CharacterInCombatFixedUpdate()
     {
+        //Malphas in of combat fixed updates
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Blink();
     }
