@@ -9,7 +9,6 @@
 	public const string UNTAGGED = "Untagged";
 	public const string PLAYER_TAG = "Player";
 
-
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";
 	public const string DROPWEAPON_BUTTON = "DropWeapon";
@@ -28,6 +27,8 @@
 	public const string SKILL5_BUTTON = "Skill5";
 	public const string SKILL6_BUTTON = "Skill6";
 	public const string TRANSFORM_BUTTON = "SwitchForm";
+	public const string SKILL_TREE_BUTTON = "SkillTree";
+	public const string START_DIALOGUE_BUTTON = "StartDialogue";
 
 	// AXIS
 	public const string HORIZONTAL_AXIS = "Horizontal";
@@ -45,6 +46,7 @@
 	public const string GRAPHICS_JSON = "/graphicsettings.json";
 	public const string SOUND_JSON = "/soundsettings.json";
 	public const string SKILLTREE_JSON = "Assets/Scripts/Skill Tree/TreeData/skilltree.json";
+	public const string NODEDATA_JSON = "Assets/Scripts/Skill Tree/TreeData/nodeData.json";
 
 	// OBJECTNAMES
 	public const string WEAPONHANDLER = "WeaponHandler";

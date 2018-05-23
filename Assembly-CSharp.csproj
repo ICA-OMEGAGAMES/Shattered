@@ -51,9 +51,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\Decision.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\MarkerManagerAi.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\State.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\StateController.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\Transition.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\ApproachLastKnownPosition.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\ApproachTarget.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\LeaveCombatDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\LookAtTarget.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\LookDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\PatrolAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TargetReachedDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\UnarmedAttackAction.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraSetting.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\Barier.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\DarkClaw.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\DemonicWave.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\DivineAura.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\ISkill.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\PhychicScream.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\Possess.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\SkillSettings.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\Teleport.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterTransformer.cs" />
      <Compile Include="Assets\Scripts\Character\DevonScript.cs" />
@@ -61,6 +90,7 @@
      <Compile Include="Assets\Scripts\Character\InventoryController.cs" />
      <Compile Include="Assets\Scripts\Character\MalphasScript.cs" />
      <Compile Include="Assets\Scripts\Character\MarkerManager.cs" />
+     <Compile Include="Assets\Scripts\Character\MarkerManagerPlayer.cs" />
      <Compile Include="Assets\Scripts\Character\MarkerScript.cs" />
      <Compile Include="Assets\Scripts\Character\Models\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Character\Statistics.cs" />
@@ -91,11 +121,6 @@
      <Compile Include="Assets\Scripts\Skill Tree\SkillTree.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeMenu.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeReader.cs" />
-     <Compile Include="Assets\Scripts\Skill Tree\TreeEditor\Connection.cs" />
-     <Compile Include="Assets\Scripts\Skill Tree\TreeEditor\ConnectionPoint.cs" />
-     <Compile Include="Assets\Scripts\Skill Tree\TreeEditor\Node.cs" />
-     <Compile Include="Assets\Scripts\Skill Tree\TreeEditor\NodeData.cs" />
-     <Compile Include="Assets\Scripts\Skill Tree\TreeEditor\TreeEditor.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\UnlockButton.cs" />
      <Compile Include="Assets\Scripts\SpawnpointScript.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueNPC.cs" />
@@ -126,12 +151,6 @@
      <None Include="Assets\Animations\Animations.txt" />
      <None Include="Assets\Scripts\YarnSpinner\README.txt" />
      <None Include="Assets\3D models\Buildings\Modular Kit\Modular.txt" />
- <Reference Include="Vuforia.UnityExtensions.Editor">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Vuforia.UnityExtensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -192,53 +211,41 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Android.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.WSA.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.WSA.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.LinuxStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.OSXStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Analytics">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Purchasing">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.StandardEvents">
- <HintPath>C:/Users/Zoë/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
  <Reference Include="Antlr4.Runtime.Standard">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
- </Reference>
- <Reference Include="YarnSpinner">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
  </Reference>
  <Reference Include="CsvHelper">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Zoë/Documents/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="YarnSpinner">
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Advertisements">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Analytics">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Purchasing">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StandardEvents">
+ <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
