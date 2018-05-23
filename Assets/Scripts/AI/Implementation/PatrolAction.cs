@@ -12,9 +12,9 @@ public class PatrolAction : Action
 
     private void Patrol(AIManager manager)
     {   
-        manager.MoveNavMeshAgent(manager.wayPointList [manager.nextWayPoint].position, manager.aiStats.moveSpeed);
+        manager.MoveNavMeshAgent(manager.wayPointList [manager.nextWayPoint].position, manager.movementStats.moveSpeed);
 
-        if (manager.navMeshAgent.remainingDistance <= manager.aiStats.reachedDistance && !manager.navMeshAgent.pathPending) 
+        if (manager.navMeshAgent.remainingDistance <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending) 
         {
             manager.nextWayPoint++;
             manager.nextWayPoint = manager.nextWayPoint % manager.wayPointList.Count;

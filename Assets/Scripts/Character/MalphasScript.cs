@@ -37,13 +37,13 @@ public class MalphasScript : CharacterMovement {
 
     private float blinkTimeStamp = 0;
     private CharacterAttack attack;
-    private MarkerManager markerManager;
+    private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
     {
-        markerManager = this.transform.parent.GetComponent<MarkerManager>();
+        markerManager = this.transform.parent.GetComponent<MarkerManagerPlayer>();
         markerManager.SetMarkers();
 
         //for development purposes

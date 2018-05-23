@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(MarkerManager))]
+[RequireComponent(typeof(MarkerManagerPlayer))]
 [RequireComponent(typeof(Statistics))]
 public class CharacterTransformer : MonoBehaviour {
 
