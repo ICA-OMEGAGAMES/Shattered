@@ -43,7 +43,6 @@ public class CameraFollow : MonoBehaviour
             // Lock Cursor, if Camera is active
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            
 			DoCameraRotation ();
        }
     }
@@ -70,7 +69,6 @@ public class CameraFollow : MonoBehaviour
         float step = cameraFollowSettings.cameraMoveSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
-
 
     private void DoCameraRotation()
     {
