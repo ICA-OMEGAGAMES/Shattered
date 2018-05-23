@@ -37,7 +37,6 @@ public class Statistics : MonoBehaviour {
             else
             {
                 blocks--;
-                print(amount + "damage blocked");
                 if (blocks <= 0)
                     ActivateShield(false);
             }
