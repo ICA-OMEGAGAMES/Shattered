@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class TargetReachedDecision : Decision {
 
     private bool Reached(AIManager manager)
     {
-         return (manager.navMeshAgent.remainingDistance <= manager.aiStats.reachedDistance && !manager.navMeshAgent.pathPending); 
+         return (manager.navMeshAgent.remainingDistance <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending); 
            
     }
 }

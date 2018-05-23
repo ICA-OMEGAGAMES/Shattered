@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Barier
   m_EditorClassIdentifier: 
   duration: 3
-  cooldown: 2
+  cooldown: 5
