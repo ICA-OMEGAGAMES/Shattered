@@ -303,7 +303,7 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(death.respawnTime);
-        this.transform.position = statistics.spawnpoint.transform.position;
+        this.transform.position = statistics.Spawnpoint.transform.position;
         statistics.IncreaseHealth(death.respawnHealth);
         animator.SetBool(animations.deadBool, false);
         characterControllable = true;

@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DarkClaw : MonoBehaviour, ISkill
+public class DarkClaw : ISkill
 {
     SkillSettings settings;
+    MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public DarkClaw(SkillSettings settings)
+    public DarkClaw(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -18,7 +20,7 @@ public class DarkClaw : MonoBehaviour, ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("DarkClaw Used");
+            //("DarkClaw Used");
         }
     }
 

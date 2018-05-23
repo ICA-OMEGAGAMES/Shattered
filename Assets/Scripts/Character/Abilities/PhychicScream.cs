@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhychicScream : MonoBehaviour, ISkill
+public class PhychicScream : ISkill
 {
     SkillSettings settings;
+    MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public PhychicScream(SkillSettings settings)
+    public PhychicScream(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -18,7 +20,7 @@ public class PhychicScream : MonoBehaviour, ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("PhychicScream Used");
+            //("PhychicScream Used");
         }
     }
 

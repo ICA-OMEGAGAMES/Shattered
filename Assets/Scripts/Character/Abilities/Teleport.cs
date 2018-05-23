@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MonoBehaviour, ISkill {
+public class Teleport :  ISkill {
     SkillSettings settings;
+    MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public Teleport(SkillSettings settings)
+    public Teleport(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -17,7 +19,7 @@ public class Teleport : MonoBehaviour, ISkill {
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("Teleport Used");
+            //("Teleport Used");
         }
     }
 

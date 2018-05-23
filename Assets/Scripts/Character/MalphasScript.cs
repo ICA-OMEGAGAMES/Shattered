@@ -39,21 +39,24 @@ public class MalphasScript : CharacterMovement {
     private CharacterAttack attack;
     private MarkerManager markerManager;
     private List<ISkill> skills = new List<ISkill>();
+    private Statistics stats;
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
     {
         markerManager = this.transform.parent.GetComponent<MarkerManager>();
         markerManager.SetMarkers();
+        stats = this.transform.parent.GetComponent<Statistics>();
 
         //for development purposes
-        skills.Add(new Teleport(skillSettings.teleportSettings));
-        skills.Add(new Barrier(skillSettings.barierSettings));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings));
-        skills.Add(new DivineAura(skillSettings.divineAuraSettings));
-        skills.Add(new DarkClaw(skillSettings.darkClawSettings));
-        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings));
-        skills.Add(new Possess(skillSettings.possessSettings));
+        skills.Add(new Teleport(skillSettings.teleportSettings, this));
+        skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
+        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
+        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
+        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+        skills.Add(new Possess(skillSettings.possessSettings, this));
+
     }
 
     protected override void CharacterOutOfCombatUpdate()
