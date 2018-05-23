@@ -18,7 +18,6 @@ public class CanvasManager : MonoBehaviour
             }
             return instance;
         }
-        set {}
     }
 
     void Start()
