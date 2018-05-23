@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PhychicScream : ISkill
 {
-    SkillSettings settings;
-    MonoBehaviour mono;
+    private SkillSettings settings;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 

@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,6 @@ public class ApproachLastKnownPosition : Action
 
     private void Approach(AIManager manager)
     {
-        manager.MoveNavMeshAgent(manager.lastKnownTargetPosition, manager.aiStats.moveSpeed);
+        manager.MoveNavMeshAgent(manager.lastKnownTargetPosition, manager.movementStats.moveSpeed);
     }
 }

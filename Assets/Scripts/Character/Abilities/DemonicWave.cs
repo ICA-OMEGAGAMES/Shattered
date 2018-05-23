@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DemonicWave : ISkill{
-    SkillSettings settings;
-    MonoBehaviour mono;
+    private SkillSettings settings;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 

@@ -530,15 +530,15 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4526504732234404}
-  - component: {fileID: 114294092992073438}
   - component: {fileID: 54348854707147334}
+  - component: {fileID: 114062997933217580}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1519040478122662
 GameObject:
   m_ObjectHideFlags: 1
@@ -2335,6 +2335,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114062997933217580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502043371514138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b9d3346afd16f439d4a7892f640203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114102703466140550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2386,17 +2397,6 @@ MonoBehaviour:
   remainState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
   manager: {fileID: 0}
   animationManager: {fileID: 0}
---- !u!114 &114294092992073438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502043371514138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 913b8c0e60fba1449b2028c2b35461ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114451457161117082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2430,6 +2430,12 @@ MonoBehaviour:
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   aiStats:
     maxHealth: 100
+    toggleCombatCooldown: 1
+    searchTime: 5
+    lookSpeed: 1
+    lookRange: 40
+    FOV: 180
+  movementStats:
     moveSpeed: 4
     strafeSpeed: 5
     crouchSpeed: 2
@@ -2438,13 +2444,8 @@ MonoBehaviour:
     jumpTime: 0.25
     jumpCooldown: 1
     dodgeDistance: 10
-    dodgeCooldown: 4
-    toggleCombatCooldown: 1
+    dodgeCooldown: 2
     rotateSpeed: 5
-    searchTime: 5
-    lookSpeed: 1
-    lookRange: 40
-    FOV: 180
     reachedDistance: 0.75
     reachedTollerance: 1.25
     attackRange: 7
@@ -2452,6 +2453,9 @@ MonoBehaviour:
     attackForce: 15
     attackDamage: 5
   unarmedCombatSettings:
+    unarmedAttackRange: 7
+    unarmedAttackRate: 1
+    unarmedAttackDamage: 5
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
     cooldown: 3

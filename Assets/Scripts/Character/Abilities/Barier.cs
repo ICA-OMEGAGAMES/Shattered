@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Barrier : ISkill
 {
-    SkillSettings settings;
-    Statistics statistics;
-    MonoBehaviour mono;
+    private SkillSettings settings;
+    private Statistics statistics;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
