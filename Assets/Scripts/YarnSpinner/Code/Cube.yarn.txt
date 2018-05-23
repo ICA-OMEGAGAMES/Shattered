@@ -1,0 +1,72 @@
+title: Cube
+tags: 
+colorID: 0
+position: 96,-370
+---
+Player: Hey, Cube.
+<<doJump NPC 2>>
+Cube: Oh! Hi.
+Cube: Oh! You frightened me, do not sneak me like that!
+Cube: Wanna try the Dialogue System?
+[[Let's try the Help-Timer.|helpTimer]]
+[[Let's try the Pressure-Timer!|pressureTimer]]
+[[Bye!|bye]]
+===
+title: helpTimer
+tags: 
+colorID: 0
+position: 301,-34
+---
+Cube: Do you need some help? Wait 5 seconds.
+//here we start the Help Timer who goes 5 seconds, and after that he choose the option 3 --> see 5,3 in the command
+<<startHelpTimer NPC 5,3>>
+//options to choose
+[[Sunny.|sunny]] //1
+[[Rainy!|rainy]] //2
+[[I don't know, dude.|dontKnow]] //3
+===
+title: pressureTimer
+tags: 
+colorID: 0
+position: -129,-42
+---
+Cube: Ohh, now the Pressure-Timer started? In 5 seconds it will happen!
+<<startPressureTimer NPC 5,1>>
+[[I don't want to talk about it :/|dontWantToTalk]]
+[[Ohh man, today is to crazy!|todayIsCrazy]]
+===
+title: dontWantToTalk
+tags: 
+colorID: 0
+position: -560,160
+---
+Test - dontWantToTalk
+===
+title: rainy
+tags: 
+colorID: 0
+position: 167,297
+---
+Test - rainy
+===
+title: sunny
+tags: 
+colorID: 6
+position: 658,288
+---
+Test - sunny
+===
+title: dontKnow
+tags: 
+colorID: 0
+position: 715,-44
+---
+Test - dontKnow
+===
+title: bye
+tags: 
+colorID: 0
+position: -342,-361
+---
+Cube: See you!
+===
