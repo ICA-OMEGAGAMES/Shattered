@@ -80,6 +80,7 @@ public class CharacterMovement : MonoBehaviour
 	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
+	public CharacterAudioController characterAudio;
 
     //characterscript spesific updates
     protected virtual void CharactertInitialize() { }
@@ -122,8 +123,12 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
+				if (moveDirection != Vector3.zero) {
+					characterAudio.InvokeWalkingSoundsCoroutine ();
+				}
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= GetSpeed();
+
 
                 //limit actions to the in/out combat state
                 switch (combatState)
@@ -251,12 +256,15 @@ public class CharacterMovement : MonoBehaviour
     //select correct movement speed
     private float GetSpeed()
     {
-		if (Input.GetButton(Constants.RUN_BUTTON))
-            speed = movement.runSpeed;
-		else if (Input.GetButton(Constants.CROUCH_BUTTON))
-            speed = movement.crouchSpeed;
-        else
-            speed = movement.walkSpeed;
+		if (Input.GetButton (Constants.RUN_BUTTON)) {
+			speed = movement.runSpeed;
+			characterAudio.isRunning = true;
+		} else if (Input.GetButton (Constants.CROUCH_BUTTON))
+			speed = movement.crouchSpeed;
+		else {
+			speed = movement.walkSpeed;
+			characterAudio.isRunning = false;
+		}
         return speed;
     }
 
