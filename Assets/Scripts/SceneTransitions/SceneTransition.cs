@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour {
 
-
-	public AudioClip doorOpen;
 	public AudioClip doorClose;
     //index of the current string
     private int currentScene;
@@ -23,20 +21,17 @@ public class SceneTransition : MonoBehaviour {
         if(other.gameObject.tag == Constants.PLAYER_TAG)
         {
             //increment by 1 to load the next scene.
-			SceneManager.LoadScene(currentScene +1);			
-			StartCoroutine (PlayDoorSounds ());
+			StartCoroutine (TransitionScene ());
 
         }
     }
 
-	IEnumerator PlayDoorSounds(){
+	IEnumerator TransitionScene(){
 
-		audioSource.clip = doorOpen;
-		audioSource.Play ();
-		yield return new WaitForSeconds (doorOpen.length);
 		audioSource.clip = doorClose;
 		audioSource.Play ();
-
+		yield return new WaitForSeconds (doorClose.length - .4f);
+		SceneManager.LoadScene(currentScene +1);
 	}
 
 
