@@ -64,15 +64,6 @@ public class SkillTreeMenu : MonoBehaviour
         //#3 how can i go back?
         //      if i unlock the first skill (In a while? or couroutine?) --> while if IsSkillUnlocked(skill01) unlocked do nothing other wise go to #4
         //  #3.1 We also need to can be opened now set, because after the tutorial we can open the skill tree by pressing i
-        // while (SkillTreeReader.Instance.IsSkillUnlocked(0))
-        // {
-        //     Debug.Log("Wait for skill unlocking");
-        // }
-
-        // if (SkillTreeReader.Instance.IsSkillUnlocked(0))
-        // {
-        //     Debug.Log("Wait for skill unlocking");
-        // }
         StartCoroutine(WaitUntilSkillIsUnlocked());
     }
 

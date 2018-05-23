@@ -24,9 +24,6 @@ namespace Yarn.Unity.Shattered
             {
                 CheckForNearbyNPC();
             }
-
-            // Movement for Testing
-            // transform.Translate(1f * Input.GetAxisRaw("Horizontal") + Time.deltaTime, 0f, 1f * Input.GetAxisRaw("Vertical") * Time.deltaTime);
         }
 
         /// Find all DialogueParticipants
