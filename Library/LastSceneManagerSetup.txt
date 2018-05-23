@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Shattered_Development.unity
+- path: Assets/Shattered_Development_outside.unity
   isLoaded: 1
   isActive: 1

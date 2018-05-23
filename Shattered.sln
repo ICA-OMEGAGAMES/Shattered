@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered.Plugins", "Shattered.Plugins.csproj", "{9E4F6D2A-7F1E-8ECE-3587-EC8B01414714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered.Editor.Plugins", "Shattered.Editor.Plugins.csproj", "{471FB7D7-6D5C-6BAA-C1F7-B4E00863BAAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E4F6D2A-7F1E-8ECE-3587-EC8B01414714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4F6D2A-7F1E-8ECE-3587-EC8B01414714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4F6D2A-7F1E-8ECE-3587-EC8B01414714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4F6D2A-7F1E-8ECE-3587-EC8B01414714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{471FB7D7-6D5C-6BAA-C1F7-B4E00863BAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{471FB7D7-6D5C-6BAA-C1F7-B4E00863BAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{471FB7D7-6D5C-6BAA-C1F7-B4E00863BAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{471FB7D7-6D5C-6BAA-C1F7-B4E00863BAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
