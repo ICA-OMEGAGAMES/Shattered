@@ -18,8 +18,9 @@ public class DemonicWave : ISkill{
     {
         if (!IsOnCooldown())
         {
+            
             cooldownTimestamp = Time.time + settings.cooldown;
-            //("DemonicWave Used");
+            GameObject aoeObject = GameObject.Instantiate(settings.skillEffect, mono.transform.position, mono.transform.rotation) as GameObject;
         }
     }
 
