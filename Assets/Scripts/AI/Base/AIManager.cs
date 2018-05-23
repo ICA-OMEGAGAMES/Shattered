@@ -89,24 +89,18 @@ public class AIManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent> ();
         animationManager = GetComponent<AIAnimationManager>();
         FindChaseTarget();
-        if (chaseTarget != null && wayPointList.Count > 0) 
-        {
-            active = true;
-            navMeshAgent.enabled = true;
-        } else 
-        {
-            navMeshAgent.enabled = false;
-        }
+        navMeshAgent.enabled = true;
 
         markerManager = this.transform.parent.GetComponent<MarkerManagerAi>();
         markerManager.SetMarkers();
 
+        active = true;
         return active;
     }
 
     void Update()
     {
-        if(!chaseTarget.gameObject.activeSelf)
+        if(chaseTarget == null || !chaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
         }
@@ -122,6 +116,10 @@ public class AIManager : MonoBehaviour
             }
             chaseTarget = element.transform;
         });
+        if(chaseTarget == null)
+        {
+            Debug.LogError("Player not found.");
+        }
     }
 
     public void SwitchCombatState(bool enabled)
@@ -164,6 +162,11 @@ public class AIManager : MonoBehaviour
 
     public Vector3 GetTargetPosition()
     {
+        if(chaseTarget == null)
+        {
+            Debug.LogError("Target not found.");
+            return transform.position;
+        }
         return new Vector3(chaseTarget.position.x, transform.position.y, chaseTarget.position.z);
     }
 

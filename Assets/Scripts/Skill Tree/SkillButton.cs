@@ -56,7 +56,16 @@ public class SkillButton : MonoBehaviour
         descriptionText.text = SkillTreeReader.Instance.getDescription(skillId);
 
         // showSkillCost
-        skillCost.text = "Cost: " + SkillTreeReader.Instance.getSkillCost(skillId);
+        if (SkillTreeReader.Instance.getSkillCost(skillId) == "0")
+        {
+            skillCost.text = "";
+
+        }
+        else
+        {
+            skillCost.text = "Cost: " + SkillTreeReader.Instance.getSkillCost(skillId);
+
+        }
 
         // activateUnlockButton
         OnSkillSelected(this);
