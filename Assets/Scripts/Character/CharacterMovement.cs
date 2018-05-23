@@ -329,6 +329,7 @@ public class CharacterMovement : MonoBehaviour
 	public float pushPower = 2.0f;
 	void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody body = hit.collider.attachedRigidbody;
+
 		if (body == null || body.isKinematic)
 			return;
 
@@ -337,6 +338,8 @@ public class CharacterMovement : MonoBehaviour
 
 		Vector3 pushDir = new Vector3 (hit.moveDirection.x, 0, hit.moveDirection.z);
 		body.velocity = pushDir * pushPower;
+		ItemAudio itemAudio =	hit.collider.gameObject.GetComponent(typeof(ItemAudio)) as ItemAudio; 
+		itemAudio.InvokePlayEffectCoroutine ();
 	}
 
 }
