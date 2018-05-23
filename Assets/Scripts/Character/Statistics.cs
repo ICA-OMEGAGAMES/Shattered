@@ -10,7 +10,7 @@ public class Statistics : MonoBehaviour {
 	public float health;
     private float maxHealth = 100f;
     private float blocks = 0;
-    private bool imume = false;
+    private bool immune = false;
     private GameObject spawnpoint;
     public GameObject shield;
 
@@ -24,7 +24,7 @@ public class Statistics : MonoBehaviour {
 	public void IncreaseMaxHealth(float amount){maxHealth += amount;}
 
 	public void ReduceHealth (float amount){
-        if (!imume)
+        if (!immune)
         {
             if (blocks <= 0)
             {
@@ -62,9 +62,9 @@ public class Statistics : MonoBehaviour {
         set { spawnpoint = value; }
     }
 
-    public bool Imume {
-        get { return imume; }
-        set { imume = value; }
+    public bool Immune {
+        get { return immune; }
+        set { immune = value; }
     }
 
     public void SetBlocks(float amountOfBlocks)
