@@ -7,7 +7,7 @@ public class CameraFollowSettings : ScriptableObject {
     public float clampAngle = 66.0f;
     public float inputSensitivity = 150.0f;
     public float finalInputX = 0;
-	public float finalInputZ = 0;
+	public float finalInputY = 0;
 }
 
 [CreateAssetMenu(fileName = "CameraCollisionData", menuName = "CameraSettings/Collision", order = 2)]
