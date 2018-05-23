@@ -152,12 +152,12 @@ public class DevonScript : CharacterMovement
     //add other combat sets here
 
     CharacterAttack attack;
-    MarkerManager markerManager;
+    MarkerManagerPlayer markerManager;
 
     protected override void CharactertInitialize()
     {
         combatSet = SetCombatSet(animator, animations, null);
-        markerManager = this.transform.parent.GetComponent<MarkerManager>();
+        markerManager = this.transform.parent.GetComponent<MarkerManagerPlayer>();
         markerManager.SetMarkers();
     }
 
