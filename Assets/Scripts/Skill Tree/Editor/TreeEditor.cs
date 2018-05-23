@@ -406,7 +406,7 @@ public class NodeBasedEditor : EditorWindow
             string json = JsonUtility.ToJson(skillTree);
             string path = null;
 
-            path = "Assets/Scripts/SkillTree/TreeData/skilltree.json";
+            path = "Assets/Scripts/Skill Tree/TreeData/skilltree.json";
 
             // Finally, we write the JSON string with the SkillTree data in our file
             using (FileStream fs = new FileStream(path, FileMode.Create))
@@ -436,7 +436,7 @@ public class NodeBasedEditor : EditorWindow
         }
 
         string json = JsonUtility.ToJson(nodeData);
-        string path = "Assets/Scripts/SkillTree/TreeData/nodeData.json";
+        string path = "Assets/Scripts/Skill Tree/TreeData/nodeData.json";
 
         using (FileStream fs = new FileStream(path, FileMode.Create))
         {
@@ -452,7 +452,7 @@ public class NodeBasedEditor : EditorWindow
     {
         ClearNodes();
 
-        string path = "Assets/Scripts/SkillTree/TreeData/nodeData.json";
+        string path = "Assets/Scripts/Skill Tree/TreeData/nodeData.json";
         string dataAsJson;
         NodeDataCollection loadedData;
         if (File.Exists(path))
@@ -466,7 +466,7 @@ public class NodeBasedEditor : EditorWindow
             Skill[] skillTree;
             List<Skill> originNode = new List<Skill>();
             skillDictionary = new Dictionary<int, Skill>();
-            path = "Assets/Scripts/SkillTree/TreeData/skilltree.json";
+            path = "Assets/Scripts/Skill Tree/TreeData/skilltree.json";
             Vector2 pos = Vector2.zero;
             if (File.Exists(path))
             {

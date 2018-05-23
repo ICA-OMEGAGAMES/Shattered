@@ -62,5 +62,13 @@ namespace Yarn.Unity.Shattered
 
             HelpTimer.Instance.optionForHelping = optionForHelping;
         }
+
+        [YarnCommand("openSkillTree")]
+        public void openSkillTree(string parameters)
+        {
+            Debug.Log("Command --> openSkillTree");
+
+            FindObjectOfType<SkillTreeMenu>().openWithinDialogueSystem();
+        }
     }
 }
