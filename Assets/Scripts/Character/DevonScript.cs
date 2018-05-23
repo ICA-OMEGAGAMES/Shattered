@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryController))]
+[RequireComponent(typeof(Yarn.Unity.Shattered.DialoguePlayer))]
 public class DevonScript : CharacterMovement
 {
 
