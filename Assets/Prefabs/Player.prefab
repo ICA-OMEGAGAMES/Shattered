@@ -3006,6 +3006,8 @@ GameObject:
   - component: {fileID: 114253749765196884}
   - component: {fileID: 143240922920473442}
   - component: {fileID: 95532133875570728}
+  - component: {fileID: 82522000041630666}
+  - component: {fileID: 114143696224783032}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3521,7 +3523,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894981521280070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85.41153, y: 5.77, z: -85.39547}
+  m_LocalPosition: {x: -9.33, y: 4.43, z: -21.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4547598251794190}
@@ -6763,6 +6765,87 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718064946136508}
   m_Enabled: 1
+--- !u!82 &82522000041630666
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894981521280070}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 581d5bbeb2797804399d315b4da91f2e,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95170834601545766
 Animator:
   serializedVersion: 3
@@ -6848,6 +6931,28 @@ MonoBehaviour:
   malphas: {fileID: 1590010507006490}
   transformation: {fileID: 1733460588785598}
   currentForm: 0
+--- !u!114 &114143696224783032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894981521280070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb28ac9983113de428ca9811d9c56ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingSounds:
+  - {fileID: 8300000, guid: c0119d189a6d95a48a7c1a1bdb5881b3, type: 3}
+  - {fileID: 8300000, guid: a7623563e262326499a7e17bbdba83a0, type: 3}
+  - {fileID: 8300000, guid: 360873fd4c19dfc45b0285d485535460, type: 3}
+  - {fileID: 8300000, guid: 198963681a4faa943a603b16d0a310da, type: 3}
+  - {fileID: 8300000, guid: b54d17683478acb479af3106d4a88813, type: 3}
+  - {fileID: 8300000, guid: 57902d3a6ba376340bf01acc53abe895, type: 3}
+  - {fileID: 8300000, guid: 49ea03705f6f25840b7a705b3bfd963d, type: 3}
+  - {fileID: 8300000, guid: b028766432402a842ae7a012d4546cdc, type: 3}
+  - {fileID: 8300000, guid: 07bdfde8887e43a4097d0cc7f814962e, type: 3}
+  isRunning: 0
 --- !u!114 &114187380247312868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6927,12 +7032,10 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
-  characterActionTimeStamp: 0
-  crouching: 0
-  dodging: 0
-  characterControllable: 1
+  combatState: 0
   animator: {fileID: 0}
   characterController: {fileID: 0}
+  characterAudio: {fileID: 114143696224783032}
   basicCombatSettings:
     attack1Damage: 10
     attack1Duration: 0.5
@@ -6942,6 +7045,14 @@ MonoBehaviour:
     attack2Rootable: 1
     blinkCooldown: 1
     blinkDistance: 3
+  skillSettings:
+    teleportSettings: {fileID: 0}
+    barierSettings: {fileID: 0}
+    phychicScreamSettings: {fileID: 0}
+    divineAuraSettings: {fileID: 0}
+    darkClawSettings: {fileID: 0}
+    demonicWaveSettings: {fileID: 0}
+    possessSettings: {fileID: 0}
 --- !u!114 &114453318923123256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7032,12 +7143,10 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
-  characterActionTimeStamp: 0
-  crouching: 0
-  dodging: 0
-  characterControllable: 1
+  combatState: 0
   animator: {fileID: 0}
   characterController: {fileID: 0}
+  characterAudio: {fileID: 114143696224783032}
   unarmedCombatSettings:
     attack1Damage: 5
     attack1Duration: 0.5
