@@ -74,13 +74,12 @@ public class CameraFollow : MonoBehaviour
     private void doCameraRotation()
     {
         cameraFollowSettings.finalInputX = Input.GetAxis(Constants.MOUSE_X_AXIS);
-        cameraFollowSettings.finalInputZ = Input.GetAxis(Constants.MOUSE_Y_AXIS);
+        cameraFollowSettings.finalInputY = Input.GetAxis(Constants.MOUSE_Y_AXIS);
 
         // Rotate the stick, depending where we pushing
-        //rotY += cameraFollowSettings.finalInputX * cameraFollowSettings.inputSensitivity * Time.deltaTime;
-        //rotX += cameraFollowSettings.finalInputZ * cameraFollowSettings.inputSensitivity * Time.deltaTime;
         rotY += Input.GetAxis(Constants.MOUSE_X_AXIS) * cameraFollowSettings.inputSensitivity * Time.deltaTime;
         rotX += Input.GetAxis(Constants.MOUSE_Y_AXIS) * cameraFollowSettings.inputSensitivity * Time.deltaTime;
+        
         // Clamp that value, so it can't go higher or lower --> stop it from going around and around in circles
         rotX = Mathf.Clamp(rotX, -cameraFollowSettings.clampAngle, cameraFollowSettings.clampAngle);
 

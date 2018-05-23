@@ -21,7 +21,6 @@ public class CanvasManager : MonoBehaviour
         set {}
     }
 
-    // Use this for initialization
     void Start()
     {
 		// Disable all Canvase, because of the Event Manager
@@ -30,11 +29,5 @@ public class CanvasManager : MonoBehaviour
         {
 			sceneCanvase[i].SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -21,7 +21,7 @@ public class SkillTreeMenu : MonoBehaviour
         displayAvailablePoints.text = "Available Points: " + SkillTreeReader.Instance.availablePoints;
 
         //Check #3.1 to
-        if (Input.GetKeyDown(KeyCode.I) && firstSkillUnlocked)
+        if (Input.GetButtonDown(Constants.SKILL_TREE_BUTTON) && firstSkillUnlocked)
         {
             if (skillTreeMenuIsActive)
             {

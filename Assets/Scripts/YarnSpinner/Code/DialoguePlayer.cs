@@ -19,8 +19,7 @@ namespace Yarn.Unity.Shattered
             }
 
             // Detect if we want to start a conversation
-            // if (Input.GetKeyDown(KeyCode.Space)) {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown(Constants.START_DIALOGUE_BUTTON))
             {
                 CheckForNearbyNPC();
             }
