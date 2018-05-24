@@ -28,7 +28,7 @@ public class Barrier : ISkill
     
     IEnumerator ActivateShield()
     {
-        statistics.SetBlocks(3);
+        statistics.SetBlocks(settings.value);
         yield return new WaitForSeconds(settings.duration);
         mono.StopCoroutine(ActivateShield());
         statistics.SetBlocks(0);
