@@ -1,24 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Skill Tree\Editor\ConnectionPoint.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneTransitions\SceneTransition.cs">
     <Files>
       <File FileName="Assets\Scripts\Character\Statistics.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Environment\RainController.cs" Line="14" Column="17" />
-      <File FileName="Assets\Scripts\Character\CharacterMovement.cs" Line="341" Column="2" />
-      <File FileName="Assets\Scripts\Character\CharacterAudioController.cs" Line="25" Column="31" />
+      <File FileName="Assets\Scripts\Character\CharacterMovement.cs" Line="337" Column="11" />
+      <File FileName="Assets\Scripts\Character\CharacterAudioController.cs" Line="24" Column="34" />
       <File FileName="Assets\Scripts\Character\CharacterTransformer.cs" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\Character\DevonScript.cs" Line="11" Column="19" />
-      <File FileName="Assets\Scripts\Constants.cs" Line="16" Column="32" />
-      <File FileName="Assets\Scripts\YarnSpinner\Code\DialoguePlayer.cs" Line="12" Column="25" />
-      <File FileName="Assets\Scripts\Skill Tree\Skill.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Skill Tree\SkillTree.cs" Line="4" Column="2" />
-      <File FileName="Assets\Scripts\Skill Tree\SkillTreeMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Skill Tree\SkillTreeReader.cs" Line="22" Column="31" />
-      <File FileName="Assets\Scripts\Skill Tree\Editor\TreeEditor.cs" Line="36" Column="52" />
-      <File FileName="Assets\Scripts\Skill Tree\Editor\Connection.cs" Line="20" Column="23" />
-      <File FileName="Assets\Scripts\Skill Tree\Editor\ConnectionPoint.cs" Line="17" Column="2" />
-      <File FileName="Assets\Scripts\Skill Tree\Editor\Node.cs" Line="23" Column="31" />
-      <File FileName="Assets\Scripts\Skill Tree\Editor\NodeData.cs" Line="16" Column="1" />
+      <File FileName="Assets\Scripts\Character\DevonScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneTransitions\SceneTransition.cs" Line="33" Column="57" />
+      <File FileName="Assets\Scripts\Item\ItemAudio.cs" Line="20" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
