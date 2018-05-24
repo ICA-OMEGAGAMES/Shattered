@@ -3049,7 +3049,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4041489241129198, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.8
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 4041489241129198, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3057,7 +3057,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4041489241129198, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -6.35
+      value: -8.25
       objectReference: {fileID: 0}
     - target: {fileID: 4041489241129198, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3094,6 +3094,14 @@ Prefab:
       value: PlayerMannequin
       objectReference: {fileID: 0}
     - target: {fileID: 1961149158757074, guid: f7c001125cc6df746a68273d654bd953, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127495769945478, guid: f7c001125cc6df746a68273d654bd953, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683180462189630, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4012,20 +4020,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 1530954866850552, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114096130276848478, guid: fba55db4502b61341bd7647b1eb7f537,
-        type: 2}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 1782618065}
     - target: {fileID: 114703633746397370, guid: fba55db4502b61341bd7647b1eb7f537,
         type: 2}
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 793554133}
+    - target: {fileID: 114096130276848478, guid: fba55db4502b61341bd7647b1eb7f537,
+        type: 2}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 1782618065}
+    - target: {fileID: 1530954866850552, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
   m_IsPrefabParent: 0

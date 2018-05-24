@@ -29,7 +29,6 @@ public class InventoryController : MonoBehaviour {
             if (Input.GetButtonDown(Constants.PICKUP_BUTTON) && weapon.CanBePickedUp())
             {
                 WeaponHandler weaponHandler = GameObject.Find(Constants.WEAPONHANDLER).GetComponent<WeaponHandler>();
-                
                 if (weaponHandler.currentWeapon == null)
                 {
                     weaponHandler.EquipWeapon(other.gameObject);
