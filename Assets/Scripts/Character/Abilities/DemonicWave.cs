@@ -6,6 +6,8 @@ public class DemonicWave : ISkill{
     private SkillSettings settings;
     private MonoBehaviour mono;
 
+    
+
     private float cooldownTimestamp;
 
     public DemonicWave(SkillSettings settings, MonoBehaviour mono)
@@ -18,9 +20,10 @@ public class DemonicWave : ISkill{
     {
         if (!IsOnCooldown())
         {
-            
             cooldownTimestamp = Time.time + settings.cooldown;
+#pragma warning disable 0219
             GameObject aoeObject = GameObject.Instantiate(settings.skillEffect, mono.transform.position, mono.transform.rotation) as GameObject;
+#pragma warning restore 0219
         }
     }
 
