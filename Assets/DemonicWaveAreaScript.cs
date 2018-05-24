@@ -21,7 +21,6 @@ public class DemonicWaveAreaScript : MonoBehaviour {
            //todo: after maarten's info add damage system (dot/instant)
              hitTargets.Add(other.gameObject);
 
-            //TODO: Dummyscript is just for demo so the if can be removed later on
             Component component = other.transform.root.GetComponentInChildren<AIManager>();
             if (component != null)
                 ((AIManager)component).TakeDamage(skillSettings.value);
