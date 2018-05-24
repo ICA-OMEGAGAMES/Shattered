@@ -5,11 +5,10 @@ using UnityEngine;
 public class MarkerManagerPlayer : MarkerManager{
 
     public override void NotifyHit(GameObject hitTarget, float damage)
-    {   
+    {
         //if the hitTarget is not the ai return
         if (hitTarget.transform.tag != Constants.ENEMY_TAG)
             return;
-
         if (!hitBySwing.Contains(hitTarget))
         {
             hitBySwing.Add(hitTarget.gameObject);

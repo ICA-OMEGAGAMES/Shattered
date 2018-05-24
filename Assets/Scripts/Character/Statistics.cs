@@ -6,26 +6,41 @@ using UnityEngine.UI;
 public class Statistics : MonoBehaviour {
 
 	public Slider healthbar;
-    public GameObject spawnpoint;
 
-	private float maxHealth = 100f;
 	public float health;
+    private float maxHealth = 100f;
+    private float blocks = 0;
+    private bool immune = false;
+    private GameObject spawnpoint;
+    public GameObject shield;
 
-	void Start(){
+    void Start(){
 		maxHealth = Constants.MAX_PLAYER_HEALTH;
 		health = maxHealth;
-	}
+        shield.SetActive(false);
+    }
 
 	public float GetHealth(){return health;}
 	public void IncreaseMaxHealth(float amount){maxHealth += amount;}
 
 	public void ReduceHealth (float amount){
-		health -= amount;
+        if (!immune)
+        {
+            if (blocks <= 0)
+            {
+                health -= amount;
 
-		// TODO: implement dying action (respawn)
-        if (health <= Constants.MIN_PLAYER_HEALTH) 
-			health = Constants.MIN_PLAYER_HEALTH;
-        healthbar.value = CalculateHealth();
+                if (health <= Constants.MIN_PLAYER_HEALTH)
+                    health = Constants.MIN_PLAYER_HEALTH;
+                healthbar.value = CalculateHealth();
+            }
+            else
+            {
+                blocks--;
+                if (blocks <= 0)
+                    ActivateShield(false);
+            }
+        }
     }
 
 	public void IncreaseHealth (float amount){
@@ -45,5 +60,24 @@ public class Statistics : MonoBehaviour {
     {
         get { return spawnpoint; }
         set { spawnpoint = value; }
+    }
+
+    public bool Immune {
+        get { return immune; }
+        set { immune = value; }
+    }
+
+    public void SetBlocks(float amountOfBlocks)
+    {
+        blocks = amountOfBlocks;
+        if (blocks > 0)
+            ActivateShield(true);
+        else
+            ActivateShield(false);
+    }
+
+    private void ActivateShield(bool activation)
+    {
+        shield.SetActive(activation);
     }
 }
