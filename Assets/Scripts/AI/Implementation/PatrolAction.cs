@@ -19,7 +19,7 @@ public class PatrolAction : Action
         }
         manager.MoveNavMeshAgent(manager.wayPointList [manager.nextWayPoint].position, manager.movementStats.moveSpeed);
 
-        if (manager.navMeshAgent.remainingDistance <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending) 
+        if (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending) 
         {
             manager.nextWayPoint++;
             manager.nextWayPoint = manager.nextWayPoint % manager.wayPointList.Count;

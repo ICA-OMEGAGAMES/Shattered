@@ -63,10 +63,12 @@
      <Compile Include="Assets\Scripts\AI\Implementation\ApproachTarget.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\IdleAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LeaveCombatDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookAtTarget.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\PatrolAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TargetAccessibleDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetReachedDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />

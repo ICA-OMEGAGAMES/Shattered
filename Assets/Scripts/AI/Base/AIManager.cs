@@ -14,6 +14,10 @@ public class AIManager : MonoBehaviour
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public AIAnimationManager animationManager;
     [HideInInspector] public Vector3 lastKnownTargetPosition;
+    [HideInInspector] public Vector3 currentTarget;
+    [HideInInspector] public Vector3 walkTarget;
+    [HideInInspector] public float[] lastVelocities;
+
 
 
     private StateController controller;
@@ -25,6 +29,7 @@ public class AIManager : MonoBehaviour
     private float timestamp;
     private bool isTimestampSet;
     private float currentHealth;
+    private int currentVelocityIndex;
 
     [System.Serializable]
     public class AIStats
@@ -33,10 +38,10 @@ public class AIManager : MonoBehaviour
         public float maxHealth = 100;
         public float toggleCombatCooldown = 1;
         public float searchTime = 5f;
-        
+
         public float lookSpeed = 1f;
         public float lookRange = 40f;
-	    public float FOV = 180f;
+        public float FOV = 180f;
     }
 
     [SerializeField]
@@ -55,13 +60,13 @@ public class AIManager : MonoBehaviour
         public float jumpCooldown = 1;
         public float dodgeDistance = 10;
         public float dodgeCooldown = 2;
-        public float rotateSpeed = 5;        
+        public float rotateSpeed = 5;
         public float reachedDistance = 0.75f;
         public float reachedTollerance = 1.25f;
-	    public float attackRange = 7f;
-	    public float attackRate = 1f;
-	    public float attackForce = 15f;
-    	public int attackDamage = 5;
+        public float attackRange = 7f;
+        public float attackRate = 1f;
+        public float attackForce = 15f;
+        public int attackDamage = 5;
     }
 
     [SerializeField]
@@ -71,7 +76,7 @@ public class AIManager : MonoBehaviour
     public class UnarmedCombatSettings
     {
         public float unarmedAttackRange = 7f;
-	    public float unarmedAttackRate = 1f;
+        public float unarmedAttackRate = 1f;
         public float unarmedAttackDamage = 5f;
         public float lightAttackDuration = 0.5f;
         public float heavyAttackDuration = 0.5f;
@@ -84,9 +89,10 @@ public class AIManager : MonoBehaviour
     public bool SetUpAiManager(StateController controller)
     {
         bool active = false;
+        lastVelocities = new float[30];
         this.controller = controller;
         currentHealth = aiStats.maxHealth;
-        navMeshAgent = GetComponent<NavMeshAgent> ();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         animationManager = GetComponent<AIAnimationManager>();
         FindChaseTarget();
         navMeshAgent.enabled = true;
@@ -100,7 +106,7 @@ public class AIManager : MonoBehaviour
 
     void Update()
     {
-        if(chaseTarget == null || !chaseTarget.gameObject.activeSelf)
+        if (chaseTarget == null || !chaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
         }
@@ -108,15 +114,15 @@ public class AIManager : MonoBehaviour
 
     void FindChaseTarget()
     {
-        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), element => 
+        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), element =>
         {
-            if(element.gameObject.activeSelf)
+            if (element.gameObject.activeSelf)
             {
                 chaseTarget = element.transform;
             }
             chaseTarget = element.transform;
         });
-        if(chaseTarget == null)
+        if (chaseTarget == null)
         {
             Debug.LogError("Player not found.");
         }
@@ -128,7 +134,7 @@ public class AIManager : MonoBehaviour
         animationManager.animator.SetBool(animationManager.animations.isInCombat, isInCombat);
     }
 
-     public void SetAttackCooldown(float time)
+    public void SetAttackCooldown(float time)
     {
         attackCooldownTimestamp = Time.time + time;
     }
@@ -162,7 +168,7 @@ public class AIManager : MonoBehaviour
 
     public Vector3 GetTargetPosition()
     {
-        if(chaseTarget == null)
+        if (chaseTarget == null)
         {
             Debug.LogError("Target not found.");
             return transform.position;
@@ -177,9 +183,23 @@ public class AIManager : MonoBehaviour
 
     public void MoveNavMeshAgent(Vector3 destination, float speed)
     {
+        walkTarget = destination;
+        lastVelocities[currentVelocityIndex++ % (lastVelocities.Length - 1)] = navMeshAgent.velocity.magnitude;
+        NavMeshPath path = new NavMeshPath();
+        if (!navMeshAgent.CalculatePath(destination, path) || path.status == NavMeshPathStatus.PathPartial)
+        {   
+            destination = transform.position + (destination - transform.position).normalized;
+
+            currentTarget = destination;
+            navMeshAgent.destination = destination;
+            navMeshAgent.speed = speed;
+            navMeshAgent.isStopped = false;
+            return;
+        }
+        currentTarget = walkTarget;
         navMeshAgent.destination = destination;
-		navMeshAgent.speed = speed;
-		navMeshAgent.isStopped = false;
+        navMeshAgent.speed = speed;
+        navMeshAgent.isStopped = false;
     }
 
     public bool IsTimestampSet()
@@ -193,9 +213,10 @@ public class AIManager : MonoBehaviour
         isTimestampSet = true;
     }
 
-    public bool IsTimestampExpired(){
+    public bool IsTimestampExpired()
+    {
         bool expired = timestamp < Time.time;
-        if(expired)
+        if (expired)
         {
             isTimestampSet = false;
         }
@@ -205,7 +226,7 @@ public class AIManager : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             StopMovement();
             SwitchCombatState(false);
@@ -213,7 +234,7 @@ public class AIManager : MonoBehaviour
             animationManager.Die();
         }
     }
-     public void EnableMarkers()
+    public void EnableMarkers()
     {
         markerManager.EnableMarkers(unarmedCombatSettings.unarmedAttackDamage);
     }
