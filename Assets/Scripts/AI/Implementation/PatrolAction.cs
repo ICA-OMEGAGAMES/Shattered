@@ -12,9 +12,14 @@ public class PatrolAction : Action
 
     private void Patrol(AIManager manager)
     {   
-        manager.MoveNavMeshAgent(manager.wayPointList [manager.nextWayPoint].position, manager.aiStats.moveSpeed);
+        if(manager.wayPointList.Count <= 0)
+        {
+            Debug.LogError("No waypoints specified!");
+            return;
+        }
+        manager.MoveNavMeshAgent(manager.wayPointList [manager.nextWayPoint].position, manager.movementStats.moveSpeed);
 
-        if (manager.navMeshAgent.remainingDistance <= manager.aiStats.reachedDistance && !manager.navMeshAgent.pathPending) 
+        if (manager.navMeshAgent.remainingDistance <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending) 
         {
             manager.nextWayPoint++;
             manager.nextWayPoint = manager.nextWayPoint % manager.wayPointList.Count;

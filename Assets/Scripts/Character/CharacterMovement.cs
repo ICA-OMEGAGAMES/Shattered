@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
 {
     
@@ -44,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
         public float runSpeed = 8.0F;
         public float jumpSpeed = 8.0F;
         public float jumpTime = 0.25f;
-        public float jumpCooldown = 1;
+        public float jumpCooldown = 0.5f;
         public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
@@ -140,12 +141,15 @@ public class CharacterMovement : MonoBehaviour
                         InCombatUpdate();
                         break;
                 }
-
+                
                 if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS))
                 {
                     RotateToCamera();
                 }
             }
+            else
+                characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
+
         }
         else
             SetControllable(false);
@@ -308,7 +312,7 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(death.respawnTime);
-        this.transform.position = statistics.spawnpoint.transform.position;
+        this.transform.position = statistics.Spawnpoint.transform.position;
         statistics.IncreaseHealth(death.respawnHealth);
         animator.SetBool(animations.deadBool, false);
         characterControllable = true;

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DemonicWave : MonoBehaviour,ISkill{
-    SkillSettings settings;
+public class DemonicWave : ISkill{
+    private SkillSettings settings;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public DemonicWave(SkillSettings settings)
+    public DemonicWave(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -17,7 +19,7 @@ public class DemonicWave : MonoBehaviour,ISkill{
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("DemonicWave Used");
+            //("DemonicWave Used");
         }
     }
 

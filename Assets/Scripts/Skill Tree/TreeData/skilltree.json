@@ -4,8 +4,8 @@
             "idSkill": 0,
             "skillDependencies": [],
             "unlocked": false,
-            "cost": 1,
-            "description": "Prevents Devon from getting damaged for the next incoming 3 attacks. The shield has a dark purple color similar to Malphas (it’s made from his energy)"
+            "cost": 0,
+            "description": "First Skill to unlock!"
         },
         {
             "idSkill": 1,
@@ -13,8 +13,8 @@
                 0
             ],
             "unlocked": false,
-            "cost": 2,
-            "description": "Slow down time for a few seconds, allowing you to easily react to your enemies´ actions"
+            "cost": 1,
+            "description": "Prevents Devon from getting damaged for the next incoming 3 attacks. The shield has a dark purple color similar to Malphas (it’s made from his energy)"
         },
         {
             "idSkill": 2,
@@ -22,29 +22,40 @@
                 1
             ],
             "unlocked": false,
+            "cost": 2,
+            "description": "Slow down time for a few seconds, allowing you to easily react to your enemies´ actions"
+        },
+        {
+            "idSkill": 3,
+            "skillDependencies": [
+                2
+            ],
+            "unlocked": false,
             "cost": 3,
             "description": "Become invincible for 5 seconds, refill your hp back to 100%. After the ability ends, knock back nearby enemies. Malphus uses his spirit powers to extract life force from his environment."
         },
         {
-            "idSkill": 3,
-            "skillDependencies": [],
+            "idSkill": 4,
+            "skillDependencies": [
+                0
+            ],
             "unlocked": false,
             "cost": 1,
             "description": "Teleports behind the Enemy, allowing for a quick beatdown on an unsuspecting enemy. Malphas disappears in a cloud of smoke and reappears behind the targeted enemy. This happens in an instant."
         },
         {
-            "idSkill": 4,
+            "idSkill": 5,
             "skillDependencies": [
-                3
+                4
             ],
             "unlocked": false,
             "cost": 2,
             "description": "Area of Effect attack that deals heavy damage to surrounding enemies, could be an explosion, spikes/tentacles, dark energy"
         },
         {
-            "idSkill": 5,
+            "idSkill": 6,
             "skillDependencies": [
-                4
+                5
             ],
             "unlocked": false,
             "cost": 3,

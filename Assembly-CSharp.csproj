@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Decision.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\MarkerManagerAi.cs" />
      <Compile Include="Assets\Scripts\AI\Base\State.cs" />
      <Compile Include="Assets\Scripts\AI\Base\StateController.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Transition.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraSetting.cs" />
+     <Compile Include="Assets\Scripts\CanvasManager.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Barier.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DarkClaw.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DemonicWave.cs" />
@@ -86,15 +88,15 @@
      <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterTransformer.cs" />
      <Compile Include="Assets\Scripts\Character\DevonScript.cs" />
-     <Compile Include="Assets\Scripts\Character\DummyScript.cs" />
      <Compile Include="Assets\Scripts\Character\InventoryController.cs" />
      <Compile Include="Assets\Scripts\Character\MalphasScript.cs" />
-     <Compile Include="Assets\Scripts\Character\MarkerManager.cs" />
-     <Compile Include="Assets\Scripts\Character\MarkerScript.cs" />
+     <Compile Include="Assets\Scripts\Character\MarkerManagerPlayer.cs" />
      <Compile Include="Assets\Scripts\Character\Models\CharacterAttack.cs" />
+     <Compile Include="Assets\Scripts\Character\SpawnpointScript.cs" />
      <Compile Include="Assets\Scripts\Character\Statistics.cs" />
      <Compile Include="Assets\Scripts\Character\WeaponHandler.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
+     <Compile Include="Assets\Scripts\DummyScript.cs" />
      <Compile Include="Assets\Scripts\Environment\RainController.cs" />
      <Compile Include="Assets\Scripts\Item\Item.cs" />
      <Compile Include="Assets\Scripts\Item\ItemAudio.cs" />
@@ -114,6 +116,8 @@
      <Compile Include="Assets\Scripts\Main menu\SoundSettings.cs" />
      <Compile Include="Assets\Scripts\Main menu\SoundSettingsManager.cs" />
      <Compile Include="Assets\Scripts\Main menu\SwitchMenuScreen.cs" />
+     <Compile Include="Assets\Scripts\MarkerManager.cs" />
+     <Compile Include="Assets\Scripts\MarkerScript.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\Skill.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\SkillButton.cs" />
@@ -122,7 +126,6 @@
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeMenu.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeReader.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\UnlockButton.cs" />
-     <Compile Include="Assets\Scripts\SpawnpointScript.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueNPC.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialoguePlayer.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueRunner.cs" />
@@ -142,15 +145,20 @@
      <Compile Include="Assets\UnityUISample\Scripts\ScrollDetailTexture.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\TiltWindow.cs" />
+     <None Include="Assets\Shaders\ShieldFX.shader" />
      <None Include="Assets\Placeholder\Prefabs.txt" />
      <None Include="Assets\GFX\2d Graphics and Materials.txt" />
      <None Include="Assets\UnityUISample\Fonts\Jupiter\LICENSE.txt" />
+     <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
      <None Include="Assets\UnityUISample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\Master.yarn.txt" />
      <None Include="Assets\UnityUISample\Materials\UI-Default-No-Alpha.shader" />
      <None Include="Assets\Animations\Animations.txt" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\SkillMaster.yarn.txt" />
      <None Include="Assets\Scripts\YarnSpinner\README.txt" />
      <None Include="Assets\3D models\Buildings\Modular Kit\Modular.txt" />
+     <None Include="Assets\Shaders\Ethereal.shader" />
  <Reference Include="Vuforia.UnityExtensions.Editor">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
  </Reference>

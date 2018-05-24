@@ -18,7 +18,7 @@ public class AIManager : MonoBehaviour
 
     private StateController controller;
     private Transform chaseTarget;
-    private MarkerManager markerManager;
+    private MarkerManagerAi markerManager;
     private bool isInCombat = false;
     protected bool characterRooted = true;
     private float attackCooldownTimestamp;
@@ -31,6 +31,21 @@ public class AIManager : MonoBehaviour
     {
         //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
         public float maxHealth = 100;
+        public float toggleCombatCooldown = 1;
+        public float searchTime = 5f;
+        
+        public float lookSpeed = 1f;
+        public float lookRange = 40f;
+	    public float FOV = 180f;
+    }
+
+    [SerializeField]
+    public AIStats aiStats;
+
+    [System.Serializable]
+    public class MovementStats
+    {
+        //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
         public float moveSpeed = 4f;
         public float strafeSpeed = 5f;
         public float crouchSpeed = 2.0F;
@@ -39,15 +54,8 @@ public class AIManager : MonoBehaviour
         public float jumpTime = 0.25f;
         public float jumpCooldown = 1;
         public float dodgeDistance = 10;
-        public float dodgeCooldown = 4;
-        public float toggleCombatCooldown = 1;
-        public float rotateSpeed = 5;
-        public float searchTime = 5f;
-        
-        public float lookSpeed = 1f;
-        public float lookRange = 40f;
-	    public float FOV = 180f;
-
+        public float dodgeCooldown = 2;
+        public float rotateSpeed = 5;        
         public float reachedDistance = 0.75f;
         public float reachedTollerance = 1.25f;
 	    public float attackRange = 7f;
@@ -57,11 +65,14 @@ public class AIManager : MonoBehaviour
     }
 
     [SerializeField]
-    public AIStats aiStats;
+    public MovementStats movementStats;
 
     [Serializable]
     public class UnarmedCombatSettings
     {
+        public float unarmedAttackRange = 7f;
+	    public float unarmedAttackRate = 1f;
+        public float unarmedAttackDamage = 5f;
         public float lightAttackDuration = 0.5f;
         public float heavyAttackDuration = 0.5f;
         public float cooldown = 3f;
@@ -77,21 +88,38 @@ public class AIManager : MonoBehaviour
         currentHealth = aiStats.maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent> ();
         animationManager = GetComponent<AIAnimationManager>();
-        GameObject target = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG);
-        chaseTarget = target.transform;
-        if (chaseTarget != null && wayPointList.Count > 0) 
-        {
-            active = true;
-            navMeshAgent.enabled = true;
-        } else 
-        {
-            navMeshAgent.enabled = false;
-        }
+        FindChaseTarget();
+        navMeshAgent.enabled = true;
 
-        markerManager = this.transform.parent.GetComponent<MarkerManager>();
+        markerManager = this.transform.parent.GetComponent<MarkerManagerAi>();
         markerManager.SetMarkers();
 
+        active = true;
         return active;
+    }
+
+    void Update()
+    {
+        if(chaseTarget == null || !chaseTarget.gameObject.activeSelf)
+        {
+            FindChaseTarget();
+        }
+    }
+
+    void FindChaseTarget()
+    {
+        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), element => 
+        {
+            if(element.gameObject.activeSelf)
+            {
+                chaseTarget = element.transform;
+            }
+            chaseTarget = element.transform;
+        });
+        if(chaseTarget == null)
+        {
+            Debug.LogError("Player not found.");
+        }
     }
 
     public void SwitchCombatState(bool enabled)
@@ -134,6 +162,11 @@ public class AIManager : MonoBehaviour
 
     public Vector3 GetTargetPosition()
     {
+        if(chaseTarget == null)
+        {
+            Debug.LogError("Target not found.");
+            return transform.position;
+        }
         return new Vector3(chaseTarget.position.x, transform.position.y, chaseTarget.position.z);
     }
 
@@ -182,7 +215,7 @@ public class AIManager : MonoBehaviour
     }
      public void EnableMarkers()
     {
-        markerManager.EnableMarkers(aiStats.attackDamage);
+        markerManager.EnableMarkers(unarmedCombatSettings.unarmedAttackDamage);
     }
 
     public void DisableMarkers()
