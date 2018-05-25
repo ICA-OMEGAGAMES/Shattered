@@ -70,7 +70,7 @@ namespace Yarn.Unity.Shattered
             lineText.gameObject.SetActive(true);
 
 
-            if (textSpeed > 0.0f)
+            if (textSpeed >= 0.0f)
             {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder();
