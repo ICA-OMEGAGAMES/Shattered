@@ -20,7 +20,8 @@ public class AIManager : MonoBehaviour
 
 
     private StateController controller;
-    private Transform chaseTarget;
+    private Transform currentChaseTarget;
+    private Transform defaultChaseTarget;
     private MarkerManagerAi markerManager;
     private bool isInCombat = false;
     protected bool characterRooted = true;
@@ -28,6 +29,8 @@ public class AIManager : MonoBehaviour
     private float timestamp;
     private bool isTimestampSet;
     private int currentVelocityIndex;
+    private float possessedTimestamp;
+    private bool possessed;
 
     [System.Serializable]
     public class AIStats
@@ -81,6 +84,7 @@ public class AIManager : MonoBehaviour
         public float heavyAttackDuration = 0.5f;
         public float cooldown = 3f;
         public bool rootAble = true;
+        public float possessionDuration = 10;
     }
     [SerializeField]
     public UnarmedCombatSettings unarmedCombatSettings;
@@ -93,6 +97,7 @@ public class AIManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animationManager = GetComponent<AIAnimationManager>();
         FindChaseTarget();
+        defaultChaseTarget = currentChaseTarget;
         navMeshAgent.enabled = true;
 
         markerManager = this.transform.parent.GetComponent<MarkerManagerAi>();
@@ -103,12 +108,18 @@ public class AIManager : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
         CheckMovement();
 
-        if (chaseTarget == null || !chaseTarget.gameObject.activeSelf)
+        if (currentChaseTarget == null || !currentChaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
+        }
+
+        if (possessedTimestamp <= Time.time && possessed)
+        {
+            possessed = false;
+            currentChaseTarget = defaultChaseTarget;
         }
     }
 
@@ -119,15 +130,15 @@ public class AIManager : MonoBehaviour
 
     void FindChaseTarget()
     {
-        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), element =>
+        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), (Action<GameObject>)(element =>
         {
             if (element.gameObject.activeSelf)
             {
-                chaseTarget = element.transform;
+                this.currentChaseTarget = element.transform;
             }
-            chaseTarget = element.transform;
-        });
-        if (chaseTarget == null)
+            this.currentChaseTarget = element.transform;
+        }));
+        if (currentChaseTarget == null)
         {
             Debug.LogError("Player not found.");
         }
@@ -173,12 +184,12 @@ public class AIManager : MonoBehaviour
 
     public Vector3 GetTargetPosition()
     {
-        if (chaseTarget == null)
+        if (currentChaseTarget == null)
         {
             Debug.LogError("Target not found.");
             return transform.position;
         }
-        return new Vector3(chaseTarget.position.x, transform.position.y, chaseTarget.position.z);
+        return new Vector3(currentChaseTarget.position.x, transform.position.y, currentChaseTarget.position.z);
     }
 
     public bool IsNavMeshAgentMoving()
@@ -190,7 +201,7 @@ public class AIManager : MonoBehaviour
     {
         walkTarget = destination;
         if (!TargetAccessible())
-        {   
+        {
             destination = transform.position + (destination - transform.position).normalized;
 
             navMeshAgent.destination = destination;
@@ -216,8 +227,8 @@ public class AIManager : MonoBehaviour
         {
             framesWithoutMovement++;
             return;
-        } 
-        else 
+        }
+        else
         {
             framesWithoutMovement = 0;
         }
@@ -225,12 +236,12 @@ public class AIManager : MonoBehaviour
 
     public void RefreshTarget()
     {
-        
-        if(controller.previousState != null && (controller.previousState.name == "Chase" || controller.previousState.name == "PlayerLost"))
+
+        if (controller.previousState != null && (controller.previousState.name == "Chase" || controller.previousState.name == "PlayerLost"))
         {
-            walkTarget = chaseTarget.transform.position;
+            walkTarget = currentChaseTarget.transform.position;
             return;
-        } 
+        }
         walkTarget = wayPointList[nextWayPoint].position;
     }
 
@@ -277,8 +288,45 @@ public class AIManager : MonoBehaviour
         markerManager.DisableMarkers();
     }
 
-    public void Posess()
+    public void Possess()
     {
-        Debug.Log("Posess executed " + transform.root.name);
+        if (possessed)
+        {
+            //already possessed so extend possession
+            possessedTimestamp += unarmedCombatSettings.possessionDuration;
+            return;
+        }
+
+
+        //search for closest enemy
+        float shortestDistance = float.MaxValue;
+        GameObject closestEnemy = null;
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
+        {
+            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
+            if (distance < shortestDistance && enemy != this.gameObject && enemy.activeSelf)
+            {
+                closestEnemy = enemy;
+                shortestDistance = distance;
+            }
+        }
+
+        if(Vector3.Distance(closestEnemy.transform.position, transform.position) > aiStats.lookRange)
+        {
+            //if no enemy is in range return
+            Debug.Log("No other enemy in range");
+            return;
+        }
+
+        //set the enemy as the new target and the timestamp
+        defaultChaseTarget = currentChaseTarget;
+        currentChaseTarget = closestEnemy.transform;
+        possessedTimestamp = Time.time + unarmedCombatSettings.possessionDuration;
+        possessed = true;
     }
+
+    public bool IsPossessed()
+    {
+        return possessed;
+    } 
 }

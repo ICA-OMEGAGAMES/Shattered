@@ -31,7 +31,7 @@ public class Possess : ISkill
                 }
             }
 
-            closestEnemy.GetComponent<AIManager>().Posess();
+            closestEnemy.GetComponent<AIManager>().Possess();
         }
     }
 

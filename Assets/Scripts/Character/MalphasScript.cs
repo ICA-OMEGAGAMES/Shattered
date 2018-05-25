@@ -96,6 +96,11 @@ public class MalphasScript : CharacterMovement {
             if (skills.Count >= 5)
                 skills[5].Execute(animator);
         }
+        if (Input.GetButton(Constants.SKILL6_BUTTON))
+        {
+            if (skills.Count >= 6)
+                skills[6].Execute(animator);
+        }
     }
 
     protected override void CharacterOutOfCombatFixedUpdate()
