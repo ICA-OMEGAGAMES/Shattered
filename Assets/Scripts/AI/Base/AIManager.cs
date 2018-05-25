@@ -276,4 +276,9 @@ public class AIManager : MonoBehaviour
     {
         markerManager.DisableMarkers();
     }
+
+    public void Posess()
+    {
+        Debug.Log("Posess executed " + transform.root.name);
+    }
 }
