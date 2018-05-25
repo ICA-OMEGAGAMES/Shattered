@@ -98,7 +98,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.1
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -106,7 +106,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.033333335
+    cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -11936,8 +11936,10 @@ MonoBehaviour:
   nextWayPoint: 0
   animationManager: {fileID: 0}
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
-  currentTarget: {x: 0, y: 0, z: 0}
   walkTarget: {x: 0, y: 0, z: 0}
+  framesWithoutMovement: 0
+  currentHealth: 0
+  previousHealth: 0
   aiStats:
     maxHealth: 100
     toggleCombatCooldown: 1
@@ -12001,6 +12003,7 @@ MonoBehaviour:
   remainState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
   manager: {fileID: 0}
   animationManager: {fileID: 0}
+  previousState: {fileID: 0}
 --- !u!195 &1918998990
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12010,7 +12013,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1918998984}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -13470,7 +13473,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063529302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.81, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1550572786}

@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\AI\Base\Transition.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ApproachLastKnownPosition.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ApproachTarget.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\BeingAttackedDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\IdleAction.cs" />

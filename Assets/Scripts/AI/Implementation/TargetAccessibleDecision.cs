@@ -8,17 +8,16 @@ using UnityEngine.AI;
 public class TargetAccessibleDecision : Decision {
 
     public override bool Decide(AIManager manager)
-    {
-        if(Accessible(manager))
-        {
-        return true;
-        }
-        Debug.Log("Not reachable and reached");
-        return false;
+    {   
+        return Accessible(manager);
     }
 
     private bool Accessible(AIManager manager)
-    {
-         return !((manager.walkTarget != manager.currentTarget) && manager.lastVelocities.Sum() == 0 && !manager.navMeshAgent.pathPending);
+    {   
+        if(manager.navMeshAgent.isStopped)
+        {
+            manager.RefreshTarget();
+        }
+        return (manager.TargetAccessible() || manager.framesWithoutMovement < 10);
     }
 }

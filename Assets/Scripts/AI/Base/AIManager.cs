@@ -14,10 +14,9 @@ public class AIManager : MonoBehaviour
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public AIAnimationManager animationManager;
     [HideInInspector] public Vector3 lastKnownTargetPosition;
-    [HideInInspector] public Vector3 currentTarget;
     [HideInInspector] public Vector3 walkTarget;
-    [HideInInspector] public float[] lastVelocities;
-
+    [HideInInspector] public int framesWithoutMovement;
+    [HideInInspector] public float previousHealth;
 
 
     private StateController controller;
@@ -28,7 +27,6 @@ public class AIManager : MonoBehaviour
     private float attackCooldownTimestamp;
     private float timestamp;
     private bool isTimestampSet;
-    private float currentHealth;
     private int currentVelocityIndex;
 
     [System.Serializable]
@@ -36,6 +34,7 @@ public class AIManager : MonoBehaviour
     {
         //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
         public float maxHealth = 100;
+        public float currentHealth;
         public float toggleCombatCooldown = 1;
         public float searchTime = 5f;
 
@@ -89,9 +88,8 @@ public class AIManager : MonoBehaviour
     public bool SetUpAiManager(StateController controller)
     {
         bool active = false;
-        lastVelocities = new float[30];
         this.controller = controller;
-        currentHealth = aiStats.maxHealth;
+        aiStats.currentHealth = aiStats.maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animationManager = GetComponent<AIAnimationManager>();
         FindChaseTarget();
@@ -105,11 +103,18 @@ public class AIManager : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        CheckMovement();
+
         if (chaseTarget == null || !chaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
         }
+    }
+
+    void FixedUpdate()
+    {
+        previousHealth = aiStats.currentHealth;
     }
 
     void FindChaseTarget()
@@ -184,22 +189,49 @@ public class AIManager : MonoBehaviour
     public void MoveNavMeshAgent(Vector3 destination, float speed)
     {
         walkTarget = destination;
-        lastVelocities[currentVelocityIndex++ % (lastVelocities.Length - 1)] = navMeshAgent.velocity.magnitude;
-        NavMeshPath path = new NavMeshPath();
-        if (!navMeshAgent.CalculatePath(destination, path) || path.status == NavMeshPathStatus.PathPartial)
+        if (!TargetAccessible())
         {   
             destination = transform.position + (destination - transform.position).normalized;
 
-            currentTarget = destination;
             navMeshAgent.destination = destination;
             navMeshAgent.speed = speed;
             navMeshAgent.isStopped = false;
             return;
         }
-        currentTarget = walkTarget;
+
         navMeshAgent.destination = destination;
         navMeshAgent.speed = speed;
         navMeshAgent.isStopped = false;
+    }
+
+    public bool TargetAccessible()
+    {
+        NavMeshPath path = new NavMeshPath();
+        return navMeshAgent.CalculatePath(walkTarget, path) && !(path.status == NavMeshPathStatus.PathPartial);
+    }
+
+    private void CheckMovement()
+    {
+        if (navMeshAgent.velocity.sqrMagnitude < 1)
+        {
+            framesWithoutMovement++;
+            return;
+        } 
+        else 
+        {
+            framesWithoutMovement = 0;
+        }
+    }
+
+    public void RefreshTarget()
+    {
+        
+        if(controller.previousState != null && (controller.previousState.name == "Chase" || controller.previousState.name == "PlayerLost"))
+        {
+            walkTarget = chaseTarget.transform.position;
+            return;
+        } 
+        walkTarget = wayPointList[nextWayPoint].position;
     }
 
     public bool IsTimestampSet()
@@ -215,18 +247,19 @@ public class AIManager : MonoBehaviour
 
     public bool IsTimestampExpired()
     {
-        bool expired = timestamp < Time.time;
+        bool expired = (timestamp < Time.time) && isTimestampSet;
         if (expired)
         {
             isTimestampSet = false;
         }
-        return expired && isTimestampSet;
+        return expired;
     }
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        previousHealth = aiStats.currentHealth;
+        aiStats.currentHealth -= amount;
+        if (aiStats.currentHealth <= 0)
         {
             StopMovement();
             SwitchCombatState(false);

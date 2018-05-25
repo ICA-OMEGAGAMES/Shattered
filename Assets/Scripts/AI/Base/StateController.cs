@@ -14,6 +14,7 @@ public class StateController : MonoBehaviour {
    
     [HideInInspector] public AIManager manager;
     [HideInInspector] public AIAnimationManager animationManager;
+    [HideInInspector] public State previousState;
     
     private bool aiActive;
 
@@ -32,12 +33,13 @@ public class StateController : MonoBehaviour {
             return;
         }
         currentState.UpdateState (this, manager);
-        animationManager.Animate(manager.navMeshAgent.speed);
+        animationManager.Animate(manager.navMeshAgent.velocity.magnitude);
     }
     public void TransitionToState(State nextState)
     {
         if (nextState != remainState) 
         {
+            previousState = currentState;
             currentState = nextState;
             OnExitState ();
         }

@@ -12,6 +12,6 @@ public class TurnAction : Action
 
     private void Turn(AIManager manager)
     {
-        manager.transform.Rotate(new Vector3(0,1,0));
+        manager.transform.Rotate(new Vector3(0,3,0));
     }
 }

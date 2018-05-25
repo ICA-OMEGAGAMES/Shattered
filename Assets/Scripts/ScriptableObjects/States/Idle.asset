@@ -11,5 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c8aba80d3b6e046b1275ae568180c9, type: 3}
   m_Name: Idle
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: a89ed4a86452ae64ab759747d908240c, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 3f481d02e4c13cc43a05d64c31269edf, type: 2}
+    trueState: {fileID: 11400000, guid: 4bb52edf7351c42448c1c945188585c0, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+  - decision: {fileID: 11400000, guid: c38ec082c7584f348b50151262b4ef38, type: 2}
+    trueState: {fileID: 11400000, guid: 887624990403c4941a43d1788a4915bf, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
