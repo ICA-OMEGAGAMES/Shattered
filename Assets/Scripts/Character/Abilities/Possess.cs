@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Possess : MonoBehaviour, ISkill
+public class Possess : ISkill
 {
-    SkillSettings settings;
+    private SkillSettings settings;
+    private MonoBehaviour mono;
     private float cooldownTimestamp;
 
-    public Possess(SkillSettings settings)
+    public Possess(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -17,6 +19,7 @@ public class Possess : MonoBehaviour, ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
+<<<<<<< HEAD
             print("Possess Used");
             float shortestDistance = float.MaxValue;
             GameObject closestEnemy = null;
@@ -31,6 +34,9 @@ public class Possess : MonoBehaviour, ISkill
             }
 
             closestEnemy.GetComponent<AIManager>().Posess();
+=======
+            //("Possess Used");
+>>>>>>> origin/development_programming
         }
     }
 

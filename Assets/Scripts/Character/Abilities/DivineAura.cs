@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DivineAura : MonoBehaviour, ISkill
+public class DivineAura : ISkill
 {
-    SkillSettings settings;
+    private SkillSettings settings;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public DivineAura(SkillSettings settings)
+    public DivineAura(SkillSettings settings, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -18,7 +20,7 @@ public class DivineAura : MonoBehaviour, ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("DivineAura Used");
+            //("DivineAura Used");
         }
     }
 

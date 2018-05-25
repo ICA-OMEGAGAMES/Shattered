@@ -11,6 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daedb27e5fbef8145ad246413410d02b, type: 3}
   m_Name: Possess
   m_EditorClassIdentifier: 
-  duration: 10
+  duration: 3
   cooldown: 2
-  cooldownTimestamp: 0

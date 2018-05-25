@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrier : MonoBehaviour, ISkill
+public class Barrier : ISkill
 {
-    SkillSettings settings;
+    private SkillSettings settings;
+    private Statistics statistics;
+    private MonoBehaviour mono;
 
     private float cooldownTimestamp;
 
-    public Barrier(SkillSettings settings)
+    public Barrier(SkillSettings settings, Statistics statistics, MonoBehaviour mono)
     {
         this.settings = settings;
+        this.statistics = statistics;
+        this.mono = mono;
     }
 
     public void Execute(Animator animator)
@@ -18,8 +22,16 @@ public class Barrier : MonoBehaviour, ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            print("Barrier Used");
+            mono.StartCoroutine(ActivateShield());
         }
+    }
+    
+    IEnumerator ActivateShield()
+    {
+        statistics.SetBlocks(settings.value);
+        yield return new WaitForSeconds(settings.duration);
+        mono.StopCoroutine(ActivateShield());
+        statistics.SetBlocks(0);
     }
 
     public bool IsOnCooldown()
