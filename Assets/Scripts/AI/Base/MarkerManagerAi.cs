@@ -23,7 +23,6 @@ public class MarkerManagerAi : MarkerManager{
             {
                 //Prevents friendly fire
                 hitTarget.transform.root.GetComponentInChildren<AIManager>().TakeDamage(damage);
-                Debug.Log("AI hits AI");
             } 
            
         }

@@ -32,7 +32,6 @@ public class AIManager : MonoBehaviour
     private bool isTimestampSet;
     private int currentVelocityIndex;
     private float possessedTimestamp;
-    private bool possessed;
     private float psychicScreamTimestamp;
 
     public bool SetUpAiManager(StateController controller)
@@ -62,10 +61,13 @@ public class AIManager : MonoBehaviour
             FindChaseTarget();
         }
 
-        if (possessedTimestamp <= Time.time && possessed)
+        if (possessedTimestamp <= Time.time)
         {
-            possessed = false;
             currentChaseTarget = defaultChaseTarget;
+        } 
+        else if(possessedTimestamp > Time.time && !IsTargetAlive())
+        {
+            currentChaseTarget = SelectClosestEnemy().transform;
         }
     }
 
@@ -231,7 +233,7 @@ public class AIManager : MonoBehaviour
 
     public void Possess()
     {
-        if (possessed)
+        if (possessedTimestamp >= Time.time)
         {
             //already possessed so extend possession
             possessedTimestamp += aiStats.unarmedCombatSettings.possessionDuration;
@@ -239,18 +241,7 @@ public class AIManager : MonoBehaviour
         }
 
 
-        //search for closest enemy
-        float shortestDistance = float.MaxValue;
-        GameObject closestEnemy = null;
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
-        {
-            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
-            if (distance < shortestDistance && enemy != this.gameObject && enemy.activeSelf)
-            {
-                closestEnemy = enemy;
-                shortestDistance = distance;
-            }
-        }
+        GameObject closestEnemy = SelectClosestEnemy();
 
         if(Vector3.Distance(closestEnemy.transform.position, transform.position) > aiStats.lookRange)
         {
@@ -263,12 +254,28 @@ public class AIManager : MonoBehaviour
         defaultChaseTarget = currentChaseTarget;
         currentChaseTarget = closestEnemy.transform;
         possessedTimestamp = Time.time + aiStats.unarmedCombatSettings.possessionDuration;
-        possessed = true;
+    }
+
+    private GameObject SelectClosestEnemy()
+    {
+        //search for closest enemy
+        float shortestDistance = float.MaxValue;
+        GameObject closestEnemy = null;
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
+        {
+            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
+            if (distance < shortestDistance && enemy != this.gameObject && enemy.activeSelf)
+            {
+                closestEnemy = enemy;
+                shortestDistance = distance;
+            }
+        }
+        return closestEnemy;
     }
 
     public bool IsPossessed()
     {
-        return possessed;
+        return possessedTimestamp >= Time.time;
     } 
 
     public void PsychicScreamExecuted(float duration)
