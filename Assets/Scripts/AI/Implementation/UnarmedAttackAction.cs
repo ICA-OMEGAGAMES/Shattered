@@ -23,7 +23,6 @@ public class UnarmedAttackAction : Action
         if (!manager.IsCombatEnabled())
         {
             manager.SwitchCombatState(true);
-            manager.ResetAttackCooldown();
         }
         
         if (manager.IsCooldownExpired())

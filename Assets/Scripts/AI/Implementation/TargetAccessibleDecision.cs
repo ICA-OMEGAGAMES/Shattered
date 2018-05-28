@@ -18,6 +18,6 @@ public class TargetAccessibleDecision : Decision {
         {
             manager.RefreshTarget();
         }
-        return (manager.TargetAccessible() || manager.framesWithoutMovement < 10);
+        return (manager.TargetAccessible() || manager.framesWithoutMovement < 10) && manager.IsTargetAlive();
     }
 }

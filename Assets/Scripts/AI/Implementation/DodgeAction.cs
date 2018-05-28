@@ -21,6 +21,7 @@ public class DodgeAction : Action
                 && manager.Dodge((UnityEngine.Random.Range(0.0f, 5.0f) >= 4))){
             //if the player is near, dodge based on chance
             manager.SetAttackCooldown(manager.aiStats.movementStats.dodgeCooldown);
+            Debug.Log("dodge");
         }
     }
 }

@@ -101,11 +101,6 @@ public class AIManager : MonoBehaviour
         attackCooldownTimestamp = Time.time + time;
     }
 
-    public void ResetAttackCooldown()
-    {
-        attackCooldownTimestamp = 0;
-    }
-
     public bool IsCooldownExpired()
     {
         return Time.time > attackCooldownTimestamp;
@@ -284,5 +279,17 @@ public class AIManager : MonoBehaviour
     public bool IsPsychicScreamAffected()
     {
         return psychicScreamTimestamp > Time.time;
+    }
+
+    public bool IsTargetAlive()
+    {
+        Statistics statistics = currentChaseTarget.transform.root.GetComponent<Statistics>();
+
+        if(statistics == null)
+        {
+            return currentChaseTarget.transform.root.GetComponentInChildren<AIManager>().currentHealth > 0;
+        }
+
+        return statistics.GetHealth() > 0;
     }
 }

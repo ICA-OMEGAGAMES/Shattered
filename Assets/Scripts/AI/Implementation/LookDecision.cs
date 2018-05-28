@@ -12,6 +12,10 @@ public class LookDecision : Decision {
 
     private bool Look(AIManager manager)
     {
+        if(!manager.IsTargetAlive())
+        {
+            return false;
+        }
         Vector3 targetDirection = manager.GetTargetPosition() - manager.transform.position;
         float angleToPlayer = Vector3.Angle(targetDirection, manager.transform.forward);
         
