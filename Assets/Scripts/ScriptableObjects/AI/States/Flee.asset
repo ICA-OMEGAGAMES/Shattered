@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c8aba80d3b6e046b1275ae568180c9, type: 3}
+  m_Name: Flee
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: df741222cc0cdd741a0dd71178744dc6, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 6ee9d3fbff42a154e84cec9ce22e071b, type: 2}
+    trueState: {fileID: 11400000, guid: 04ad381d5cafce549bffddada3ead1d1, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+  - decision: {fileID: 11400000, guid: ed9b8bb42486e3b4da881dfa922eeb11, type: 2}
+    trueState: {fileID: 11400000, guid: 04ad381d5cafce549bffddada3ead1d1, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}

@@ -13,6 +13,6 @@ public class TargetReachedDecision : Decision {
 
     private bool Reached(AIManager manager)
     {
-         return (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending);
+         return (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.aiStats.movementStats.reachedDistance && !manager.navMeshAgent.pathPending);
     }
 }

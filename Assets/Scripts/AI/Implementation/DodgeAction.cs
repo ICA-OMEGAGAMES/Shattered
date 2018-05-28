@@ -17,10 +17,10 @@ public class DodgeAction : Action
         }       
         
         if((Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) 
-                <= (manager.movementStats.reachedDistance * manager.movementStats.reachedTollerance)) 
+                <= (manager.aiStats.movementStats.reachedDistance * manager.aiStats.movementStats.reachedTollerance)) 
                 && manager.Dodge((UnityEngine.Random.Range(0.0f, 5.0f) >= 4))){
             //if the player is near, dodge based on chance
-            manager.SetAttackCooldown(manager.movementStats.dodgeCooldown);
+            manager.SetAttackCooldown(manager.aiStats.movementStats.dodgeCooldown);
         }
     }
 }

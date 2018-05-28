@@ -20,7 +20,18 @@ public class PhychicScream : ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            //("PhychicScream Used");
+            float maxDistance = 10;
+            List<GameObject> enemiesInRange = new List<GameObject>();
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
+            {
+                float distance = Vector3.Distance(mono.transform.position, enemy.transform.position);
+                if (distance <= maxDistance)
+                {
+                    enemiesInRange.Add(enemy);
+                }
+            }
+
+            enemiesInRange.ForEach(enemy => enemy.GetComponent<AIManager>().PsychicScreamExecuted(10));
         }
     }
 

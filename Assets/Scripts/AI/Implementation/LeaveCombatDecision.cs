@@ -13,6 +13,6 @@ public class LeaveCombatDecision : Decision {
 
     private bool Leave(AIManager manager)
     {
-        return Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.unarmedCombatSettings.unarmedAttackRange;   
+        return Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.aiStats.unarmedCombatSettings.unarmedAttackRange;   
     }
 }

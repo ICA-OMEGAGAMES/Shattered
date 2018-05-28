@@ -14,6 +14,6 @@ public class ChaseAction : Action {
 	{
 		Vector3 targetPosition = manager.GetTargetPosition();
 		manager.lastKnownTargetPosition = targetPosition;
-		manager.MoveNavMeshAgent(targetPosition, manager.movementStats.runSpeed);
+		manager.MoveNavMeshAgent(targetPosition, manager.aiStats.movementStats.runSpeed);
 	}
 }

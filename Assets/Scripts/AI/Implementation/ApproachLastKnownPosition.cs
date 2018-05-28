@@ -13,6 +13,6 @@ public class ApproachLastKnownPosition : Action
 
     private void Approach(AIManager manager)
     {
-        manager.MoveNavMeshAgent(manager.lastKnownTargetPosition, manager.movementStats.moveSpeed);
+        manager.MoveNavMeshAgent(manager.lastKnownTargetPosition, manager.aiStats.movementStats.moveSpeed);
     }
 }

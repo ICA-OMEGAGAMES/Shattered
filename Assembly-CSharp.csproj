@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\AIStats.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Decision.cs" />
      <Compile Include="Assets\Scripts\AI\Base\MarkerManagerAi.cs" />
      <Compile Include="Assets\Scripts\AI\Base\State.cs" />
@@ -65,10 +66,13 @@
      <Compile Include="Assets\Scripts\AI\Implementation\BeingAttackedDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\FleeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\FleeDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\IdleAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LeaveCombatDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookAtTarget.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\OutOfRangeDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\PatrolAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetAccessibleDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetReachedDecision.cs" />

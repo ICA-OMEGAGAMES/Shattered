@@ -12,6 +12,6 @@ public class BeingAttackedDecision : Decision {
 
     private bool Attacked(AIManager manager)
     {
-        return manager.aiStats.currentHealth < manager.previousHealth;
+        return manager.currentHealth < manager.previousHealth;
     }
 }

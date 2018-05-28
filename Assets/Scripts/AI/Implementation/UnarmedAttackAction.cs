@@ -38,7 +38,7 @@ public class UnarmedAttackAction : Action
             }
             //kick or punch based on chance
 
-            manager.SetAttackCooldown(manager.unarmedCombatSettings.cooldown);
+            manager.SetAttackCooldown(manager.aiStats.unarmedCombatSettings.cooldown);
         }
     }
 }
