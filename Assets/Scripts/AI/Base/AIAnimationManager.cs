@@ -21,7 +21,7 @@ public class AIAnimationManager : MonoBehaviour
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
     }
-    
+
     [SerializeField]
     public AnimationSettings animations;
 
@@ -29,7 +29,7 @@ public class AIAnimationManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    
+
     public void Animate(float walkingSpeed)
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
@@ -41,7 +41,7 @@ public class AIAnimationManager : MonoBehaviour
     public void SetFightingAnimation(int fightMode, int attack)
     {
         animator.SetInteger(animations.weaponSet, fightMode);
-        if(attack == 1)
+        if (attack == 1)
         {
             animator.SetTrigger(animations.attack1);
         }

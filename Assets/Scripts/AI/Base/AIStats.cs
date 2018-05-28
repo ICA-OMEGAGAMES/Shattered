@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/AIStats")]
+[CreateAssetMenu(menuName = "PluggableAI/AIStats")]
 public class AIStats : ScriptableObject
 {
 
@@ -29,12 +29,15 @@ public class AIStats : ScriptableObject
     public class UnarmedCombatSettings
     {
         //Not sure yet if its going to be a scriptable object or a class
-        public float unarmedAttackRange = 7f;
+        public float attackIdleRange = 8f;
+        public float unarmedAttackRange = 5f;
         public float unarmedAttackDamage = 5f;
         public float lightAttackDuration = 0.5f;
         public float heavyAttackDuration = 0.5f;
         public float cooldown = 2f;
-        public float possessionDuration = 10;
+        public float possessionDuration = 10f;
+        public float attackingDuration = 7.5f;
+        public float attackModeCooldown = 3.75f;
     }
 
     [SerializeField]

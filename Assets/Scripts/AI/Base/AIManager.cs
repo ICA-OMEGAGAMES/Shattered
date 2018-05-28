@@ -26,13 +26,13 @@ public class AIManager : MonoBehaviour
     private Transform defaultChaseTarget;
     private MarkerManagerAi markerManager;
     private bool isInCombat = false;
-    protected bool characterRooted = true;
     private float attackCooldownTimestamp;
     private float timestamp;
     private bool isTimestampSet;
-    private int currentVelocityIndex;
     private float possessedTimestamp;
     private float psychicScreamTimestamp;
+    private float attackDurationTimestamp;
+    private float attackModeCooldownTimestamp;
 
     public bool SetUpAiManager(StateController controller)
     {
@@ -64,8 +64,8 @@ public class AIManager : MonoBehaviour
         if (possessedTimestamp <= Time.time)
         {
             currentChaseTarget = defaultChaseTarget;
-        } 
-        else if(possessedTimestamp > Time.time && !IsTargetAlive())
+        }
+        else if (possessedTimestamp > Time.time && !IsTargetAlive())
         {
             currentChaseTarget = SelectClosestEnemy().transform;
         }
@@ -94,8 +94,17 @@ public class AIManager : MonoBehaviour
 
     public void SwitchCombatState(bool enabled)
     {
+        GameObject.FindObjectOfType<GeneralAIManager>().AttackState(enabled);
         isInCombat = enabled;
         animationManager.animator.SetBool(animationManager.animations.isInCombat, isInCombat);
+        if (enabled)
+        {
+            attackDurationTimestamp = Time.time + aiStats.unarmedCombatSettings.attackingDuration;
+        }
+        else
+        {
+            attackModeCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.attackModeCooldown;
+        }
     }
 
     public void SetAttackCooldown(float time)
@@ -111,6 +120,21 @@ public class AIManager : MonoBehaviour
     public bool IsCombatEnabled()
     {
         return isInCombat;
+    }
+
+    public int GetAttackingAis()
+    {
+        return GameObject.FindObjectOfType<GeneralAIManager>().GetAttackingAIS();
+    }
+
+    public bool IsAttackModeCooldownExpired()
+    {
+        return attackModeCooldownTimestamp < Time.time;
+    }
+
+    public bool IsAttackDurationOver()
+    {
+        return attackDurationTimestamp < Time.time;
     }
 
     public void StopMovement()
@@ -154,6 +178,14 @@ public class AIManager : MonoBehaviour
         }
 
         navMeshAgent.destination = destination;
+        navMeshAgent.speed = speed;
+        navMeshAgent.isStopped = false;
+    }
+
+    public void StepBackwards(Vector3 direction, float speed)
+    {
+        Vector3 targetPosition = direction.normalized * -aiStats.unarmedCombatSettings.unarmedAttackRange;
+        navMeshAgent.destination = targetPosition;
         navMeshAgent.speed = speed;
         navMeshAgent.isStopped = false;
     }
@@ -216,7 +248,10 @@ public class AIManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             StopMovement();
-            SwitchCombatState(false);
+            if (isInCombat)
+            {
+                SwitchCombatState(false);
+            }
             controller.Die();
             animationManager.Die();
         }
@@ -243,10 +278,9 @@ public class AIManager : MonoBehaviour
 
         GameObject closestEnemy = SelectClosestEnemy();
 
-        if(Vector3.Distance(closestEnemy.transform.position, transform.position) > aiStats.lookRange)
+        if (Vector3.Distance(closestEnemy.transform.position, transform.position) > aiStats.lookRange)
         {
             //if no enemy is in range return
-            Debug.Log("No other enemy in range");
             return;
         }
 
@@ -276,7 +310,7 @@ public class AIManager : MonoBehaviour
     public bool IsPossessed()
     {
         return possessedTimestamp >= Time.time;
-    } 
+    }
 
     public void PsychicScreamExecuted(float duration)
     {
@@ -292,7 +326,7 @@ public class AIManager : MonoBehaviour
     {
         Statistics statistics = currentChaseTarget.transform.root.GetComponent<Statistics>();
 
-        if(statistics == null)
+        if (statistics == null)
         {
             return currentChaseTarget.transform.root.GetComponentInChildren<AIManager>().currentHealth > 0;
         }

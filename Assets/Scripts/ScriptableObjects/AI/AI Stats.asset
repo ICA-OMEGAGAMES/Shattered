@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: AI Stats
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
   searchTime: 5
   lookSpeed: 1
   lookRange: 40
@@ -24,9 +23,12 @@ MonoBehaviour:
     reachedDistance: 0.75
     reachedTollerance: 1.25
   unarmedCombatSettings:
-    unarmedAttackRange: 7
+    attackIdleRange: 6
+    unarmedAttackRange: 4
     unarmedAttackDamage: 5
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
     cooldown: 2
     possessionDuration: 10
+    attackingDuration: 7.5
+    attackModeCooldown: 3.75

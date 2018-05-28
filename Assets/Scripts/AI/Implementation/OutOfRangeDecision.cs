@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Decisions/OutOfRange")]
-public class OutOfRangeDecision : Decision {
+[CreateAssetMenu(menuName = "PluggableAI/Decisions/OutOfRange")]
+public class OutOfRangeDecision : Decision
+{
 
     public override bool Decide(AIManager manager)
     {

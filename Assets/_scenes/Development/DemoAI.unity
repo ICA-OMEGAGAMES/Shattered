@@ -1618,6 +1618,68 @@ Transform:
   m_Father: {fileID: 1716895805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &190543777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 190543780}
+  - component: {fileID: 190543779}
+  - component: {fileID: 190543778}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &190543778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190543777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdb897dadd62884ea5c84c873ea2b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &190543779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190543777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0472547371299a74c9ace331703fab25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  animations:
+    groundedBool: isGrounded
+    dodgeBool: isDodging
+    isInCombat: isInCombat
+    deadBool: isDead
+    verticalVelocityFloat: Forward
+    weaponSet: WeaponSet
+    attack1: Attack1
+    attack2: Attack2
+--- !u!4 &190543780
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190543777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0299997, y: 1.2333539, z: -13.610001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192228903
 GameObject:
   m_ObjectHideFlags: 0
@@ -7428,17 +7490,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   animations:
     groundedBool: isGrounded
-    jumpBool: isJumping
-    crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
     verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    blink: Blink
 --- !u!114 &713800234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7457,47 +7515,15 @@ MonoBehaviour:
   - {fileID: 853793607}
   - {fileID: 633220570}
   eyes: {fileID: 1859887328}
+  aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   walkTarget: {x: 0, y: 0, z: 0}
   framesWithoutMovement: 0
+  currentHealth: 0
   previousHealth: 0
-  aiStats:
-    maxHealth: 100
-    currentHealth: 0
-    toggleCombatCooldown: 1
-    searchTime: 5
-    lookSpeed: 1
-    lookRange: 40
-    FOV: 180
-  movementStats:
-    moveSpeed: 4
-    strafeSpeed: 5
-    crouchSpeed: 2
-    runSpeed: 8
-    jumpSpeed: 8
-    jumpTime: 0.25
-    jumpCooldown: 1
-    dodgeDistance: 10
-    dodgeCooldown: 2
-    rotateSpeed: 5
-    reachedDistance: 0.75
-    reachedTollerance: 1.25
-    attackRange: 7
-    attackRate: 1
-    attackForce: 15
-    attackDamage: 5
-  unarmedCombatSettings:
-    unarmedAttackRange: 7
-    unarmedAttackRate: 1
-    unarmedAttackDamage: 5
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    cooldown: 3
-    rootAble: 1
-    possessionDuration: 10
 --- !u!64 &713800235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19676,17 +19702,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   animations:
     groundedBool: isGrounded
-    jumpBool: isJumping
-    crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
     verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    blink: Blink
 --- !u!114 &1748861163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19705,47 +19727,15 @@ MonoBehaviour:
   - {fileID: 853793607}
   - {fileID: 633220570}
   eyes: {fileID: 654276099}
+  aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   walkTarget: {x: 0, y: 0, z: 0}
   framesWithoutMovement: 0
+  currentHealth: 0
   previousHealth: 0
-  aiStats:
-    maxHealth: 100
-    currentHealth: 0
-    toggleCombatCooldown: 1
-    searchTime: 5
-    lookSpeed: 1
-    lookRange: 40
-    FOV: 180
-  movementStats:
-    moveSpeed: 4
-    strafeSpeed: 5
-    crouchSpeed: 2
-    runSpeed: 8
-    jumpSpeed: 8
-    jumpTime: 0.25
-    jumpCooldown: 1
-    dodgeDistance: 10
-    dodgeCooldown: 2
-    rotateSpeed: 5
-    reachedDistance: 0.75
-    reachedTollerance: 1.25
-    attackRange: 7
-    attackRate: 1
-    attackForce: 15
-    attackDamage: 5
-  unarmedCombatSettings:
-    unarmedAttackRange: 7
-    unarmedAttackRate: 1
-    unarmedAttackDamage: 5
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    cooldown: 3
-    rootAble: 1
-    possessionDuration: 10
 --- !u!64 &1748861164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22204,17 +22194,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   animations:
     groundedBool: isGrounded
-    jumpBool: isJumping
-    crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
     verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    blink: Blink
 --- !u!114 &1918998987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22233,47 +22219,15 @@ MonoBehaviour:
   - {fileID: 853793607}
   - {fileID: 633220570}
   eyes: {fileID: 1596289525}
+  aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
   walkTarget: {x: 0, y: 0, z: 0}
   framesWithoutMovement: 0
+  currentHealth: 0
   previousHealth: 0
-  aiStats:
-    maxHealth: 100
-    currentHealth: 0
-    toggleCombatCooldown: 1
-    searchTime: 5
-    lookSpeed: 1
-    lookRange: 40
-    FOV: 180
-  movementStats:
-    moveSpeed: 4
-    strafeSpeed: 5
-    crouchSpeed: 2
-    runSpeed: 8
-    jumpSpeed: 8
-    jumpTime: 0.25
-    jumpCooldown: 1
-    dodgeDistance: 10
-    dodgeCooldown: 2
-    rotateSpeed: 5
-    reachedDistance: 0.75
-    reachedTollerance: 1.25
-    attackRange: 7
-    attackRate: 1
-    attackForce: 15
-    attackDamage: 5
-  unarmedCombatSettings:
-    unarmedAttackRange: 7
-    unarmedAttackRate: 1
-    unarmedAttackDamage: 5
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    cooldown: 3
-    rootAble: 1
-    possessionDuration: 10
 --- !u!64 &1918998988
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23409,8 +23363,7 @@ MonoBehaviour:
   skillSettings:
     teleportSettings: {fileID: 11400000, guid: 18b7e37e9b09b4b488c6a7890fb44bf7, type: 2}
     barierSettings: {fileID: 11400000, guid: 89a81bcdbae80634a94d750915d65abd, type: 2}
-    phychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
-      type: 2}
+    psychicScreamSettings: {fileID: 0}
     divineAuraSettings: {fileID: 11400000, guid: e51cd32c2b5a4f44488a0d1e20fcb2a2,
       type: 2}
     darkClawSettings: {fileID: 11400000, guid: 8c09984024e19434d8b85e0996082ad6, type: 2}

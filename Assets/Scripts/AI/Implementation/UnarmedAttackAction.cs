@@ -6,33 +6,35 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableAI/Actions/UnarmedAttack")]
 public class UnarmedAttackAction : Action
 {
-   
+
     public override void Act(AIManager manager)
     {
         Attack(manager);
     }
 
     private void Attack(AIManager manager)
-    {   
-        if(manager.IsNavMeshAgentMoving())
-        {
-            return;
-            //if the ai is moving (approaching) it is out of combat
-        }
-
+    {
         if (!manager.IsCombatEnabled())
         {
             manager.SwitchCombatState(true);
         }
-        
+
+        if (manager.IsNavMeshAgentMoving())
+        {
+            //if the ai is moving (approaching) it is out of combat
+            return;
+        }
+
         if (manager.IsCooldownExpired())
-        {           
+        {
             float random = UnityEngine.Random.Range(0.0f, 5.0f);
 
-            if(random < 4 )
+            if (random < 4)
             {
                 manager.animationManager.SetFightingAnimation(0, 1);
-            } else {
+            }
+            else
+            {
                 manager.animationManager.SetFightingAnimation(0, 2);
             }
             //kick or punch based on chance

@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalphasScript : CharacterMovement {
+public class MalphasScript : CharacterMovement
+{
 
     //Sterialized classes
     [Serializable]
@@ -20,13 +21,13 @@ public class MalphasScript : CharacterMovement {
     }
     [SerializeField]
     public BasicCombatSettings basicCombatSettings;
-    
+
     [Serializable]
     public class SkillsSettings
     {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
-        public SkillSettings phychicScreamSettings;
+        public SkillSettings psychicScreamSettings;
         public SkillSettings divineAuraSettings;
         public SkillSettings darkClawSettings;
         public SkillSettings demonicWaveSettings;
@@ -51,7 +52,7 @@ public class MalphasScript : CharacterMovement {
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
+        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
         skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
@@ -78,7 +79,7 @@ public class MalphasScript : CharacterMovement {
         }
         if (Input.GetButton(Constants.SKILL2_BUTTON))
         {
-            if (skills.Count >= 2) 
+            if (skills.Count >= 2)
                 skills[2].Execute(animator);
         }
         if (Input.GetButton(Constants.SKILL3_BUTTON))
@@ -157,7 +158,7 @@ public class MalphasScript : CharacterMovement {
         {
             if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                characterController.transform.Translate(new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS) * basicCombatSettings.blinkDistance,0, 
+                characterController.transform.Translate(new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS) * basicCombatSettings.blinkDistance, 0,
                                                                     Input.GetAxis(Constants.VERTICAL_AXIS) * basicCombatSettings.blinkDistance));
                 blinkTimeStamp = Time.time + basicCombatSettings.blinkCooldown;
             }
