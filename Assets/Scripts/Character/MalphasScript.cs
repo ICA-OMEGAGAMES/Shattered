@@ -142,8 +142,26 @@ public class MalphasScript : CharacterMovement {
 
     public void LearnSkill(string skill)
     {
-        //TODO: learnSkill from skilltree
-        //skills.Add();
+        switch (skill){
+            case "Teleport":
+                skills.Add(new Teleport(skillSettings.teleportSettings, this));
+                break;
+            case "Barrier":
+                skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+                break;
+            case "PhychicScream":
+                skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
+                break;
+            case "DemonicWave":
+                skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+                break;
+            case "Possess":
+                skills.Add(new Possess(skillSettings.possessSettings, this));
+                break;
+            default:
+                Console.WriteLine("Skill unknown");
+                break;
+        }
     }
 
     public void EnableMarkers()
