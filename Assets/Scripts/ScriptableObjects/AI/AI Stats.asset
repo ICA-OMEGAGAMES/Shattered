@@ -24,8 +24,9 @@ MonoBehaviour:
     reachedTollerance: 1.25
   unarmedCombatSettings:
     blockDuration: 3
-    attackIdleRange: 6
-    unarmedAttackRange: 4
+    blockPercentage: 0.5
+    attackIdleRange: 7
+    unarmedAttackRange: 3
     unarmedAttackDamage: 5
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5

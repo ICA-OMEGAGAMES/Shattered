@@ -187,14 +187,6 @@ public class AIManager : MonoBehaviour
         navMeshAgent.isStopped = false;
     }
 
-    public void StepBackwards(Vector3 direction, float speed)
-    {
-        Vector3 targetPosition = direction.normalized * aiStats.unarmedCombatSettings.unarmedAttackRange;
-        navMeshAgent.destination = targetPosition;
-        navMeshAgent.speed = speed;
-        navMeshAgent.isStopped = false;
-    }
-
     public bool TargetAccessible()
     {
         NavMeshPath path = new NavMeshPath();
@@ -268,8 +260,13 @@ public class AIManager : MonoBehaviour
         }
     }
     public void EnableMarkers()
-    {
-        markerManager.EnableMarkers(aiStats.unarmedCombatSettings.unarmedAttackDamage);
+    {   
+        if(!IsPossessed())
+        {
+            markerManager.EnableMarkers(aiStats.unarmedCombatSettings.unarmedAttackDamage);
+            return;
+        }
+        markerManager.EnableMarkers(100);
     }
 
     public void DisableMarkers()

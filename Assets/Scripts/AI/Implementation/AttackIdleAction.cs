@@ -16,9 +16,9 @@ public class AttackIdleAction : Action
         if (Vector3.Distance(manager.GetTargetPosition(), manager.transform.position) < manager.aiStats.unarmedCombatSettings.unarmedAttackRange
             || Vector3.Distance(manager.GetTargetPosition(), manager.transform.position) > manager.aiStats.unarmedCombatSettings.attackIdleRange)
         {
-            Vector3 direction = manager.GetTargetPosition() - manager.transform.position;
+            Vector3 direction = manager.GetTargetPosition() +  ((manager.transform.position - manager.GetTargetPosition()).normalized * Random.Range(manager.aiStats.unarmedCombatSettings.unarmedAttackRange, manager.aiStats.unarmedCombatSettings.attackIdleRange));
 
-            manager.StepBackwards(direction, manager.aiStats.movementStats.moveSpeed);
+            manager.MoveNavMeshAgent(direction, manager.aiStats.movementStats.runSpeed);
         }
         else
         {

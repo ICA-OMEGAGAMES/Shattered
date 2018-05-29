@@ -31,8 +31,11 @@ public class UnarmedAttackAction : Action
             Debug.Log("Tease");
         }
 
-        if(manager.IsCooldownExpired() && manager.IsAttackTimestampExpired())
+        GeneralAIManager generalAIManager = GameObject.FindObjectOfType<GeneralAIManager>();
+
+        if(manager.IsCooldownExpired() && generalAIManager.IsCooldownExpired() && manager.IsAttackTimestampExpired())
         {
+            generalAIManager.SetCooldown(1.5f);
             float random = UnityEngine.Random.Range(0.0f, 5.0f);
             //kick or punch based on chance
             if (random < 4)

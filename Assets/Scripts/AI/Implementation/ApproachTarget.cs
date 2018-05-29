@@ -20,9 +20,10 @@ public class ApproachTarget : Action
             //if the cooldown is not expired yet return 
             return;
         }
-        if (Vector3.Distance(targetPosition, manager.transform.position) <= (manager.aiStats.movementStats.reachedDistance * manager.aiStats.movementStats.reachedTollerance))
+        float distance = Vector3.Distance(targetPosition, manager.transform.position);
+        if (distance <= (manager.aiStats.movementStats.reachedDistance * manager.aiStats.movementStats.reachedTollerance))
         {
-            // ifthe target is reached stop
+            // if the target is reached stop
             manager.StopMovement();
             return;
         }

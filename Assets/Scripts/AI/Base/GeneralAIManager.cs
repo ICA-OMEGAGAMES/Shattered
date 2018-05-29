@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public class GeneralAIManager : MonoBehaviour
 {
     private int attackingAIs;
+    private float attackCooldownTimestamp;
 
     public void AttackState(bool enabled)
     {
@@ -22,5 +23,15 @@ public class GeneralAIManager : MonoBehaviour
     public int GetAttackingAIS()
     {
         return attackingAIs;
+    }
+
+    public void SetCooldown(float duration)
+    {
+        attackCooldownTimestamp = Time.time + duration;
+    }
+
+    public bool IsCooldownExpired()
+    {
+        return Time.time > attackCooldownTimestamp;
     }
 }
