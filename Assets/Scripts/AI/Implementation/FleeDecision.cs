@@ -15,6 +15,11 @@ public class FleeDecision : Decision
 
     private bool Flee(AIManager manager)
     {
-        return manager.IsPsychicScreamAffected();
+        if(manager.IsPsychicScreamAffected())
+        {
+            manager.GetTargetPosition();
+            return true;
+        }
+        return false;
     }
 }

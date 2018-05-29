@@ -29,6 +29,8 @@ public class AIManager : MonoBehaviour
     private float attackCooldownTimestamp;
     private float timestamp;
     private bool isTimestampSet;
+    private float attackTimestamp;
+    private bool attackTimestampSet;
     private float possessedTimestamp;
     private float psychicScreamTimestamp;
     private float attackDurationTimestamp;
@@ -94,7 +96,6 @@ public class AIManager : MonoBehaviour
 
     public void SwitchCombatState(bool enabled)
     {
-        GameObject.FindObjectOfType<GeneralAIManager>().AttackState(enabled);
         isInCombat = enabled;
         animationManager.animator.SetBool(animationManager.animations.isInCombat, isInCombat);
         if (enabled)
@@ -184,7 +185,7 @@ public class AIManager : MonoBehaviour
 
     public void StepBackwards(Vector3 direction, float speed)
     {
-        Vector3 targetPosition = direction.normalized * -aiStats.unarmedCombatSettings.unarmedAttackRange;
+        Vector3 targetPosition = direction.normalized * aiStats.unarmedCombatSettings.unarmedAttackRange;
         navMeshAgent.destination = targetPosition;
         navMeshAgent.speed = speed;
         navMeshAgent.isStopped = false;
@@ -264,6 +265,32 @@ public class AIManager : MonoBehaviour
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
+    }
+
+    public void SetAttackTimestamp(float seconds)
+    {
+        attackTimestamp = Time.time + seconds;
+        attackTimestampSet = true;
+    }
+
+    public bool IsAttackTimestampExpired()
+    {
+        if(attackTimestampSet && Time.time > attackTimestamp)
+        {
+            attackTimestampSet = false;
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetAttackTimer()
+    {
+        attackTimestampSet = false;
+    }
+
+    public bool IsAttackTimestampSet()
+    {
+        return attackTimestampSet;
     }
 
     public void Possess()

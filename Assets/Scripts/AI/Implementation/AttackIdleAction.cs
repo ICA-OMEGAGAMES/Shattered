@@ -13,10 +13,11 @@ public class AttackIdleAction : Action
 
     private void AttackIdle(AIManager manager)
     {
-        Vector3 direction = manager.GetTargetPosition() - manager.transform.position;
         if (Vector3.Distance(manager.GetTargetPosition(), manager.transform.position) < manager.aiStats.unarmedCombatSettings.unarmedAttackRange
             || Vector3.Distance(manager.GetTargetPosition(), manager.transform.position) > manager.aiStats.unarmedCombatSettings.attackIdleRange)
         {
+            Vector3 direction = manager.GetTargetPosition() - manager.transform.position;
+
             manager.StepBackwards(direction, manager.aiStats.movementStats.moveSpeed);
         }
         else

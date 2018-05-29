@@ -11,7 +11,7 @@ public class DodgeAction : Action
 
     private void Dodge(AIManager manager)
     {
-        if (!manager.IsCooldownExpired())
+        if (!manager.IsCooldownExpired() || manager.IsAttackTimestampSet())
         {
             return;
         }

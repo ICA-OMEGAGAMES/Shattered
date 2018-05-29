@@ -15,8 +15,9 @@ public class SwitchToAttackDecision : Decision
 
     private bool SwitchToAttack(AIManager manager)
     {
-        if ((manager.GetAttackingAis() < 2) && manager.IsAttackModeCooldownExpired())
+        if ((manager.GetAttackingAis() < 1) && manager.IsAttackModeCooldownExpired())
         {
+            GameObject.FindObjectOfType<GeneralAIManager>().AttackState(true);
             return true;
         }
         return false;

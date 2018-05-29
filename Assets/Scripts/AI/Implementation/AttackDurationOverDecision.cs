@@ -13,6 +13,13 @@ public class AttackDurationOver : Decision
 
     private bool DurationOver(AIManager manager)
     {
-        return manager.IsAttackDurationOver();
+        if(manager.IsAttackDurationOver())
+        {
+            manager.ResetAttackTimer();
+            GameObject.FindObjectOfType<GeneralAIManager>().AttackState(false);
+            return true;
+        }
+        return false;
+
     }
 }

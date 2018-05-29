@@ -25,10 +25,16 @@ public class UnarmedAttackAction : Action
             return;
         }
 
-        if (manager.IsCooldownExpired())
+        if (manager.IsCooldownExpired() && !manager.IsAttackTimestampSet())
+        {
+            manager.SetAttackTimestamp(0.75f);
+            Debug.Log("Tease");
+        }
+
+        if(manager.IsAttackTimestampExpired())
         {
             float random = UnityEngine.Random.Range(0.0f, 5.0f);
-
+            //kick or punch based on chance
             if (random < 4)
             {
                 manager.animationManager.SetFightingAnimation(0, 1);
@@ -37,8 +43,6 @@ public class UnarmedAttackAction : Action
             {
                 manager.animationManager.SetFightingAnimation(0, 2);
             }
-            //kick or punch based on chance
-
             manager.SetAttackCooldown(manager.aiStats.unarmedCombatSettings.cooldown);
         }
     }
