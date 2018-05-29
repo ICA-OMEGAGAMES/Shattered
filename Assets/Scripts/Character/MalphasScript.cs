@@ -32,12 +32,13 @@ public class MalphasScript : CharacterMovement {
     }
     [SerializeField]
     public SkillsSettings skillSettings;
-
+    private float blinkDistance = 100;
     private float blinkTimeStamp = 0;
     private CharacterAttack attack;
     private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
+    
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
@@ -133,9 +134,11 @@ public class MalphasScript : CharacterMovement {
         {
             if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                characterController.transform.Translate(new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS) * basicCombatSettings.blinkDistance,0, 
-                                                                    Input.GetAxis(Constants.VERTICAL_AXIS) * basicCombatSettings.blinkDistance));
-                blinkTimeStamp = Time.time + basicCombatSettings.blinkCooldown;
+                 Vector3 moveDirection;
+                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
+                 moveDirection = transform.TransformDirection(moveDirection);
+                    characterController.Move(moveDirection * Time.deltaTime * blinkDistance);
+                blinkTimeStamp = Time.deltaTime;
             }
         }
     }
