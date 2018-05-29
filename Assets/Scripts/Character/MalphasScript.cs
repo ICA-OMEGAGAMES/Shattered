@@ -16,7 +16,7 @@ public class MalphasScript : CharacterMovement {
         public float attack2Duration = 0.5f;
         public bool attack2Rootable = true;
         public float blinkCooldown = 1;
-        public float blinkDistance = 2;
+        public float blinkDistance = 5;
     }
     [SerializeField]
     public BasicCombatSettings basicCombatSettings;
@@ -26,13 +26,12 @@ public class MalphasScript : CharacterMovement {
     {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
-        public SkillSettings phychicScreamSettings;
+        public SkillSettings psychicScreamSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
     }
     [SerializeField]
     public SkillsSettings skillSettings;
-    private float blinkDistance = 100;
     private float blinkTimeStamp = 0;
     private CharacterAttack attack;
     private MarkerManagerPlayer markerManager;
@@ -51,7 +50,7 @@ public class MalphasScript : CharacterMovement {
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
+        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
     }
@@ -134,13 +133,18 @@ public class MalphasScript : CharacterMovement {
         {
             if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                 Vector3 moveDirection;
-                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-                 moveDirection = transform.TransformDirection(moveDirection);
-                    characterController.Move(moveDirection * Time.deltaTime * blinkDistance);
-                blinkTimeStamp = Time.deltaTime;
+                StartCoroutine(MultiplyMovement(movementMultiplier));
+                blinkTimeStamp = Time.time + basicCombatSettings.blinkCooldown;
             }
         }
+    }
+
+    IEnumerator MultiplyMovement(float orignialSpeed)
+    {
+        movementMultiplier = basicCombatSettings.blinkDistance;
+        yield return new WaitForSeconds(0.1f);
+        movementMultiplier = orignialSpeed;
+
     }
 
     public void LearnSkill(string skill)

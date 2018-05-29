@@ -4038,6 +4038,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114177733694621424, guid: fba55db4502b61341bd7647b1eb7f537,
+        type: 2}
+      propertyPath: basicCombatSettings.blinkDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 143352912026916392, guid: fba55db4502b61341bd7647b1eb7f537,
+        type: 2}
+      propertyPath: m_StepOffset
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
   m_IsPrefabParent: 0

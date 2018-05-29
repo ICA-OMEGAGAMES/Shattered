@@ -68,6 +68,7 @@ public class CharacterMovement : MonoBehaviour
     protected bool crouching;
     protected bool dodging;
     protected bool characterControllable = true;
+    protected float movementMultiplier = 1;
 
     //public variables
     public bool combatState = false;
@@ -152,6 +153,7 @@ public class CharacterMovement : MonoBehaviour
         //movement
         if (characterRooted == false) {
             Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
+            moveDirection *= movementMultiplier;
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
         }
