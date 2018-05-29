@@ -149,7 +149,7 @@ public class MalphasScript : CharacterMovement {
             case "Barrier":
                 skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
                 break;
-            case "PhychicScream":
+            case "PsychicScream":
                 skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
                 break;
             case "DemonicWave":
