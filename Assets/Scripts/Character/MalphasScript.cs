@@ -26,9 +26,7 @@ public class MalphasScript : CharacterMovement {
     {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
-        public SkillSettings phychicScreamSettings;
-        public SkillSettings divineAuraSettings;
-        public SkillSettings darkClawSettings;
+        public SkillSettings psychicScreamSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
     }
@@ -51,9 +49,7 @@ public class MalphasScript : CharacterMovement {
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
-        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
-        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
+        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
@@ -80,21 +76,6 @@ public class MalphasScript : CharacterMovement {
         {
             if (skills.Count >= 2) 
                 skills[2].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL3_BUTTON))
-        {
-            if (skills.Count >= 3)
-                skills[3].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL4_BUTTON))
-        {
-            if (skills.Count >= 4)
-                skills[4].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL5_BUTTON))
-        {
-            if (skills.Count >= 5)
-                skills[5].Execute(animator);
         }
     }
 
@@ -161,8 +142,26 @@ public class MalphasScript : CharacterMovement {
 
     public void LearnSkill(string skill)
     {
-        //TODO: learnSkill from skilltree
-        //skills.Add();
+        switch (skill){
+            case "Teleport":
+                skills.Add(new Teleport(skillSettings.teleportSettings, this));
+                break;
+            case "Barrier":
+                skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+                break;
+            case "PsychicScream":
+                skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
+                break;
+            case "DemonicWave":
+                skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+                break;
+            case "Possess":
+                skills.Add(new Possess(skillSettings.possessSettings, this));
+                break;
+            default:
+                Console.WriteLine("Skill unknown");
+                break;
+        }
     }
 
     public void EnableMarkers()
