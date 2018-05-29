@@ -23,6 +23,7 @@ MonoBehaviour:
     reachedDistance: 0.75
     reachedTollerance: 1.25
   unarmedCombatSettings:
+    blockDuration: 3
     attackIdleRange: 6
     unarmedAttackRange: 4
     unarmedAttackDamage: 5
@@ -32,3 +33,4 @@ MonoBehaviour:
     possessionDuration: 10
     attackingDuration: 7.5
     attackModeCooldown: 3.75
+    stunDuration: 1

@@ -31,7 +31,7 @@ public class UnarmedAttackAction : Action
             Debug.Log("Tease");
         }
 
-        if(manager.IsAttackTimestampExpired())
+        if(manager.IsCooldownExpired() && manager.IsAttackTimestampExpired())
         {
             float random = UnityEngine.Random.Range(0.0f, 5.0f);
             //kick or punch based on chance

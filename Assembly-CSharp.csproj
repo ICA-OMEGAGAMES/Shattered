@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\AI\Implementation\AttackDurationOverDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\AttackIdleAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\BeingAttackedDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\BlockingAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\FleeAction.cs" />

@@ -5,8 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
-{
-    
+{    
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -209,7 +208,7 @@ public class CharacterMovement : MonoBehaviour
             if (combatState == true && crouching == false)
             {
                 if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
-                {
+                {   
                     CombatActionUpdate();
                     SetControllable(false);
                 }

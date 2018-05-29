@@ -14,7 +14,6 @@ public class AIStats : ScriptableObject
     [System.Serializable]
     public class MovementStats
     {
-        //Not sure yet if its going to be a scriptable object or a class
         public float moveSpeed = 4f;
         public float runSpeed = 8.0F;
         public float dodgeCooldown = 2;
@@ -28,7 +27,8 @@ public class AIStats : ScriptableObject
     [Serializable]
     public class UnarmedCombatSettings
     {
-        //Not sure yet if its going to be a scriptable object or a class
+        public float blockDuration = 3f;
+        public float blockPercentage = 0.5f;
         public float attackIdleRange = 8f;
         public float unarmedAttackRange = 5f;
         public float unarmedAttackDamage = 5f;
@@ -38,6 +38,7 @@ public class AIStats : ScriptableObject
         public float possessionDuration = 10f;
         public float attackingDuration = 7.5f;
         public float attackModeCooldown = 3.75f;
+        public float stunDuration = 1f;
     }
 
     [SerializeField]

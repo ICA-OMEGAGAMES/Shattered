@@ -7,6 +7,9 @@ public class AIAnimationManager : MonoBehaviour
     [HideInInspector] public Animator animator;
 
     private bool dodging;
+    private float dodgingTimestamp;
+    private bool blocking;
+    private float blockingTimestamp;
 
     [System.Serializable]
     public class AnimationSettings
@@ -30,12 +33,23 @@ public class AIAnimationManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        if(blocking && blockingTimestamp < Time.time)
+        {
+            blocking = false;
+        }
+        if(dodging && dodgingTimestamp < Time.time)
+        {
+            dodging = false;
+        }
+    }
+
     public void Animate(float walkingSpeed)
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
         animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.dodgeBool, dodging);
-        dodging = false;
     }
 
     public void SetFightingAnimation(int fightMode, int attack)
@@ -65,10 +79,29 @@ public class AIAnimationManager : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
     }
 
-    public bool Dodge(bool dodge)
+    public bool Dodge(bool dodge, float duration)
     {
         dodging = dodge;
+        if(dodging)
+        {
+            dodgingTimestamp = Time.time + duration;
+        }
         return dodging;
+    }
+
+    public bool Block(bool block, float duration)
+    {
+        blocking = block;
+        if(blocking)
+        {
+            blockingTimestamp = Time.time + duration;
+        }
+        return blocking;
+    }
+
+    public bool IsBlocking()
+    {
+        return blocking;
     }
 
 }

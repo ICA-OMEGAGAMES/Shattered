@@ -57,7 +57,6 @@ public class AIManager : MonoBehaviour
     void Update()
     {
         CheckMovement();
-
         if (currentChaseTarget == null || !currentChaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
@@ -84,11 +83,11 @@ public class AIManager : MonoBehaviour
         {
             if (element.gameObject.activeSelf)
             {
-                this.currentChaseTarget = element.transform;
+                currentChaseTarget = element.transform;
+                defaultChaseTarget = currentChaseTarget;
             }
-            this.currentChaseTarget = element.transform;
         }));
-        if (currentChaseTarget == null)
+        if (currentChaseTarget == null || !currentChaseTarget.gameObject.activeSelf)
         {
             Debug.LogError("Player not found.");
         }
@@ -145,9 +144,14 @@ public class AIManager : MonoBehaviour
         navMeshAgent.isStopped = true;
     }
 
-    public bool Dodge(bool dodge)
+    public bool Dodge(bool dodge, float duration)
     {
-        return animationManager.Dodge(dodge);
+        return animationManager.Dodge(dodge, duration);
+    }
+
+    public bool Block(bool block, float duration)
+    {
+        return animationManager.Block(block, duration);
     }
 
     public Vector3 GetTargetPosition()
@@ -245,7 +249,13 @@ public class AIManager : MonoBehaviour
     public void TakeDamage(float amount)
     {
         previousHealth = currentHealth;
-        currentHealth -= amount;
+        if(animationManager.IsBlocking())
+        {
+            amount =  (amount * aiStats.unarmedCombatSettings.blockPercentage);
+        }
+        currentHealth -=  amount;
+        attackCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.stunDuration;
+        //TODO add visuals of stumbling
         if (currentHealth <= 0)
         {
             StopMovement();
