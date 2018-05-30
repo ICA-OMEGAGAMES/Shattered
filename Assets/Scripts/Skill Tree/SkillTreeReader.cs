@@ -211,4 +211,9 @@ public class SkillTreeReader : MonoBehaviour
     {
         return skills[idSkill].cost.ToString();
     }
+
+    public string getSkillName(int idSkill)
+    {
+        return skills[idSkill].skillName;
+    }
 }
