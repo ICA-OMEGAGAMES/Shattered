@@ -34,12 +34,13 @@ public class UnlockButton : MonoBehaviour
         if (SkillTreeReader.Instance.IsSkillUnlocked(currentSkillButton.skillId))
         {
             unlockButton.interactable = false;
-            unlockButtonText.text = "PURCHASED";
+            unlockButtonText.text = "Purchased";
+
         }
         else
         {
             unlockButton.interactable = true;
-            unlockButtonText.text = "UNLOCK";
+            unlockButtonText.text = "Unlock";
         }
     }
 
@@ -55,7 +56,8 @@ public class UnlockButton : MonoBehaviour
             if (SkillTreeReader.Instance.IsSkillUnlocked(currentSkillButton.skillId))
             {
                 unlockButton.interactable = false;
-                unlockButtonText.text = "PURCHASED";
+                unlockButtonText.text = "Purchased";
+
             }
         }
     }

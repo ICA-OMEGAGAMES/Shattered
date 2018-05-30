@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-[System.Serializable]
+﻿[System.Serializable]
 public class Skill {
 
     public int idSkill;
@@ -8,5 +6,4 @@ public class Skill {
     public bool unlocked;
     public int cost;
     public string description;
-    public string skillName;
 }

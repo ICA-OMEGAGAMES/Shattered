@@ -14,14 +14,11 @@ public class SkillTreeMenu : MonoBehaviour
     public Text displayAvailablePoints;
 
     private bool firstSkillUnlocked = false;
-    public Button backButton;
-
-    public PlayVideo backgroundVideo;
 
     // Update is called once per frame
     public void Update()
     {
-        displayAvailablePoints.text = "skill points " + SkillTreeReader.Instance.availablePoints;
+        displayAvailablePoints.text = "Available Points: " + SkillTreeReader.Instance.availablePoints;
 
         //Check #3.1 to
         if (Input.GetButtonDown(Constants.SKILL_TREE_BUTTON) && firstSkillUnlocked)
@@ -54,10 +51,6 @@ public class SkillTreeMenu : MonoBehaviour
         Time.timeScale = 0f;
         skillTreeMenuIsActive = true;
         skillDetails.SetActive(false);
-
-        //StartBackgroundVideo
-        // backgroundVideo.startPlayingBackgroundVideo();
-        backgroundVideo = new PlayVideo();
     }
 
     public void openWithinDialogueSystem()
@@ -67,9 +60,6 @@ public class SkillTreeMenu : MonoBehaviour
 
         //#2 open this Menu
         this.Pause();
-
-        //Disable Back Button
-        backButton.interactable = false;
 
         //#3 how can i go back?
         //      if i unlock the first skill (In a while? or couroutine?) --> while if IsSkillUnlocked(skill01) unlocked do nothing other wise go to #4
@@ -94,8 +84,5 @@ public class SkillTreeMenu : MonoBehaviour
 
         //#6 Set firstSkillUnlocked to true
         firstSkillUnlocked = true;
-
-        //Able Back Button
-        backButton.interactable = true;
     }
 }

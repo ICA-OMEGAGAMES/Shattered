@@ -10,7 +10,6 @@ TagManager:
   - Marker
   - Weapon
   - EquippedWeapon
-  - Floor
   layers:
   - Default
   - TransparentFX

@@ -7,14 +7,12 @@ public class SkillButton : MonoBehaviour
 {
     public int skillId;
 
-    // public Color unlockedColor;
+    public Color unlockedColor;
 
     public SkillHub skillHub;
 
     public Text descriptionText;
-    public Text skillNameText;
-    public Sprite sprite;
-    public Image skillImg;
+    public Text skillCost;
     public Button unlockButton;
 
     public delegate void SkillSelectedAction(SkillButton button);
@@ -22,13 +20,12 @@ public class SkillButton : MonoBehaviour
 
     public GameObject skillDetails;
 
+    // private Image image;
     private Button button;
-    // private Image img;
 
     void Start()
     {
         button = GetComponent<Button>();
-        // img = GetComponent<Image>();
     }
 
     void Update()
@@ -41,7 +38,7 @@ public class SkillButton : MonoBehaviour
         if (SkillTreeReader.Instance.IsSkillUnlocked(skillId))
         {
             var colors = button.colors;
-            colors.normalColor = new Color32(255, 255, 255, 255);
+            colors.normalColor = Color.yellow;
             button.colors = colors;
         }
         else if (!SkillTreeReader.Instance.CanSkillBeUnlocked(skillId))
@@ -58,11 +55,17 @@ public class SkillButton : MonoBehaviour
         // showDescription
         descriptionText.text = SkillTreeReader.Instance.getDescription(skillId);
 
-        // showName
-        skillNameText.text = SkillTreeReader.Instance.getSkillName(skillId);
+        // showSkillCost
+        if (SkillTreeReader.Instance.getSkillCost(skillId) == "0")
+        {
+            skillCost.text = "";
 
-        // setImage
-        skillImg.sprite = sprite;
+        }
+        else
+        {
+            skillCost.text = "Cost: " + SkillTreeReader.Instance.getSkillCost(skillId);
+
+        }
 
         // activateUnlockButton
         OnSkillSelected(this);
