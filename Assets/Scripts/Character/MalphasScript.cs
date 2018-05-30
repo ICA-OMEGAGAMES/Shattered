@@ -24,6 +24,7 @@ public class MalphasScript : CharacterMovement {
     {
         public float blinkCooldown = 1;
         public float blinkDistance = 10;
+        public float blinkSpeed = 5;
     }
     [SerializeField]
     public BlinkSettings blinkSettings;
@@ -100,7 +101,7 @@ public class MalphasScript : CharacterMovement {
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Blink();
         BlinkToLocation();
-        
+
     }
 
     protected override void CombatActionUpdate()
@@ -139,6 +140,7 @@ public class MalphasScript : CharacterMovement {
         return new CharacterAttack(basicCombatSettings.attack2Damage, basicCombatSettings.attack2Duration, basicCombatSettings.attack2Rootable);
     }
 
+    GameObject debugBlock;
     private void Blink()
     {
         if (blinkTimeStamp <= Time.time)
@@ -148,7 +150,8 @@ public class MalphasScript : CharacterMovement {
                 blinkTargetPosition =  new Vector3(Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) * blinkSettings.blinkDistance, 0,
                                                             Input.GetAxisRaw(Constants.VERTICAL_AXIS) * blinkSettings.blinkDistance);
                 blinkTargetPosition = transform.position +  transform.TransformDirection(blinkTargetPosition);
-
+              //  debugBlock = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                //debugBlock.transform.position = blinkTargetPosition;
                 //check reachable
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, (blinkTargetPosition - transform.position), out hit, blinkSettings.blinkDistance+1))
@@ -166,18 +169,19 @@ public class MalphasScript : CharacterMovement {
     {
         if (blinking == true)
         {
-            StartCoroutine(ForceStop());
             var offset = blinkTargetPosition - transform.position;
             //Get the difference.
+
 
             float dist = Vector3.Distance(blinkTargetPosition, transform.position);
             if (dist > 1f)
             {
                 offset = offset.normalized * 0.1f;
-                characterController.Move(offset * Time.time);
+                characterController.Move(offset * blinkSettings.blinkSpeed);
 
             }else
                 blinking = false;
+            StartCoroutine(ForceStop());
         }
     }
 
