@@ -100,6 +100,7 @@ public class DevonScript : CharacterMovement
             return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack2Duration, combatSettings.attack2Rootable);
         }
     }
+
     /// <summary>
     /// LightMelee combat set
     /// </summary>

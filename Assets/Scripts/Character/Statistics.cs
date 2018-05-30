@@ -8,6 +8,7 @@ public class Statistics : MonoBehaviour {
 	public Slider healthbar;
 
 	public float health;
+    public float hitStunDuration = 0.5f;
     private float maxHealth = 100f;
     private float blocks = 0;
     private bool immune = false;
@@ -32,6 +33,8 @@ public class Statistics : MonoBehaviour {
             {
                 if (blocking)
                     amount = amount / 2;
+                else
+                    Stun(hitStunDuration);
                 health -= amount;
 
                 if (health <= Constants.MIN_PLAYER_HEALTH)
@@ -89,5 +92,18 @@ public class Statistics : MonoBehaviour {
     private void ActivateShield(bool activation)
     {
         shield.SetActive(activation);
+    }
+
+    private void Stun(float duration)
+    {
+        CharacterMovement character;
+        //find component call stunn
+       // if (GetComponent<DevonScript>() != null)
+            character = GetComponentInChildren<DevonScript>();
+        //else if (GetComponent<MalphasScript>() != null)
+          //  character = GetComponent<MalphasScript>();
+        //for both davon and malphas
+        StartCoroutine(GetComponent<DevonScript>().StunCharacter(duration));
+        ;
     }
 }

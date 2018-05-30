@@ -339,4 +339,18 @@ public class CharacterMovement : MonoBehaviour
             this.combatState = value;
         }
     }
+
+    public IEnumerator StunCharacter(float duration)
+    {
+        characterControllable = false;
+        //animation force state stunn
+        /*
+        //start animation death scene
+        animator.SetBool(animations.deadBool, true);
+        //force death animation
+        animator.Play(Constants.ANIMATIONSTATE_DEAD);
+        */
+        yield return new WaitForSeconds(duration);
+        characterControllable = true;
+    }
 }
