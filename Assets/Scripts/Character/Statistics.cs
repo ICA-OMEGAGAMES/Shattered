@@ -32,7 +32,6 @@ public class Statistics : MonoBehaviour {
             {
                 if (blocking)
                     amount = amount / 2;
-                print(amount);
                 health -= amount;
 
                 if (health <= Constants.MIN_PLAYER_HEALTH)
