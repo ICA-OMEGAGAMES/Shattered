@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scenes\Development\Sprint03\ButtonHover.cs" />
+     <Compile Include="Assets\_Scenes\Development\Sprint03\PlayVideo.cs" />
+     <Compile Include="Assets\_Scenes\Development\Sprint03\TestVideo.cs" />
      <Compile Include="Assets\_Scenes\Development\Sprint04\TeleportSkill.cs" />
      <Compile Include="Assets\_Scenes\Development\Sprint04\TimeManager.cs" />
      <Compile Include="Assets\DemonicWaveAreaScript.cs" />
@@ -151,6 +154,7 @@
      <None Include="Assets\GFX\2d Graphics and Materials.txt" />
      <None Include="Assets\UnityUISample\Fonts\Jupiter\LICENSE.txt" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
+     <None Include="Assets\Images\Aanleveren\LOGO COLOR FONT\COLORS.txt" />
      <None Include="Assets\UnityUISample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Master.yarn.txt" />
      <None Include="Assets\UnityUISample\Materials\UI-Default-No-Alpha.shader" />
