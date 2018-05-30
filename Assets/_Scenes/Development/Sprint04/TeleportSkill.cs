@@ -6,31 +6,57 @@ public class TeleportSkill : MonoBehaviour
 {
     // public bool isActive;
     public TimeManager timeManager;
+    public float skillDuration;
+
+    GameObject player;
+    bool skillActive;
 
     // Use this for initialization
     void Start()
     {
-        // isActive = false;
+        skillActive = false;
         // this.transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton(Constants.SKILL3_BUTTON))
+        if (Input.GetButtonDown(Constants.SKILL3_BUTTON) && !skillActive)
         {
             Debug.Log("StartSkill");
-            timeManager.DoSlowmotion();
-            startTeleportSkill();
+            StartCoroutine(startSkillTimer());
+        }
+        else if (skillActive)
+        {
+            timeManager.DoSlowmotion(skillDuration + 5.0f);
+            doTeleportSkill();
         }
     }
 
-    void startTeleportSkill()
+    IEnumerator startSkillTimer()
+    {
+        Debug.Log("StartCouroutine");
+        skillActive = true;
+
+        yield return new WaitForSeconds(skillDuration);  // Wait three seconds
+
+        Debug.Log("Couroutine Finished");
+        skillActive = false;
+    }
+
+    void doTeleportSkill()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = this.transform.position;
+            // Create Cube at the Teleportation Position
+            // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            // cube.transform.position = this.transform.position;
+
+            player = GameObject.Find("Mannequin");
+            //should I search other objects to?
+
+            player.transform.position = this.transform.position;
+            skillActive = false;
         }
 
         RaycastHit hit;

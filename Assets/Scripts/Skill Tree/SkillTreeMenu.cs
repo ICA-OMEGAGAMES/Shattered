@@ -62,9 +62,6 @@ public class SkillTreeMenu : MonoBehaviour
 
     public void openWithinDialogueSystem()
     {
-        backgroundVideo = new PlayVideo();
-        backgroundVideo.startPlayingBackgroundVideo();
-
         //#1 close DialogueCanvas
         FindObjectOfType<DialogueRunner>().dialogueCanvas.SetActive(false);
 
