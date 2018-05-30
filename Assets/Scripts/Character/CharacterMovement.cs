@@ -46,7 +46,6 @@ public class CharacterMovement : MonoBehaviour
         public float jumpSpeed = 8.0F;
         public float jumpTime = 0.25f;
         public float jumpCooldown = 0.5f;
-        public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
     }
@@ -67,6 +66,7 @@ public class CharacterMovement : MonoBehaviour
     protected float characterActionTimeStamp = 0;
     protected bool crouching;
     protected bool dodging;
+    protected float movementMultiplier = 1;
 
     //public variables
     public bool combatState = false;
@@ -152,6 +152,7 @@ public class CharacterMovement : MonoBehaviour
         //movement
         if (characterRooted == false) {
             Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
+            moveDirection *= movementMultiplier;
             moveDirection.y -= physics.gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
         }
