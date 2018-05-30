@@ -1,0 +1,65 @@
+{
+    "skilltree": [
+        {
+            "idSkill": 0,
+            "skillDependencies": [],
+            "unlocked": false,
+            "cost": 0,
+            "description": "First Skill to unlock!"
+        },
+        {
+            "idSkill": 1,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Prevents Devon from getting damaged for the next incoming 3 attacks. The shield has a dark purple color similar to Malphas (it’s made from his energy)"
+        },
+        {
+            "idSkill": 2,
+            "skillDependencies": [
+                1
+            ],
+            "unlocked": false,
+            "cost": 2,
+            "description": "Slow down time for a few seconds, allowing you to easily react to your enemies´ actions"
+        },
+        {
+            "idSkill": 3,
+            "skillDependencies": [
+                2
+            ],
+            "unlocked": false,
+            "cost": 3,
+            "description": "Become invincible for 5 seconds, refill your hp back to 100%. After the ability ends, knock back nearby enemies. Malphus uses his spirit powers to extract life force from his environment."
+        },
+        {
+            "idSkill": 4,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Teleports behind the Enemy, allowing for a quick beatdown on an unsuspecting enemy. Malphas disappears in a cloud of smoke and reappears behind the targeted enemy. This happens in an instant."
+        },
+        {
+            "idSkill": 5,
+            "skillDependencies": [
+                4
+            ],
+            "unlocked": false,
+            "cost": 2,
+            "description": "Area of Effect attack that deals heavy damage to surrounding enemies, could be an explosion, spikes/tentacles, dark energy"
+        },
+        {
+            "idSkill": 6,
+            "skillDependencies": [
+                5
+            ],
+            "unlocked": false,
+            "cost": 3,
+            "description": "Befriends enemy so they fight for you until they die. The enemy is possessed by Malphas (completely cloaked by him just like you are when using Malphas) so the player is forced to use Devon for the duration of the skill."
+        }
+    ]
+}
