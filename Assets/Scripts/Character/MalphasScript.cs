@@ -15,12 +15,19 @@ public class MalphasScript : CharacterMovement {
         public float attack2Damage = 20;
         public float attack2Duration = 0.5f;
         public bool attack2Rootable = true;
-        public float blinkCooldown = 1;
-        public float blinkDistance = 5;
     }
     [SerializeField]
     public BasicCombatSettings basicCombatSettings;
-    
+
+    [Serializable]
+    public class BlinkSettings
+    {
+        public float blinkCooldown = 1;
+        public float blinkDistance = 10;
+    }
+    [SerializeField]
+    public BlinkSettings blinkSettings;
+
     [Serializable]
     public class SkillsSettings
     {
@@ -37,7 +44,10 @@ public class MalphasScript : CharacterMovement {
     private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
-    
+
+    private bool blinking = false;
+    Vector3 blinkTargetPosition;
+
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
@@ -89,6 +99,8 @@ public class MalphasScript : CharacterMovement {
         //Malphas in of combat fixed updates
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Blink();
+        BlinkToLocation();
+        
     }
 
     protected override void CombatActionUpdate()
@@ -131,20 +143,48 @@ public class MalphasScript : CharacterMovement {
     {
         if (blinkTimeStamp <= Time.time)
         {
-            if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
+            if (Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxisRaw(Constants.VERTICAL_AXIS) != 0)
             {
-                StartCoroutine(MultiplyMovement(movementMultiplier));
-                blinkTimeStamp = Time.time + basicCombatSettings.blinkCooldown;
+                blinkTargetPosition =  new Vector3(Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) * blinkSettings.blinkDistance, 0,
+                                                            Input.GetAxisRaw(Constants.VERTICAL_AXIS) * blinkSettings.blinkDistance);
+                blinkTargetPosition = transform.position +  transform.TransformDirection(blinkTargetPosition);
+
+                //check reachable
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, (blinkTargetPosition - transform.position), out hit, blinkSettings.blinkDistance+1))
+                {
+                    blinkTargetPosition = hit.point;
+                }
+                
+                blinking = true;
+                blinkTimeStamp = Time.time + blinkSettings.blinkCooldown;
             }
         }
     }
 
-    IEnumerator MultiplyMovement(float orignialSpeed)
+    private void BlinkToLocation()
     {
-        movementMultiplier = basicCombatSettings.blinkDistance;
-        yield return new WaitForSeconds(0.1f);
-        movementMultiplier = orignialSpeed;
+        if (blinking == true)
+        {
+            StartCoroutine(ForceStop());
+            var offset = blinkTargetPosition - transform.position;
+            //Get the difference.
 
+            float dist = Vector3.Distance(blinkTargetPosition, transform.position);
+            if (dist > 1f)
+            {
+                offset = offset.normalized * 0.1f;
+                characterController.Move(offset * Time.time);
+
+            }else
+                blinking = false;
+        }
+    }
+
+    IEnumerator ForceStop()
+    {
+        yield return new WaitForSeconds(0.5f);
+        blinking = false;
     }
 
     public void LearnSkill(string skill)
