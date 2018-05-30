@@ -5,11 +5,15 @@ using UnityEngine;
 public class TeleportSkill : MonoBehaviour
 {
     // public bool isActive;
-    public TimeManager timeManager;
+    // public TimeManager timeManager;
     public float skillDuration;
 
     GameObject player;
     bool skillActive;
+
+    float slowDownFactor = 0.03f;
+
+    Vector3 originalPos = new Vector3(0, -10, 0);
 
     // Use this for initialization
     void Start()
@@ -23,12 +27,13 @@ public class TeleportSkill : MonoBehaviour
     {
         if (Input.GetButtonDown(Constants.SKILL3_BUTTON) && !skillActive)
         {
-            Debug.Log("StartSkill");
+            // Debug.Log("StartSkill");
             StartCoroutine(startSkillTimer());
+            startSlowMotion();
         }
         else if (skillActive)
         {
-            timeManager.DoSlowmotion(skillDuration + 5.0f);
+            // timeManager.DoSlowmotion(skillDuration + 5.0f);
             doTeleportSkill();
         }
     }
@@ -42,6 +47,7 @@ public class TeleportSkill : MonoBehaviour
 
         Debug.Log("Couroutine Finished");
         skillActive = false;
+        stopSlowMotion();
     }
 
     void doTeleportSkill()
@@ -57,6 +63,7 @@ public class TeleportSkill : MonoBehaviour
 
             player.transform.position = this.transform.position;
             skillActive = false;
+            stopSlowMotion();
         }
 
         RaycastHit hit;
@@ -69,5 +76,18 @@ public class TeleportSkill : MonoBehaviour
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.05f, this.transform.position.z);
             }
         }
+    }
+
+    void startSlowMotion()
+    {
+        Time.timeScale = 0.0f;
+		// Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
+
+    void stopSlowMotion()
+    {
+        this.transform.position = originalPos;
+        Time.timeScale = 1.0F;
+        // Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }
