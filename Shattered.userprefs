@@ -1,17 +1,6 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneTransitions\SceneTransition.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Character\Statistics.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Environment\RainController.cs" Line="14" Column="17" />
-      <File FileName="Assets\Scripts\Character\CharacterMovement.cs" Line="337" Column="11" />
-      <File FileName="Assets\Scripts\Character\CharacterAudioController.cs" Line="24" Column="34" />
-      <File FileName="Assets\Scripts\Character\CharacterTransformer.cs" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\Character\DevonScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SceneTransitions\SceneTransition.cs" Line="33" Column="57" />
-      <File FileName="Assets\Scripts\Item\ItemAudio.cs" Line="20" Column="4" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -12,6 +12,7 @@ public class RainController : MonoBehaviour {
 
 	void OnTriggerStay(Collider other){
 		ps.Play(true);
+
 	}
 
 	void OnTriggerExit(Collider other){
