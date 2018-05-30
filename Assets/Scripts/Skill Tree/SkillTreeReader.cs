@@ -33,7 +33,7 @@ public class SkillTreeReader : MonoBehaviour
     public int availablePoints = 100;
 
     void Awake()
-    {
+    {   
         if (instance == null)
         {
             instance = this;

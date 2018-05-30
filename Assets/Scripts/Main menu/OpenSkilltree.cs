@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class OpenSkilltree : MonoBehaviour {
-
-	public Canvas menuCanvas;
-    public Canvas skillTreeCanvas;
-	public GameObject menuBackground;
-    public GameObject skillTreeBackground;
+	public GameObject ingameMenu;
+	public SkillTreeMenu skillTreeMenu;
 
 	void Start () {
 		GetComponent<Button>().onClick.AddListener(delegate{SwitchScreen();});
+		if(!skillTreeMenu.IsFirstSkillUnlocked())
+		{
+			GetComponent<Button>().interactable = false;
+			GetComponentInChildren<Text>().color = Color.grey;
+		}
 	}
 	
 	void SwitchScreen () {
-		menuCanvas.enabled = false;
-		menuBackground.SetActive(false);
-        skillTreeCanvas.enabled = true;
-        skillTreeBackground.SetActive(true);
+		skillTreeMenu.Pause();
+		ingameMenu.SetActive(false);
 	}
 }
