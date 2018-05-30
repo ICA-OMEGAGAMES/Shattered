@@ -27,8 +27,6 @@ public class MalphasScript : CharacterMovement {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
         public SkillSettings phychicScreamSettings;
-        public SkillSettings divineAuraSettings;
-        public SkillSettings darkClawSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
     }
@@ -51,10 +49,8 @@ public class MalphasScript : CharacterMovement {
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
-        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
-        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
     }
@@ -80,21 +76,6 @@ public class MalphasScript : CharacterMovement {
         {
             if (skills.Count >= 2) 
                 skills[2].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL3_BUTTON))
-        {
-            if (skills.Count >= 3)
-                skills[3].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL4_BUTTON))
-        {
-            if (skills.Count >= 4)
-                skills[4].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL5_BUTTON))
-        {
-            if (skills.Count >= 5)
-                skills[5].Execute(animator);
         }
     }
 
