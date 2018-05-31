@@ -4999,7 +4999,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4075711160176986}
   - component: {fileID: 114005256783479890}
-  - component: {fileID: 114735655093412054}
   - component: {fileID: 114253749765196884}
   - component: {fileID: 114197360707008450}
   - component: {fileID: 82184859580938944}
@@ -11620,6 +11619,7 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   health: 0
   shield: {fileID: 1968389097991178}
+  blockReductionPersentage: 0.5
 --- !u!114 &114343041066132766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11660,6 +11660,7 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
+    isBlocking: isBlocking
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -11678,16 +11679,16 @@ MonoBehaviour:
     jumpSpeed: 16
     jumpTime: 0.25
     jumpCooldown: 1
-    dodgeDistance: 20
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
+  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
-  characterAudio: {fileID: 0}
+  characterAudio: {fileID: 114131208397654268}
   pushPower: 2
   basicCombatSettings:
     attack1Damage: 10
@@ -11696,16 +11697,14 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
+  blinkSettings:
     blinkCooldown: 1
-    blinkDistance: 3
+    blinkDistance: 10
+    blinkSpeed: 5
   skillSettings:
     teleportSettings: {fileID: 11400000, guid: 18b7e37e9b09b4b488c6a7890fb44bf7, type: 2}
     barierSettings: {fileID: 11400000, guid: 89a81bcdbae80634a94d750915d65abd, type: 2}
-    phychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
-      type: 2}
-    divineAuraSettings: {fileID: 11400000, guid: e51cd32c2b5a4f44488a0d1e20fcb2a2,
-      type: 2}
-    darkClawSettings: {fileID: 11400000, guid: 8c09984024e19434d8b85e0996082ad6, type: 2}
+    psychicScreamSettings: {fileID: 0}
     demonicWaveSettings: {fileID: 11400000, guid: 8e6ca7c9b4879b34f8a7187990d6be8b,
       type: 2}
     possessSettings: {fileID: 11400000, guid: ca2885b2c8112f94a9da5f4ad40b33dd, type: 2}
@@ -11762,6 +11761,7 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
+    isBlocking: isBlocking
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -11780,13 +11780,13 @@ MonoBehaviour:
     jumpSpeed: 8
     jumpTime: 0.25
     jumpCooldown: 0.5
-    dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
+  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   characterAudio: {fileID: 114131208397654268}
@@ -11798,6 +11798,10 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
+  dodgeSettings:
+    dodgeSpeedMultiplier: 2
+    dodgeCooldown: 1
+    dodgeDuration: 0.2
   curCombatSet: 0
 --- !u!114 &114707075527406244
 MonoBehaviour:
@@ -11808,17 +11812,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 244879eb0050941439dc21119ad99c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114735655093412054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1894981521280070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 913b8c0e60fba1449b2028c2b35461ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!124 &124328955670213662
