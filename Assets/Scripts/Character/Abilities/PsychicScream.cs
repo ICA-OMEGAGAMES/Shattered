@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PsychicScream : ISkill
 {
+    public float maxDistance = 10;
+    public float duration = 10;
+
     private SkillSettings settings;
     private MonoBehaviour mono;
 
     private float cooldownTimestamp;
+    private GameObject[] enemies;
+    private List<GameObject> enemiesInRange;
 
     public PsychicScream(SkillSettings settings, MonoBehaviour mono)
     {
@@ -17,22 +22,28 @@ public class PsychicScream : ISkill
 
     public void Execute(Animator animator)
     {
-        if (!IsOnCooldown())
+        if (IsOnCooldown())
         {
-            cooldownTimestamp = Time.time + settings.cooldown;
-            float maxDistance = 10;
-            List<GameObject> enemiesInRange = new List<GameObject>();
-            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
-            {
-                float distance = Vector3.Distance(mono.transform.position, enemy.transform.position);
-                if (distance <= maxDistance)
-                {
-                    enemiesInRange.Add(enemy);
-                }
-            }
-
-            enemiesInRange.ForEach(enemy => enemy.GetComponent<AIManager>().PsychicScreamExecuted(10));
+            return;
         }
+
+        cooldownTimestamp = Time.time + settings.cooldown;
+
+        if (enemies == null || enemies.Length < 1)
+        {
+            enemies = GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG);
+        }
+        enemiesInRange.Clear();
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(mono.transform.position, enemy.transform.position);
+            if (distance <= maxDistance)
+            {
+                enemiesInRange.Add(enemy);
+            }
+        }
+
+        enemiesInRange.ForEach(enemy => enemy.GetComponent<AIManager>().PsychicScreamExecuted(duration));
     }
 
     public bool IsOnCooldown()
