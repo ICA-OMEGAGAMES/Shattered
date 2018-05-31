@@ -51,10 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_scenes\Development\Sprint03\ButtonHover.cs" />
-     <Compile Include="Assets\_scenes\Development\Sprint03\PlayVideo.cs" />
-     <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
-     <Compile Include="Assets\_scenes\Development\Sprint04\TimeManager.cs" />
      <Compile Include="Assets\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\DevonIndoorScript.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
@@ -115,13 +111,11 @@
      <Compile Include="Assets\Scripts\Main menu\GraphicsSettingsManager.cs" />
      <Compile Include="Assets\Scripts\Main menu\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\Main menu\MainMenuManagement.cs" />
-     <Compile Include="Assets\Scripts\Main menu\OpenSkilltree.cs" />
      <Compile Include="Assets\Scripts\Main menu\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\Main menu\SelectOnInput.cs" />
      <Compile Include="Assets\Scripts\Main menu\SoundSettings.cs" />
      <Compile Include="Assets\Scripts\Main menu\SoundSettingsManager.cs" />
      <Compile Include="Assets\Scripts\Main menu\SwitchMenuScreen.cs" />
-     <Compile Include="Assets\Scripts\Main menu\ToggleIngameMenu.cs" />
      <Compile Include="Assets\Scripts\MarkerManager.cs" />
      <Compile Include="Assets\Scripts\MarkerScript.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions\SceneTransition.cs" />
@@ -157,7 +151,6 @@
      <None Include="Assets\UnityUISample\Fonts\Jupiter\LICENSE.txt" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
-     <None Include="Assets\Images\Aanleveren\LOGO COLOR FONT\COLORS.txt" />
      <None Include="Assets\UnityUISample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Master.yarn.txt" />
      <None Include="Assets\UnityUISample\Materials\UI-Default-No-Alpha.shader" />

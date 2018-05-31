@@ -8,6 +8,8 @@
 	public const string MARKER_TAG = "Marker";
 	public const string UNTAGGED = "Untagged";
 	public const string PLAYER_TAG = "Player";
+	public const string ZOOM_TAG = "Zoomable";
+
 
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";
@@ -38,6 +40,8 @@
 	public const string MOUSE_Y_AXIS = "Mouse Y";
 	public const string RIGHTSTICKHORIZONTAL = "RightStickHorizontal";
 	public const string RIGHTSTICKVERTICAL = "RightStickVertical";
+	public const string MOUSE_SCROLLWHEEL = "Mouse ScrollWheel";
+
 
 	// SETTINGS
 	public const int MAX_PLAYER_HEALTH = 200;
