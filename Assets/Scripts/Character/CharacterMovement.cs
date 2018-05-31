@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
         public string isBlocking = "isBlocking";
-        public string hit = "Hit";
+        public string hit = "hit";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
         public string weaponSet = "WeaponSet";
