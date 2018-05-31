@@ -17,7 +17,8 @@ public class Statistics : MonoBehaviour {
     void Start(){
 		maxHealth = Constants.MAX_PLAYER_HEALTH;
 		health = maxHealth;
-        shield.SetActive(false);
+        if(shield != null)
+            shield.SetActive(false);
     }
 
 	public float GetHealth(){return health;}

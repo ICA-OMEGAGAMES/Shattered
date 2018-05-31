@@ -10,7 +10,6 @@ Shader "Unlit/ShieldFX"
 		_IntersectionThreshold("Highlight of intersection threshold", range(0,1)) = .1 //Max difference for intersections
 		_ScrollSpeedU("Scroll U Speed",float) = 2
 		_ScrollSpeedV("Scroll V Speed",float) = 0
-		//[ToggleOff]_CullOff("Cull Front Side Intersection",float) = 1
 	}
 	SubShader
 	{ 
