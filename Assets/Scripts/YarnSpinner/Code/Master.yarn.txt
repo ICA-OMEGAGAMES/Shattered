@@ -1,0 +1,18 @@
+title: SkillMaster
+tags: 
+colorID: 0
+position: 547,282
+---
+Master: Hi, Player!
+<<if $first_skill_unlocked is false>>
+    Master: I see you did well.
+    Master: You can unlock your first skill
+    <<openSkillTree Master 0>>
+    <<set $first_skill_unlocked to true>>
+    Master: Nice, you can use your skills from now one.
+<<endif>>
+Master: If you ever want to open the tree, just press 'i'!
+Master: Bye.
+
+
+===
