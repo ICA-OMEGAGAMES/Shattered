@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8935,6 +8935,36 @@ Prefab:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 1697446977}
+    - target: {fileID: 224005147615893444, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.70000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 224432134636842252, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.22999573
+      objectReference: {fileID: 0}
+    - target: {fileID: 224265755742324724, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.23498535
+      objectReference: {fileID: 0}
+    - target: {fileID: 224160790928636334, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.020004272
+      objectReference: {fileID: 0}
+    - target: {fileID: 224793380661614586, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.269989
+      objectReference: {fileID: 0}
+    - target: {fileID: 224933230985636724, guid: f403cb3b05dc2a0438b9a22f607a0d04,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.05999756
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f403cb3b05dc2a0438b9a22f607a0d04, type: 2}
   m_IsPrefabParent: 0
@@ -9424,7 +9454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
   health: 0
+  hitStunDuration: 0.5
   shield: {fileID: 686089571}
+  blockReductionPersentage: 0.5
 --- !u!114 &840963045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9463,7 +9495,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840963040}
   m_LocalRotation: {x: -0, y: 0.56531376, z: -0, w: 0.824876}
-  m_LocalPosition: {x: -0.259, y: 2.02, z: -1.23}
+  m_LocalPosition: {x: -0.259, y: 0.82, z: -1.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1523307941}
@@ -10963,8 +10995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3c92c270fc9bf4ebbac4fb80110ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowDownFactor: 0.05
-  slowdownDuration: 2
 --- !u!4 &1072094247
 Transform:
   m_ObjectHideFlags: 0
@@ -13967,6 +13997,8 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
+    isBlocking: isBlocking
+    hit: Hit
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -13985,13 +14017,13 @@ MonoBehaviour:
     jumpSpeed: 8
     jumpTime: 0.25
     jumpCooldown: 0.5
-    dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
+  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   characterAudio: {fileID: 840963041}
@@ -14003,6 +14035,10 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
+  dodgeSettings:
+    dodgeSpeedMultiplier: 2
+    dodgeCooldown: 1
+    dodgeDuration: 0.2
   curCombatSet: 0
 --- !u!143 &1523307939
 CharacterController:
@@ -17608,6 +17644,8 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
+    isBlocking: isBlocking
+    hit: Hit
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -17626,13 +17664,13 @@ MonoBehaviour:
     jumpSpeed: 16
     jumpTime: 0.25
     jumpCooldown: 1
-    dodgeDistance: 20
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
+  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   characterAudio: {fileID: 0}
@@ -17644,16 +17682,14 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
+  blinkSettings:
     blinkCooldown: 1
-    blinkDistance: 3
+    blinkDistance: 10
+    blinkSpeed: 5
   skillSettings:
     teleportSettings: {fileID: 11400000, guid: 18b7e37e9b09b4b488c6a7890fb44bf7, type: 2}
     barierSettings: {fileID: 11400000, guid: 89a81bcdbae80634a94d750915d65abd, type: 2}
-    phychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
-      type: 2}
-    divineAuraSettings: {fileID: 11400000, guid: e51cd32c2b5a4f44488a0d1e20fcb2a2,
-      type: 2}
-    darkClawSettings: {fileID: 11400000, guid: 8c09984024e19434d8b85e0996082ad6, type: 2}
+    psychicScreamSettings: {fileID: 0}
     demonicWaveSettings: {fileID: 11400000, guid: 8e6ca7c9b4879b34f8a7187990d6be8b,
       type: 2}
     possessSettings: {fileID: 11400000, guid: ca2885b2c8112f94a9da5f4ad40b33dd, type: 2}
