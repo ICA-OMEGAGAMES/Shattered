@@ -6277,7 +6277,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214890665725590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.192, z: 0}
+  m_LocalPosition: {x: 0, y: -1.1812143, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4446656212979774}
@@ -11677,8 +11677,6 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
-    isBlocking: isBlocking
-    hit: Hit
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -11697,13 +11695,13 @@ MonoBehaviour:
     jumpSpeed: 8
     jumpTime: 0.25
     jumpCooldown: 0.5
+    dodgeDistance: 10
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
-  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   unarmedCombatSettings:
@@ -11713,10 +11711,6 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
-  dodgeSettings:
-    dodgeSpeedMultiplier: 2
-    dodgeCooldown: 1
-    dodgeDuration: 0.2
   curCombatSet: 0
 --- !u!114 &114096130276848478
 MonoBehaviour:
@@ -11731,9 +11725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
   health: 0
-  hitStunDuration: 0.5
   shield: {fileID: 1367627002736248}
-  blockReductionPersentage: 50
 --- !u!114 &114132426334211734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11775,8 +11767,6 @@ MonoBehaviour:
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
-    isBlocking: isBlocking
-    hit: Hit
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
@@ -11795,13 +11785,13 @@ MonoBehaviour:
     jumpSpeed: 16
     jumpTime: 0.25
     jumpCooldown: 1
+    dodgeDistance: 20
     toggleCombatCooldown: 1
     rotateSpeed: 5
   death:
     respawnTime: 5
     respawnHealth: 50
   combatState: 0
-  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   basicCombatSettings:
@@ -11811,15 +11801,16 @@ MonoBehaviour:
     attack2Damage: 20
     attack2Duration: 0.5
     attack2Rootable: 1
-  blinkSettings:
     blinkCooldown: 1
-    blinkDistance: 10
-    blinkSpeed: 5
+    blinkDistance: 3
   skillSettings:
     teleportSettings: {fileID: 11400000, guid: 18b7e37e9b09b4b488c6a7890fb44bf7, type: 2}
     barierSettings: {fileID: 11400000, guid: 89a81bcdbae80634a94d750915d65abd, type: 2}
-    psychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
+    phychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
       type: 2}
+    divineAuraSettings: {fileID: 11400000, guid: e51cd32c2b5a4f44488a0d1e20fcb2a2,
+      type: 2}
+    darkClawSettings: {fileID: 11400000, guid: 8c09984024e19434d8b85e0996082ad6, type: 2}
     demonicWaveSettings: {fileID: 11400000, guid: 8e6ca7c9b4879b34f8a7187990d6be8b,
       type: 2}
     possessSettings: {fileID: 11400000, guid: ca2885b2c8112f94a9da5f4ad40b33dd, type: 2}
@@ -12589,7 +12580,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &143352912026916392
 CharacterController:
   m_ObjectHideFlags: 1
@@ -12603,10 +12594,10 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.25
   m_SlopeLimit: 45
-  m_StepOffset: 0.4
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!143 &143473583695711464
 CharacterController:
   m_ObjectHideFlags: 1
@@ -12623,4 +12614,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
