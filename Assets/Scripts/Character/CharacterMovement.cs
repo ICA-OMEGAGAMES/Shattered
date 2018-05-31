@@ -67,10 +67,10 @@ public class CharacterMovement : MonoBehaviour
     protected float characterActionTimeStamp = 0;
     protected bool crouching;
     protected bool dodging;
-    protected bool characterControllable = true;
 
     //public variables
     public bool combatState = false;
+    public bool characterControllable = true;
 
     //private variables
     private bool jumping;
