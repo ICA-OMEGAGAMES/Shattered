@@ -31,6 +31,7 @@
 	public const string TRANSFORM_BUTTON = "SwitchForm";
 	public const string SKILL_TREE_BUTTON = "SkillTree";
 	public const string START_DIALOGUE_BUTTON = "StartDialogue";
+	public const string MENU_BUTTON = "Menu";
 
 	// AXIS
 	public const string HORIZONTAL_AXIS = "Horizontal";
