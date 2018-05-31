@@ -3,7 +3,7 @@ using System.Collections;
 
 [CreateAssetMenu(fileName = "CameraFollowData", menuName = "CameraSettings/Follow", order = 1)]
 public class CameraFollowSettings : ScriptableObject {
-    public float cameraMoveSpeed = 120.0f;
+    public float cameraMoveSpeed = 1200.0f;
     public float clampAngle = 66.0f;
     public float inputSensitivity = 150.0f;
     public float finalInputX = 0;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //Script to quit the game when quit is clicked
 public class QuitOnClick : MonoBehaviour {
 
-	public Button quitButton;
+	private Button quitButton;
 
 	void Start()
 	{
