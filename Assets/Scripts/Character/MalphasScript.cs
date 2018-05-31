@@ -26,7 +26,7 @@ public class MalphasScript : CharacterMovement
     public class SkillsSettings
     {
         public SkillSettings teleportSettings;
-        public SkillSettings barierSettings;
+        public SkillSettings barrierSettings;
         public SkillSettings psychicScreamSettings;
         public SkillSettings divineAuraSettings;
         public SkillSettings darkClawSettings;
@@ -51,7 +51,7 @@ public class MalphasScript : CharacterMovement
 
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
-        skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+        skills.Add(new Barrier(skillSettings.barrierSettings, stats, this));
         skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
         skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
