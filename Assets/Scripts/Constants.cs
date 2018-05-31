@@ -28,7 +28,8 @@
 	public const string SKILL4_BUTTON = "Skill4";
 	public const string SKILL5_BUTTON = "Skill5";
 	public const string SKILL6_BUTTON = "Skill6";
-	public const string TRANSFORM_BUTTON = "SwitchForm";
+    public const string BLOCK_BUTTON = "Block";
+    public const string TRANSFORM_BUTTON = "SwitchForm";
 	public const string SKILL_TREE_BUTTON = "SkillTree";
 	public const string START_DIALOGUE_BUTTON = "StartDialogue";
 	public const string MENU_BUTTON = "Menu";
