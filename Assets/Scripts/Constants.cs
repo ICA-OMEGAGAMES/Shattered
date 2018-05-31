@@ -55,5 +55,6 @@
 
 	// ANIMATIONSTATES
 	public const string ANIMATIONSTATE_DEAD = "Dead";
+    public const string ANIMATIONSTATE_HIT = "Hit";
 
 }

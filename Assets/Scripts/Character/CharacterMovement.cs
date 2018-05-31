@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
         public string isBlocking = "isBlocking";
+        public string hit = "hit";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
         public string weaponSet = "WeaponSet";
@@ -148,18 +149,19 @@ public class CharacterMovement : MonoBehaviour
             else
                 characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
 
+            if (characterRooted == false)
+            {
+                AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
+                moveDirection *= movementMultiplier;
+                moveDirection.y -= physics.gravity * Time.deltaTime;
+                characterController.Move(moveDirection * Time.deltaTime);
+            }
+
         }
         else
             SetControllable(false);
 
         Animate(); 
-        //movement
-        if (characterRooted == false) {
-            AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
-            moveDirection *= movementMultiplier;
-            moveDirection.y -= physics.gravity * Time.deltaTime;
-            characterController.Move(moveDirection * Time.deltaTime);
-        }
     }
 
     private void FixedUpdate()
@@ -343,13 +345,14 @@ public class CharacterMovement : MonoBehaviour
     public IEnumerator StunCharacter(float duration)
     {
         characterControllable = false;
+        print("i'ma hit");
         //animation force state stunn
-        /*
+
         //start animation death scene
-        animator.SetBool(animations.deadBool, true);
+        animator.SetTrigger(animations.hit);
         //force death animation
-        animator.Play(Constants.ANIMATIONSTATE_DEAD);
-        */
+        animator.Play(Constants.ANIMATIONSTATE_HIT);
+        
         yield return new WaitForSeconds(duration);
         characterControllable = true;
     }
