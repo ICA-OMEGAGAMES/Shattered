@@ -11687,7 +11687,7 @@ MonoBehaviour:
   combatState: 0
   animator: {fileID: 0}
   characterController: {fileID: 0}
-  characterAudio: {fileID: 0}
+  characterAudio: {fileID: 114131208397654268}
   pushPower: 2
   basicCombatSettings:
     attack1Damage: 10
