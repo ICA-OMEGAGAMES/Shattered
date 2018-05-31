@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(MarkerManagerPlayer))]
+[RequireComponent(typeof(MarkerManager))]
 [RequireComponent(typeof(Statistics))]
 public class CharacterTransformer : MonoBehaviour {
 
@@ -73,15 +73,14 @@ public class CharacterTransformer : MonoBehaviour {
         switch (currentForm)
         {
             case (CharacterForm.devon):
-                //set position and rotation to the previous character
-                devon.transform.position = transformation.transform.position;
-                devon.transform.rotation = transformation.transform.rotation;
-
                 //Change from Malphas to Devon
                 devon.SetActive(true);
                 malphas.SetActive(false);
                 transformation.SetActive(false);
 
+                //set position and rotation to the previous character
+                devon.transform.position = malphas.transform.position;
+                devon.transform.rotation = malphas.transform.rotation;
                 break;
             case (CharacterForm.transformToMalphas):
                 //Change from Davon to Transformation
@@ -94,10 +93,6 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.rotation = devon.transform.rotation;
 
                 StartCoroutine(StartTransformation(CharacterForm.malphas));
-
-                //give combat status
-                if (malphas.GetComponent<CharacterMovement>().CombatState != devon.GetComponent<CharacterMovement>().CombatState)
-                    malphas.GetComponent<CharacterMovement>().SwitchCombatState();
                 break;
             case (CharacterForm.malphas):
                 //Change from Transformation to Malphas
@@ -120,9 +115,6 @@ public class CharacterTransformer : MonoBehaviour {
                 transformation.transform.rotation = malphas.transform.rotation;
 
                 StartCoroutine(StartTransformation(CharacterForm.devon));
-                //give combat status
-                if (malphas.GetComponent<CharacterMovement>().CombatState != devon.GetComponent<CharacterMovement>().CombatState)
-                    devon.GetComponent<CharacterMovement>().SwitchCombatState();
                 break;
         }
     }

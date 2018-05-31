@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryController))]
-[RequireComponent(typeof(Yarn.Unity.Shattered.DialoguePlayer))]
 public class DevonScript : CharacterMovement
 {
 
@@ -153,34 +152,24 @@ public class DevonScript : CharacterMovement
     //add other combat sets here
 
     CharacterAttack attack;
-    MarkerManagerPlayer markerManager;
+    MarkerManager markerManager;
 
+    //combatStart
     protected override void CharactertInitialize()
     {
         combatSet = SetCombatSet(animator, animations, null);
-        markerManager = this.transform.parent.GetComponent<MarkerManagerPlayer>();
+        markerManager = this.transform.parent.GetComponent<MarkerManager>();
         markerManager.SetMarkers();
     }
 
     protected override void CharacterOutOfCombatUpdate()
     {
-        //Davon outOfCombat actions update
     }
 
     protected override void CharacterInCombatUpdate()
     {
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Dodge();
-    }
-
-    protected override void CharacterOutOfCombatFixedUpdate()
-    {
-        //Davon outOfCombat actions fixedupdate
-    }
-
-    protected override void CharacterInCombatFixedUpdate()
-    {
-        //Davon InCombat actions fixedupdate
     }
 
     // combatUpdate seperatly so the combatactions are only checked when inteded
