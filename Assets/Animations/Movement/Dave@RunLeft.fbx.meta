@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f48c75500ed079347abec1767b0e9708
-timeCreated: 1527770216
+guid: 6ad0cc1b51206ce45a9a28aef2d507da
+timeCreated: 1527770211
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -311,7 +311,7 @@ ModelImporter:
     400300: Spine02_J
     400302: Spine03_J
     400304: Torso_Locator
-    7400000: Take 001
+    7400000: RunLeft
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -339,7 +339,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: RunLeft
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []

@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(InventoryController))]
 [RequireComponent(typeof(Yarn.Unity.Shattered.DialoguePlayer))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterAudioController))]
 public class DevonIndoorScript : MonoBehaviour
 {
 
@@ -49,10 +50,12 @@ public class DevonIndoorScript : MonoBehaviour
     public CharacterController characterController;
     private Vector3 moveDirection;
     private Statistics statistics;
+    public CharacterAudioController characterAudio;
 
     void Start()
     {
         statistics = this.transform.root.GetComponentInChildren<Statistics>();
+        characterAudio = this.transform.root.GetComponent<CharacterAudioController>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
@@ -66,6 +69,10 @@ public class DevonIndoorScript : MonoBehaviour
 
             //Apply movementDirections
             moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
+            if (moveDirection != Vector3.zero)
+            {
+                characterAudio.InvokeWalkingSoundsCoroutine();
+            }
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= movement.walkSpeed;
             
@@ -122,5 +129,22 @@ public class DevonIndoorScript : MonoBehaviour
     {
         float distToGround = 0.1f;
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
+    }
+
+    public float pushPower = 2.0f;
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        if (body == null || body.isKinematic)
+            return;
+
+        if (hit.moveDirection.y < -0.3f)
+            return;
+
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        body.velocity = pushDir * pushPower;
+        ItemAudio itemAudio = hit.collider.gameObject.GetComponent(typeof(ItemAudio)) as ItemAudio;
+        itemAudio.InvokePlayEffectCoroutine();
     }
 }
