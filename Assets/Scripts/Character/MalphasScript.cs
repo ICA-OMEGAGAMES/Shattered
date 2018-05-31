@@ -140,7 +140,6 @@ public class MalphasScript : CharacterMovement {
         return new CharacterAttack(basicCombatSettings.attack2Damage, basicCombatSettings.attack2Duration, basicCombatSettings.attack2Rootable);
     }
 
-    GameObject debugBlock;
     private void Blink()
     {
         if (blinkTimeStamp <= Time.time)
@@ -150,8 +149,7 @@ public class MalphasScript : CharacterMovement {
                 blinkTargetPosition =  new Vector3(Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) * blinkSettings.blinkDistance, 0,
                                                             Input.GetAxisRaw(Constants.VERTICAL_AXIS) * blinkSettings.blinkDistance);
                 blinkTargetPosition = transform.position +  transform.TransformDirection(blinkTargetPosition);
-              //  debugBlock = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //debugBlock.transform.position = blinkTargetPosition;
+
                 //check reachable
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, (blinkTargetPosition - transform.position), out hit, blinkSettings.blinkDistance+1))

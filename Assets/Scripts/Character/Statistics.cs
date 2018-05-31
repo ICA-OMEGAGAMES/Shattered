@@ -14,6 +14,7 @@ public class Statistics : MonoBehaviour {
     private GameObject spawnpoint;
     public GameObject shield;
     private bool blocking = false;
+    public float blockReductionPersentage = 0.50f;
 
     void Start(){
 		maxHealth = Constants.MAX_PLAYER_HEALTH;
@@ -31,7 +32,7 @@ public class Statistics : MonoBehaviour {
             if (blocks <= 0)
             {
                 if (blocking)
-                    amount = amount / 2;
+                    amount = amount -(amount * blockReductionPersentage);
                 health -= amount;
 
                 if (health <= Constants.MIN_PLAYER_HEALTH)
