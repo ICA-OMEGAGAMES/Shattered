@@ -1,6 +1,11 @@
-﻿<Properties>
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Item\Billboard.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Item\Billboard.cs" Line="12" Column="2" />
+      <File FileName="Assets\CameraZoom.cs" Line="9" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

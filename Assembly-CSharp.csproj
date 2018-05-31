@@ -51,8 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraZoom.cs" />
-     <Compile Include="Assets\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
@@ -76,10 +74,12 @@
      <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraSetting.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraZoom.cs" />
      <Compile Include="Assets\Scripts\CanvasManager.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Barier.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DarkClaw.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DemonicWave.cs" />
+     <Compile Include="Assets\Scripts\Character\Abilities\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DivineAura.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\ISkill.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\PhychicScream.cs" />
