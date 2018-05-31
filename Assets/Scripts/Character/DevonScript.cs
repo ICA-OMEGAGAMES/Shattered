@@ -223,14 +223,22 @@ public class DevonScript : CharacterMovement
         }
     }
 
-    IEnumerator Roll(float orignalMovement)
+    IEnumerator Roll(float originalMovement)
     {
         dodgeTimestamp = dodgeSettings.dodgeCooldown + Time.time;
         dodging = true;
         movementMultiplier = dodgeSettings.dodgeSpeedMultiplier;
         yield return new WaitForSeconds(dodgeSettings.dodgeDuration);
-        movementMultiplier = orignalMovement;
+        movementMultiplier = originalMovement;
+        StartCoroutine(Root(dodgeSettings.dodgeDuration));
         dodging = false;
+    }
+    
+    IEnumerator Root(float dodgeDuration)
+    {
+        characterRooted = true;
+        yield return new WaitForSeconds(dodgeDuration);
+        characterRooted = false;
     }
 
     public void ChangeCombatSet(Weapon weapon)
