@@ -100,6 +100,8 @@ namespace Yarn.Unity.Shattered
             }
         }
 
+        public GameObject dialogueCanvas;
+
         /// Start the dialogue
         void Start()
         {
@@ -296,6 +298,9 @@ namespace Yarn.Unity.Shattered
             // to allow time for any animations that might run while transitioning
             // out of a conversation (ie letterboxing going away, etc)
             isDialogueRunning = false;
+
+            //Disable the DialogueCanvas
+            this.dialogueCanvas.SetActive(false);
         }
 
         /// Clear the dialogue system
