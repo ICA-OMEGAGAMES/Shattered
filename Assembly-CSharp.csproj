@@ -51,9 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scenes\Development\Sprint03\ButtonHover.cs" />
-     <Compile Include="Assets\_Scenes\Development\Sprint03\PlayVideo.cs" />
-     <Compile Include="Assets\_Scenes\Development\Sprint04\TeleportSkill.cs" />
+     <Compile Include="Assets\_scenes\Development\Sprint03\ButtonHover.cs" />
+     <Compile Include="Assets\_scenes\Development\Sprint03\PlayVideo.cs" />
+     <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
+     <Compile Include="Assets\_scenes\Development\Sprint04\TimeManager.cs" />
      <Compile Include="Assets\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\DevonIndoorScript.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />

@@ -98,4 +98,9 @@ public class SkillTreeMenu : MonoBehaviour
         //Able Back Button
         backButton.interactable = true;
     }
+
+    public bool IsFirstSkillUnlocked()
+    {
+        return firstSkillUnlocked;
+    }
 }
