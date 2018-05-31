@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
@@ -18,6 +19,8 @@ public class CharacterMovement : MonoBehaviour
         public string dodgeBool = "isDodging";
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
+        public string isBlocking = "isBlocking";
+        public string hit = "Hit";
         public string verticalVelocityFloat = "Forward";
         public string horizontalVelocityFloat = "Strafe";
         public string weaponSet = "WeaponSet";
@@ -46,7 +49,6 @@ public class CharacterMovement : MonoBehaviour
         public float jumpSpeed = 8.0F;
         public float jumpTime = 0.25f;
         public float jumpCooldown = 0.5f;
-        public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
     }
@@ -66,11 +68,13 @@ public class CharacterMovement : MonoBehaviour
     protected bool characterRooted = true;
     protected float characterActionTimeStamp = 0;
     protected bool crouching;
+    protected bool blocking;
     protected bool dodging;
-    protected bool characterControllable = true;
+    protected float movementMultiplier = 1;
 
     //public variables
     public bool combatState = false;
+    public bool characterControllable = true;
 
     //private variables
     private bool jumping;
@@ -81,7 +85,6 @@ public class CharacterMovement : MonoBehaviour
 	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
-	public CharacterAudioController characterAudio;
 
     //characterscript spesific updates
     protected virtual void CharactertInitialize() { }
@@ -124,12 +127,8 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-				if (moveDirection != Vector3.zero) {
-					characterAudio.InvokeWalkingSoundsCoroutine ();
-				}
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= GetSpeed();
-
 
                 //limit actions to the in/out combat state
                 switch (combatState)
@@ -150,16 +149,19 @@ public class CharacterMovement : MonoBehaviour
             else
                 characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
 
+            if (characterRooted == false)
+            {
+                AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
+                moveDirection *= movementMultiplier;
+                moveDirection.y -= physics.gravity * Time.deltaTime;
+                characterController.Move(moveDirection * Time.deltaTime);
+            }
+
         }
         else
             SetControllable(false);
 
-        //movement
-        if (characterRooted == false) {
-            Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
-            moveDirection.y -= physics.gravity * Time.deltaTime;
-            characterController.Move(moveDirection * Time.deltaTime);
-        }
+        Animate(); 
     }
 
     private void FixedUpdate()
@@ -218,21 +220,34 @@ public class CharacterMovement : MonoBehaviour
                     CombatActionUpdate();
                     SetControllable(false);
                 }
+                if (Input.GetButton(Constants.BLOCK_BUTTON))
+                {
+                    characterRooted = true;
+                    blocking = true;
+                }
+                else
+                    blocking = false;
+                statistics.Blocking = blocking;
             }
 
         }
     }
 
     //Animates the character and root motion handles the movement
-    public void Animate(float forward, float strafe)
+    public void AnimateMovement(float forward, float strafe)
     {
         animator.SetFloat(animations.verticalVelocityFloat, forward);
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
         animator.SetBool(animations.jumpBool, jumping);
-        animator.SetBool(animations.groundedBool, IsFalling());
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
+    }
+
+    public void Animate()
+    {
+        animator.SetBool(animations.isBlocking, blocking);
         animator.SetBool(animations.isInCombat, combatState);
+        animator.SetBool(animations.groundedBool, IsFalling());
     }
 
     private void SetControllable(bool active)
@@ -260,15 +275,12 @@ public class CharacterMovement : MonoBehaviour
     //select correct movement speed
     private float GetSpeed()
     {
-		if (Input.GetButton (Constants.RUN_BUTTON)) {
-			speed = movement.runSpeed;
-			characterAudio.isRunning = true;
-		} else if (Input.GetButton (Constants.CROUCH_BUTTON))
-			speed = movement.crouchSpeed;
-		else {
-			speed = movement.walkSpeed;
-			characterAudio.isRunning = false;
-		}
+		if (Input.GetButton(Constants.RUN_BUTTON))
+            speed = movement.runSpeed;
+		else if (Input.GetButton(Constants.CROUCH_BUTTON))
+            speed = movement.crouchSpeed;
+        else
+            speed = movement.walkSpeed;
         return speed;
     }
 
@@ -330,20 +342,18 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-	public float pushPower = 2.0f;
-	void OnControllerColliderHit(ControllerColliderHit hit){
-		Rigidbody body = hit.collider.attachedRigidbody;
+    public IEnumerator StunCharacter(float duration)
+    {
+        characterControllable = false;
+        print("i'ma hit");
+        //animation force state stunn
 
-		if (body == null || body.isKinematic)
-			return;
-
-		if (hit.moveDirection.y < -0.3f)
-			return;
-
-		Vector3 pushDir = new Vector3 (hit.moveDirection.x, 0, hit.moveDirection.z);
-		body.velocity = pushDir * pushPower;
-		ItemAudio itemAudio =	hit.collider.gameObject.GetComponent(typeof(ItemAudio)) as ItemAudio; 
-		itemAudio.InvokePlayEffectCoroutine ();
-	}
-
+        //start animation death scene
+        animator.SetTrigger(animations.hit);
+        //force death animation
+        animator.Play(Constants.ANIMATIONSTATE_HIT);
+        
+        yield return new WaitForSeconds(duration);
+        characterControllable = true;
+    }
 }

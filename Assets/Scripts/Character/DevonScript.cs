@@ -22,6 +22,16 @@ public class DevonScript : CharacterMovement
     [SerializeField]
     public UnarmedCombatSettings unarmedCombatSettings;
 
+    [Serializable]
+    public class DodgeSettings
+    {
+        public float dodgeSpeedMultiplier =2;
+        public float dodgeCooldown=1;
+        public float dodgeDuration = 0.2f;
+    }
+    [SerializeField]
+    public DodgeSettings dodgeSettings;
+
     //State machine for the different combat sets
     public enum FSMState
     {
@@ -90,6 +100,7 @@ public class DevonScript : CharacterMovement
             return new CharacterAttack(combatSettings.attack2Damage, combatSettings.attack2Duration, combatSettings.attack2Rootable);
         }
     }
+
     /// <summary>
     /// LightMelee combat set
     /// </summary>
@@ -154,6 +165,7 @@ public class DevonScript : CharacterMovement
 
     CharacterAttack attack;
     MarkerManagerPlayer markerManager;
+    private float dodgeTimestamp;
 
     protected override void CharactertInitialize()
     {
@@ -203,24 +215,22 @@ public class DevonScript : CharacterMovement
 
     private void Dodge()
     {
-        if (!dodging)
+        if (!dodging && dodgeTimestamp <= Time.time)
         {
-            if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0)
+            if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
             {
-                StartCoroutine(Roll(true, Input.GetAxis(Constants.HORIZONTAL_AXIS)));
-            }
-            else if (Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
-            {
-                StartCoroutine(Roll(false, Input.GetAxis(Constants.VERTICAL_AXIS)));
+                StartCoroutine(Roll(movementMultiplier));
             }
         }
     }
 
-    IEnumerator Roll(bool horizontal, float direction)
+    IEnumerator Roll(float orignalMovement)
     {
+        dodgeTimestamp = dodgeSettings.dodgeCooldown + Time.time;
         dodging = true;
-        yield return new WaitForSeconds(0.5f);
-        StopCoroutine(Roll(horizontal, direction));
+        movementMultiplier = dodgeSettings.dodgeSpeedMultiplier;
+        yield return new WaitForSeconds(dodgeSettings.dodgeDuration);
+        movementMultiplier = orignalMovement;
         dodging = false;
     }
 

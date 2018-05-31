@@ -2188,7 +2188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1589972251427108
 GameObject:
   m_ObjectHideFlags: 1
@@ -7281,7 +7281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
   health: 0
+  hitStunDuration: 0.5
   shield: {fileID: 0}
+  blockReductionPersentage: 50
 --- !u!114 &114992117139954492
 MonoBehaviour:
   m_ObjectHideFlags: 1

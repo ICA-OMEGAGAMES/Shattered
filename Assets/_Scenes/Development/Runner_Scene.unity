@@ -1254,7 +1254,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 442740777}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.2, y: 2.5, z: 47.5}
+  m_LocalPosition: {x: -28.2, y: 2.5, z: 47.5}
   m_LocalScale: {x: 9.191505, y: 24.870745, z: 24.871504}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3079,31 +3079,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 26
       objectReference: {fileID: 0}
-    - target: {fileID: 114177903104504894, guid: f7c001125cc6df746a68273d654bd953,
-        type: 2}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 1782618065}
     - target: {fileID: 114406762246595980, guid: f7c001125cc6df746a68273d654bd953,
         type: 2}
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 793554133}
+    - target: {fileID: 114177903104504894, guid: f7c001125cc6df746a68273d654bd953,
+        type: 2}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 1782618065}
     - target: {fileID: 1961149158757074, guid: f7c001125cc6df746a68273d654bd953, type: 2}
       propertyPath: m_Name
       value: PlayerMannequin
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961149158757074, guid: f7c001125cc6df746a68273d654bd953, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127495769945478, guid: f7c001125cc6df746a68273d654bd953, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683180462189630, guid: f7c001125cc6df746a68273d654bd953, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7c001125cc6df746a68273d654bd953, type: 2}
@@ -3186,8 +3174,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162795094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.3, y: 18.53, z: 47.4}
-  m_LocalScale: {x: 2.1030078, y: 6.9617205, z: 24.594841}
+  m_LocalPosition: {x: -33.7, y: 21.2, z: 47.4}
+  m_LocalScale: {x: 2.1030078, y: 6.9617205, z: 28.41277}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 56
@@ -4020,23 +4008,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 114703633746397370, guid: fba55db4502b61341bd7647b1eb7f537,
-        type: 2}
-      propertyPath: dialogueRunner
-      value: 
-      objectReference: {fileID: 793554133}
     - target: {fileID: 114096130276848478, guid: fba55db4502b61341bd7647b1eb7f537,
         type: 2}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1782618065}
+    - target: {fileID: 114703633746397370, guid: fba55db4502b61341bd7647b1eb7f537,
+        type: 2}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 793554133}
     - target: {fileID: 1530954866850552, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1530954866850552, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba55db4502b61341bd7647b1eb7f537, type: 2}
@@ -5345,20 +5329,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 114580823632600672, guid: 865edb7c8b179ab4bb7ee11eccfc7c5e,
-        type: 2}
-      propertyPath: dialogueRunner
-      value: 
-      objectReference: {fileID: 793554133}
     - target: {fileID: 114893871805708964, guid: 865edb7c8b179ab4bb7ee11eccfc7c5e,
         type: 2}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1782618065}
-    - target: {fileID: 1588675699562604, guid: 865edb7c8b179ab4bb7ee11eccfc7c5e, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114580823632600672, guid: 865edb7c8b179ab4bb7ee11eccfc7c5e,
+        type: 2}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 793554133}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 865edb7c8b179ab4bb7ee11eccfc7c5e, type: 2}
   m_IsPrefabParent: 0
