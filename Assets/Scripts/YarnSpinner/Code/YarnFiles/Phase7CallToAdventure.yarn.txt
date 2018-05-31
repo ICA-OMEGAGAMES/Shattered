@@ -1,0 +1,24 @@
+title: Phase7_CallToAdventure
+tags: 
+colorID: 0
+position: 497,104
+---
+Malphas: I can get you the answers you’re looking for, even if you don’t realise it yet. Or will you go on with your pathetic life and eventually drink yourself to death? 
+
+[[Yeah, whatever.|Option1]]
+[[Maybe I don't want answers? |Option2]]
+===
+title: Option1
+tags: 
+colorID: 0
+position: 315,367
+---
+Devon: Yeah, whatever.
+===
+title: Option2
+tags: 
+colorID: 0
+position: 682,367
+---
+Devon: Maybe I don't want answers? 
+===
