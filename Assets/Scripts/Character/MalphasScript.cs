@@ -15,31 +15,40 @@ public class MalphasScript : CharacterMovement {
         public float attack2Damage = 20;
         public float attack2Duration = 0.5f;
         public bool attack2Rootable = true;
-        public float blinkCooldown = 1;
-        public float blinkDistance = 2;
     }
     [SerializeField]
     public BasicCombatSettings basicCombatSettings;
-    
+
+    [Serializable]
+    public class BlinkSettings
+    {
+        public float blinkCooldown = 1;
+        public float blinkDistance = 10;
+        public float blinkSpeed = 5;
+    }
+    [SerializeField]
+    public BlinkSettings blinkSettings;
+
     [Serializable]
     public class SkillsSettings
     {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
-        public SkillSettings phychicScreamSettings;
-        public SkillSettings divineAuraSettings;
-        public SkillSettings darkClawSettings;
+        public SkillSettings psychicScreamSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
     }
     [SerializeField]
     public SkillsSettings skillSettings;
-
     private float blinkTimeStamp = 0;
     private CharacterAttack attack;
     private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
+
+    private bool blinking = false;
+    Vector3 blinkTargetPosition;
+
 
     //check if skill is unlocked
     protected override void CharactertInitialize()
@@ -51,10 +60,8 @@ public class MalphasScript : CharacterMovement {
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
-        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
-        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
     }
@@ -81,21 +88,6 @@ public class MalphasScript : CharacterMovement {
             if (skills.Count >= 2) 
                 skills[2].Execute(animator);
         }
-        if (Input.GetButton(Constants.SKILL3_BUTTON))
-        {
-            if (skills.Count >= 3)
-                skills[3].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL4_BUTTON))
-        {
-            if (skills.Count >= 4)
-                skills[4].Execute(animator);
-        }
-        if (Input.GetButton(Constants.SKILL5_BUTTON))
-        {
-            if (skills.Count >= 5)
-                skills[5].Execute(animator);
-        }
     }
 
     protected override void CharacterOutOfCombatFixedUpdate()
@@ -108,6 +100,8 @@ public class MalphasScript : CharacterMovement {
         //Malphas in of combat fixed updates
         if (Input.GetButton(Constants.DODGE_BUTTON))
             Blink();
+        BlinkToLocation();
+
     }
 
     protected override void CombatActionUpdate()
@@ -150,19 +144,74 @@ public class MalphasScript : CharacterMovement {
     {
         if (blinkTimeStamp <= Time.time)
         {
-            if (Input.GetAxis(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxis(Constants.VERTICAL_AXIS) != 0)
+            if (Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) != 0 || Input.GetAxisRaw(Constants.VERTICAL_AXIS) != 0)
             {
-                characterController.transform.Translate(new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS) * basicCombatSettings.blinkDistance,0, 
-                                                                    Input.GetAxis(Constants.VERTICAL_AXIS) * basicCombatSettings.blinkDistance));
-                blinkTimeStamp = Time.time + basicCombatSettings.blinkCooldown;
+                blinkTargetPosition =  new Vector3(Input.GetAxisRaw(Constants.HORIZONTAL_AXIS) * blinkSettings.blinkDistance, 0,
+                                                            Input.GetAxisRaw(Constants.VERTICAL_AXIS) * blinkSettings.blinkDistance);
+                blinkTargetPosition = transform.position +  transform.TransformDirection(blinkTargetPosition);
+
+                //check reachable
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, (blinkTargetPosition - transform.position), out hit, blinkSettings.blinkDistance+1))
+                {
+                    blinkTargetPosition = hit.point;
+                }
+                
+                blinking = true;
+                blinkTimeStamp = Time.time + blinkSettings.blinkCooldown;
             }
         }
     }
 
+    private void BlinkToLocation()
+    {
+        if (blinking == true)
+        {
+            var offset = blinkTargetPosition - transform.position;
+            //Get the difference.
+
+
+            float dist = Vector3.Distance(blinkTargetPosition, transform.position);
+            if (dist > 1f)
+            {
+                offset = offset.normalized * 0.1f;
+                characterController.Move(offset * blinkSettings.blinkSpeed);
+
+            }else
+                blinking = false;
+            StartCoroutine(ForceStop());
+        }
+    }
+
+    IEnumerator ForceStop()
+    {
+        yield return new WaitForSeconds(0.5f);
+        blinking = false;
+    }
+
     public void LearnSkill(string skill)
     {
-        //TODO: learnSkill from skilltree
-        //skills.Add();
+        switch (skill)
+        {
+            case "Teleport":
+                skills.Add(new Teleport(skillSettings.teleportSettings, this));
+                break;
+            case "Barrier":
+                skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+                break;
+            case "PsychicScream":
+                skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
+                break;
+            case "DemonicWave":
+                skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+                break;
+            case "Possess":
+                skills.Add(new Possess(skillSettings.possessSettings, this));
+                break;
+            default:
+                Console.WriteLine("Skill unknown");
+                break;
+        }
     }
 
     public void EnableMarkers()
