@@ -12,5 +12,4 @@ public class ItemSettings : ScriptableObject {
 	public bool interactable = false;
 
 	public Image image = null;
-
 }

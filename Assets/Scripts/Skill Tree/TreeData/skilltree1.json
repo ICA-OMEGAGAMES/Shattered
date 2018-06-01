@@ -1,0 +1,65 @@
+{
+    "skilltree": [
+        {
+            "idSkill": 0,
+            "skillDependencies": [],
+            "unlocked": false,
+            "cost": 0,
+            "description": "Teleport to location"
+        },
+        {
+            "idSkill": 1,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Barrier Skill Description"
+        },
+        {
+            "idSkill": 2,
+            "skillDependencies": [
+                1
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Psychic Scream Skill Description"
+        },
+        {
+            "idSkill": 3,
+            "skillDependencies": [
+                2
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Divine Aura Skill Description"
+        },
+        {
+            "idSkill": 4,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Demonic Wave Skill Description"
+        },
+        {
+            "idSkill": 5,
+            "skillDependencies": [
+                4
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Possess Skill Description"
+        },
+        {
+            "idSkill": 6,
+            "skillDependencies": [
+                5
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Dark Claw Skill Description"
+        }
+    ]
+}

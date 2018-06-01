@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_scenes/Development/Sprint03/DemoMenuSkillTree.unity
+    guid: cdd638bd6b2a5fa499048ce7b0a91bdb
+  - enabled: 1
+    path: Assets/_scenes/Development/MainMenu.unity
+    guid: d66648037e6a24c48b33d6d4f0fb7f93
+  - enabled: 1
+    path: Assets/_scenes/Final/Appartment.unity
+    guid: 45aa03f8c12785e4d8a51be8d47da769
+  - enabled: 1
+    path: Assets/_scenes/Final/City.unity
+    guid: b616e5c8619770048826b62bbc3b6316

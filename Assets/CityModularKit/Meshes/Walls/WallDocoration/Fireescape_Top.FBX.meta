@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: 8c719c3093543b34096707e263776601
+timeCreated: 1526989982
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Object025
+    100004: Object027
+    100006: Object028
+    100008: Object029
+    100010: Object030
+    100012: Object031
+    100014: Object032
+    100016: Object033
+    100018: Object034
+    100020: Object035
+    100022: Object036
+    100024: Object037
+    100026: Object038
+    100028: Object039
+    100030: Object040
+    400000: //RootNode
+    400002: Object025
+    400004: Object027
+    400006: Object028
+    400008: Object029
+    400010: Object030
+    400012: Object031
+    400014: Object032
+    400016: Object033
+    400018: Object034
+    400020: Object035
+    400022: Object036
+    400024: Object037
+    400026: Object038
+    400028: Object039
+    400030: Object040
+    2100000: mETALtRIM1
+    2300000: Object025
+    2300002: Object027
+    2300004: Object028
+    2300006: Object029
+    2300008: Object030
+    2300010: Object031
+    2300012: Object032
+    2300014: Object033
+    2300016: Object034
+    2300018: Object035
+    2300020: Object036
+    2300022: Object037
+    2300024: Object038
+    2300026: Object039
+    2300028: Object040
+    3300000: Object025
+    3300002: Object027
+    3300004: Object028
+    3300006: Object029
+    3300008: Object030
+    3300010: Object031
+    3300012: Object032
+    3300014: Object033
+    3300016: Object034
+    3300018: Object035
+    3300020: Object036
+    3300022: Object037
+    3300024: Object038
+    3300026: Object039
+    3300028: Object040
+    4300000: Object025
+    4300002: Object027
+    4300004: Object028
+    4300006: Object029
+    4300008: Object030
+    4300010: Object031
+    4300012: Object032
+    4300014: Object033
+    4300016: Object034
+    4300018: Object035
+    4300020: Object036
+    4300022: Object037
+    4300024: Object038
+    4300026: Object039
+    4300028: Object040
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mETALtRIM1
+    second: {fileID: 2100000, guid: 0781a649ee1ff3d4d9c8d687f68463e0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

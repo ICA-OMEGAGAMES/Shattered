@@ -1,0 +1,72 @@
+{
+    "skilltree": [
+        {
+            "idSkill": 0,
+            "skillDependencies": [],
+            "unlocked": false,
+            "cost": 0,
+            "description": "Teleport to location",
+            "skillName": "TELEPORT"
+        },
+        {
+            "idSkill": 1,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Activate protective shield",
+            "skillName": "BARRIER"
+        },
+        {
+            "idSkill": 2,
+            "skillDependencies": [
+                1
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Psychic Scream Skill Description",
+            "skillName": "PSYCHIC SCREAM"
+        },
+        {
+            "idSkill": 3,
+            "skillDependencies": [
+                2
+            ],
+            "unlocked": false,
+            "cost": 4,
+            "description": "Divine Aura Skill Description",
+            "skillName": "DIVINE AURA"
+        },
+        {
+            "idSkill": 4,
+            "skillDependencies": [
+                0
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Demonic Wave Skill Description",
+            "skillName": "DEMONIC WAVE"
+        },
+        {
+            "idSkill": 5,
+            "skillDependencies": [
+                4
+            ],
+            "unlocked": false,
+            "cost": 1,
+            "description": "Possess an Enemy",
+            "skillName": "POSSESS"
+        },
+        {
+            "idSkill": 6,
+            "skillDependencies": [
+                5
+            ],
+            "unlocked": false,
+            "cost": 4,
+            "description": "Dark Claw Skill Description",
+            "skillName": "DARK CLAW"
+        }
+    ]
+}
