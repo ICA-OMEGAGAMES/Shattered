@@ -54,6 +54,8 @@
      <Compile Include="Assets\_Scenes\Development\DialogueScene\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scenes\Development\DialogueScene\SpriteSwitcher.cs" />
      <Compile Include="Assets\_Scenes\Development\DialogueScene\VoiceSwitcher.cs" />
+     <Compile Include="Assets\_Scenes\Development\TestVideo\OpenTestVideo.cs" />
+     <Compile Include="Assets\_Scenes\Development\TestVideo\PlayVideo.cs" />
      <Compile Include="Assets\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\DevonIndoorScript.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
