@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered", "Assembly-CShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered", "Assembly-CSharp-Editor.csproj", "{6DBF68D5-7A9B-A444-E4E3-7956986BEFC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered", "com.unity.postprocessing.Editor.csproj", "{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered", "com.unity.postprocessing.Runtime.csproj", "{8307B38D-6115-5B27-C54C-2CA73AA0B688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{6DBF68D5-7A9B-A444-E4E3-7956986BEFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DBF68D5-7A9B-A444-E4E3-7956986BEFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DBF68D5-7A9B-A444-E4E3-7956986BEFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8307B38D-6115-5B27-C54C-2CA73AA0B688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8307B38D-6115-5B27-C54C-2CA73AA0B688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8307B38D-6115-5B27-C54C-2CA73AA0B688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8307B38D-6115-5B27-C54C-2CA73AA0B688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

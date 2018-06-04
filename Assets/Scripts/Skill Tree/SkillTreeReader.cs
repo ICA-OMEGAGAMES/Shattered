@@ -33,7 +33,7 @@ public class SkillTreeReader : MonoBehaviour
     public int availablePoints = 100;
 
     void Awake()
-    {
+    {   
         if (instance == null)
         {
             instance = this;
@@ -210,5 +210,10 @@ public class SkillTreeReader : MonoBehaviour
     public string getSkillCost(int idSkill)
     {
         return skills[idSkill].cost.ToString();
+    }
+
+    public string getSkillName(int idSkill)
+    {
+        return skills[idSkill].skillName;
     }
 }
