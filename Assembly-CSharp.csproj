@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\Character\DevonIndoorScript.cs" />
      <Compile Include="Assets\Scripts\Character\DevonScript.cs" />
      <Compile Include="Assets\Scripts\Character\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\Character\MalphasScript.cs" />
      <Compile Include="Assets\Scripts\Character\MarkerManagerPlayer.cs" />
      <Compile Include="Assets\Scripts\Character\Models\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Character\SpawnpointScript.cs" />
