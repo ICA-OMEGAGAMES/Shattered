@@ -97,7 +97,6 @@
      <Compile Include="Assets\Scripts\Character\Abilities\DemonicWave.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DemonicWaveAreaScript.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\ISkill.cs" />
-     <Compile Include="Assets\Scripts\Character\Abilities\PhychicScream.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Possess.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\PsychicScream.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\SkillSettings.cs" />
@@ -107,7 +106,6 @@
      <Compile Include="Assets\Scripts\Character\DevonIndoorScript.cs" />
      <Compile Include="Assets\Scripts\Character\DevonScript.cs" />
      <Compile Include="Assets\Scripts\Character\InventoryController.cs" />
-     <Compile Include="Assets\Scripts\Character\MalphasScript.cs" />
      <Compile Include="Assets\Scripts\Character\MarkerManagerPlayer.cs" />
      <Compile Include="Assets\Scripts\Character\Models\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Character\SpawnpointScript.cs" />

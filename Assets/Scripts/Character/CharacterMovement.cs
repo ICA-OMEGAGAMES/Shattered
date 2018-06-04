@@ -8,8 +8,6 @@ using System;
 [RequireComponent(typeof(CharacterAudioController))]
 public class CharacterMovement : MonoBehaviour
 {    
-{
-    
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -89,6 +87,8 @@ public class CharacterMovement : MonoBehaviour
 	private Vector3 moveDirection;
     private Statistics statistics;
 	public CharacterAudioController characterAudio;
+    public float pushPower = 2.0f;
+
 
     //characterscript spesific updates
     protected virtual void CharactertInitialize() { }
@@ -222,8 +222,7 @@ public class CharacterMovement : MonoBehaviour
             SetControllable(true);
             if (combatState == true && crouching == false)
             {
-                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
-                {   
+                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))   
                 {
                     CombatActionUpdate();
                     SetControllable(false);
@@ -368,7 +367,6 @@ public class CharacterMovement : MonoBehaviour
         characterControllable = true;
     }
 
-    public float pushPower = 2.0f;
 	void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody body = hit.collider.attachedRigidbody;
 
