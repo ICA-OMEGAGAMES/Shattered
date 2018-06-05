@@ -132,7 +132,7 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-				if (moveDirection != Vector3.zero) {
+				if (moveDirection != Vector3.zero && characterAudio != null) {
 					characterAudio.InvokeWalkingSoundsCoroutine ();
 				}
                 moveDirection = transform.TransformDirection(moveDirection);
@@ -284,12 +284,18 @@ public class CharacterMovement : MonoBehaviour
     {
 		if (Input.GetButton (Constants.RUN_BUTTON)) {
 			speed = movement.runSpeed;
-			characterAudio.isRunning = true;
-		} else if (Input.GetButton (Constants.CROUCH_BUTTON))
+            if(characterAudio != null)
+            {
+			    characterAudio.isRunning = true;
+            }		
+        } else if (Input.GetButton (Constants.CROUCH_BUTTON))
 			speed = movement.crouchSpeed;
 		else {
 			speed = movement.walkSpeed;
-			characterAudio.isRunning = false;
+            if(characterAudio != null)
+            {
+			    characterAudio.isRunning = false;
+            }
 		}
         return speed;
     }
