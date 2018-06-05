@@ -18,7 +18,7 @@ public class AIStats : ScriptableObject
         public float runSpeed = 8.0F;
         public float dodgeCooldown = 2;
         public float reachedDistance = 0.75f;
-        public float reachedTollerance = 1.25f;
+        public float reachedTollerance = 0.25f;
     }
 
     [SerializeField]
