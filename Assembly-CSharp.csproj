@@ -101,6 +101,7 @@
      <Compile Include="Assets\Scripts\Character\Abilities\PsychicScream.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\SkillSettings.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Teleport.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterAudioController.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterTransformer.cs" />
      <Compile Include="Assets\Scripts\Character\DevonIndoorScript.cs" />
@@ -117,6 +118,7 @@
      <Compile Include="Assets\Scripts\Environment\RainController.cs" />
      <Compile Include="Assets\Scripts\Item\Billboard.cs" />
      <Compile Include="Assets\Scripts\Item\Item.cs" />
+     <Compile Include="Assets\Scripts\Item\ItemAudio.cs" />
      <Compile Include="Assets\Scripts\Item\ItemSettings.cs" />
      <Compile Include="Assets\Scripts\Item\Weapon.cs" />
      <Compile Include="Assets\Scripts\Item\WeaponSettings.cs" />
@@ -196,6 +198,7 @@
      <None Include="Assets\Art\PostProcessing\Shaders\API\D3D12.hlsl" />
      <None Include="Assets\Art\PostProcessing\Shaders\API\OpenGL.hlsl" />
      <None Include="Assets\Materials\Shaders\RefractingGlass.shader" />
+     <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
      <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DiskKernels.hlsl" />
      <None Include="Assets\Audio\Images\Aanleveren\LOGO COLOR FONT\COLORS.txt" />
