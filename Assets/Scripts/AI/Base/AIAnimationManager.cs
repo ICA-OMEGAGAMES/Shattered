@@ -10,6 +10,7 @@ public class AIAnimationManager : MonoBehaviour
     private float dodgingTimestamp;
     private bool blocking;
     private float blockingTimestamp;
+    private string lastAttack;
 
     [System.Serializable]
     public class AnimationSettings
@@ -52,16 +53,18 @@ public class AIAnimationManager : MonoBehaviour
         animator.SetBool(animations.dodgeBool, dodging);
     }
 
-    public void SetFightingAnimation(int fightMode, int attack)
+    public void SetFightingAnimation(int fightMode, string attack)
     {
         animator.SetInteger(animations.weaponSet, fightMode);
-        if (attack == 1)
+        if (attack == Constants.ATTACK1_BUTTON)
         {
             animator.SetTrigger(animations.attack1);
+            lastAttack = Constants.PUNCH_ATTACK;
         }
-        else if (attack == 2)
+        else if (attack == Constants.ATTACK1_BUTTON)
         {
             animator.SetTrigger(animations.attack2);
+            lastAttack = Constants.KICK_ATTACK;
         }
 
     }
@@ -102,6 +105,11 @@ public class AIAnimationManager : MonoBehaviour
     public bool IsBlocking()
     {
         return blocking;
+    }
+
+    public string GetLastAttack()
+    {
+        return lastAttack;
     }
 
 }

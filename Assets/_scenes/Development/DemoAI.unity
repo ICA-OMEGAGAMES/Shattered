@@ -579,6 +579,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1390119801}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -1316,6 +1319,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 138683370}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -2808,6 +2814,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 2023076601}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -13278,6 +13287,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 847888923}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -13439,6 +13451,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 594192553}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -19644,6 +19659,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1859887328}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -21073,6 +21091,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1901956216}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -22116,6 +22137,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 914007589}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -23297,6 +23321,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1073237017}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -25180,6 +25207,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1281616777}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -25404,6 +25434,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 168970525}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -28798,6 +28831,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1887699396}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -30012,6 +30048,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1167123543}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -42574,6 +42613,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 2090147083}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -50612,6 +50654,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 654276099}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
@@ -55374,6 +55419,9 @@ MonoBehaviour:
   - {fileID: 633220570}
   eyes: {fileID: 1596289525}
   aiStats: {fileID: 11400000, guid: 76f613877afb241498f6623d6b8cd334, type: 2}
+  immunityAgainstPunch: 1
+  immunityAgainstKick: 1
+  immunityAgainstWeapons: 1
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}

@@ -23,7 +23,8 @@ public class MarkerManagerAi : MarkerManager
             if (this.transform.root.GetComponentInChildren<AIManager>().IsPossessed())
             {
                 //Prevents friendly fire
-                hitTarget.transform.root.GetComponentInChildren<AIManager>().TakeDamage(damage);
+                string attackMode = GetComponentInChildren<AIManager>().GetAttackMode();
+                hitTarget.transform.root.GetComponentInChildren<AIManager>().TakeDamage(damage, attackMode);
             }
 
         }

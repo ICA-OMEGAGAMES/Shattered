@@ -11,6 +11,10 @@ public class AIManager : MonoBehaviour
     public GameObject eyes;
     public AIStats aiStats;
 
+    public float immunityAgainstPunch;
+    public float immunityAgainstKick;
+    public float immunityAgainstWeapons;
+
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public AIAnimationManager animationManager;
@@ -238,13 +242,29 @@ public class AIManager : MonoBehaviour
         return expired;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, string attack)
     {
+        switch(attack)
+        {
+            case Constants.PUNCH_ATTACK:
+                amount = amount - (amount * immunityAgainstPunch);
+                break;
+            case Constants.KICK_ATTACK:
+                amount = amount - (amount * immunityAgainstKick);
+                break;
+            case Constants.WEAPON_ATTACK:
+                amount = amount - (amount * immunityAgainstWeapons);
+                break;
+        }
+
         previousHealth = currentHealth;
         if(animationManager.IsBlocking())
         {
             amount =  (amount * aiStats.unarmedCombatSettings.blockPercentage);
         }
+
+        Debug.Log(amount);
+
         currentHealth -=  amount;
         attackCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.stunDuration;
         //TODO add visuals of stumbling
@@ -366,5 +386,10 @@ public class AIManager : MonoBehaviour
         }
 
         return statistics.GetHealth() > 0;
+    }
+
+    public string GetAttackMode()
+    {
+        return animationManager.GetLastAttack();
     }
 }

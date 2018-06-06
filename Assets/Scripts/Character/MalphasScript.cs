@@ -46,6 +46,7 @@ public class MalphasScript : CharacterMovement
     private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
+    private String lastAttack;
 
     private bool blinking = false;
     Vector3 blinkTargetPosition;
@@ -112,6 +113,7 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack1
             attack = Attack1(animator);
+            lastAttack = Constants.PUNCH_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
 
@@ -120,6 +122,7 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack2
             attack = Attack2(animator);
+            lastAttack = Constants.KICK_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -223,5 +226,10 @@ public class MalphasScript : CharacterMovement
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
+    }
+
+    public string GetAttackMode()
+    {
+        return lastAttack;
     }
 }

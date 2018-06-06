@@ -40,11 +40,11 @@ public class UnarmedAttackAction : Action
             //kick or punch based on chance
             if (random < 4)
             {
-                manager.animationManager.SetFightingAnimation(0, 1);
+                manager.animationManager.SetFightingAnimation(0, Constants.ATTACK1_BUTTON);
             }
             else
             {
-                manager.animationManager.SetFightingAnimation(0, 2);
+                manager.animationManager.SetFightingAnimation(0, Constants.ATTACK2_BUTTON);
             }
             manager.SetAttackCooldown(manager.aiStats.unarmedCombatSettings.cooldown);
         }
