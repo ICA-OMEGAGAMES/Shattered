@@ -28,7 +28,6 @@ public class LookDecision : Decision
                 float lookRange = manager.aiStats.lookRange - hit.distance;
                 while(hit.transform.CompareTag(Constants.ENEMY_TAG))
                 {
-                    Debug.Log("Other enemy in way");
                     if(!Physics.Raycast(hit.transform.position, targetDirection.normalized, out hit, lookRange) || lookRange <= 0)
                     {
                         return false;

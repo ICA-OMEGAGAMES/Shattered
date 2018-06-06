@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e5f2b36964936049b173c646b5d828f, type: 3}
-  m_Name: AI Stats
+  m_Name: AI Stats1
   m_EditorClassIdentifier: 
   maxHealth: 100
   searchTime: 5
@@ -21,12 +21,12 @@ MonoBehaviour:
     runSpeed: 8
     dodgeCooldown: 2
     reachedDistance: 0.75
-    reachedTollerance: 1.25
+    reachedTollerance: 0.25
   unarmedCombatSettings:
     blockDuration: 3
     blockPercentage: 0.5
-    attackIdleRange: 7
-    unarmedAttackRange: 3
+    attackIdleRange: 8
+    unarmedAttackRange: 5
     unarmedAttackDamage: 5
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
@@ -35,3 +35,6 @@ MonoBehaviour:
     attackingDuration: 7.5
     attackModeCooldown: 3.75
     stunDuration: 1
+    immunityAgainstPunch: 0
+    immunityAgainstKick: 0
+    immunityAgainstWeapons: 0

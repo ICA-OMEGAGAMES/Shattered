@@ -11,10 +11,6 @@ public class AIManager : MonoBehaviour
     public GameObject eyes;
     public AIStats aiStats;
 
-    public float immunityAgainstPunch;
-    public float immunityAgainstKick;
-    public float immunityAgainstWeapons;
-
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public AIAnimationManager animationManager;
@@ -247,13 +243,13 @@ public class AIManager : MonoBehaviour
         switch(attack)
         {
             case Constants.PUNCH_ATTACK:
-                amount = amount - (amount * immunityAgainstPunch);
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstPunch);
                 break;
             case Constants.KICK_ATTACK:
-                amount = amount - (amount * immunityAgainstKick);
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstKick);
                 break;
             case Constants.WEAPON_ATTACK:
-                amount = amount - (amount * immunityAgainstWeapons);
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstWeapons);
                 break;
         }
 
@@ -262,9 +258,7 @@ public class AIManager : MonoBehaviour
         {
             amount =  (amount * aiStats.unarmedCombatSettings.blockPercentage);
         }
-
-        Debug.Log(amount);
-
+        
         currentHealth -=  amount;
         attackCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.stunDuration;
         //TODO add visuals of stumbling

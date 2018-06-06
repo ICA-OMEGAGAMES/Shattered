@@ -39,6 +39,9 @@ public class AIStats : ScriptableObject
         public float attackingDuration = 7.5f;
         public float attackModeCooldown = 3.75f;
         public float stunDuration = 1f;
+        public float immunityAgainstPunch;
+        public float immunityAgainstKick;
+        public float immunityAgainstWeapons;
     }
 
     [SerializeField]
