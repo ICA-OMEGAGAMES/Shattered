@@ -7,6 +7,7 @@ public class Possess : ISkill
     private SkillSettings settings;
     private MonoBehaviour mono;
     private float cooldownTimestamp;
+    private MalphasScript.SkillAnimations skillAnimations = new MalphasScript.SkillAnimations();
 
     public Possess(SkillSettings settings, MonoBehaviour mono)
     {
