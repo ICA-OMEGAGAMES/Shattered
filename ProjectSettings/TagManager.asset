@@ -10,7 +10,7 @@ TagManager:
   - Marker
   - Weapon
   - EquippedWeapon
-  - Zoomable
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - UnSelectable
+  - 
   - 
   - 
   - 
