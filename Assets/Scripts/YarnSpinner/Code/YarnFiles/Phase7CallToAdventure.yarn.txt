@@ -16,7 +16,9 @@ colorID: 0
 position: 315,367
 ---
 <<setsprite FaceImage devon>>
-    Devon: Yeah, whatever.
+    Devon: I’ve tried looking for answers. I’ve done everything I can. And nothing will bring her back.
+    Malphas (in Devon’s thoughts): By the way, my name is Malphas. A pleasure to make my introductions. 
+    Devon (thought): Great it even has a name.
 ===
 
 title: Option2
@@ -25,5 +27,5 @@ colorID: 0
 position: 682,367
 ---
 <<setsprite FaceImage devon>>
-    Devon: Maybe I don't want answers? 
+    Malphas: If that is what you want. But remember, my offer still stands when you change your mind eventually.
 ===
