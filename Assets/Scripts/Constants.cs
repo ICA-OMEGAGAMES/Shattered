@@ -62,4 +62,8 @@
 	public const string ANIMATIONSTATE_DEAD = "Dead";
     public const string ANIMATIONSTATE_HIT = "Hit";
 
+
+	// ENVIRONMENT
+	public const string REGULAR_RAIN = "Regular";
+	public const string BLOOD_RAIN = "Blood";
 }
