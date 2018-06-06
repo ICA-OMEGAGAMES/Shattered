@@ -10,8 +10,8 @@ public class RainController : MonoBehaviour {
 	private Rain bloodRain;
 
 	void Awake(){
-		rain = GameObject.Find ("Regular").GetComponent<Rain> ();
-		bloodRain = GameObject.Find ("Blood").GetComponent<Rain> ();
+		rain = GameObject.Find (Constants.REGULAR_RAIN).GetComponent<Rain> ();
+		bloodRain = GameObject.Find (Constants.BLOOD_RAIN).GetComponent<Rain> ();
 	}
 
 	void Update(){
@@ -25,7 +25,6 @@ public class RainController : MonoBehaviour {
 			rain.heavy.Stop ();
 			rain.StopRainSideEffects ();
 		}
-
 
 		bloodRain.setEmission (envSettings.bloodRain.current);
 		if (envSettings.bloodRain.current != 0) {
