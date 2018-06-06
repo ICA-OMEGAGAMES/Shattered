@@ -18,6 +18,5 @@ public class OpenSkilltree : MonoBehaviour {
 	
 	void SwitchScreen () {
 		skillTreeMenu.Pause();
-		ingameMenu.SetActive(false);
 	}
 }

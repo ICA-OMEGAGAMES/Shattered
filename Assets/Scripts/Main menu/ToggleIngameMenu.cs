@@ -42,7 +42,7 @@ public class ToggleIngameMenu : MonoBehaviour
         {
 
             ingameMenu.SetActive(active);
-            Time.timeScale = 0f;
+            Time.timeScale = 1f;
 
         }
     }
