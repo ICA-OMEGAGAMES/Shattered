@@ -11,12 +11,10 @@ public class PlayVideo : MonoBehaviour
     public VideoClip videoToPlay;
 
     private VideoPlayer videoPlayer;
-    private VideoSource videoSource;
 
     private AudioSource audioSource;
 
     private bool isStarted = false;
-    private IEnumerator couroutine;
 
 	public bool isPrepared = false;
 
@@ -36,11 +34,6 @@ public class PlayVideo : MonoBehaviour
 
         //We want to play from video clip not from url
         videoPlayer.source = VideoSource.VideoClip;
-
-        // // Vide clip from Url
-        // videoPlayer.source = VideoSource.Url;
-        // videoPlayer.url = "http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4";
-
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -75,12 +68,9 @@ public class PlayVideo : MonoBehaviour
             audioSource.Play();
             while (videoPlayer.isPlaying)
             {
-                Debug.Log("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
                 yield return null;
             }
         }
-
-        Debug.Log("Done Playing Video");
     }
 
     public void startVideo()
@@ -91,7 +81,6 @@ public class PlayVideo : MonoBehaviour
 
         if (!isStarted)
         {
-            // Debug.Log("StartVideo");
             StartCoroutine(playVideo());
             isStarted = true;
         }
@@ -99,7 +88,6 @@ public class PlayVideo : MonoBehaviour
 
     public void stopVideo()
     {
-        // Debug.Log("StopVideo");
         StopCoroutine(playVideo());
         isStarted = false;
 		isPrepared = false;

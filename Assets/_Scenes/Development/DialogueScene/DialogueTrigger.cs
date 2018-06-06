@@ -28,11 +28,9 @@ public class DialogueTrigger : MonoBehaviour
         if (!dialogueIsDone)
         {
             //start and activate the dialogue
-            Debug.Log("DialogueShouldStart");
             dialogueIsDone = true;
 
-			//Freeze the game?! or freeze just player movement? other wise the dialogue frezzes to
-			// Time.timeScale = 0.0f;
+			//TODO: freeze player Movement?
 
 			//Activate the DialogueCanvas..
             FindObjectOfType<DialogueRunner>().dialogueCanvas.SetActive(true);
@@ -43,7 +41,6 @@ public class DialogueTrigger : MonoBehaviour
         else
         {
             //DIalogue already played, do nothing..
-            Debug.Log("DialogueIsDone");
         }
     }
 }
