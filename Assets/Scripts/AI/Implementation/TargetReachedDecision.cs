@@ -1,10 +1,11 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[CreateAssetMenu (menuName = "PluggableAI/Decisions/Target Reached")]
-public class TargetReachedDecision : Decision {
+[CreateAssetMenu(menuName = "PluggableAI/Decisions/Target Reached")]
+public class TargetReachedDecision : Decision
+{
 
     public override bool Decide(AIManager manager)
     {
@@ -13,7 +14,6 @@ public class TargetReachedDecision : Decision {
 
     private bool Reached(AIManager manager)
     {
-         return (manager.navMeshAgent.remainingDistance <= manager.movementStats.reachedDistance && !manager.navMeshAgent.pathPending); 
-           
+        return (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.aiStats.movementStats.reachedDistance && !manager.navMeshAgent.pathPending);
     }
 }

@@ -62,4 +62,10 @@
 	public const string ANIMATIONSTATE_DEAD = "Dead";
     public const string ANIMATIONSTATE_HIT = "Hit";
 
+	//AttackTypes
+	public const string PUNCH_ATTACK = "Punch";
+	public const string KICK_ATTACK = "Kick";
+	public const string WEAPON_ATTACK = "Weapon";
+	public const string SPECIAL_ABILITY_ATTACK = "SpecialAbility";
+
 }

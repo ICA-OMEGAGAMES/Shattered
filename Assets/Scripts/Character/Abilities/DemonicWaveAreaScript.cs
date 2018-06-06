@@ -21,7 +21,7 @@ public class DemonicWaveAreaScript : MonoBehaviour {
            //todo: after maarten's info add damage system (dot/instant)
              hitTargets.Add(other.gameObject);
 
-            other.transform.GetComponent<AIManager>().TakeDamage(skillSettings.value);
+            other.transform.GetComponent<AIManager>().TakeDamage(skillSettings.value, Constants.SPECIAL_ABILITY_ATTACK);
         }
     }
 }

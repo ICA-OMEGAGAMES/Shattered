@@ -19,7 +19,19 @@ public class Possess : ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            //("Possess Used");
+            float shortestDistance = float.MaxValue;
+            GameObject closestEnemy = null;
+            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
+            {
+                float distance = (mono.transform.position - enemy.transform.position).sqrMagnitude;
+                if(distance < shortestDistance)
+                {
+                    closestEnemy = enemy;
+                    shortestDistance = distance;
+                }
+            }
+
+            closestEnemy.GetComponent<AIManager>().Possess();
         }
     }
 

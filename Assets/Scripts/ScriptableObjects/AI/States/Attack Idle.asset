@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c8aba80d3b6e046b1275ae568180c9, type: 3}
+  m_Name: Attack Idle
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: a89ed4a86452ae64ab759747d908240c, type: 2}
+  - {fileID: 11400000, guid: 752ffb7e1a3d05e4f9f538964964c32c, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 7ca5c947e71973a49af223b3fde73013, type: 2}
+    trueState: {fileID: 11400000, guid: 6afee3af2bc404445b19088878e4f68c, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+  - decision: {fileID: 11400000, guid: d329b2e7f2852664d963aac94e3633cb, type: 2}
+    trueState: {fileID: 11400000, guid: bd1087522b0c84c45af0208cd0e8d728, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}

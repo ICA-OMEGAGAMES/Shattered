@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/State")]
-public class State : ScriptableObject 
+[CreateAssetMenu(menuName = "PluggableAI/State")]
+public class State : ScriptableObject
 {
 
     public Action[] actions;
@@ -12,14 +12,16 @@ public class State : ScriptableObject
 
     public void UpdateState(StateController controller, AIManager manager)
     {
-        DoActions (manager);
-        CheckTransitions (controller, manager);
+        DoActions(manager);
+        CheckTransitions(controller, manager);
     }
 
     private void DoActions(AIManager manager)
     {
-        Array.ForEach(actions, item => {
-            if(item != null) {
+        Array.ForEach(actions, item =>
+        {
+            if (item != null)
+            {
                 item.Act(manager);
             }
         });
@@ -27,14 +29,17 @@ public class State : ScriptableObject
 
     private void CheckTransitions(StateController controller, AIManager manager)
     {
-        Array.ForEach(transitions, item => {
-            bool decisionSucceeded = item.decision.Decide (manager);
+        Array.ForEach(transitions, item =>
+        {
+            bool decisionSucceeded = item.decision.Decide(manager);
 
-            if (decisionSucceeded) {
-                controller.TransitionToState (item.trueState);
-            } else 
+            if (decisionSucceeded)
             {
-                controller.TransitionToState (item.falseState);
+                controller.TransitionToState(item.trueState);
+            }
+            else
+            {
+                controller.TransitionToState(item.falseState);
             }
         });
     }
