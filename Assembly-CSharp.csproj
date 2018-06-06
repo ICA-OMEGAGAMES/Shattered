@@ -103,7 +103,6 @@
      <Compile Include="Assets\Scripts\Character\WeaponHandler.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\DummyScript.cs" />
-     <Compile Include="Assets\Scripts\Environment\EmptyClass.cs" />
      <Compile Include="Assets\Scripts\Environment\EnvironmentController.cs" />
      <Compile Include="Assets\Scripts\Environment\EnvironmentSettings.cs" />
      <Compile Include="Assets\Scripts\Environment\FogController.cs" />
