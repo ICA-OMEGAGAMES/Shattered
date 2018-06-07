@@ -23,6 +23,7 @@ public class AttackIdleAction : Action
         else
         {
             manager.StopMovement();
+            //TODO Play idle animation
         }
     }
 }

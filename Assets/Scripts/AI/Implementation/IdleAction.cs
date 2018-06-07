@@ -13,6 +13,6 @@ public class IdleAction : Action
 
     private void Idle(AIManager manager)
     {
-
+        //Todo Play idle animation
     }
 }
