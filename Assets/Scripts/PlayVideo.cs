@@ -17,7 +17,7 @@ public class PlayVideo : MonoBehaviour
     private bool isStarted = false;
 	private int currentScene;
 
-	void Start(){
+	void Awake(){
 		currentScene = SceneManager.GetActiveScene().buildIndex;
 
 		//Add VideoPlayer to the GameObject
@@ -41,6 +41,10 @@ public class PlayVideo : MonoBehaviour
 
 		//Set video To Play then prepare Audio to prevent Buffering
 		videoPlayer.clip = videoToPlay;
+	}
+
+	void Start (){
+		StartVideo ();
 	}
 
 
@@ -67,7 +71,7 @@ public class PlayVideo : MonoBehaviour
             //Play Sound
             audioSource.Play();
 			if (transitionAfterVideo) {
-				yield return new WaitForSeconds (videoToPlay.length);
+				yield return new WaitForSeconds ((float)videoPlayer.clip.length);
 				SceneManager.LoadScene(currentScene +1);
 			} else {
 				while (videoPlayer.isPlaying) {
@@ -77,7 +81,7 @@ public class PlayVideo : MonoBehaviour
         }
     }
 
-    public void startVideo()
+    public void StartVideo()
     {
 		//This is needed for waiting until Video is prepared
 		image.enabled = false;
@@ -90,7 +94,7 @@ public class PlayVideo : MonoBehaviour
         }
     }
 
-    public void stopVideo()
+    public void StopVideo()
     {
         StopCoroutine(playVideo());
         isStarted = false;
