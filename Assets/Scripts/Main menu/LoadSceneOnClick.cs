@@ -7,11 +7,12 @@ using UnityEngine.UI;
 //Script to start the game by clicking on play
 public class LoadSceneOnClick : MonoBehaviour {
 
+	public Button startButton;
 	public int sceneIndex;
 
 	void Start()
 	{
-		GetComponent<Button>().onClick.AddListener(delegate {LoadByIndex(sceneIndex);});
+		startButton.onClick.AddListener(delegate {LoadByIndex(sceneIndex);});
 	}
 
 	public void LoadByIndex(int index)

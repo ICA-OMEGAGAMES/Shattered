@@ -6,39 +6,47 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableAI/Actions/UnarmedAttack")]
 public class UnarmedAttackAction : Action
 {
-   
+
     public override void Act(AIManager manager)
     {
         Attack(manager);
     }
 
     private void Attack(AIManager manager)
-    {   
-        if(manager.IsNavMeshAgentMoving())
-        {
-            return;
-            //if the ai is moving (approaching) it is out of combat
-        }
-
+    {
         if (!manager.IsCombatEnabled())
         {
             manager.SwitchCombatState(true);
-            manager.ResetAttackCooldown();
         }
-        
-        if (manager.IsCooldownExpired())
-        {           
+
+        if (manager.IsNavMeshAgentMoving())
+        {
+            //if the ai is moving (approaching) it is out of combat
+            return;
+        }
+
+        if (manager.IsCooldownExpired() && !manager.IsAttackTimestampSet())
+        {
+            manager.SetAttackTimestamp(0.75f);
+            Debug.Log("Tease");
+        }
+
+        GeneralAIManager generalAIManager = GameObject.FindObjectOfType<GeneralAIManager>();
+
+        if(manager.IsCooldownExpired() && generalAIManager.IsCooldownExpired() && manager.IsAttackTimestampExpired())
+        {
+            generalAIManager.SetCooldown(1.5f);
             float random = UnityEngine.Random.Range(0.0f, 5.0f);
-
-            if(random < 4 )
-            {
-                manager.animationManager.SetFightingAnimation(0, 1);
-            } else {
-                manager.animationManager.SetFightingAnimation(0, 2);
-            }
             //kick or punch based on chance
-
-            manager.SetAttackCooldown(manager.unarmedCombatSettings.cooldown);
+            if (random < 4)
+            {
+                manager.animationManager.SetFightingAnimation(0, Constants.ATTACK1_BUTTON);
+            }
+            else
+            {
+                manager.animationManager.SetFightingAnimation(0, Constants.ATTACK2_BUTTON);
+            }
+            manager.SetAttackCooldown(manager.aiStats.unarmedCombatSettings.cooldown);
         }
     }
 }

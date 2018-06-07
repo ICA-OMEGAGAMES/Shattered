@@ -7,8 +7,7 @@ using System;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CharacterAudioController))]
 public class CharacterMovement : MonoBehaviour
-{
-    
+{    
     //Serialized classes
     [System.Serializable]
     public class AnimationSettings
@@ -50,6 +49,7 @@ public class CharacterMovement : MonoBehaviour
         public float jumpSpeed = 8.0F;
         public float jumpTime = 0.25f;
         public float jumpCooldown = 0.5f;
+        public float dodgeDistance = 10;
         public float toggleCombatCooldown = 1;
         public float rotateSpeed = 5;
     }
@@ -87,6 +87,8 @@ public class CharacterMovement : MonoBehaviour
 	private Vector3 moveDirection;
     private Statistics statistics;
 	public CharacterAudioController characterAudio;
+    public float pushPower = 2.0f;
+
 
     //characterscript spesific updates
     protected virtual void CharactertInitialize() { }
@@ -130,7 +132,7 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-				if (moveDirection != Vector3.zero) {
+				if (moveDirection != Vector3.zero && characterAudio != null) {
 					characterAudio.InvokeWalkingSoundsCoroutine ();
 				}
                 moveDirection = transform.TransformDirection(moveDirection);
@@ -220,7 +222,7 @@ public class CharacterMovement : MonoBehaviour
             SetControllable(true);
             if (combatState == true && crouching == false)
             {
-                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))
+                if (Input.GetButton(Constants.ATTACK1_BUTTON) || Input.GetButton(Constants.ATTACK2_BUTTON))   
                 {
                     CombatActionUpdate();
                     SetControllable(false);
@@ -282,12 +284,18 @@ public class CharacterMovement : MonoBehaviour
     {
 		if (Input.GetButton (Constants.RUN_BUTTON)) {
 			speed = movement.runSpeed;
-			characterAudio.isRunning = true;
-		} else if (Input.GetButton (Constants.CROUCH_BUTTON))
+            if(characterAudio != null)
+            {
+			    characterAudio.isRunning = true;
+            }		
+        } else if (Input.GetButton (Constants.CROUCH_BUTTON))
 			speed = movement.crouchSpeed;
 		else {
 			speed = movement.walkSpeed;
-			characterAudio.isRunning = false;
+            if(characterAudio != null)
+            {
+			    characterAudio.isRunning = false;
+            }
 		}
         return speed;
     }
@@ -365,7 +373,6 @@ public class CharacterMovement : MonoBehaviour
         characterControllable = true;
     }
 
-    public float pushPower = 2.0f;
 	void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody body = hit.collider.attachedRigidbody;
 
