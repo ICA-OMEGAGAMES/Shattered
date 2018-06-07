@@ -26,7 +26,7 @@ public class MalphasScript : CharacterMovement {
     {
         public SkillSettings teleportSettings;
         public SkillSettings barierSettings;
-        public SkillSettings phychicScreamSettings;
+        public SkillSettings psychicScreamSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
     }
@@ -50,7 +50,7 @@ public class MalphasScript : CharacterMovement {
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
-        skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
+        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
     }

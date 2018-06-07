@@ -38,9 +38,5 @@ public class DialogueTrigger : MonoBehaviour
 			// Kick off the dialogue at this node.
             FindObjectOfType<DialogueRunner>().StartDialogue(yarnFileName);
         }
-        else
-        {
-            //DIalogue already played, do nothing..
-        }
     }
 }
