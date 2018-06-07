@@ -60,6 +60,7 @@ public class SkillTreeMenu : MonoBehaviour
 
     public void openWithinDialogueSystem()
     {
+        Debug.Log("Test");
         //#1 close DialogueCanvas
         FindObjectOfType<DialogueRunner>().dialogueCanvas.SetActive(false);
 

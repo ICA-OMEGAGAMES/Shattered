@@ -3,7 +3,6 @@ using System.Collections;
 
 namespace Yarn.Unity.Shattered
 {
-
     public class YarnCommands : MonoBehaviour
     {
 
