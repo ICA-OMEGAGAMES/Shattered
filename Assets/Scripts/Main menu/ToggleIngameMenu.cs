@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class ToggleIngameMenu : MonoBehaviour
 {
     public GameObject ingameMenu;
-	public GameObject menuCanvas;
-	public GameObject graphicsCanvas;
-	public GameObject audioCanvas;
+	public GameObject menuPanel;
+	public GameObject graphicsPanel;
+	public GameObject audioPanel;
 
 	void Start()
 	{
@@ -33,16 +33,17 @@ public class ToggleIngameMenu : MonoBehaviour
         if (active)
         {
             ingameMenu.SetActive(active);
-			menuCanvas.SetActive(active);
-			graphicsCanvas.SetActive(!active);
-			audioCanvas.SetActive(!active);
+			menuPanel.SetActive(active);
+            GameObject.FindObjectOfType<OpenSkilltree>().CheckSkilltree();
+			graphicsPanel.SetActive(!active);
+			audioPanel.SetActive(!active);
             Time.timeScale = 0f;
         }
         else
         {
 
             ingameMenu.SetActive(active);
-            Time.timeScale = 0f;
+            Time.timeScale = 1f;
 
         }
     }

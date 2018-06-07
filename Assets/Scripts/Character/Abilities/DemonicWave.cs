@@ -5,7 +5,7 @@ using UnityEngine;
 public class DemonicWave : ISkill{
     private SkillSettings settings;
     private MonoBehaviour mono;
-
+    private MalphasScript.SkillAnimations skillAnimations = new MalphasScript.SkillAnimations();
     
 
     private float cooldownTimestamp;
@@ -21,6 +21,8 @@ public class DemonicWave : ISkill{
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
+            
+            animator.SetTrigger(skillAnimations.demonicWave);
 #pragma warning disable 0219
             GameObject aoeObject = GameObject.Instantiate(settings.skillEffect, mono.transform.position, mono.transform.rotation) as GameObject;
 #pragma warning restore 0219

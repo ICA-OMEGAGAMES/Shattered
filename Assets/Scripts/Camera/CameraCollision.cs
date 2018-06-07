@@ -1,15 +1,14 @@
-﻿
 using UnityEngine;
 
 public class CameraCollision : MonoBehaviour
 {
 	private CameraCollisionSettings cameraCollisionSettings;
+
     private Vector3 dollyDir;
 
     // Use this for initialization
     void Start()
     {
-
         dollyDir = transform.localPosition.normalized;
 
         cameraCollisionSettings = ScriptableObject.CreateInstance<CameraCollisionSettings>(); 
@@ -33,6 +32,5 @@ public class CameraCollision : MonoBehaviour
         }
 
 		transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * cameraCollisionSettings.distance, Time.deltaTime * cameraCollisionSettings.smooth);
-
-	}
+    }
 }

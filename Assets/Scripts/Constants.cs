@@ -68,4 +68,8 @@
 	public const string WEAPON_ATTACK = "Weapon";
 	public const string SPECIAL_ABILITY_ATTACK = "SpecialAbility";
 
+
+	// ENVIRONMENT
+	public const string REGULAR_RAIN = "Regular";
+	public const string BLOOD_RAIN = "Blood";
 }
