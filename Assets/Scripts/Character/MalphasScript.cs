@@ -52,8 +52,8 @@ public class MalphasScript : CharacterMovement {
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
         skills.Add(new PhychicScream(skillSettings.phychicScreamSettings, this));
-        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
-        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
+//        skills.Add(new DivineAura(skillSettings.divineAuraSettings, this));
+//        skills.Add(new DarkClaw(skillSettings.darkClawSettings, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
