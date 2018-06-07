@@ -17,7 +17,7 @@ public class MarkerScript : MonoBehaviour {
     public void SetMarkerManager()
     {
         markerManager = GetManager();
-        this.GetComponent<MeshRenderer>().enabled = false;
+     //   this.GetComponent<MeshRenderer>().enabled = false;
     }
     
     public void EnableHit(float damage) {

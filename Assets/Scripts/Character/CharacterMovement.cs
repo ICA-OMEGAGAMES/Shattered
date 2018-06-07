@@ -130,9 +130,10 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-				if (moveDirection != Vector3.zero) {
-					characterAudio.InvokeWalkingSoundsCoroutine ();
-				}
+                if (moveDirection != Vector3.zero)
+                {
+                    characterAudio.InvokeWalkingSoundsCoroutine();
+                }
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= GetSpeed();
 
@@ -147,14 +148,15 @@ public class CharacterMovement : MonoBehaviour
                         InCombatUpdate();
                         break;
                 }
-                
+
                 if (Input.GetButton(Constants.HORIZONTAL_AXIS) || Input.GetButton(Constants.VERTICAL_AXIS))
                 {
                     RotateToCamera();
                 }
             }
             else
-                characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
+                characterController.Move(transform.TransformDirection(new Vector3(0, 0, 0.01f)));
+
             if (characterRooted == false)
             {
                 AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
@@ -267,6 +269,8 @@ public class CharacterMovement : MonoBehaviour
     private bool IsFalling()
     {
         float distToGround = 0.2f;
+
+        //Debug.DrawRay(transform.position, -Vector3.up * distToGround, Color.green);
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
     }
 
@@ -274,6 +278,8 @@ public class CharacterMovement : MonoBehaviour
     private bool IsGrounded()
 	{
 		float distToGround = 0.1f;
+
+        //Debug.DrawRay(transform.position, -Vector3.up * distToGround, Color.red);
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
 	}
 
