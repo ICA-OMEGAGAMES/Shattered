@@ -4265,6 +4265,7 @@ MonoBehaviour:
   image: {fileID: 114299034053518094}
   videoToPlay: {fileID: 32900000, guid: 3774d4f166b0abc4ba5f6c45d65e5028, type: 3}
   isPrepared: 0
+  transitionAfterVideo: 0
 --- !u!114 &114390522625563130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6057,7 +6058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7896e408d5b331944a290e9c21e5449a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundVideo: {fileID: 114390457338840022}
+  backgroundVideo: {fileID: 0}
 --- !u!114 &114784992018101046
 MonoBehaviour:
   m_ObjectHideFlags: 1
