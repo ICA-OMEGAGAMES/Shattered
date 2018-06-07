@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Transition 
+public class Transition
 {
     public Decision decision;
     public State trueState;

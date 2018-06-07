@@ -40,6 +40,7 @@ public class DevonScript : CharacterMovement
         HeavyMeleeWeapon, //bats and maces
     }
     public FSMState curCombatSet = FSMState.Unarmed;
+    private string lastAttack;
 
     //switch for the different combat systems
     private ICombatSet SetCombatSet(Animator animator, AnimationSettings animations, Weapon weapon)
@@ -201,12 +202,24 @@ public class DevonScript : CharacterMovement
         if (Input.GetButton(Constants.ATTACK1_BUTTON))
         {
             attack = combatSet.Attack1(animator);
+            if(curCombatSet == FSMState.Unarmed){
+                lastAttack = Constants.PUNCH_ATTACK;
+            } else 
+            {
+                lastAttack = Constants.WEAPON_ATTACK;
+            }
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
         else if (Input.GetButton(Constants.ATTACK2_BUTTON))
         {
             attack = combatSet.Attack2(animator);
+            if(curCombatSet == FSMState.Unarmed){
+                lastAttack = Constants.KICK_ATTACK;
+            } else 
+            {
+                lastAttack = Constants.WEAPON_ATTACK;
+            }
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -259,5 +272,10 @@ public class DevonScript : CharacterMovement
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
+    }
+
+    public string GetAttackMode()
+    {
+        return lastAttack;
     }
 }

@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-[CreateAssetMenu (menuName="PluggableAI/Actions/Dodge")]
+[CreateAssetMenu(menuName = "PluggableAI/Actions/Dodge")]
 public class DodgeAction : Action
 {
     public override void Act(AIManager manager)
@@ -11,16 +11,17 @@ public class DodgeAction : Action
 
     private void Dodge(AIManager manager)
     {
-        if (!manager.IsCooldownExpired())
-        {    
+        if (!manager.IsCooldownExpired() || manager.IsAttackTimestampSet())
+        {
             return;
-        }       
-        
-        if((Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) 
-                <= (manager.movementStats.reachedDistance * manager.movementStats.reachedTollerance)) 
-                && manager.Dodge((UnityEngine.Random.Range(0.0f, 5.0f) >= 4))){
+        }
+
+        if ((Vector3.Distance(manager.transform.position, manager.GetTargetPosition())
+                <= (manager.aiStats.movementStats.reachedDistance * (1 + manager.aiStats.movementStats.reachedTollerance)))
+                && manager.Dodge(UnityEngine.Random.Range(0.0f, 5.0f) >= 3, manager.aiStats.movementStats.dodgeCooldown))
+        {
             //if the player is near, dodge based on chance
-            manager.SetAttackCooldown(manager.movementStats.dodgeCooldown);
+            manager.SetAttackCooldown(manager.aiStats.movementStats.dodgeCooldown);
         }
     }
 }

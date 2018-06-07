@@ -6,29 +6,26 @@ public class AIAnimationManager : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
 
-    private bool jumping;   
-    private int strafing;
     private bool dodging;
-    private bool crouching;
-
+    private float dodgingTimestamp;
+    private bool blocking;
+    private float blockingTimestamp;
+    private string lastAttack;
 
     [System.Serializable]
     public class AnimationSettings
     {
         //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
         public string groundedBool = "isGrounded";
-        public string jumpBool = "isJumping";
-        public string crouchBool = "isCrouching";
         public string dodgeBool = "isDodging";
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
         public string verticalVelocityFloat = "Forward";
-        public string horizontalVelocityFloat = "Strafe";
         public string weaponSet = "WeaponSet";
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
-        public string blink = "Blink";
     }
+
     [SerializeField]
     public AnimationSettings animations;
 
@@ -36,28 +33,38 @@ public class AIAnimationManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    
+
+    void Update()
+    {
+        if(blocking && blockingTimestamp < Time.time)
+        {
+            blocking = false;
+        }
+        if(dodging && dodgingTimestamp < Time.time)
+        {
+            dodging = false;
+        }
+    }
+
     public void Animate(float walkingSpeed)
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
-        animator.SetFloat(animations.horizontalVelocityFloat, 0.0f); // TODO: not sure right now if the strafing is needed
-        animator.SetBool(animations.jumpBool, jumping);
         animator.SetBool(animations.groundedBool, IsFalling());
-        animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
-        dodging = false;
     }
 
-    public void SetFightingAnimation(int fightMode, int attack)
+    public void SetFightingAnimation(int fightMode, string attack)
     {
         animator.SetInteger(animations.weaponSet, fightMode);
-        if(attack == 1)
+        if (attack == Constants.ATTACK1_BUTTON)
         {
             animator.SetTrigger(animations.attack1);
+            lastAttack = Constants.PUNCH_ATTACK;
         }
-        else if (attack == 2)
+        else if (attack == Constants.ATTACK1_BUTTON)
         {
             animator.SetTrigger(animations.attack2);
+            lastAttack = Constants.KICK_ATTACK;
         }
 
     }
@@ -75,10 +82,34 @@ public class AIAnimationManager : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
     }
 
-    public bool Dodge(bool dodge)
+    public bool Dodge(bool dodge, float duration)
     {
         dodging = dodge;
+        if(dodging)
+        {
+            dodgingTimestamp = Time.time + duration;
+        }
         return dodging;
+    }
+
+    public bool Block(bool block, float duration)
+    {
+        blocking = block;
+        if(blocking)
+        {
+            blockingTimestamp = Time.time + duration;
+        }
+        return blocking;
+    }
+
+    public bool IsBlocking()
+    {
+        return blocking;
+    }
+
+    public string GetLastAttack()
+    {
+        return lastAttack;
     }
 
 }

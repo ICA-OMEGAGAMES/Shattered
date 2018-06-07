@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c8aba80d3b6e046b1275ae568180c9, type: 3}
+  m_Name: PlayerLost
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: c600614cf62807c4088c8257991d907a, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: 6204921e3634f2c498eb2ef31243d80b, type: 2}
+    trueState: {fileID: 11400000, guid: 4bb52edf7351c42448c1c945188585c0, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+  - decision: {fileID: 11400000, guid: b8c88f38b24180c4a9df3ae6b8389d33, type: 2}
+    trueState: {fileID: 11400000, guid: 887624990403c4941a43d1788a4915bf, type: 2}
+    falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+  - decision: {fileID: 11400000, guid: 3f481d02e4c13cc43a05d64c31269edf, type: 2}
+    trueState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
+    falseState: {fileID: 11400000, guid: 04ad381d5cafce549bffddada3ead1d1, type: 2}

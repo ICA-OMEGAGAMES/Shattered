@@ -2360,17 +2360,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   animations:
     groundedBool: isGrounded
-    jumpBool: isJumping
-    crouchBool: isCrouching
     dodgeBool: isDodging
     isInCombat: isInCombat
     deadBool: isDead
     verticalVelocityFloat: Forward
-    horizontalVelocityFloat: Strafe
     weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
-    blink: Blink
 --- !u!114 &114249785663645542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2397,6 +2393,7 @@ MonoBehaviour:
   remainState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
   manager: {fileID: 0}
   animationManager: {fileID: 0}
+  previousState: {fileID: 0}
 --- !u!114 &114451457161117082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2424,42 +2421,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   eyes: {fileID: 1238979542487700}
+  aiStats: {fileID: 0}
   navMeshAgent: {fileID: 0}
   nextWayPoint: 0
   animationManager: {fileID: 0}
   lastKnownTargetPosition: {x: 0, y: 0, z: 0}
-  aiStats:
-    maxHealth: 100
-    toggleCombatCooldown: 1
-    searchTime: 5
-    lookSpeed: 1
-    lookRange: 40
-    FOV: 180
-  movementStats:
-    moveSpeed: 4
-    strafeSpeed: 5
-    crouchSpeed: 2
-    runSpeed: 8
-    jumpSpeed: 8
-    jumpTime: 0.25
-    jumpCooldown: 1
-    dodgeDistance: 10
-    dodgeCooldown: 2
-    rotateSpeed: 5
-    reachedDistance: 0.75
-    reachedTollerance: 1.25
-    attackRange: 7
-    attackRate: 1
-    attackForce: 15
-    attackDamage: 5
-  unarmedCombatSettings:
-    unarmedAttackRange: 7
-    unarmedAttackRate: 1
-    unarmedAttackDamage: 5
-    lightAttackDuration: 0.5
-    heavyAttackDuration: 0.5
-    cooldown: 3
-    rootAble: 1
+  walkTarget: {x: 0, y: 0, z: 0}
+  framesWithoutMovement: 0
+  currentHealth: 0
+  previousHealth: 0
 --- !u!135 &135293855130701026
 SphereCollider:
   m_ObjectHideFlags: 1

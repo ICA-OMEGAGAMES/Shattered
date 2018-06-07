@@ -51,6 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_scenes\Development\DialogueScene\DialogueTrigger.cs" />
+     <Compile Include="Assets\_scenes\Development\DialogueScene\SpriteSwitcher.cs" />
+     <Compile Include="Assets\_scenes\Development\DialogueScene\VoiceSwitcher.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint03\ButtonHover.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint03\PlayVideo.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
@@ -58,19 +61,31 @@
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\AIStats.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Decision.cs" />
+     <Compile Include="Assets\Scripts\AI\Base\GeneralAIManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\MarkerManagerAi.cs" />
      <Compile Include="Assets\Scripts\AI\Base\State.cs" />
      <Compile Include="Assets\Scripts\AI\Base\StateController.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Transition.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ApproachLastKnownPosition.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ApproachTarget.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\AttackDurationOverDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\AttackIdleAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\BeingAttackedDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\BlockingAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\ChaseAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\DodgeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\FleeAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\FleeDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\IdleAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LeaveCombatDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookAtTarget.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\LookDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\OutOfRangeDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\PatrolAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\SwitchToAttackDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TargetAccessibleDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetReachedDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />
