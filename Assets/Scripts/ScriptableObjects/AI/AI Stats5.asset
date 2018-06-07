@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e5f2b36964936049b173c646b5d828f, type: 3}
-  m_Name: AI Stats4
+  m_Name: AI Stats5
   m_EditorClassIdentifier: 
   maxHealth: 100
   searchTime: 5

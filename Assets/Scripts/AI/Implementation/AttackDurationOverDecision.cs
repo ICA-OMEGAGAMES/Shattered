@@ -16,7 +16,7 @@ public class AttackDurationOver : Decision
         if(manager.IsAttackDurationOver())
         {
             manager.ResetAttackTimer();
-            GameObject.FindObjectOfType<GeneralAIManager>().AttackState(false);
+            manager.SetAttackState(false);
             return true;
         }
         return false;

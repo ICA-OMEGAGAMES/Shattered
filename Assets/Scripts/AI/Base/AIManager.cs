@@ -22,6 +22,7 @@ public class AIManager : MonoBehaviour
 
 
     private StateController controller;
+    private GeneralAIManager generalAiManager;
     private Transform currentChaseTarget;
     private Transform defaultChaseTarget;
     private MarkerManagerAi markerManager;
@@ -43,6 +44,7 @@ public class AIManager : MonoBehaviour
         currentHealth = aiStats.maxHealth;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animationManager = GetComponent<AIAnimationManager>();
+        generalAiManager = GameObject.FindObjectOfType<GeneralAIManager>();
         FindChaseTarget();
         defaultChaseTarget = currentChaseTarget;
         navMeshAgent.enabled = true;
@@ -124,7 +126,12 @@ public class AIManager : MonoBehaviour
 
     public int GetAttackingAis()
     {
-        return GameObject.FindObjectOfType<GeneralAIManager>().GetAttackingAIS();
+        return generalAiManager.GetAttackingAIS();
+    }
+
+    public void SetAttackState(bool active)
+    {
+        generalAiManager.AttackState(active);
     }
 
     public bool IsAttackModeCooldownExpired()

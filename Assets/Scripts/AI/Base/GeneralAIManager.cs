@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(AIAnimationManager))]
 public class GeneralAIManager : MonoBehaviour
 {
     private int attackingAIs;
