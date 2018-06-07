@@ -75,6 +75,10 @@
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\UnarmedAttackAction.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraSettings.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraZoom.cs" />
      <Compile Include="Assets\Scripts\CanvasManager.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Barrier.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DarkClaw.cs" />
