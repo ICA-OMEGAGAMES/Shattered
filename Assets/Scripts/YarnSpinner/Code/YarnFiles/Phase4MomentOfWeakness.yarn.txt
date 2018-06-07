@@ -1,0 +1,23 @@
+title: Phase4_MomentOfWeakness
+tags: 
+colorID: 0
+position: 540,244
+---
+    //Devon goes outside to buy any alcoholic drink that is available at his local pub. When he is outside he hears the noises of a fight going on. Two gang members are beating up a homeless man.
+<<setsprite FaceImage homeless>>
+<<setVoice DialoguePhase4_MomentOfWeakness homless01>>
+    Homeless victim (begging): Someone help, please, you, please help!
+<<setsprite FaceImage gangMember>>
+<<setVoice DialoguePhase4_MomentOfWeakness homless02>>
+    Gang member: Shut up, filth.
+    Gang member: You deserve this, you piece of shit.
+<<setsprite FaceImage devon>>
+    Devon (thought):Just walk away. Not my problem.
+    Devon starts to walk away from the fight.
+<<setsprite FaceImage gangMember>>
+    Gang member: Hey you!
+<<setsprite FaceImage devon>>
+    Devon turns to see the gang members charging at him.
+    Devon: (sigh) Shit. 
+
+===

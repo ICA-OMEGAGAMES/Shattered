@@ -122,6 +122,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Antlr4.Runtime.Standard">
+
  <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
  </Reference>
  <Reference Include="CsvHelper">

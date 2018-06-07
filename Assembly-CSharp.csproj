@@ -158,10 +158,14 @@
      <Compile Include="Assets\UnityUISample\Scripts\ScrollDetailTexture.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\TiltWindow.cs" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Phase3Research.yarn.txt" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Phase4MomentOfWeakness.yarn.txt" />
      <None Include="Assets\Shaders\ShieldFX.shader" />
      <None Include="Assets\Placeholder\Prefabs.txt" />
      <None Include="Assets\GFX\2d Graphics and Materials.txt" />
      <None Include="Assets\UnityUISample\Fonts\Jupiter\LICENSE.txt" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Phase6Temptation.yarn.txt" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Phase7CallToAdventure.yarn.txt" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
      <None Include="Assets\UnityUISample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
