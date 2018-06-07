@@ -10,7 +10,7 @@ public class QuitOnClick : MonoBehaviour {
 
 	void Start()
 	{
-		GetComponent<Button>().onClick.AddListener(delegate{Quit();});
+		quitButton.onClick.AddListener(delegate{Quit();});
 	}
 
 	public void Quit()

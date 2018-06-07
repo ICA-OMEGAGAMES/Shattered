@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Decisions/Timer")]
-public class TimerDecision : Decision {
+[CreateAssetMenu(menuName = "PluggableAI/Decisions/Timer")]
+public class TimerDecision : Decision
+{
 
     public override bool Decide(AIManager manager)
     {
@@ -12,7 +13,7 @@ public class TimerDecision : Decision {
 
     private bool CheckTimer(AIManager manager)
     {
-        if(!manager.IsTimestampSet())
+        if (!manager.IsTimestampSet())
         {
             manager.SetTimestamp(manager.aiStats.searchTime);
         }

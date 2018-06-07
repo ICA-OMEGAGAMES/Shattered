@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5f2b36964936049b173c646b5d828f, type: 3}
+  m_Name: AI Stats1
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  searchTime: 5
+  lookSpeed: 1
+  lookRange: 40
+  FOV: 180
+  movementStats:
+    moveSpeed: 4
+    runSpeed: 8
+    dodgeCooldown: 2
+    reachedDistance: 0.75
+    reachedTollerance: 0.25
+  unarmedCombatSettings:
+    blockDuration: 3
+    blockPercentage: 0.5
+    attackIdleRange: 8
+    unarmedAttackRange: 5
+    unarmedAttackDamage: 5
+    lightAttackDuration: 0.5
+    heavyAttackDuration: 0.5
+    cooldown: 2
+    possessionDuration: 10
+    attackingDuration: 7.5
+    attackModeCooldown: 3.75
+    stunDuration: 1
+    immunityAgainstPunch: 0
+    immunityAgainstKick: 0
+    immunityAgainstWeapons: 0

@@ -21,7 +21,16 @@ public class MarkerManagerPlayer : MarkerManager{
                 ((DummyScript) component).TakeDamage(damage);
                 return;
             }
-            ((AIManager) component).TakeDamage(damage);
+            string attackMode;
+            DevonScript devonScript = GetComponentInChildren<DevonScript>();
+            if(devonScript == null || !devonScript.isActiveAndEnabled)
+            {   
+                MalphasScript malphasScript = GetComponentInChildren<MalphasScript>();
+                attackMode = malphasScript.GetAttackMode();
+            } else {
+                attackMode = devonScript.GetAttackMode();
+            }
+            ((AIManager) component).TakeDamage(damage, attackMode);
         }
     }
 }

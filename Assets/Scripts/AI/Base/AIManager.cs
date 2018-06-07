@@ -9,86 +9,44 @@ public class AIManager : MonoBehaviour
 {
     public List<Transform> wayPointList;
     public GameObject eyes;
+    public AIStats aiStats;
 
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public AIAnimationManager animationManager;
     [HideInInspector] public Vector3 lastKnownTargetPosition;
+    [HideInInspector] public Vector3 walkTarget;
+    [HideInInspector] public int framesWithoutMovement;
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float previousHealth;
 
 
     private StateController controller;
-    private Transform chaseTarget;
+    private GeneralAIManager generalAiManager;
+    private Transform currentChaseTarget;
+    private Transform defaultChaseTarget;
     private MarkerManagerAi markerManager;
     private bool isInCombat = false;
-    protected bool characterRooted = true;
     private float attackCooldownTimestamp;
     private float timestamp;
     private bool isTimestampSet;
-    private float currentHealth;
-
-    [System.Serializable]
-    public class AIStats
-    {
-        //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
-        public float maxHealth = 100;
-        public float toggleCombatCooldown = 1;
-        public float searchTime = 5f;
-        
-        public float lookSpeed = 1f;
-        public float lookRange = 40f;
-	    public float FOV = 180f;
-    }
-
-    [SerializeField]
-    public AIStats aiStats;
-
-    [System.Serializable]
-    public class MovementStats
-    {
-        //Not sure yet which variables will remain in the end and if its going to be a scriptable object or a class
-        public float moveSpeed = 4f;
-        public float strafeSpeed = 5f;
-        public float crouchSpeed = 2.0F;
-        public float runSpeed = 8.0F;
-        public float jumpSpeed = 8.0F;
-        public float jumpTime = 0.25f;
-        public float jumpCooldown = 1;
-        public float dodgeDistance = 10;
-        public float dodgeCooldown = 2;
-        public float rotateSpeed = 5;        
-        public float reachedDistance = 0.75f;
-        public float reachedTollerance = 1.25f;
-	    public float attackRange = 7f;
-	    public float attackRate = 1f;
-	    public float attackForce = 15f;
-    	public int attackDamage = 5;
-    }
-
-    [SerializeField]
-    public MovementStats movementStats;
-
-    [Serializable]
-    public class UnarmedCombatSettings
-    {
-        public float unarmedAttackRange = 7f;
-	    public float unarmedAttackRate = 1f;
-        public float unarmedAttackDamage = 5f;
-        public float lightAttackDuration = 0.5f;
-        public float heavyAttackDuration = 0.5f;
-        public float cooldown = 3f;
-        public bool rootAble = true;
-    }
-    [SerializeField]
-    public UnarmedCombatSettings unarmedCombatSettings;
+    private float attackTimestamp;
+    private bool attackTimestampSet;
+    private float possessedTimestamp;
+    private float psychicScreamTimestamp;
+    private float attackDurationTimestamp;
+    private float attackModeCooldownTimestamp;
 
     public bool SetUpAiManager(StateController controller)
     {
         bool active = false;
         this.controller = controller;
         currentHealth = aiStats.maxHealth;
-        navMeshAgent = GetComponent<NavMeshAgent> ();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         animationManager = GetComponent<AIAnimationManager>();
+        generalAiManager = GameObject.FindObjectOfType<GeneralAIManager>();
         FindChaseTarget();
+        defaultChaseTarget = currentChaseTarget;
         navMeshAgent.enabled = true;
 
         markerManager = this.transform.parent.GetComponent<MarkerManagerAi>();
@@ -100,23 +58,38 @@ public class AIManager : MonoBehaviour
 
     void Update()
     {
-        if(chaseTarget == null || !chaseTarget.gameObject.activeSelf)
+        CheckMovement();
+        if (currentChaseTarget == null || !currentChaseTarget.gameObject.activeSelf)
         {
             FindChaseTarget();
         }
+
+        if (possessedTimestamp <= Time.time)
+        {
+            currentChaseTarget = defaultChaseTarget;
+        }
+        else if (possessedTimestamp > Time.time && !IsTargetAlive())
+        {
+            currentChaseTarget = SelectClosestEnemy().transform;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        previousHealth = currentHealth;
     }
 
     void FindChaseTarget()
     {
-        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), element => 
+        Array.ForEach(GameObject.FindGameObjectsWithTag(Constants.PLAYER_TAG), (Action<GameObject>)(element =>
         {
-            if(element.gameObject.activeSelf)
+            if (element.gameObject.activeSelf)
             {
-                chaseTarget = element.transform;
+                currentChaseTarget = element.transform;
+                defaultChaseTarget = currentChaseTarget;
             }
-            chaseTarget = element.transform;
-        });
-        if(chaseTarget == null)
+        }));
+        if (currentChaseTarget == null || !currentChaseTarget.gameObject.activeSelf)
         {
             Debug.LogError("Player not found.");
         }
@@ -126,16 +99,19 @@ public class AIManager : MonoBehaviour
     {
         isInCombat = enabled;
         animationManager.animator.SetBool(animationManager.animations.isInCombat, isInCombat);
+        if (enabled)
+        {
+            attackDurationTimestamp = Time.time + aiStats.unarmedCombatSettings.attackingDuration;
+        }
+        else
+        {
+            attackModeCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.attackModeCooldown;
+        }
     }
 
-     public void SetAttackCooldown(float time)
+    public void SetAttackCooldown(float time)
     {
         attackCooldownTimestamp = Time.time + time;
-    }
-
-    public void ResetAttackCooldown()
-    {
-        attackCooldownTimestamp = 0;
     }
 
     public bool IsCooldownExpired()
@@ -148,6 +124,26 @@ public class AIManager : MonoBehaviour
         return isInCombat;
     }
 
+    public int GetAttackingAis()
+    {
+        return generalAiManager.GetAttackingAIS();
+    }
+
+    public void SetAttackState(bool active)
+    {
+        generalAiManager.AttackState(active);
+    }
+
+    public bool IsAttackModeCooldownExpired()
+    {
+        return attackModeCooldownTimestamp < Time.time;
+    }
+
+    public bool IsAttackDurationOver()
+    {
+        return attackDurationTimestamp < Time.time;
+    }
+
     public void StopMovement()
     {
         navMeshAgent.velocity = Vector3.zero;
@@ -155,19 +151,24 @@ public class AIManager : MonoBehaviour
         navMeshAgent.isStopped = true;
     }
 
-    public bool Dodge(bool dodge)
+    public bool Dodge(bool dodge, float duration)
     {
-        return animationManager.Dodge(dodge);
+        return animationManager.Dodge(dodge, duration);
+    }
+
+    public bool Block(bool block, float duration)
+    {
+        return animationManager.Block(block, duration);
     }
 
     public Vector3 GetTargetPosition()
     {
-        if(chaseTarget == null)
+        if (currentChaseTarget == null)
         {
             Debug.LogError("Target not found.");
             return transform.position;
         }
-        return new Vector3(chaseTarget.position.x, transform.position.y, chaseTarget.position.z);
+        return new Vector3(currentChaseTarget.position.x, transform.position.y, currentChaseTarget.position.z);
     }
 
     public bool IsNavMeshAgentMoving()
@@ -177,9 +178,50 @@ public class AIManager : MonoBehaviour
 
     public void MoveNavMeshAgent(Vector3 destination, float speed)
     {
+        walkTarget = destination;
+        if (!TargetAccessible())
+        {
+            destination = transform.position + (destination - transform.position).normalized;
+
+            navMeshAgent.destination = destination;
+            navMeshAgent.speed = speed;
+            navMeshAgent.isStopped = false;
+            return;
+        }
+
         navMeshAgent.destination = destination;
-		navMeshAgent.speed = speed;
-		navMeshAgent.isStopped = false;
+        navMeshAgent.speed = speed;
+        navMeshAgent.isStopped = false;
+    }
+
+    public bool TargetAccessible()
+    {
+        NavMeshPath path = new NavMeshPath();
+        return navMeshAgent.CalculatePath(walkTarget, path) && !(path.status == NavMeshPathStatus.PathPartial);
+    }
+
+    private void CheckMovement()
+    {
+        if (navMeshAgent.velocity.sqrMagnitude < 1)
+        {
+            framesWithoutMovement++;
+            return;
+        }
+        else
+        {
+            framesWithoutMovement = 0;
+        }
+    }
+
+    public void RefreshTarget()
+    {
+
+        if (controller.previousState != null && (controller.previousState.name == "Chase" || controller.previousState.name == "PlayerLost"))
+        {
+            walkTarget = currentChaseTarget.transform.position;
+            return;
+        }
+        walkTarget = wayPointList[nextWayPoint].position;
     }
 
     public bool IsTimestampSet()
@@ -193,33 +235,162 @@ public class AIManager : MonoBehaviour
         isTimestampSet = true;
     }
 
-    public bool IsTimestampExpired(){
-        bool expired = timestamp < Time.time;
-        if(expired)
+    public bool IsTimestampExpired()
+    {
+        bool expired = (timestamp < Time.time) && isTimestampSet;
+        if (expired)
         {
             isTimestampSet = false;
         }
-        return expired && isTimestampSet;
+        return expired;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, string attack)
     {
-        currentHealth -= amount;
-        if(currentHealth <= 0)
+        switch(attack)
+        {
+            case Constants.PUNCH_ATTACK:
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstPunch);
+                break;
+            case Constants.KICK_ATTACK:
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstKick);
+                break;
+            case Constants.WEAPON_ATTACK:
+                amount = amount - (amount * aiStats.unarmedCombatSettings.immunityAgainstWeapons);
+                break;
+        }
+
+        previousHealth = currentHealth;
+        if(animationManager.IsBlocking())
+        {
+            amount =  (amount * aiStats.unarmedCombatSettings.blockPercentage);
+        }
+        
+        currentHealth -=  amount;
+        attackCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.stunDuration;
+        //TODO add visuals of stumbling
+        if (currentHealth <= 0)
         {
             StopMovement();
-            SwitchCombatState(false);
+            if (isInCombat)
+            {
+                SwitchCombatState(false);
+            }
             controller.Die();
             animationManager.Die();
         }
     }
-     public void EnableMarkers()
-    {
-        markerManager.EnableMarkers(unarmedCombatSettings.unarmedAttackDamage);
+    public void EnableMarkers()
+    {   
+        if(!IsPossessed())
+        {
+            markerManager.EnableMarkers(aiStats.unarmedCombatSettings.unarmedAttackDamage);
+            return;
+        }
+        markerManager.EnableMarkers(100);
     }
 
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
+    }
+
+    public void SetAttackTimestamp(float seconds)
+    {
+        attackTimestamp = Time.time + seconds;
+        attackTimestampSet = true;
+    }
+
+    public bool IsAttackTimestampExpired()
+    {
+        if(attackTimestampSet && Time.time > attackTimestamp)
+        {
+            attackTimestampSet = false;
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetAttackTimer()
+    {
+        attackTimestampSet = false;
+    }
+
+    public bool IsAttackTimestampSet()
+    {
+        return attackTimestampSet;
+    }
+
+    public void Possess()
+    {
+        if (possessedTimestamp >= Time.time)
+        {
+            //already possessed so extend possession
+            possessedTimestamp += aiStats.unarmedCombatSettings.possessionDuration;
+            return;
+        }
+
+
+        GameObject closestEnemy = SelectClosestEnemy();
+
+        if (Vector3.Distance(closestEnemy.transform.position, transform.position) > aiStats.lookRange)
+        {
+            //if no enemy is in range return
+            return;
+        }
+
+        //set the enemy as the new target and the timestamp
+        defaultChaseTarget = currentChaseTarget;
+        currentChaseTarget = closestEnemy.transform;
+        possessedTimestamp = Time.time + aiStats.unarmedCombatSettings.possessionDuration;
+    }
+
+    private GameObject SelectClosestEnemy()
+    {
+        //search for closest enemy
+        float shortestDistance = float.MaxValue;
+        GameObject closestEnemy = null;
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
+        {
+            float distance = (transform.position - enemy.transform.position).sqrMagnitude;
+            if (distance < shortestDistance && enemy != this.gameObject && enemy.activeSelf)
+            {
+                closestEnemy = enemy;
+                shortestDistance = distance;
+            }
+        }
+        return closestEnemy;
+    }
+
+    public bool IsPossessed()
+    {
+        return possessedTimestamp >= Time.time;
+    }
+
+    public void PsychicScreamExecuted(float duration)
+    {
+        psychicScreamTimestamp = Time.time + duration;
+    }
+
+    public bool IsPsychicScreamAffected()
+    {
+        return psychicScreamTimestamp > Time.time;
+    }
+
+    public bool IsTargetAlive()
+    {
+        Statistics statistics = currentChaseTarget.transform.root.GetComponent<Statistics>();
+
+        if (statistics == null)
+        {
+            return currentChaseTarget.transform.root.GetComponentInChildren<AIManager>().currentHealth > 0;
+        }
+
+        return statistics.GetHealth() > 0;
+    }
+
+    public string GetAttackMode()
+    {
+        return animationManager.GetLastAttack();
     }
 }
