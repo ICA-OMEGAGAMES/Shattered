@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Yarn.Unity.Shattered;
 
 public class CameraFollow : MonoBehaviour

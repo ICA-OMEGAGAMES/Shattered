@@ -8,6 +8,8 @@
 	public const string MARKER_TAG = "Marker";
 	public const string UNTAGGED = "Untagged";
 	public const string PLAYER_TAG = "Player";
+	public const string ZOOM_TAG = "Zoomable";
+
 
 	// BUTTONS
 	public const string PICKUP_BUTTON = "Pickup";
@@ -26,9 +28,11 @@
 	public const string SKILL4_BUTTON = "Skill4";
 	public const string SKILL5_BUTTON = "Skill5";
 	public const string SKILL6_BUTTON = "Skill6";
-	public const string TRANSFORM_BUTTON = "SwitchForm";
+    public const string BLOCK_BUTTON = "Block";
+    public const string TRANSFORM_BUTTON = "SwitchForm";
 	public const string SKILL_TREE_BUTTON = "SkillTree";
 	public const string START_DIALOGUE_BUTTON = "StartDialogue";
+	public const string MENU_BUTTON = "Menu";
 
 	// AXIS
 	public const string HORIZONTAL_AXIS = "Horizontal";
@@ -37,6 +41,8 @@
 	public const string MOUSE_Y_AXIS = "Mouse Y";
 	public const string RIGHTSTICKHORIZONTAL = "RightStickHorizontal";
 	public const string RIGHTSTICKVERTICAL = "RightStickVertical";
+	public const string MOUSE_SCROLLWHEEL = "Mouse ScrollWheel";
+
 
 	// SETTINGS
 	public const int MAX_PLAYER_HEALTH = 200;
@@ -54,5 +60,10 @@
 
 	// ANIMATIONSTATES
 	public const string ANIMATIONSTATE_DEAD = "Dead";
+    public const string ANIMATIONSTATE_HIT = "Hit";
 
+
+	// ENVIRONMENT
+	public const string REGULAR_RAIN = "Regular";
+	public const string BLOOD_RAIN = "Blood";
 }

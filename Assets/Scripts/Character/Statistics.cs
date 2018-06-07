@@ -8,11 +8,14 @@ public class Statistics : MonoBehaviour {
 	public Slider healthbar;
 
 	public float health;
+    public float hitStunDuration = 0.5f;
     private float maxHealth = 100f;
     private float blocks = 0;
     private bool immune = false;
     private GameObject spawnpoint;
     public GameObject shield;
+    private bool blocking = false;
+    public float blockReductionPersentage = 0.50f;
 
     void Start(){
 		maxHealth = Constants.MAX_PLAYER_HEALTH;
@@ -29,6 +32,10 @@ public class Statistics : MonoBehaviour {
         {
             if (blocks <= 0)
             {
+                if (blocking)
+                    amount = amount -(amount * blockReductionPersentage);
+                else
+                    Stun(hitStunDuration);
                 health -= amount;
 
                 if (health <= Constants.MIN_PLAYER_HEALTH)
@@ -68,6 +75,12 @@ public class Statistics : MonoBehaviour {
         set { immune = value; }
     }
 
+    public bool Blocking
+    {
+        get { return blocking; }
+        set { blocking = value; }
+    }
+
     public void SetBlocks(float amountOfBlocks)
     {
         blocks = amountOfBlocks;
@@ -80,5 +93,18 @@ public class Statistics : MonoBehaviour {
     private void ActivateShield(bool activation)
     {
         shield.SetActive(activation);
+    }
+
+    private void Stun(float duration)
+    {
+        //find component call stunn
+        if (GetComponent<CharacterTransformer>().currentForm == CharacterTransformer.CharacterForm.devon)
+        {
+            StartCoroutine(GetComponentInChildren<DevonScript>().StunCharacter(duration));
+        }
+        else if (GetComponent<CharacterTransformer>().currentForm == CharacterTransformer.CharacterForm.malphas)
+        {
+            StartCoroutine(GetComponentInChildren<MalphasScript>().StunCharacter(duration));
+        }
     }
 }
