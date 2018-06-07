@@ -26,6 +26,7 @@ public class ApproachTarget : Action
         if (distance <= (manager.aiStats.movementStats.reachedDistance * (1 + manager.aiStats.movementStats.reachedTollerance)) && 
                 distance >= (manager.aiStats.movementStats.reachedDistance))
         {
+            Debug.Log("StopExec");
             // if the target is reached stop
             manager.StopMovement();
             return;
