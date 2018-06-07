@@ -58,8 +58,6 @@
      <Compile Include="Assets\_scenes\Development\Sprint03\PlayVideo.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint04\TimeManager.cs" />
-     <Compile Include="Assets\_scenes\Development\TestVideo\OpenTestVideo.cs" />
-     <Compile Include="Assets\_scenes\Development\TestVideo\PlayVideo.cs" />
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
@@ -105,7 +103,6 @@
      <Compile Include="Assets\Scripts\Character\Abilities\ISkill.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\PhychicScream.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Possess.cs" />
-     <Compile Include="Assets\Scripts\Character\Abilities\PsychicScream.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\SkillSettings.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Teleport.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterAudioController.cs" />
