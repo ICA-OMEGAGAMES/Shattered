@@ -36,14 +36,14 @@ public class ToggleIngameMenu : MonoBehaviour
             ingameMenu.SetActive(active);
 			menuPanel.SetActive(active);
             GameObject.FindObjectOfType<OpenSkilltree>().CheckSkilltree();
-			backgroundVideo.startVideo();
+			backgroundVideo.StartVideo();
             graphicsPanel.SetActive(!active);
 			audioPanel.SetActive(!active);
             Time.timeScale = 0f;
         }
         else
         {
-            backgroundVideo.stopVideo();
+            backgroundVideo.StopVideo();
             ingameMenu.SetActive(active);
             Time.timeScale = 1f;
         }

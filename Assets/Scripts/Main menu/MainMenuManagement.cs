@@ -14,7 +14,7 @@ public class MainMenuManagement : MonoBehaviour {
 		LoadGraphicsSettings();
 		LoadSoundSettings();
 		LoadControlSettings();
-		// backgroundVideo.startVideo();
+		backgroundVideo.StartVideo();
 	}
 
 	//Loads and applies stored settings from the config file	
