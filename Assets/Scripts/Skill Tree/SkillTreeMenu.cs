@@ -46,6 +46,7 @@ public class SkillTreeMenu : MonoBehaviour
         // Disable the details of the skill by closing, so that by opening it again the details are not here
         // they will appear if we select a skill
         skillDetails.SetActive(false);
+        backgroundVideo.stopVideo();
     }
 
     public void Pause()
@@ -53,11 +54,8 @@ public class SkillTreeMenu : MonoBehaviour
         skillTreeMenu.SetActive(true);
         Time.timeScale = 0f;
         skillTreeMenuIsActive = true;
+        backgroundVideo.startVideo();
         skillDetails.SetActive(false);
-
-        //StartBackgroundVideo
-        // backgroundVideo.startPlayingBackgroundVideo();
-        backgroundVideo = new PlayVideo();
     }
 
     public void openWithinDialogueSystem()

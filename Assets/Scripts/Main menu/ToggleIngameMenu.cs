@@ -9,6 +9,7 @@ public class ToggleIngameMenu : MonoBehaviour
 	public GameObject menuPanel;
 	public GameObject graphicsPanel;
 	public GameObject audioPanel;
+    public PlayVideo backgroundVideo;
 
 	void Start()
 	{
@@ -21,7 +22,7 @@ public class ToggleIngameMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown(Constants.MENU_BUTTON))
+        if (!SkillTreeMenu.skillTreeMenuIsActive && Input.GetButtonDown(Constants.MENU_BUTTON))
         {
             SwitchScreen();
         }
@@ -35,16 +36,16 @@ public class ToggleIngameMenu : MonoBehaviour
             ingameMenu.SetActive(active);
 			menuPanel.SetActive(active);
             GameObject.FindObjectOfType<OpenSkilltree>().CheckSkilltree();
-			graphicsPanel.SetActive(!active);
+			backgroundVideo.startVideo();
+            graphicsPanel.SetActive(!active);
 			audioPanel.SetActive(!active);
             Time.timeScale = 0f;
         }
         else
         {
-
+            backgroundVideo.stopVideo();
             ingameMenu.SetActive(active);
             Time.timeScale = 1f;
-
         }
     }
 }

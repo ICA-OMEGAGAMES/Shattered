@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4025430153606306}
   - component: {fileID: 114145286690371606}
+  - component: {fileID: 114563186456146224}
   m_Layer: 0
   m_Name: CanvasManager
   m_TagString: Untagged
@@ -54,3 +55,19 @@ MonoBehaviour:
   sceneCanvase:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114563186456146224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897813519001396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18e7070a020843448148efe30afb1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingameMenu: {fileID: 0}
+  menuPanel: {fileID: 0}
+  graphicsPanel: {fileID: 0}
+  audioPanel: {fileID: 0}
+  backgroundVideo: {fileID: 0}
