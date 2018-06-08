@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &59877411 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114874716737255574, guid: 366c4aa93ca674b408f94210abab2b93,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600760088}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1600760088
 Prefab:
   m_ObjectHideFlags: 0
@@ -322,9 +328,36 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114954846063131758, guid: 366c4aa93ca674b408f94210abab2b93,
+        type: 2}
+      propertyPath: startButton
+      value: 
+      objectReference: {fileID: 59877411}
+    - target: {fileID: 114789855644595952, guid: 366c4aa93ca674b408f94210abab2b93,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1600760090}
+    - target: {fileID: 114262528779165312, guid: 366c4aa93ca674b408f94210abab2b93,
+        type: 2}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1600760089}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 366c4aa93ca674b408f94210abab2b93, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1600760089 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114474765105881302, guid: 366c4aa93ca674b408f94210abab2b93,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600760088}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1600760090 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114098988223598002, guid: 366c4aa93ca674b408f94210abab2b93,
+    type: 2}
+  m_PrefabInternal: {fileID: 1600760088}
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2127185332
 GameObject:
   m_ObjectHideFlags: 0

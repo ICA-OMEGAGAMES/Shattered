@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 151177063}
-  videoToPlay: {fileID: 32900000, guid: bfd444a123a3d524d8ae65db74a90c4b, type: 3}
+  videoToPlay: {fileID: 32900000, guid: ea63138283ed7ca4293efe7d05293435, type: 3}
   isPrepared: 0
   transitionAfterVideo: 1
 --- !u!114 &921368582

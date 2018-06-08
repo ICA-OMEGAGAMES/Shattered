@@ -284,24 +284,16 @@ namespace UnityEngine.Rendering.PostProcessing
             {
                 Texture defaultTexture;
 
-                bool is3d = false;
-                if(to != null)
-                    is3d = to is Texture3D
-                            || (to is RenderTexture && ((RenderTexture)to).volumeDepth > 1);
-                else
-                    is3d = from is Texture3D
-                            || (from is RenderTexture && ((RenderTexture)from).volumeDepth > 1);
-
                 switch (defaultState)
                 {
                     case TextureParameterDefault.Black:
-                        defaultTexture = is3d ? (Texture)RuntimeUtilities.blackTexture3D : RuntimeUtilities.blackTexture;
+                        defaultTexture = RuntimeUtilities.blackTexture;
                         break;
                     case TextureParameterDefault.White:
-                        defaultTexture = is3d ? (Texture)RuntimeUtilities.whiteTexture3D : RuntimeUtilities.whiteTexture;
+                        defaultTexture = RuntimeUtilities.whiteTexture;
                         break;
                     case TextureParameterDefault.Transparent:
-                        defaultTexture = is3d ? (Texture)RuntimeUtilities.transparentTexture3D : RuntimeUtilities.transparentTexture;
+                        defaultTexture = RuntimeUtilities.transparentTexture;
                         break;
                     case TextureParameterDefault.Lut2D:
                         // Find the current lut size
