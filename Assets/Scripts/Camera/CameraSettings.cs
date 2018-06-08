@@ -5,7 +5,7 @@ using System.Collections;
 public class CameraFollowSettings : ScriptableObject {
     public float cameraMoveSpeed = 1200.0f;
     public float clampAngle = 66.0f;
-    public float inputSensitivity = 150.0f;
+    public float inputSensitivity = 50.0f;
     public float finalInputX = 0;
 	public float finalInputY = 0;
 }

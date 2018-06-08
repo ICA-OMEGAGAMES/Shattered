@@ -54,7 +54,6 @@
      <Compile Include="Assets\_Scenes\Development\DialogueScene\DialogueTrigger.cs" />
      <Compile Include="Assets\_Scenes\Development\DialogueScene\SpriteSwitcher.cs" />
      <Compile Include="Assets\_Scenes\Development\DialogueScene\VoiceSwitcher.cs" />
-     <Compile Include="Assets\_Scenes\Development\Sprint03\ButtonHover.cs" />
      <Compile Include="Assets\_Scenes\Development\Sprint04\TeleportSkill.cs" />
      <Compile Include="Assets\_Scenes\Development\Sprint04\TimeManager.cs" />
      <Compile Include="Assets\_Scenes\Development\TestVideo\OpenTestVideo.cs" />
