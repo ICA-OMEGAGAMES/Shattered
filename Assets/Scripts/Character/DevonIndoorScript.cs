@@ -44,7 +44,7 @@ public class DevonIndoorScript : MonoBehaviour
 
     //protected variables
     protected bool characterRooted = false;
-    public bool characterControllable = true;
+    protected bool characterControllable = true;
 
     public Animator animator;
     public CharacterController characterController;

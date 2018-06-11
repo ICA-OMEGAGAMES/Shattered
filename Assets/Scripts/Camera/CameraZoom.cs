@@ -6,8 +6,8 @@ public class CameraZoom : MonoBehaviour {
 
 	public CameraFollow camFollow;
 	public CameraCollision camCollision;
+	public CharacterMovement charMovement;
 	public AppartmentMusicSwap apSwap;
-    public DevonIndoorScript dis;
 	public Camera zoom;
 
 	private Camera mainCamera;
@@ -23,16 +23,16 @@ public class CameraZoom : MonoBehaviour {
 				if( mainCamera.enabled) {
 					camFollow.enabled = false;
 					camCollision.enabled = false;
+					charMovement.enabled = false;
 					zoom.enabled = true;
 					mainCamera.enabled = false;
-                    dis.enabled = false;
 					// for now this is only used for the shrine, if used for more don't use the music swap here!
 					apSwap.ChangeMusic();
 				} else if (!mainCamera.enabled){
-                    dis.enabled  = true;
 					camFollow.enabled = true;
 					camCollision.enabled = true;
 					mainCamera.enabled = true;
+					charMovement.enabled = true;
 					zoom.enabled = false;
 					apSwap.ChangeMusic();
 				}
