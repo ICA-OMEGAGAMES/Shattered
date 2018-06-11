@@ -5,7 +5,8 @@
             "skillDependencies": [],
             "unlocked": false,
             "cost": 0,
-            "description": "Teleport to location"
+            "description": "Teleport to location",
+            "skillName": "TELEPORT"
         },
         {
             "idSkill": 1,
@@ -14,7 +15,8 @@
             ],
             "unlocked": false,
             "cost": 1,
-            "description": "Barrier Skill Description"
+            "description": "Activate protective shield",
+            "skillName": "BARRIER"
         },
         {
             "idSkill": 2,
@@ -23,7 +25,8 @@
             ],
             "unlocked": false,
             "cost": 1,
-            "description": "Psychic Scream Skill Description"
+            "description": "Psychic Scream Skill Description",
+            "skillName": "PSYCHIC SCREAM"
         },
         {
             "idSkill": 3,
@@ -31,8 +34,9 @@
                 2
             ],
             "unlocked": false,
-            "cost": 1,
-            "description": "Divine Aura Skill Description"
+            "cost": 4,
+            "description": "Divine Aura Skill Description",
+            "skillName": "DIVINE AURA"
         },
         {
             "idSkill": 4,
@@ -41,7 +45,8 @@
             ],
             "unlocked": false,
             "cost": 1,
-            "description": "Demonic Wave Skill Description"
+            "description": "Demonic Wave Skill Description",
+            "skillName": "DEMONIC WAVE"
         },
         {
             "idSkill": 5,
@@ -50,7 +55,8 @@
             ],
             "unlocked": false,
             "cost": 1,
-            "description": "Possess Skill Description"
+            "description": "Possess an Enemy",
+            "skillName": "POSSESS"
         },
         {
             "idSkill": 6,
@@ -58,8 +64,9 @@
                 5
             ],
             "unlocked": false,
-            "cost": 1,
-            "description": "Dark Claw Skill Description"
+            "cost": 4,
+            "description": "Dark Claw Skill Description",
+            "skillName": "DARK CLAW"
         }
     ]
 }

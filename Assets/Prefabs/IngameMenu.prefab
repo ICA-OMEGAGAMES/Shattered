@@ -2467,7 +2467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae396cf17a334364682d19292271dd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
   objectToEnable: {fileID: 1042070572109322}
   objectToDisable: {fileID: 1028378439411886}
 --- !u!114 &114094884385542818
@@ -5906,7 +5905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae396cf17a334364682d19292271dd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
   objectToEnable: {fileID: 1028378439411886}
   objectToDisable: {fileID: 1042070572109322}
 --- !u!114 &114749316209724378
@@ -6060,7 +6058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7896e408d5b331944a290e9c21e5449a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundVideo: {fileID: 0}
+  backgroundVideo: {fileID: 114390457338840022}
 --- !u!114 &114784992018101046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6287,7 +6285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae396cf17a334364682d19292271dd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
   objectToEnable: {fileID: 1042070572109322}
   objectToDisable: {fileID: 1833772223160442}
 --- !u!114 &114861466214903454
@@ -6677,7 +6674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae396cf17a334364682d19292271dd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
   objectToEnable: {fileID: 1833772223160442}
   objectToDisable: {fileID: 1042070572109322}
 --- !u!114 &114985549031235716
@@ -12669,18 +12665,18 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417268428123244}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.601626, y: 2.601626, z: 2.601626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224147482879502882}
   m_Father: {fileID: 224099957736007286}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 539.8374}
-  m_SizeDelta: {x: 738, y: 415}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224723359276696102
 RectTransform:

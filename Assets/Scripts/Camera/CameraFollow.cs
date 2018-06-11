@@ -38,6 +38,11 @@ public class CameraFollow : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        else if (ToggleIngameMenu.toggleIngameMenuActive)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         else
         {
             // Lock Cursor, if Camera is active
