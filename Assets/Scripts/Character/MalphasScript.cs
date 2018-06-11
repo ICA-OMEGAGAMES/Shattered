@@ -3,7 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalphasScript : CharacterMovement {
+public class MalphasScript : CharacterMovement
+{
+
+    //Serialized classes
+    [System.Serializable]
+    public class SkillAnimations
+    {
+        //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
+        public string demonicWave = "SkillWave";
+        public string psychicScream = "SkillScream";
+        public string startTeleport = "isTeleporting"; //bool!
+        public string endTeleport = "endTeleport";
+        public string possess = "SkillPossess";
+        public string barrier = "SkillBarrier";
+    }
+    [SerializeField]
+    public SkillAnimations skillAnimations;
 
     //Sterialized classes
     [Serializable]
@@ -33,7 +49,7 @@ public class MalphasScript : CharacterMovement {
     public class SkillsSettings
     {
         public SkillSettings teleportSettings;
-        public SkillSettings barierSettings;
+        public SkillSettings barrierSettings;
         public SkillSettings psychicScreamSettings;
         public SkillSettings demonicWaveSettings;
         public SkillSettings possessSettings;
@@ -45,6 +61,7 @@ public class MalphasScript : CharacterMovement {
     private MarkerManagerPlayer markerManager;
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
+    private String lastAttack;
 
     private bool blinking = false;
     Vector3 blinkTargetPosition;
@@ -59,7 +76,7 @@ public class MalphasScript : CharacterMovement {
 
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
-        skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+        skills.Add(new Barrier(skillSettings.barrierSettings, stats, this));
         skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
         skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
@@ -85,7 +102,7 @@ public class MalphasScript : CharacterMovement {
         }
         if (Input.GetButton(Constants.SKILL2_BUTTON))
         {
-            if (skills.Count >= 2) 
+            if (skills.Count >= 2)
                 skills[2].Execute(animator);
         }
     }
@@ -111,6 +128,7 @@ public class MalphasScript : CharacterMovement {
         {
             //prefform attack1
             attack = Attack1(animator);
+            lastAttack = Constants.PUNCH_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
 
@@ -119,6 +137,7 @@ public class MalphasScript : CharacterMovement {
         {
             //prefform attack2
             attack = Attack2(animator);
+            lastAttack = Constants.KICK_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -197,7 +216,7 @@ public class MalphasScript : CharacterMovement {
                 skills.Add(new Teleport(skillSettings.teleportSettings, this));
                 break;
             case "Barrier":
-                skills.Add(new Barrier(skillSettings.barierSettings, stats, this));
+                skills.Add(new Barrier(skillSettings.barrierSettings, stats, this));
                 break;
             case "PsychicScream":
                 skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
@@ -222,5 +241,10 @@ public class MalphasScript : CharacterMovement {
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
+    }
+
+    public string GetAttackMode()
+    {
+        return lastAttack;
     }
 }

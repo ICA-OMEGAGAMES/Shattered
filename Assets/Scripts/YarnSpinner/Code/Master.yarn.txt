@@ -7,7 +7,7 @@ Master: Hi, Player!
 <<if $first_skill_unlocked is false>>
     Master: I see you did well.
     Master: You can unlock your first skill
-    <<openSkillTree Master 0>>
+    <<openSkillTree DialoguePhase0_SkillMaster 0>>
     <<set $first_skill_unlocked to true>>
     Master: Nice, you can use your skills from now one.
 <<endif>>

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Decision : ScriptableObject
 {
-    public abstract bool Decide (AIManager manager);
+    public abstract bool Decide(AIManager manager);
 }

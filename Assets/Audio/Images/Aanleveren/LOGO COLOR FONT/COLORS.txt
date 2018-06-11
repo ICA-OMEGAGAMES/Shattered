@@ -1,4 +1,0 @@
-WIT: 	e6e6e6
-GRIJS:	5e5e5e
-BLAUW:	29abe2
-ROOD:	c1272d

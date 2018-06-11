@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PluggableAI/Decisions/Leave Combat")]
-public class LeaveCombatDecision : Decision {
+[CreateAssetMenu(menuName = "PluggableAI/Decisions/Leave Combat")]
+public class LeaveCombatDecision : Decision
+{
 
     public override bool Decide(AIManager manager)
     {
@@ -13,6 +14,12 @@ public class LeaveCombatDecision : Decision {
 
     private bool Leave(AIManager manager)
     {
-        return Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.unarmedCombatSettings.unarmedAttackRange;   
+        if ((Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.aiStats.unarmedCombatSettings.unarmedAttackRange)
+            || !manager.IsTargetAlive())
+        {
+            manager.GetTargetPosition();
+            return true;
+        }
+        return false;
     }
 }

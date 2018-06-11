@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class TeleportSkill : MonoBehaviour
 {
+    // public bool isActive;
+    public TimeManager timeManager;
     public float skillDuration;
 
     GameObject player;
     bool skillActive;
 
-    float slowDownFactor = 0.03f;
-
-    Vector3 originalPos = new Vector3(0, -10, 0);
-
     // Use this for initialization
     void Start()
     {
         skillActive = false;
+        // this.transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -24,11 +23,12 @@ public class TeleportSkill : MonoBehaviour
     {
         if (Input.GetButtonDown(Constants.SKILL3_BUTTON) && !skillActive)
         {
+            Debug.Log("StartSkill");
             StartCoroutine(startSkillTimer());
-            startSlowMotion();
         }
         else if (skillActive)
         {
+            timeManager.DoSlowmotion(skillDuration + 5.0f);
             doTeleportSkill();
         }
     }
@@ -42,7 +42,6 @@ public class TeleportSkill : MonoBehaviour
 
         Debug.Log("Couroutine Finished");
         skillActive = false;
-        stopSlowMotion();
     }
 
     void doTeleportSkill()
@@ -53,12 +52,11 @@ public class TeleportSkill : MonoBehaviour
             // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             // cube.transform.position = this.transform.position;
 
-            player = GameObject.Find("Dave");
+            player = GameObject.Find("Mannequin");
             //should I search other objects to?
 
             player.transform.position = this.transform.position;
             skillActive = false;
-            stopSlowMotion();
         }
 
         RaycastHit hit;
@@ -71,18 +69,5 @@ public class TeleportSkill : MonoBehaviour
                 this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.05f, this.transform.position.z);
             }
         }
-    }
-
-    void startSlowMotion()
-    {
-        Time.timeScale = 0.0f;
-		// Time.fixedDeltaTime = Time.timeScale * 0.02f;
-    }
-
-    void stopSlowMotion()
-    {
-        this.transform.position = originalPos;
-        Time.timeScale = 1.0F;
-        // Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 }

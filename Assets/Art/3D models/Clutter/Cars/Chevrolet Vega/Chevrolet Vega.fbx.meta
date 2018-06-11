@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 73890f4ea6ddcac429c26c157a63df9c
-timeCreated: 1527533454
+guid: add7c11c7fe2c7d45afb5cf92232c827
+timeCreated: 1527874905
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: Base
+    2100002: Other
+    2100004: Glass
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane
