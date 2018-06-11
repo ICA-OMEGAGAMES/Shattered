@@ -7,6 +7,8 @@ public class CameraZoom : MonoBehaviour {
 	public CameraFollow camFollow;
 	public CameraCollision camCollision;
 	public CharacterMovement charMovement;
+	public AppartmentMusicSwap apSwap;
+	public Camera zoom;
 
 	private Camera mainCamera;
 
@@ -16,21 +18,23 @@ public class CameraZoom : MonoBehaviour {
 	}
 		
 	void OnTriggerStay(Collider other){
-		if (other.CompareTag (Constants.ZOOM_TAG)) {
+		if (other.CompareTag (Constants.PLAYER_TAG)) {
 			if (Input.GetButtonDown (Constants.PICKUP_BUTTON)){
 				if( mainCamera.enabled) {
 					camFollow.enabled = false;
 					camCollision.enabled = false;
 					charMovement.enabled = false;
-					other.transform.GetChild(0).GetComponent<Camera>().enabled = true;
+					zoom.enabled = true;
 					mainCamera.enabled = false;
+					// for now this is only used for the shrine, if used for more don't use the music swap here!
+					apSwap.ChangeMusic();
 				} else if (!mainCamera.enabled){
 					camFollow.enabled = true;
 					camCollision.enabled = true;
 					mainCamera.enabled = true;
 					charMovement.enabled = true;
-					other.transform.GetChild(0).GetComponent<Camera>().enabled = false;
-
+					zoom.enabled = false;
+					apSwap.ChangeMusic();
 				}
 			}
 		}

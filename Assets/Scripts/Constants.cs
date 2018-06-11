@@ -72,4 +72,10 @@
 	// ENVIRONMENT
 	public const string REGULAR_RAIN = "Regular";
 	public const string BLOOD_RAIN = "Blood";
+
+
+	// MUSIC
+	public const string MUFFLED_AUDIOSOURCE = "MusicMuffled";
+	public const string HEAD_AUDIOSOURCE = "MusicHead";
+
 }
