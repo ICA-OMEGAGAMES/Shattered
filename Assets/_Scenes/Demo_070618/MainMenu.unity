@@ -343,6 +343,10 @@ Prefab:
       propertyPath: button
       value: 
       objectReference: {fileID: 1600760089}
+    - target: {fileID: 1801092651466068, guid: 366c4aa93ca674b408f94210abab2b93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 366c4aa93ca674b408f94210abab2b93, type: 2}
   m_IsPrefabParent: 0

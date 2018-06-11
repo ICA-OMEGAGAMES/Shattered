@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 114655887005839650}
   - component: {fileID: 114432743211188332}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,6 +586,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c4da40224e25f6f4ab4da47de72b1b78, type: 3}
   - {fileID: 4900000, guid: a415b0b5eca619a43a07764769372245, type: 3}
   - {fileID: 4900000, guid: 992e8266bc764ec47b6ecec892572a88, type: 3}
+  - {fileID: 4900000, guid: e9b75a79c5fe6ac449994a27d1930689, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10
@@ -1489,8 +1490,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19374056, y: 0.19500001}
   m_AnchorMax: {x: 0.5665189, y: 0.26523715}
-  m_AnchoredPosition: {x: -0.774971, y: -0.1000061}
-  m_SizeDelta: {x: -1.5499878, y: 0.9799957}
+  m_AnchoredPosition: {x: 0.000022888184, y: -0.29501343}
+  m_SizeDelta: {x: 0, y: 0.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224074113062013726
 RectTransform:
@@ -1757,7 +1758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.2486332}
-  m_AnchoredPosition: {x: -1.2499695, y: -0.75904846}
+  m_AnchoredPosition: {x: -1.2499695, y: -0.7590637}
   m_SizeDelta: {x: 2.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224729674505748484

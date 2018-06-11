@@ -97,10 +97,9 @@ namespace Yarn.Unity.Shattered
             //Timer setzen optional
 
             // Wait for any user input
-            while (Input.anyKeyDown == false)
+            while (SkillTreeMenu.skillTreeMenuIsActive || Input.anyKeyDown == false)
             {
                 // Time.timeSinceLevelLoad
-                //überprüfen ob timer > 0 ist, dann null, sonst aus while
                 yield return null;
             }
 
