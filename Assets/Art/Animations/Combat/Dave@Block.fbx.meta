@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9c6e850b5053aab40896aa6ccffc9714
-timeCreated: 1527770212
+guid: 15c721457770a0241b23a821a856b399
+timeCreated: 1528710066
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -344,7 +344,7 @@ ModelImporter:
       name: Block
       takeName: Take 001
       firstFrame: 2
-      lastFrame: 17.9
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

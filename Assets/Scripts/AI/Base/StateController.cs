@@ -13,9 +13,9 @@ public class StateController : MonoBehaviour
     public State currentState;
     public State remainState;
 
-    [HideInInspector] public AIManager manager;
-    [HideInInspector] public AIAnimationManager animationManager;
-    [HideInInspector] public State previousState;
+    public AIManager manager { get; private set; } 
+    public AIAnimationManager animationManager { get; private set; } 
+    public State previousState { get; private set; } 
 
     private bool aiActive;
 
