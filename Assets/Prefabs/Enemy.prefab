@@ -1783,7 +1783,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1502043371514138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.599007, y: 0.08507798, z: -30.296682}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4151772609927398}
@@ -2357,7 +2357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0472547371299a74c9ace331703fab25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   animations:
     groundedBool: isGrounded
     dodgeBool: isDodging
@@ -2391,9 +2390,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 3f1f5447385b1fd48af206bc412dab33, type: 2}
   remainState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
-  manager: {fileID: 0}
-  animationManager: {fileID: 0}
-  previousState: {fileID: 0}
 --- !u!114 &114451457161117082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2416,20 +2412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02679d97387388547a070b14403b0824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  wayPointList: []
   eyes: {fileID: 1238979542487700}
   aiStats: {fileID: 0}
-  navMeshAgent: {fileID: 0}
-  nextWayPoint: 0
-  animationManager: {fileID: 0}
-  lastKnownTargetPosition: {x: 0, y: 0, z: 0}
-  walkTarget: {x: 0, y: 0, z: 0}
-  framesWithoutMovement: 0
-  currentHealth: 0
-  previousHealth: 0
 --- !u!135 &135293855130701026
 SphereCollider:
   m_ObjectHideFlags: 1

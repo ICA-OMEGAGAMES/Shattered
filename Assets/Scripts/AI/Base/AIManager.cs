@@ -40,6 +40,11 @@ public class AIManager : MonoBehaviour
 
     public bool SetUpAiManager(StateController controller)
     {
+        //Use the default values if the object is intantiated and does not have a AIStats object attached to it.
+        if (aiStats == null)
+        {
+            aiStats = ScriptableObject.CreateInstance<AIStats>();
+        }
         bool active = false;
         this.controller = controller;
         currentHealth = aiStats.maxHealth;
