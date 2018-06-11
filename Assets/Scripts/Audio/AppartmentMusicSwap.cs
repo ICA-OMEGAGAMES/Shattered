@@ -12,12 +12,11 @@ public class AppartmentMusicSwap : MonoBehaviour {
 
     public static AppartmentMusicSwap instance;
 
-    private bool AppartmentMusic = true;
+	private bool appartmentMusic = true;
 
-    // Use this for initialization
     void Awake () {
-        musicMuffledObject = GameObject.Find("MusicMuffled");
-        musicHeadObject = GameObject.Find("MusicHead");
+		musicMuffledObject = GameObject.Find(Constants.MUFFLED_AUDIOSOURCE);
+		musicHeadObject = GameObject.Find(Constants.HEAD_AUDIOSOURCE);
 
         musicMuffled = musicMuffledObject.GetComponent<AudioSource>();
         musicHead = musicHeadObject.GetComponent<AudioSource>();
@@ -33,18 +32,17 @@ public class AppartmentMusicSwap : MonoBehaviour {
 	public void ChangeMusic()
 	{
 		//change music
-		
-		if (AppartmentMusic == true)
+		if (appartmentMusic)
 		{
             musicHead.mute = !musicHead.mute;
             musicMuffled.mute = !musicHead.mute;
-            AppartmentMusic = false;
+            appartmentMusic = false;
 		}
 		else
 		{
             musicHead.mute = !musicHead.mute;
             musicMuffled.mute = !musicHead.mute;
-            AppartmentMusic = true;
+            appartmentMusic = true;
 		}
 
 	}
