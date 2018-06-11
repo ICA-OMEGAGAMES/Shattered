@@ -50,7 +50,6 @@ public class UnlockButton : MonoBehaviour
         {
             PlayerPrefs.SetInt("Score", SkillTreeReader.Instance.availablePoints);
             currentSkillButton.skillHub.RefreshButtons();
-            SkillTreeReader.Instance.SaveSkillTree();
 
             if (SkillTreeReader.Instance.IsSkillUnlocked(currentSkillButton.skillId))
             {

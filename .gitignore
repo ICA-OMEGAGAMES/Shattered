@@ -41,3 +41,5 @@ WIP/
 *.csproj
 *.csproj
 *.csproj
+*.meta
+*.csproj
