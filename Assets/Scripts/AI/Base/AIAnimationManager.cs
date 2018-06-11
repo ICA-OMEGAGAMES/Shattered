@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class AIAnimationManager : MonoBehaviour
 {
-    [HideInInspector] public Animator animator;
+    public Animator animator { get; private set; }
 
     private bool dodging;
     private float dodgingTimestamp;
