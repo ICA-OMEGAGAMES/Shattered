@@ -3,25 +3,20 @@ using UnityEngine;
 
 [RequireComponent(typeof(MarkerManagerPlayer))]
 [RequireComponent(typeof(Statistics))]
-public class CharacterTransformer : MonoBehaviour {
-
-    [System.Serializable]
-    public class TransformationSettings
-    {
-        public float transformationDuration = 0.5f;
-    }
-    [SerializeField]
-    public TransformationSettings transformationSettings;
-
+public class CharacterTransformer : MonoBehaviour
+{
+    public float transformationDuration = 1f;
+    
     public GameObject devon;
     public GameObject malphas;
     public GameObject transformation;
+   // public TransformAnimationScript animaterScript;
 
     //forms
     public enum CharacterForm
     {
         devon,
-        transformToMalphas, 
+        transformToMalphas,
         malphas,
         transformToDevon,
     }
@@ -33,6 +28,8 @@ public class CharacterTransformer : MonoBehaviour {
     void Start()
     {
         SelectCharacter();
+        //     animaterScript = transformation.GetComponent<TransformAnimationScript>();
+
     }
 
     void Update()
@@ -40,7 +37,7 @@ public class CharacterTransformer : MonoBehaviour {
         if (Input.GetButton(Constants.TRANSFORM_BUTTON) && transformationTimeStamp <= Time.time)
         {
             SwitchForm();
-            transformationTimeStamp = Time.time + transformationSettings.transformationDuration;
+            transformationTimeStamp = Time.time + transformationDuration;
         }
     }
 
@@ -88,7 +85,7 @@ public class CharacterTransformer : MonoBehaviour {
                 devon.SetActive(false);
                 malphas.SetActive(false);
                 transformation.SetActive(true);
-
+                //   animaterScript.SetToMalphas(true);
                 //set position and rotation to the previous character
                 transformation.transform.position = devon.transform.position;
                 transformation.transform.rotation = devon.transform.rotation;
@@ -114,6 +111,7 @@ public class CharacterTransformer : MonoBehaviour {
                 devon.SetActive(false);
                 malphas.SetActive(false);
                 transformation.SetActive(true);
+                // animaterScript.SetToMalphas(false);
 
                 //set position and rotation to the previous character
                 transformation.transform.position = malphas.transform.position;
@@ -129,7 +127,7 @@ public class CharacterTransformer : MonoBehaviour {
 
     private IEnumerator StartTransformation(CharacterForm targetForm)
     {
-        yield return new WaitForSeconds(transformationSettings.transformationDuration);
+        yield return new WaitForSeconds(transformationDuration);
         currentForm = targetForm;
         SelectCharacter();
     }
