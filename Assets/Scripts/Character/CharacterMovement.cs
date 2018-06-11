@@ -91,7 +91,9 @@ public class CharacterMovement : MonoBehaviour
 
 
     //characterscript spesific updates
+
     protected virtual void CharactertInitialize() { }
+    protected virtual void CharactertAwake() { }
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
     protected virtual void CharacterOutOfCombatUpdate() { }
@@ -106,6 +108,11 @@ public class CharacterMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         CharactertInitialize();
+    }
+
+    void Awake()
+    {
+        CharactertAwake();
     }
 
     void Update()
