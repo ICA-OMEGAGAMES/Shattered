@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Demo_070618/MainMenu.unity
     guid: ca672e320683d7a43bb98bea6db91d9f
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Demo_070618/OpeningCutscene.unity
     guid: 7507d72eef52d664898b7fc860fdd13f
   - enabled: 1
     path: Assets/_Scenes/Demo_070618/Appartment.unity
     guid: 254a20f8b5d555343854ea90c34bcb42
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Demo_070618/City.unity
     guid: b1d5bc335be050d49b90d81292b8504e
