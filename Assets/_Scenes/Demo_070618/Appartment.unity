@@ -22743,7 +22743,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1392344375895154, guid: 40e15ae4b3241314f8e54149befee0a0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224384280557764602, guid: 40e15ae4b3241314f8e54149befee0a0,
         type: 2}
@@ -22773,6 +22773,41 @@ Prefab:
     - target: {fileID: 82565140023047404, guid: 40e15ae4b3241314f8e54149befee0a0,
         type: 2}
       propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224625469826666478, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224625469826666478, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224625469826666478, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224797905772038906, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0000009536743
+      objectReference: {fileID: 0}
+    - target: {fileID: 224797905772038906, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 224797905772038906, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224797905772038906, guid: 40e15ae4b3241314f8e54149befee0a0,
+        type: 2}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
