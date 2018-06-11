@@ -11,14 +11,15 @@ public class AIManager : MonoBehaviour
     public GameObject eyes;
     public AIStats aiStats;
 
-    [HideInInspector] public NavMeshAgent navMeshAgent;
-    [HideInInspector] public int nextWayPoint;
-    [HideInInspector] public AIAnimationManager animationManager;
-    [HideInInspector] public Vector3 lastKnownTargetPosition;
-    [HideInInspector] public Vector3 walkTarget;
-    [HideInInspector] public int framesWithoutMovement;
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float previousHealth;
+   
+    public Vector3 lastKnownTargetPosition { get; set; }
+    public int nextWayPoint { get; set; }
+    public NavMeshAgent navMeshAgent { get; private set; }
+    public AIAnimationManager animationManager { get; private set; }
+    public Vector3 walkTarget { get; private set; }
+    public int framesWithoutMovement { get; private set; }
+    public float currentHealth { get; private set; }
+    public float previousHealth { get; private set; }
 
 
     private StateController controller;
