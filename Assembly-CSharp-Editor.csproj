@@ -60,9 +60,6 @@
      <Compile Include="Assets\Scripts\YarnSpinner\Code\Editor\YarnSpinnerTests.cs" />
      <Compile Include="Assets\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeInspector.cs" />
      <Compile Include="Assets\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeMaterialInspector.cs" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Editor\Trackball.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Editor\ConvertToLog.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Editor\CurveGrid.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -138,9 +135,6 @@
  <Reference Include="YarnSpinner">
  <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
  </Reference>
- <Reference Include="ShaderForge">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/ShaderForge/Editor/ShaderForge.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -161,6 +155,9 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="ShaderForge">
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/ShaderForge/Editor/ShaderForge.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

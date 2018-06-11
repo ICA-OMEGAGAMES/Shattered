@@ -54,12 +54,8 @@
      <Compile Include="Assets\_scenes\Development\Sprint03\ButtonHover.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint03\PlayVideo.cs" />
      <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\_scenes\Development\Sprint04\TimeManager.cs" />
-=======
      <Compile Include="Assets\Art\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
      <Compile Include="Assets\Art\GE Common Assets\Scripts\GE_UIResponder.cs" />
->>>>>>> parent of 7ab2554... Merge branch 'development_programming' into feature/ai
      <Compile Include="Assets\Scripts\AI\Base\Action.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIAnimationManager.cs" />
      <Compile Include="Assets\Scripts\AI\Base\AIManager.cs" />
@@ -172,83 +168,15 @@
      <Compile Include="Assets\UnityUISample\Scripts\ScrollDetailTexture.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\UnityUISample\Scripts\TiltWindow.cs" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\FinalPass.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Waveform.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Uber.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Texture3DLerp.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\CopyStd.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Bloom.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\xRLib.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\Switch.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MultiScaleVOUpsample.compute" />
-     <None Include="Assets\Art\Shaders\ShieldFX.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\PSSL.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Vectorscope.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\GaussianDownsample.compute" />
      <None Include="Assets\Placeholder\Prefabs.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DepthOfField.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DiscardAlpha.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Lut3DBaker.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Dithering.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Colors.hlsl" />
-     <None Include="Assets\Art\GFX\2d Graphics and Materials.txt" />
      <None Include="Assets\UnityUISample\Fonts\Jupiter\LICENSE.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\Vulkan.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\GrainBaker.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ExposureHistogram.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\LightMeter.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\D3D12.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\OpenGL.hlsl" />
-     <None Include="Assets\Materials\Shaders\RefractingGlass.shader" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Cube.yarn.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DiskKernels.hlsl" />
-     <None Include="Assets\Audio\Images\Aanleveren\LOGO COLOR FONT\COLORS.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MultiScaleVODownsample2.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ScalableAO.hlsl" />
      <None Include="Assets\UnityUISample\Textures and Sprites\SF UI\Background\LICENSE.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\ACES.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MultiScaleVODownsample1.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\StdLib.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MultiScaleVO.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DepthOfField.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\FastApproximateAntialiasing.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Fog.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MultiScaleVORender.compute" />
-     <None Include="Assets\Art\Cell\Shaders\Water.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ScalableAO.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.hlsl" />
      <None Include="Assets\Scripts\YarnSpinner\Code\Master.yarn.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\MotionBlur.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Texture2DLerp.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\DeferredFog.shader" />
      <None Include="Assets\UnityUISample\Materials\UI-Default-No-Alpha.shader" />
-     <None Include="Assets\Art\Animations\Animations.txt" />
      <None Include="Assets\Scripts\YarnSpinner\Code\SkillMaster.yarn.txt" />
      <None Include="Assets\Scripts\YarnSpinner\README.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\D3D9.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Lut2DBaker.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\AutoExposure.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Overlays.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\Metal.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Distortion.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Vectorscope.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\TemporalAntialiasing.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasingBridge.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\Copy.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\D3D11.hlsl" />
-     <None Include="Assets\Art\3D models\Buildings\Modular Kit\Modular.txt" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Waveform.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\XboxOne.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Sampling.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\API\PSP2.hlsl" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Histogram.compute" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Debug\Histogram.shader" />
-     <None Include="Assets\Art\PostProcessing\Shaders\Builtins\ExposureHistogram.compute" />
-     <None Include="Assets\Art\Shaders\Ethereal.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -324,9 +252,6 @@
  <Reference Include="YarnSpinner">
  <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
  </Reference>
- <Reference Include="ShaderForge">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/ShaderForge/Editor/ShaderForge.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -347,6 +272,9 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="ShaderForge">
+ <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/ShaderForge/Editor/ShaderForge.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
