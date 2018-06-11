@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 497e32b0806143447ad23aea53be9762
-timeCreated: 1527770208
+guid: 13b422a8adf7665499a0eac89cc0a32c
+timeCreated: 1528710065
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -311,7 +311,7 @@ ModelImporter:
     400300: Spine02_J
     400302: Spine03_J
     400304: Torso_Locator
-    7400000: Take 001
+    7400000: CrouchRight
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -339,7 +339,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: CrouchRight
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

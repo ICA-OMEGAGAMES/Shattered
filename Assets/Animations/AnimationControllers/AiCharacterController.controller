@@ -3885,7 +3885,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Dodge
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101243232531249440}
@@ -3898,7 +3898,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 054896e4f4b39394cbc257b9e53f8f2c, type: 3}
+  m_Motion: {fileID: 206852032134189926}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
