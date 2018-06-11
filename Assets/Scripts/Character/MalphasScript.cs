@@ -62,8 +62,7 @@ public class MalphasScript : CharacterMovement
     private List<ISkill> skills = new List<ISkill>();
     private Statistics stats;
     private String lastAttack;
-
-    private bool blinking = false;
+    
     Vector3 blinkTargetPosition;
 
 
@@ -176,7 +175,7 @@ public class MalphasScript : CharacterMovement
                     blinkTargetPosition = hit.point;
                 }
                 
-                blinking = true;
+                dodging = true;
                 blinkTimeStamp = Time.time + blinkSettings.blinkCooldown;
             }
         }
@@ -184,10 +183,11 @@ public class MalphasScript : CharacterMovement
 
     private void BlinkToLocation()
     {
-        if (blinking == true)
+        if (dodging == true)
         {
             var offset = blinkTargetPosition - transform.position;
             //Get the difference.
+            base.dodging = true;
 
 
             float dist = Vector3.Distance(blinkTargetPosition, transform.position);
@@ -197,7 +197,7 @@ public class MalphasScript : CharacterMovement
                 characterController.Move(offset * blinkSettings.blinkSpeed);
 
             }else
-                blinking = false;
+                dodging = false;
             StartCoroutine(ForceStop());
         }
     }
@@ -205,7 +205,7 @@ public class MalphasScript : CharacterMovement
     IEnumerator ForceStop()
     {
         yield return new WaitForSeconds(0.5f);
-        blinking = false;
+        dodging = false;
     }
 
     public void LearnSkill(string skill)
