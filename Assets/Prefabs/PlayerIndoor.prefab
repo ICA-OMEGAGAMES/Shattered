@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 114550666495353760}
   m_Layer: 0
   m_Name: Devon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4545,8 +4545,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588675699562604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9248536, y: 1.109, z: -22.481081}
+  m_LocalRotation: {x: -0, y: 0.56531376, z: -0, w: 0.824876}
+  m_LocalPosition: {x: -0.259, y: 1.157, z: -1.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4082695550775320}
@@ -7216,6 +7216,7 @@ MonoBehaviour:
   movement:
     walkSpeed: 4
     rotateSpeed: 5
+  characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   characterAudio: {fileID: 114757083562076696}
@@ -7292,7 +7293,7 @@ MonoBehaviour:
   health: 0
   hitStunDuration: 0.5
   shield: {fileID: 0}
-  blockReductionPersentage: 0.5
+  blockReductionPercentage: 0.5
 --- !u!114 &114998691366933876
 MonoBehaviour:
   m_ObjectHideFlags: 1

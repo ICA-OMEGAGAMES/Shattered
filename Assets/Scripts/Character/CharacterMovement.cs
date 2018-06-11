@@ -168,7 +168,7 @@ public class CharacterMovement : MonoBehaviour
         else
             SetControllable(false);
 
-        Animate(); 
+        Animate();  
     }
 
     private void FixedUpdate()

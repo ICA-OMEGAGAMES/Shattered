@@ -44,7 +44,7 @@ public class DevonIndoorScript : MonoBehaviour
 
     //protected variables
     protected bool characterRooted = false;
-    protected bool characterControllable = true;
+    public bool characterControllable = true;
 
     public Animator animator;
     public CharacterController characterController;
@@ -125,7 +125,7 @@ public class DevonIndoorScript : MonoBehaviour
     }
 
     //returns if the player is grounded or not
-    private bool IsGrounded()
+    private bool IsGrounded() 
     {
         float distToGround = 0.1f;
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
