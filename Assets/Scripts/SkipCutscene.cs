@@ -28,7 +28,6 @@ public class SkipCutscene : MonoBehaviour
 
         if (textIsVisible && Input.GetButtonDown("Submit"))
         {
-            Debug.Log("StartSkipping");
             SceneManager.LoadScene(currentScene + 1);
         }
     }
