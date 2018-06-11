@@ -70,7 +70,7 @@ namespace Yarn.Unity.Shattered
             lineText.gameObject.SetActive(true);
 
 
-            if (textSpeed > 0.0f)
+            if (textSpeed >= 0.0f)
             {
                 // Display the line one character at a time
                 var stringBuilder = new StringBuilder();
@@ -86,7 +86,6 @@ namespace Yarn.Unity.Shattered
             {
                 // Display the line immediately if textSpeed == 0
                 lineText.text = line.text;
-                yield return new WaitForSeconds(textSpeed);
             }
 
             // Show the 'press any key' prompt when done, if we have one

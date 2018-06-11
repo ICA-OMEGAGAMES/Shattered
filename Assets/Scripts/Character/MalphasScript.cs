@@ -6,21 +6,6 @@ using UnityEngine;
 public class MalphasScript : CharacterMovement
 {
 
-    //Serialized classes
-    [System.Serializable]
-    public class SkillAnimations
-    {
-        //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
-        public string demonicWave = "SkillWave";
-        public string psychicScream = "SkillScream";
-        public string startTeleport = "isTeleporting"; //bool!
-        public string endTeleport = "endTeleport";
-        public string possess = "SkillPossess";
-        public string barrier = "SkillBarrier";
-    }
-    [SerializeField]
-    public SkillAnimations skillAnimations;
-
     //Sterialized classes
     [Serializable]
     public class BasicCombatSettings

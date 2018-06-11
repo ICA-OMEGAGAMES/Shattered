@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Yarn.Unity.Shattered;
 
 public class CameraFollow : MonoBehaviour
 {
+
     [SerializeField]
     public GameObject gameObjectToFollow;
 
@@ -27,25 +28,27 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        CheckActiveCamera();
-        if (dialogueRunner.isDialogueRunning)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (SkillTreeMenu.skillTreeMenuIsActive)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            // Lock Cursor, if Camera is active
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-			DoCameraRotation ();
-       }
-    }
+	        CheckActiveCamera();
+	        if (dialogueRunner.isDialogueRunning)
+	        {
+	            Cursor.lockState = CursorLockMode.None;
+	            Cursor.visible = true;
+	        }
+	        else if (SkillTreeMenu.skillTreeMenuIsActive)
+	        {
+	            Cursor.lockState = CursorLockMode.None;
+	            Cursor.visible = true;
+	        }
+	        else
+	        {
+	            // Lock Cursor, if Camera is active
+	            Cursor.lockState = CursorLockMode.Locked;
+	            Cursor.visible = false;
+				DoCameraRotation ();
+	       	}
+    
+
+	}
 
     private void CheckActiveCamera()
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Teleport :  ISkill {
     private SkillSettings settings;
     private MonoBehaviour mono;
-    private MalphasScript.SkillAnimations skillAnimations = new MalphasScript.SkillAnimations();
 
     private float cooldownTimestamp;
 

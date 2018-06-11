@@ -10,9 +10,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: CameraFollowData
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollowSettings
-  cameraMoveSpeed: 1200
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollowSetting
+  cameraMoveSpeed: 120
   clampAngle: 66
   inputSensitivity: 150
+  mouseX: 0
+  mouseY: 0
   finalInputX: 0
-  finalInputY: 0
+  finalInputZ: 0

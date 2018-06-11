@@ -10,7 +10,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: CameraCollisionData
-  m_EditorClassIdentifier: Assembly-CSharp::CameraCollisionSettings
+  m_EditorClassIdentifier: Assembly-CSharp::CameraCollisionSetting
   minDistance: 1
   maxDistance: 4
   smooth: 10
