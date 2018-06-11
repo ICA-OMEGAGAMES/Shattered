@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Camera\CameraZoom.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Main menu\QuitOnClick.cs">
     <Files>
-      <File FileName="Assets\Scripts\Item\Billboard.cs" Line="9" Column="28" />
-      <File FileName="Assets\Scripts\Camera\CameraZoom.cs" Line="26" Column="35" />
-      <File FileName="Assets\Scripts\Constants.cs" Line="15" Column="35" />
-      <File FileName="Assets\Scripts\Character\CharacterMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Camera\CameraFollow.cs" Line="88" Column="71" />
-      <File FileName="Assets\Scripts\Camera\CameraCollision.cs" Line="38" Column="2" />
+      <File FileName="Assets\Scripts\PlayVideo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneTransitions\SceneTransition.cs" Line="11" Column="17" />
+      <File FileName="Assets\Scripts\Main menu\SwitchMenuScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main menu\LoadSceneOnClick.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main menu\MainMenuManagement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main menu\OpenSkilltree.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Main menu\QuitOnClick.cs" Line="14" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2cdd250bc339e2c4c839ec84182de17c
+folderAsset: yes
+<<<<<<< HEAD:Assets/ShaderForge/Editor.meta
+timeCreated: 1527195937
+licenseType: Free
+=======
+timeCreated: 1488201031
+licenseType: Pro
+>>>>>>> origin/development:Assets/Art/Imports/PostProcessing/Editor.meta
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

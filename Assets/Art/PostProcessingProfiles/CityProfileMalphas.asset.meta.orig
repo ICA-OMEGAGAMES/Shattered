@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Scriptable Objects/CameraFollowData.asset.meta
+guid: 70485a6000857704fbf5be8e12f4d29a
+timeCreated: 1526466584
+=======
+guid: acddf9ed50cc0c845ae27ae5c3ced324
+timeCreated: 1527944650
+>>>>>>> origin/development:Assets/Art/PostProcessingProfiles/CityProfileMalphas.asset.meta
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

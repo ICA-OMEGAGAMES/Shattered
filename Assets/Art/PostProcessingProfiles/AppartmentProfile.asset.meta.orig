@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Scriptable Objects/CameraCollisionData.asset.meta
+guid: 0c436434c09c4c148818f0227b9065f5
+timeCreated: 1526466599
+=======
+guid: edd971353d4d276439c6eb66385fbd6c
+timeCreated: 1527944650
+>>>>>>> origin/development:Assets/Art/PostProcessingProfiles/AppartmentProfile.asset.meta
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Art/3D models/Clutter/Dumpster.meta
+guid: 3300c18c32ac03547bf025666937083b
+folderAsset: yes
+timeCreated: 1528703909
+=======
+guid: 27a2fca1c5a58c54cbf042a436ad599f
+folderAsset: yes
+timeCreated: 1528369801
+>>>>>>> origin/development:Assets/Art/3D models/Interior/Kitchen.meta
+licenseType: Free
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
