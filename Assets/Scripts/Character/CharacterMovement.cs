@@ -86,13 +86,17 @@ public class CharacterMovement : MonoBehaviour
 	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
-	public CharacterAudioController characterAudio;
+	//public CharacterAudioController characterAudio;
     public float pushPower = 2.0f;
+
+    //audio
+    public AudioManagerMovement AMM;
 
 
     //characterscript spesific updates
 
     protected virtual void CharactertInitialize() { }
+    protected virtual void CharacterEnable() { }
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
     protected virtual void CharacterOutOfCombatUpdate() { }
@@ -102,11 +106,15 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         statistics = this.transform.root.GetComponentInChildren<Statistics>();
-        characterAudio = this.transform.root.GetComponent<CharacterAudioController>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         CharactertInitialize();
+    }
+
+    private void OnEnable()
+    {
+        CharacterEnable();
     }
 
     void Update()
@@ -152,15 +160,16 @@ public class CharacterMovement : MonoBehaviour
                 {
                     RotateToCamera();
                 }
+
+                if (moveDirection != Vector3.zero && !characterRooted && AMM != null)
+                {
+                    AMM.InvokeWalkingSoundsCoroutine();
+                }
             }
             else
                 characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
             if (!characterRooted)
             {
-                if (moveDirection != Vector3.zero && characterAudio != null)
-                {
-                    characterAudio.InvokeWalkingSoundsCoroutine();
-                }
                 AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
                 moveDirection *= movementMultiplier;
                 moveDirection.y -= physics.gravity * Time.deltaTime;
@@ -252,6 +261,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.jumpBool, jumping);
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
+        AMM.isCrouching = crouching;
     }
 
     public void RootAnimations()
@@ -265,6 +275,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.isBlocking, blocking);
         animator.SetBool(animations.isInCombat, combatState);
         animator.SetBool(animations.groundedBool, IsFalling());
+        AMM.isInCombat = CombatState;
     }
 
     private void SetControllable(bool active)
@@ -292,21 +303,17 @@ public class CharacterMovement : MonoBehaviour
     //select correct movement speed
     private float GetSpeed()
     {
-		if (Input.GetButton (Constants.RUN_BUTTON)) {
-			speed = movement.runSpeed;
-            if(characterAudio != null)
-            {
-			    characterAudio.isRunning = true;
-            }		
-        } else if (Input.GetButton (Constants.CROUCH_BUTTON))
-			speed = movement.crouchSpeed;
-		else {
-			speed = movement.walkSpeed;
-            if(characterAudio != null)
-            {
-			    characterAudio.isRunning = false;
-            }
-		}
+        if (Input.GetButton(Constants.RUN_BUTTON))
+        {
+
+            AMM.isRunning = true;
+            return speed = movement.runSpeed;
+        }
+        else if (Input.GetButton(Constants.CROUCH_BUTTON))
+            speed = movement.crouchSpeed;
+        else
+            speed = movement.walkSpeed;
+        AMM.isRunning = false;
         return speed;
     }
 
@@ -332,7 +339,10 @@ public class CharacterMovement : MonoBehaviour
         if (combatState)
             combatState = false;
         else
+        {
             combatState = true;
+            AMM.isInCombat = true;
+        }
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }
 
