@@ -30,6 +30,12 @@ public class VoiceSwitcher : MonoBehaviour
             StopCoroutine(coroutine);
         }
 
+        if (voiceName == "dialogueFinished")
+        {
+            StopCoroutine(coroutine);
+            return;
+        }
+
         AudioClip tempClip = null;
 
         foreach (var info in voices)
@@ -43,7 +49,7 @@ public class VoiceSwitcher : MonoBehaviour
 
         if (tempClip == null)
         {
-            Debug.LogErrorFormat("Can't find sprite named {0}!", voiceName);
+            Debug.LogErrorFormat("Can't find voice named {0}!", voiceName);
             return;
         }
 

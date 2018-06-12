@@ -3,11 +3,10 @@ tags:
 colorID: 0
 position: 497,104
 ---
-<<setsprite FaceImage malphas>>
-    Malphas: I can get you the answers you’re looking for, even if you don’t realise it yet. Or will you go on with your pathetic life and eventually drink yourself to death? 
-    <<startPressureTimer DialoguePhase7_CallToAdventure 4,2>>
-        [[Yeah, whatever.|Option1]]
-        [[Maybe I don't want answers? |Option2]]
+
+[[I’ll go with you.|Option1]]
+[[Maybe I don't want answers?|Option2]]
+
 ===
 
 title: Option1
@@ -15,10 +14,10 @@ tags:
 colorID: 0
 position: 315,367
 ---
-<<setsprite FaceImage devon>>
-    Devon: I’ve tried looking for answers. I’ve done everything I can. And nothing will bring her back.
+    Devon: I’ll go with you, I need to know who killed her.
     Malphas (in Devon’s thoughts): By the way, my name is Malphas. A pleasure to make my introductions. 
     Devon (thought): Great it even has a name.
+<<setVoice DialoguePhase3_Research dialogueFinished>>
 ===
 
 title: Option2
@@ -26,6 +25,9 @@ tags:
 colorID: 0
 position: 682,367
 ---
-<<setsprite FaceImage devon>>
+
+    Devon: Maybe I don't want answers? I’ve tried looking for answers. I’ve done everything I can. And nothing will bring her back.
     Malphas: If that is what you want. But remember, my offer still stands when you change your mind eventually.
+
+<<setVoice DialoguePhase3_Research dialogueFinished>>
 ===

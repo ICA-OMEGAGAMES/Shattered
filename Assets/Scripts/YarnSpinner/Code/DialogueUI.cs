@@ -233,6 +233,8 @@ namespace Yarn.Unity.Shattered
                 gameControlsContainer.gameObject.SetActive(true);
             }
 
+            Time.timeScale = 1.0f;
+
             yield break;
         }
 
