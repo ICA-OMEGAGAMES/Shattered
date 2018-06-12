@@ -13,7 +13,7 @@ public class SpawnpointScript : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.parent.GetComponent<Statistics>().Spawnpoint = this.gameObject;
+            other.transform.root.GetComponent<Statistics>().Spawnpoint = this.gameObject;
         }
     }
 }

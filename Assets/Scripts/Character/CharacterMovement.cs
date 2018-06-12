@@ -163,7 +163,7 @@ public class CharacterMovement : MonoBehaviour
                 AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
                 moveDirection *= movementMultiplier;
                 moveDirection.y -= physics.gravity * Time.deltaTime;
-                characterController.Move(moveDirection * Time.deltaTime);
+                characterController.Move(moveDirection * Time.deltaTime); 
             }
         }
         else
