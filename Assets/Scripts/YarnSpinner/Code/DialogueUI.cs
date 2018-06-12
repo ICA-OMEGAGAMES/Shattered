@@ -97,10 +97,9 @@ namespace Yarn.Unity.Shattered
             //Timer setzen optional
 
             // Wait for any user input
-            while (Input.anyKeyDown == false)
+            while (SkillTreeMenu.skillTreeMenuIsActive || Input.anyKeyDown == false)
             {
                 // Time.timeSinceLevelLoad
-                //überprüfen ob timer > 0 ist, dann null, sonst aus while
                 yield return null;
             }
 
@@ -116,7 +115,7 @@ namespace Yarn.Unity.Shattered
         public override IEnumerator RunOptions(Yarn.Options optionsCollection,
                                                 Yarn.OptionChooser optionChooser)
         {
-            Debug.Log("RunOption");
+            // Debug.Log("RunOption");
             // Do a little bit of safety checking
             if (optionsCollection.options.Count > optionButtons.Count)
             {
@@ -196,7 +195,7 @@ namespace Yarn.Unity.Shattered
         public override IEnumerator RunCommand(Yarn.Command command)
         {
             // "Perform" the command
-            Debug.Log("Command: " + command.text);
+            // Debug.Log("Command: " + command.text);
 
             yield break;
         }
@@ -204,7 +203,7 @@ namespace Yarn.Unity.Shattered
         /// Called when the dialogue system has started running.
         public override IEnumerator DialogueStarted()
         {
-            Debug.Log("Dialogue starting!");
+            // Debug.Log("Dialogue starting!");
 
             // Enable the dialogue controls.
             if (dialogueContainer != null)
@@ -222,7 +221,7 @@ namespace Yarn.Unity.Shattered
         /// Called when the dialogue system has finished running.
         public override IEnumerator DialogueComplete()
         {
-            Debug.Log("Complete!");
+            // Debug.Log("Complete!");
 
             // Hide the dialogue interface.
             if (dialogueContainer != null)

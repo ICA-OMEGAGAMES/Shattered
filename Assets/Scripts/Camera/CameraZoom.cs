@@ -12,7 +12,6 @@ public class CameraZoom : MonoBehaviour {
 
 	private Camera mainCamera;
 
-
 	void Start(){
 		mainCamera = Camera.main;
 	}
