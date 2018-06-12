@@ -26,7 +26,6 @@ public class SceneTransition : MonoBehaviour {
         {
             //increment by 1 to load the next scene.
 			Time.timeScale = 0f;
-			backgroundVideo.StartVideo();
 			StartCoroutine(LoadingScreen());
 		}
     }
@@ -34,6 +33,7 @@ public class SceneTransition : MonoBehaviour {
 
 	IEnumerator LoadingScreen(){
 		loadingScreenObj.SetActive (true);
+		backgroundVideo.StartVideo();
 		async = SceneManager.LoadSceneAsync (currentScene +1);
 		async.allowSceneActivation = false;
 
