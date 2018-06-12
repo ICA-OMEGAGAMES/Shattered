@@ -166,7 +166,7 @@ public class DevonScript : CharacterMovement
 
     protected override void CharacterEnable()
     {
-        audioManager.movement.isMalphas = false;
+        AMM.isMalphas = false;
         if (animator != null)
             WakeAnimator(animator, animations);
     }
@@ -205,7 +205,6 @@ public class DevonScript : CharacterMovement
             {
                 lastAttack = Constants.WEAPON_ATTACK;
             }
-            AttackSound();
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -218,7 +217,6 @@ public class DevonScript : CharacterMovement
             {
                 lastAttack = Constants.WEAPON_ATTACK;
             }
-            AttackSound();
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -261,25 +259,6 @@ public class DevonScript : CharacterMovement
             curCombatSet = weapon.WeaponType;
         combatSet = SetCombatSet(animator, animations, weapon);
         markerManager.SetMarkers();
-    }
-
-    private void AttackSound()
-    {
-        switch (curCombatSet)
-        {
-            case FSMState.Unarmed:
-                audioManager.combat.InvokePlaySwingSoundKnife();
-                break;
-            case FSMState.LightMeleeWeapon:
-                audioManager.combat.InvokePlaySwingSoundKnife();
-                break;
-            case FSMState.HeavyMeleeWeapon:
-                audioManager.combat.InvokePlaySwingSoundBaseballbat();
-                break;
-            default:
-                audioManager.combat.InvokePlaySwingSoundKnife();
-                break;
-        }
     }
 
     public void EnableMarkers()

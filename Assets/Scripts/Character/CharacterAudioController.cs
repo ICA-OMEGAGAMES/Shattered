@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAudioController : MonoBehaviour {
+public class CharacterAudioFacade : MonoBehaviour {
 
 	public List<AudioClip> walkingSounds;
 	public bool isRunning = false;

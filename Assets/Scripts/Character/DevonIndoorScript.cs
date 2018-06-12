@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(InventoryController))]
 [RequireComponent(typeof(Yarn.Unity.Shattered.DialoguePlayer))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CharacterAudioController))]
+[RequireComponent(typeof(CharacterAudioFacade))]
 public class DevonIndoorScript : MonoBehaviour
 {
 
@@ -50,12 +50,12 @@ public class DevonIndoorScript : MonoBehaviour
     public CharacterController characterController;
     private Vector3 moveDirection;
     private Statistics statistics;
-    public CharacterAudioController characterAudio;
+    public CharacterAudioFacade characterAudio;
 
     void Start()
     {
         statistics = this.transform.root.GetComponentInChildren<Statistics>();
-        characterAudio = this.transform.root.GetComponent<CharacterAudioController>();
+        characterAudio = this.transform.root.GetComponent<CharacterAudioFacade>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
