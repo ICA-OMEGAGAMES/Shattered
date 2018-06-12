@@ -27,7 +27,7 @@ MonoBehaviour:
     blockPercentage: 0.5
     attackIdleRange: 8
     unarmedAttackRange: 5
-    unarmedAttackDamage: 5
+    unarmedAttackDamage: 50
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
     cooldown: 2

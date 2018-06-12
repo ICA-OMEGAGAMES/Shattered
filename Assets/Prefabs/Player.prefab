@@ -28073,6 +28073,7 @@ MonoBehaviour:
   devon: {fileID: 1422631695219924}
   malphas: {fileID: 1294593828064316}
   transformation: {fileID: 1701571693823480}
+  audio: {fileID: 114789776129757724}
   currentForm: 0
 --- !u!114 &114021174225538490
 MonoBehaviour:
@@ -28182,6 +28183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
+  barierAudio: {fileID: 114668793505775452}
   health: 0
   hitStunDuration: 0.5
   shield: {fileID: 1854638647503496}
@@ -28379,7 +28381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SFXlist:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 15b0753fdd234fd4487e1a5813e6b3ff, type: 3}
   - {fileID: 8300000, guid: b9cd30d1aa4672547acee1a7d4706aff, type: 3}
   - {fileID: 8300000, guid: 9e33209b267e2e6429aae16abf55dad2, type: 3}
   - {fileID: 8300000, guid: e5a4147a4fd80ff4c89e7a36074268d3, type: 3}
@@ -28559,12 +28561,16 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
+  audioManager:
+    movement: {fileID: 114767717754914242}
+    combat: {fileID: 114753893062066372}
+    sfx: {fileID: 114911440420142108}
+    skills: {fileID: 114789776129757724}
   combatState: 0
   characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   pushPower: 2
-  AMM: {fileID: 114767717754914242}
   skillAnimations:
     demonicWave: SkillWave
     psychicScream: SkillScream
@@ -28652,12 +28658,16 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
+  audioManager:
+    movement: {fileID: 114767717754914242}
+    combat: {fileID: 114753893062066372}
+    sfx: {fileID: 114911440420142108}
+    skills: {fileID: 114789776129757724}
   combatState: 0
   characterControllable: 1
   animator: {fileID: 0}
   characterController: {fileID: 0}
   pushPower: 2
-  AMM: {fileID: 114767717754914242}
   unarmedCombatSettings:
     attack1Damage: 10
     attack1Duration: 0.5

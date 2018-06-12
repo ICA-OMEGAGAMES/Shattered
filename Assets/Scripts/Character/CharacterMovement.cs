@@ -65,6 +65,20 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     public DeathSettings death;
 
+    [System.Serializable]
+    public class AudioManagementSettings
+    {
+        //audio
+        public AudioManagerMovement movement;
+        public AudioManagerCombat combat;
+        public AudioManagerSFX sfx;
+        public AudioManagerSkills skills;
+    }
+    [SerializeField]
+    public AudioManagementSettings audioManager;
+
+
+
     //protected variables
     protected bool characterRooted = true;
     protected float characterActionTimeStamp = 0;
@@ -88,10 +102,6 @@ public class CharacterMovement : MonoBehaviour
     private Statistics statistics;
 	//public CharacterAudioController characterAudio;
     public float pushPower = 2.0f;
-
-    //audio
-    public AudioManagerMovement AMM;
-
 
     //characterscript spesific updates
 
@@ -161,9 +171,9 @@ public class CharacterMovement : MonoBehaviour
                     RotateToCamera();
                 }
 
-                if (moveDirection != Vector3.zero && !characterRooted && AMM != null)
+                if (moveDirection != Vector3.zero && !characterRooted && audioManager.movement != null)
                 {
-                    AMM.InvokeWalkingSoundsCoroutine();
+                    audioManager.movement.InvokeWalkingSoundsCoroutine();
                 }
             }
             else
@@ -261,7 +271,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.jumpBool, jumping);
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
-        AMM.isCrouching = crouching;
+        audioManager.movement.isCrouching = crouching;
     }
 
     public void RootAnimations()
@@ -275,7 +285,7 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.isBlocking, blocking);
         animator.SetBool(animations.isInCombat, combatState);
         animator.SetBool(animations.groundedBool, IsFalling());
-        AMM.isInCombat = CombatState;
+        audioManager.movement.isInCombat = CombatState;
     }
 
     private void SetControllable(bool active)
@@ -306,15 +316,17 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetButton(Constants.RUN_BUTTON))
         {
 
-            AMM.isRunning = true;
+            audioManager.movement.isRunning = true;
             return speed = movement.runSpeed;
         }
         else if (Input.GetButton(Constants.CROUCH_BUTTON))
-            speed = movement.crouchSpeed;
+        {
+            audioManager.movement.isRunning = false;
+            return speed = movement.crouchSpeed;
+        }
         else
-            speed = movement.walkSpeed;
-        AMM.isRunning = false;
-        return speed;
+            audioManager.movement.isRunning = false;
+       return speed = movement.walkSpeed;
     }
 
     private void Jump()
@@ -341,13 +353,14 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             combatState = true;
-            AMM.isInCombat = true;
+            audioManager.movement.isInCombat = true;
         }
         characterToggleCombatTimeStamp = Time.time + movement.toggleCombatCooldown;
     }
 
     private void Die()
     {
+        audioManager.combat.InvokePlayDeathSoundDevon();
         //disable input
         characterControllable = false;
         //start animation death scene
@@ -381,7 +394,7 @@ public class CharacterMovement : MonoBehaviour
     public IEnumerator StunCharacter(float duration)
     {
         characterControllable = false;
-
+        audioManager.combat.InvokePlayHitSoundDevon();
         //start animation stun
         animator.SetTrigger(animations.hit);
         //force stun animation state

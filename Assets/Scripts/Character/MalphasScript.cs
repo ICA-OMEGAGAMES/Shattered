@@ -76,7 +76,7 @@ public class MalphasScript : CharacterMovement
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barrierSettings, stats, this));
-        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, audioManager.skills, this));
         skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
         skills.Add(new Possess(skillSettings.possessSettings, this));
 
@@ -84,7 +84,7 @@ public class MalphasScript : CharacterMovement
 
     protected override void CharacterEnable()
     {
-        AMM.isMalphas = true;
+        audioManager.movement.isMalphas = true;
     }
 
     protected override void CharacterOutOfCombatUpdate()
@@ -132,6 +132,7 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack1
             attack = Attack1(animator);
+            audioManager.combat.InvokePlayHitSoundMalphas();
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
 
@@ -140,6 +141,7 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack2
             attack = Attack2(animator);
+            audioManager.combat.InvokePlayHitSoundMalphas();
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }
@@ -177,7 +179,7 @@ public class MalphasScript : CharacterMovement
                 {
                     blinkTargetPosition = hit.point;
                 }
-                
+                audioManager.skills.InvokePlaySoundBlink();
                 dodging = true;
                 blinkTimeStamp = Time.time + blinkSettings.blinkCooldown;
             }
@@ -225,7 +227,7 @@ public class MalphasScript : CharacterMovement
                 skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
                 break;
             case "DemonicWave":
-                skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+                skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, audioManager.skills, this));
                 break;
             case "Possess":
                 skills.Add(new Possess(skillSettings.possessSettings, this));
@@ -250,4 +252,6 @@ public class MalphasScript : CharacterMovement
     {
         return lastAttack;
     }
+
+  
 }

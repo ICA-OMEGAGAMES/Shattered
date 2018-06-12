@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 402684cbadd92a449ad6b48623430e0c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cf2eb595b435a74479b2c1d41b7297f8, type: 2}
 --- !u!1 &75369324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,6 +1940,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114675633303457502, guid: 5fd2963e7055dca4ea013cead80a6786,
+        type: 2}
+      propertyPath: aiStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f9eb5c8433277c4f9d0b5e06cdcc312,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fd2963e7055dca4ea013cead80a6786, type: 2}
   m_IsPrefabParent: 0
@@ -4592,6 +4598,11 @@ Prefab:
     - target: {fileID: 1699699930700796, guid: d704fe904ce8f7340a9967243569483a, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114895258690907110, guid: d704fe904ce8f7340a9967243569483a,
+        type: 2}
+      propertyPath: movement.jumpTime
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d704fe904ce8f7340a9967243569483a, type: 2}

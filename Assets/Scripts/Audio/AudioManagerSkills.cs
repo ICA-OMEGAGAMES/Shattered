@@ -19,49 +19,52 @@ public class AudioManagerSkills : MonoBehaviour
 
     }
 
+    public void InvokePlaySoundTransform()
+    {
+        StartCoroutine(PlaySoundTransform());
+    }
+
+    //skills
     public void InvokePlaySoundAOESpike()
     {
         StartCoroutine(PlaySoundAOESpike());
     }
 
-public void InvokePlaySoundBlink()
+    public void InvokePlaySoundBlink()
     {
-    StartCoroutine(PlaySoundBlink());
-}
+        StartCoroutine(PlaySoundBlink());
+    }
 
-public void InvokePlaySoundPossession()
+    public void InvokePlaySoundPossession()
     {
-    StartCoroutine(PlaySoundPossession());
-}
+        StartCoroutine(PlaySoundPossession());
+    }
 
-public void InvokePlaySoundTransform()
+    public void InvokePlaySoundScream()
     {
-    StartCoroutine(PlaySoundTransform());
-}
+        StartCoroutine(PlaySoundScream());
+    }
 
-public void InvokePlaySoundScream()
+    //teleport
+    public void InvokePlaySoundTeleportStart()
     {
-    StartCoroutine(PlaySoundScream());
-}
-public void InvokePlaySoundTeleportStart()
+        StartCoroutine(PlaySoundTeleportStart());
+    }
+
+    public void InvokePlaySoundTeleportEnd()
     {
-    StartCoroutine(PlaySoundTeleportStart());
-}
-public void InvokePlaySoundTeleportEnd()
-    {
-    StartCoroutine(PlaySoundTeleportEnd());
-}
+        StartCoroutine(PlaySoundTeleportEnd());
+    }
+    //barrier
     public void InvokePlaySoundBarrierStart()
     {
         StartCoroutine(PlaySoundTeleportEnd());
     }
+
     public void InvokePlaySoundBarrierEnd()
     {
         StartCoroutine(PlaySoundTeleportEnd());
     }
-
-
-
 
 
     public IEnumerator PlaySoundAOESpike()
@@ -152,10 +155,8 @@ public void InvokePlaySoundTeleportEnd()
     }
     public IEnumerator PlaySoundBarrierStart()
     {
-
         if (!isPlaying)
         {
-
             isPlaying = true;
             audioSource.clip = SFXlist[1];
             audioSource.Play();
@@ -168,7 +169,6 @@ public void InvokePlaySoundTeleportEnd()
     }
     public IEnumerator PlaySoundBarrierEnd()
     {
-
         if (!isPlaying)
         {
             audioSource.Stop();

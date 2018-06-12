@@ -106,7 +106,7 @@ public class AudioManagerCombat : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            int randomIndex = Random.Range(3, 7);
+            int randomIndex = Random.Range(3, 5);
             audioSource.clip = Death[randomIndex];
             audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
@@ -121,7 +121,7 @@ public class AudioManagerCombat : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            int randomIndex = Random.Range(0, 4);
+            int randomIndex = Random.Range(0, 3);
             audioSource.clip = Swing[randomIndex];
             audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
@@ -135,7 +135,7 @@ public class AudioManagerCombat : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            int randomIndex = Random.Range(4, 7);
+            int randomIndex = Random.Range(3, 5);
             audioSource.clip = Swing[randomIndex];
             audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
@@ -148,7 +148,7 @@ public class AudioManagerCombat : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            int randomIndex = Random.Range(0, 8);
+            int randomIndex = Random.Range(0, 7);
             audioSource.clip = Hit[randomIndex];
             audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
@@ -162,7 +162,7 @@ public class AudioManagerCombat : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            int randomIndex = Random.Range(8, 14);
+            int randomIndex = Random.Range(7, 12);
             audioSource.clip = Hit[randomIndex];
             audioSource.Play();
             yield return new WaitForSeconds(audioSource.clip.length);
