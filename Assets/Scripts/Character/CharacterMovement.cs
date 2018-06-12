@@ -91,6 +91,7 @@ public class CharacterMovement : MonoBehaviour
 
 
     //characterscript spesific updates
+
     protected virtual void CharactertInitialize() { }
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
@@ -132,9 +133,6 @@ public class CharacterMovement : MonoBehaviour
 
                 //Apply movementDirections
                 moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-				if (moveDirection != Vector3.zero && characterAudio != null) {
-					characterAudio.InvokeWalkingSoundsCoroutine ();
-				}
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= GetSpeed();
 
@@ -157,18 +155,24 @@ public class CharacterMovement : MonoBehaviour
             }
             else
                 characterController.Move(transform.TransformDirection(new Vector3(0,0,0.01f)));
-            if (characterRooted == false)
+            if (!characterRooted)
             {
+                if (moveDirection != Vector3.zero && characterAudio != null)
+                {
+                    characterAudio.InvokeWalkingSoundsCoroutine();
+                }
                 AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * GetSpeed(), Input.GetAxis(Constants.HORIZONTAL_AXIS) * GetSpeed());
                 moveDirection *= movementMultiplier;
                 moveDirection.y -= physics.gravity * Time.deltaTime;
                 characterController.Move(moveDirection * Time.deltaTime);
             }
+            else
+                RootAnimations();
         }
         else
             SetControllable(false);
 
-        Animate(); 
+        Animate();  
     }
 
     private void FixedUpdate()
@@ -248,6 +252,12 @@ public class CharacterMovement : MonoBehaviour
         animator.SetBool(animations.jumpBool, jumping);
         animator.SetBool(animations.crouchBool, crouching);
         animator.SetBool(animations.dodgeBool, dodging);
+    }
+
+    public void RootAnimations()
+    {
+        animator.SetFloat(animations.verticalVelocityFloat, 0);
+        animator.SetFloat(animations.horizontalVelocityFloat, 0);
     }
 
     public void Animate()
@@ -361,19 +371,26 @@ public class CharacterMovement : MonoBehaviour
     public IEnumerator StunCharacter(float duration)
     {
         characterControllable = false;
-        print("i'ma hit");
-        //animation force state stunn
 
-        //start animation death scene
+        //start animation stun
         animator.SetTrigger(animations.hit);
-        //force stun animation
+        //force stun animation state
         animator.Play(Constants.ANIMATIONSTATE_HIT);
 
         yield return new WaitForSeconds(duration);
         characterControllable = true;
     }
 
-	void OnControllerColliderHit(ControllerColliderHit hit){
+    public IEnumerator RootCharacter(float duration)
+    {
+        characterRooted = true;
+        characterActionTimeStamp = Time.time + duration;
+
+        yield return new WaitForSeconds(duration);
+        characterRooted = false;
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody body = hit.collider.attachedRigidbody;
 
 		if (body == null || body.isKinematic)

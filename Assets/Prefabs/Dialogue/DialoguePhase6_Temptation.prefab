@@ -1,0 +1,326 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1594458266094566}
+  m_IsPrefabParent: 1
+--- !u!1 &1594458266094566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4294409615273992}
+  - component: {fileID: 82559684985329038}
+  - component: {fileID: 114336471674125182}
+  - component: {fileID: 114143686840910918}
+  - component: {fileID: 114919243534983218}
+  m_Layer: 0
+  m_Name: DialoguePhase6_Temptation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1855878016369194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4341003300123008}
+  - component: {fileID: 23161515304615266}
+  - component: {fileID: 65110507658903956}
+  - component: {fileID: 114331863377072596}
+  m_Layer: 0
+  m_Name: DialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4294409615273992
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594458266094566}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.83, y: 1.2187445, z: 3.4959233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4341003300123008}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4341003300123008
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855878016369194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.6, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4294409615273992}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23161515304615266
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855878016369194}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 16d6e45ea87ac8947b26b71285163f95, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &65110507658903956
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855878016369194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 4, z: 5}
+  m_Center: {x: 0, y: 1.3, z: 8}
+--- !u!82 &82559684985329038
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594458266094566}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &114143686840910918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594458266094566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23fcabd3ef870f42959ec225bce9537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkingName: {fileID: 0}
+  displayingNames:
+  - name: 
+    showingName: 
+  - name: devonThought
+    showingName: Devon (thought)
+  - name: devon
+    showingName: Devon
+  - name: malphasThought
+    showingName: "Malphas (in Devon\u2019s thoughts)"
+  - name: malphas
+    showingName: Malphas
+--- !u!114 &114331863377072596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855878016369194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c044c2c4f59d05479e938b0845a02d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yarnFileName: Phase6_Temptation
+  scriptToLoad: {fileID: 0}
+--- !u!114 &114336471674125182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594458266094566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405d0571dea301f409f40817801b1d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voices:
+  - name: devon01
+    voice: {fileID: 8300000, guid: a89b631c436bc3a4d82fef8516337118, type: 3}
+  - name: devon02
+    voice: {fileID: 8300000, guid: 113d04878a7e35d46abab726d24586fa, type: 3}
+  - name: devon03
+    voice: {fileID: 8300000, guid: ff59aeaa3cad67a40812605df6777bc9, type: 3}
+  - name: devon04
+    voice: {fileID: 8300000, guid: f26e2a221be6d354c9ca1c37cd84359d, type: 3}
+  - name: devon05
+    voice: {fileID: 8300000, guid: f3c245553d27e264d97fa3c716cee012, type: 3}
+  - name: devon06
+    voice: {fileID: 8300000, guid: cc95bf2fc94ef184c8ce16774a1464ea, type: 3}
+  - name: devon07
+    voice: {fileID: 8300000, guid: 7a89445780e0957439df38739f6f7c1b, type: 3}
+  - name: devon08
+    voice: {fileID: 8300000, guid: 08f0bc01c5131aa43bac045db29dafbe, type: 3}
+  - name: devon09
+    voice: {fileID: 8300000, guid: 3ee93f7db2625104aa4ce02029ac16f7, type: 3}
+  - name: devon10
+    voice: {fileID: 8300000, guid: 39d3c24dd804b8d4294ad7b649e378f2, type: 3}
+  - name: malphas01
+    voice: {fileID: 8300000, guid: a0fef3e542eddae45a231d584cd51529, type: 3}
+  - name: malphas02
+    voice: {fileID: 8300000, guid: 60aad6b01827af447af52c8072a393c3, type: 3}
+  - name: malphas03
+    voice: {fileID: 8300000, guid: 410af271fb175b849bed59a85c5ea66d, type: 3}
+  - name: malphas04
+    voice: {fileID: 8300000, guid: 6ffb1f296cbf42547b88471bd8e928bd, type: 3}
+  - name: malphas05
+    voice: {fileID: 8300000, guid: 683a8f03f383b684aa475470fb3cb4fa, type: 3}
+  - name: malphas06
+    voice: {fileID: 8300000, guid: cf3cd51ecdd01464aafb1a9d66af04aa, type: 3}
+  - name: malphas07
+    voice: {fileID: 8300000, guid: 3c6206c91a921bb4fbaa0701c5010708, type: 3}
+  - name: malphas08
+    voice: {fileID: 8300000, guid: 40e821b93ecd90a4fab3b83c1011bb9a, type: 3}
+  - name: malphas09
+    voice: {fileID: 8300000, guid: a000ae934fa88724b99520290518cd19, type: 3}
+  - name: malphas10
+    voice: {fileID: 8300000, guid: 98781ae80c3eae84aa199d5083eab237, type: 3}
+  - name: malphas11
+    voice: {fileID: 8300000, guid: 86d65da42e60ae247a97583b52036651, type: 3}
+  - name: malphas12
+    voice: {fileID: 8300000, guid: ca7b8bad9e6c6714a98654b39b7dad99, type: 3}
+  - name: malphas13
+    voice: {fileID: 8300000, guid: 337e3af02c69d124bbb3bd1328f1e5d1, type: 3}
+  - name: malphas14
+    voice: {fileID: 8300000, guid: d6e0c14024c97df4dab6bdf1f4157cb1, type: 3}
+  - name: malphas15
+    voice: {fileID: 8300000, guid: 49ccee414a70e814fabd2a983c7729fb, type: 3}
+  - name: malphas16
+    voice: {fileID: 8300000, guid: f7ff895d5982a0545bfd994a3dab3499, type: 3}
+  - name: malphas17
+    voice: {fileID: 8300000, guid: 099e6b888ddfbf24e9d46dda7938cae1, type: 3}
+  - name: devon11
+    voice: {fileID: 8300000, guid: ef9ecb6d49bb5604885121eed0abc658, type: 3}
+  - name: devon12
+    voice: {fileID: 8300000, guid: 25532617da0c22344a80bf383cf067a6, type: 3}
+  - name: devon13
+    voice: {fileID: 8300000, guid: e14e14c05f040dc4c8e26000b4bd58ec, type: 3}
+  - name: devon14
+    voice: {fileID: 8300000, guid: 0d0e50c8705cc8842be283c6761d7d39, type: 3}
+  - name: devon15
+    voice: {fileID: 8300000, guid: 8db38746ad9bf4342acd96ebaf830e68, type: 3}
+--- !u!114 &114919243534983218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594458266094566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e3db1fdd494f04e94d60c59086f67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

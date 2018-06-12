@@ -52,15 +52,35 @@ public class DevonScript : CharacterMovement
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
             case FSMState.LightMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 1);
-                return new LightMeleeCombat(animator, animations, weapon);
+                return new ArmedCombatSet(animator, animations, weapon);
             case FSMState.HeavyMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 2);
-                return new HeavyMeleeCombat(animator, animations, weapon);
+                return new ArmedCombatSet(animator, animations, weapon);
             default:
                 animator.SetInteger(animations.weaponSet, 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
         }
     }
+
+    private void WakeAnimator(Animator animator, AnimationSettings animations)
+    {
+        switch (curCombatSet)
+        {
+            case FSMState.Unarmed:
+                animator.SetInteger(animations.weaponSet, 0);
+                break;
+            case FSMState.LightMeleeWeapon:
+                animator.SetInteger(animations.weaponSet, 1);
+                break;
+            case FSMState.HeavyMeleeWeapon:
+                animator.SetInteger(animations.weaponSet, 2);
+                break;
+            default:
+                animator.SetInteger(animations.weaponSet, 0);
+                break;
+        }
+    }
+
 
     //interface for the different combat sets
     public interface ICombatSet
@@ -102,14 +122,14 @@ public class DevonScript : CharacterMovement
         }
     }
     /// <summary>
-    /// LightMelee combat set
+    /// Armed combat set
     /// </summary>
-    public class LightMeleeCombat : ICombatSet
+    public class ArmedCombatSet : ICombatSet
     {
         private AnimationSettings animations;
         private Weapon weapon;
 
-        public LightMeleeCombat(Animator animator, AnimationSettings animations, Weapon weapon)
+        public ArmedCombatSet(Animator animator, AnimationSettings animations, Weapon weapon)
         {
             this.animations = animations;
             this.weapon = weapon;
@@ -131,40 +151,10 @@ public class DevonScript : CharacterMovement
             return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
         }
     }
-    /// <summary>
-    /// HeavyMelee combat set
-    /// </summary>
-    public class HeavyMeleeCombat : ICombatSet
-    {
-        private AnimationSettings animations;
-        private Weapon weapon;
 
-        public HeavyMeleeCombat(Animator animator, AnimationSettings animations, Weapon weapon)
-        {
-            this.animations = animations;
-            this.weapon = weapon;
-        }
-
-        public CharacterAttack Attack1(Animator AM)
-        {
-            //proc the animation
-            AM.SetTrigger(animations.attack1);
-            //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(weapon.Attack1Damage, weapon.Attack1Duration, weapon.Attack1Rootable);
-        }
-
-        public CharacterAttack Attack2(Animator AM)
-        {
-            //proc the animation
-            AM.SetTrigger(animations.attack2);
-            //set the cooldown and if the character is rooted durring this skill
-            return new CharacterAttack(weapon.Attack2Damage, weapon.Attack2Duration, weapon.Attack2Rootable);
-        }
-    }
     //add other combat sets here
-
-    CharacterAttack attack;
-    MarkerManagerPlayer markerManager;
+    private CharacterAttack attack;
+    private MarkerManagerPlayer markerManager;
     private float dodgeTimestamp;
 
     protected override void CharactertInitialize()
@@ -172,6 +162,12 @@ public class DevonScript : CharacterMovement
         combatSet = SetCombatSet(animator, animations, null);
         markerManager = this.transform.parent.GetComponent<MarkerManagerPlayer>();
         markerManager.SetMarkers();
+    }
+
+    void OnEnable()
+    {
+        if(animator != null)
+            WakeAnimator(animator, animations);
     }
 
     protected override void CharacterOutOfCombatUpdate()

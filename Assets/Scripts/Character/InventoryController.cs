@@ -9,7 +9,7 @@ public class InventoryController : MonoBehaviour {
 
 	private List<Item> inventory = new List<Item> ();
 
-	void OnTriggerStay (Collider other)
+    void OnTriggerStay (Collider other)
 	{	
 		if (other.gameObject.CompareTag (Constants.ITEM_TAG)) {
 			var item = other.GetComponent<Item> ();

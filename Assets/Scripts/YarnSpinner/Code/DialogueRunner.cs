@@ -234,6 +234,7 @@ namespace Yarn.Unity.Shattered
 
         IEnumerator RunDialogue(string startNode = "Start")
         {
+            Time.timeScale = 0.0f;
             // Mark that we're in conversation.
             isDialogueRunning = true;
             isRunning = true;

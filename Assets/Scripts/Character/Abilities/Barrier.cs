@@ -10,7 +10,7 @@ public class Barrier : ISkill
 
     private float cooldownTimestamp;
 
-    public Barrier(SkillSettings settings, Statistics statistics, MonoBehaviour mono)
+    public Barrier(SkillSettings settings, Statistics statistics, MalphasScript mono)
     {
         this.settings = settings;
         this.statistics = statistics;
@@ -23,6 +23,8 @@ public class Barrier : ISkill
         {
             cooldownTimestamp = Time.time + settings.cooldown;
             mono.StartCoroutine(ActivateShield());
+
+            mono.StartCoroutine(mono.GetComponent<MalphasScript>().RootCharacter(settings.rootDuration));
         }
     }
     

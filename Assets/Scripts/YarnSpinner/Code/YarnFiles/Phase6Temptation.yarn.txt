@@ -3,40 +3,132 @@ tags:
 colorID: 0
 position: 540,244
 ---
-    //Devon wakes up after the fight. 
 
-<<setsprite FaceImage devon>>
-    Devon (thought): Groans, my head hurts.
-    //Devon sees the bodies from the gang members lying around.
-    Devon (thought): What...what happened here?
-    Devon (thought): Where am I?
-    Devon (thought): I thought that it was finally over… 
-    //(Does he want to kill himself? Is he that depressed?)
-    //He hears a voice inside his head.
-<<setsprite FaceImage malphas>>
-    Malphas (in Devon’s thoughts): Well, you’re welcome.
-<<setsprite FaceImage devon>>
-    Devon (thought): What the hell...I’m starting to hear things.
-<<setsprite FaceImage malphas>>
-    Malphas (in Devon’s thoughts): Is that all I get for saving your life?
-<<setsprite FaceImage devon>>
-    Devon (thought): Who the hell are you? Why are you in my head?
-<<setsprite FaceImage malphas>>
-    Malphas (in Devon’s thoughts): I’m Malphas, I’m here to help you.
-<<setsprite FaceImage devon>>
-    Devon (thought): Great it even has a name. I must be going crazy.
-    Devon (thought): Probably still drunk, it’ll go away soon.
-    //Malphas appears in front of Devon.
-    Devon: Oh now I’m seeing things, no fucking way you’re real, you’re not real.
-<<setsprite FaceImage malphas>>
-    Malphas: Oh I’m real, and like I said before, I’m here to help you.
-<<setsprite FaceImage devon>>
-    Devon: Help with what?
-<<setsprite FaceImage malphas>>
-    Malphas: Getting answers. 
-<<setsprite FaceImage devon>>
-    Devon: Why would I want that?
-<<setsprite FaceImage malphas>>
-    Malphas: You want answers about Joy but you cant even beat some random gang members.
-    Malphas: How do you expect to get answers without my help… Without me you would be dead right now. 
+<<setName DialoguePhase6_Temptation devonThought>>
+<<setVoice DialoguePhase6_Temptation devon01>>
+    Groans, my head hurts.
+
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon02>>
+    What just happened?
+
+<<setName DialoguePhase6_Temptation malphasThought>>
+<<setVoice DialoguePhase6_Temptation malphas01>>
+    Well, well, well, well, well. What do we have here.
+<<setVoice DialoguePhase6_Temptation malphas02>>
+    By the way, you’re welcome.
+    
+<<setName DialoguePhase6_Temptation devonThought>>
+<<setVoice DialoguePhase6_Temptation devon03>>
+    What the hell...
+    
+<<setName DialoguePhase6_Temptation malphasThought>>
+<<setVoice DialoguePhase6_Temptation malphas03>>
+    Aren't you a pathetic excuse for a man.
+<<setVoice DialoguePhase6_Temptation malphas04>>
+    Do you really think this is what SHE wanted?
+
+<<setName DialoguePhase6_Temptation devonThought>>
+<<setVoice DialoguePhase6_Temptation devon04>>
+    Who the hell are you?
+<<setVoice DialoguePhase6_Temptation devon05>>
+    What do you know about Joy?
+    
+<<setName DialoguePhase6_Temptation malphasThought>>
+<<setVoice DialoguePhase6_Temptation malphas05>>
+    Would she be proud of you? Would she even give you a second look? Would she even care anymore? 
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas06>>
+    Do you even remember what she looks like?
+    
+<<setName DialoguePhase6_Temptation devonThought>>
+<<setVoice DialoguePhase6_Temptation devon06>>
+    FUCK YOU! 
+<<setVoice DialoguePhase6_Temptation devon07>>
+    You’re not even real!
+    
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas07>>
+    Either you’re seeing things or I’m real. 
+    
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon08>>
+    What do you want?!
+
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas08>>
+    I might be able to give you a solution to the situation regarding her.
+    
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon09>>
+    What do you mean?
+    
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas09>>
+    Do you really believe she got killed for no reason? 
+<<setVoice DialoguePhase6_Temptation malphas10>>
+    Just a random gang related incident?
+<<setVoice DialoguePhase6_Temptation malphas11>>
+    Even you have to know there has to be more to it. 
+    
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon10>>
+    Who are you anyway?
+ 
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas12>>
+    I am someone who can give you a means to getting you the answers.
+<<setVoice DialoguePhase6_Temptation malphas13>>
+    Or you can go back to your miserable life and drink yourself to a state where your organs will fail one by one, till death. 
+<<setVoice DialoguePhase6_Temptation malphas14>>
+    That surely is the best way to honour her, isn’t it?
+<<setVoice DialoguePhase6_Temptation malphas15>>
+    So, do you want my help or not?
+
+<<startPressureTimer DialoguePhase6_Temptation 3,2>>
+[[I’ll go with you.|Option1]]
+[[Maybe I don't want answers?|Option2]]
+
+<<setVoice DialoguePhase6_Temptation dialogueFinished>>
+===
+
+title: Option1
+tags: 
+colorID: 0
+position: 315,367
+---
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon11>>
+    I’ll go with you.
+<<setVoice DialoguePhase6_Temptation devon14>>
+    I need to know who killed her.
+
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas16>>
+    By the way, my name is Malphas. A pleasure to make my introductions.
+
+<<setName DialoguePhase6_Temptation devonThought>>
+<<setVoice DialoguePhase6_Temptation devon12>>
+    Great it even has a name.
+
+<<setVoice DialoguePhase6_Temptation dialogueFinished>>
+===
+
+title: Option2
+tags: 
+colorID: 0
+position: 682,367
+---
+<<setName DialoguePhase6_Temptation devon>>
+<<setVoice DialoguePhase6_Temptation devon13>>
+    Maybe I don't want answers? 
+    
+<<setVoice DialoguePhase6_Temptation devon15>>
+    I’ve tried looking for answers. I’ve done everything I can. And nothing will bring her back.
+
+<<setName DialoguePhase6_Temptation malphas>>
+<<setVoice DialoguePhase6_Temptation malphas17>>
+    If that is what you want. But remember, my offer still stands when you change your mind eventually.
+
+<<setVoice DialoguePhase6_Temptation dialogueFinished>>
 ===
