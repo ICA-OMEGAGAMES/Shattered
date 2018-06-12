@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 15c721457770a0241b23a821a856b399
-timeCreated: 1528710066
+guid: fef8574928dc03544be5bf53e2f88db2
+timeCreated: 1528798065
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -311,7 +311,7 @@ ModelImporter:
     400300: Spine02_J
     400302: Spine03_J
     400304: Torso_Locator
-    7400000: Block
+    7400000: KnifeIdle
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -341,17 +341,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Block
+      name: KnifeIdle
       takeName: Take 001
       firstFrame: 2
-      lastFrame: 13.3
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

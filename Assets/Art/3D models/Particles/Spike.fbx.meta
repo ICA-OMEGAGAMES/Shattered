@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 632f25d073c336a4f831c2058577bdf0
-timeCreated: 1528792483
+guid: 6199b7603d147c3498195c8261a3790c
+timeCreated: 1528452800
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCube3
-    9500000: //RootNode
+    4300000: Cylinder.001
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -65,7 +64,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
     normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
@@ -86,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
