@@ -24,11 +24,11 @@ public class CameraZoom : MonoBehaviour {
 					camCollision.enabled = false;
 					zoom.enabled = true;
 					mainCamera.enabled = false;
-                    dis.enabled = false;
+                    dis.characterControllable = false;
 					// for now this is only used for the shrine, if used for more don't use the music swap here!
 					apSwap.ChangeMusic();
 				} else if (!mainCamera.enabled){
-                    dis.enabled  = true;
+                    dis.characterControllable = true;
 					camFollow.enabled = true;
 					camCollision.enabled = true;
 					mainCamera.enabled = true;

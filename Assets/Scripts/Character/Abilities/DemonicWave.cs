@@ -21,13 +21,16 @@ public class DemonicWave : ISkill{
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            
+            mono.StartCoroutine(mono.GetComponent<MalphasScript>().RootCharacter(settings.rootDuration));
             animator.SetTrigger(skillAnimations.demonicWave);
+
 #pragma warning disable 0219
             GameObject aoeObject = GameObject.Instantiate(settings.skillEffect, mono.transform.position, mono.transform.rotation) as GameObject;
 #pragma warning restore 0219
         }
     }
+
+
 
     public bool IsOnCooldown()
     {

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33583913251269352}
   - component: {fileID: 135709679228327460}
   - component: {fileID: 23982629525097202}
-  - component: {fileID: 114209747535902860}
+  - component: {fileID: 114186726600634426}
   m_Layer: 0
   m_Name: AoE
   m_TagString: Untagged
@@ -36,20 +36,20 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337000762397622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0299997, y: 1.06, z: -13.610001}
-  m_LocalScale: {x: 8, y: 1, z: 8}
+  m_LocalRotation: {x: 0, y: 0, z: 0.008726558, w: 0.999962}
+  m_LocalPosition: {x: 0.20658194, y: 1.85, z: -16.22}
+  m_LocalScale: {x: 7, y: 1, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
 --- !u!23 &23982629525097202
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337000762397622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337000762397622}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114209747535902860
+--- !u!114 &114186726600634426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337000762397622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35337f9500708a74c953be9c9393d08f, type: 3}
+  m_Script: {fileID: 11500000, guid: 53f52924f1ae5cc44952d9d6ca4295aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skillSettings: {fileID: 11400000, guid: 8e6ca7c9b4879b34f8a7187990d6be8b, type: 2}

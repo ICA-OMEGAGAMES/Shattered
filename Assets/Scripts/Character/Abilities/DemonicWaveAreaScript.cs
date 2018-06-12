@@ -10,7 +10,9 @@ public class DemonicWaveAreaScript : MonoBehaviour {
 
 	void Start () {
         Destroy(this.gameObject, skillSettings.duration);
-	}
+        if(GameObject.Find("Spikes"))
+            GameObject.Find("Spikes").GetComponent<ParticleSystem>().Play();
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -18,9 +20,7 @@ public class DemonicWaveAreaScript : MonoBehaviour {
         if (other.transform.tag != Constants.ENEMY_TAG)
             return;
         if (!hitTargets.Contains(other.gameObject)) {
-           //todo: after maarten's info add damage system (dot/instant)
              hitTargets.Add(other.gameObject);
-
             other.transform.GetComponent<AIManager>().TakeDamage(skillSettings.value, Constants.SPECIAL_ABILITY_ATTACK);
         }
     }
