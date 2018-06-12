@@ -93,7 +93,6 @@ public class CharacterMovement : MonoBehaviour
     //characterscript spesific updates
 
     protected virtual void CharactertInitialize() { }
-    protected virtual void CharactertAwake() { }
     protected virtual void CombatActionUpdate() { }
     protected virtual void CharacterInCombatUpdate() { }
     protected virtual void CharacterOutOfCombatUpdate() { }
@@ -108,11 +107,6 @@ public class CharacterMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
         CharactertInitialize();
-    }
-
-    void Awake()
-    {
-        CharactertAwake();
     }
 
     void Update()
@@ -368,19 +362,28 @@ public class CharacterMovement : MonoBehaviour
     public IEnumerator StunCharacter(float duration)
     {
         characterControllable = false;
-        print("i'ma hit");
-        //animation force state stunn
 
-        //start animation death scene
+        print("stunned");
+        //start animation stun
         animator.SetTrigger(animations.hit);
-        //force death animation
+        //force stun animation state
         animator.Play(Constants.ANIMATIONSTATE_HIT);
 
         yield return new WaitForSeconds(duration);
         characterControllable = true;
     }
 
-	void OnControllerColliderHit(ControllerColliderHit hit){
+    public IEnumerator RootCharacter(float duration)
+    {
+        characterRooted = true;
+        print("root");
+        characterActionTimeStamp = Time.time + duration;
+
+        yield return new WaitForSeconds(duration);
+        characterRooted = false;
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit){
 		Rigidbody body = hit.collider.attachedRigidbody;
 
 		if (body == null || body.isKinematic)

@@ -10,7 +10,7 @@ public class CharacterTransformer : MonoBehaviour
     public GameObject devon;
     public GameObject malphas;
     public GameObject transformation;
-   // public TransformAnimationScript animaterScript;
+  //  private TransformAnimationScript animaterScript;
 
     //forms
     public enum CharacterForm
@@ -28,7 +28,7 @@ public class CharacterTransformer : MonoBehaviour
     void Start()
     {
         SelectCharacter();
-        //     animaterScript = transformation.GetComponent<TransformAnimationScript>();
+       // animaterScript = transformation.GetComponent<TransformAnimationScript>();
 
     }
 
@@ -85,7 +85,7 @@ public class CharacterTransformer : MonoBehaviour
                 devon.SetActive(false);
                 malphas.SetActive(false);
                 transformation.SetActive(true);
-                //   animaterScript.SetToMalphas(true);
+                //animaterScript.SetToMalphas(true);
                 //set position and rotation to the previous character
                 transformation.transform.position = devon.transform.position;
                 transformation.transform.rotation = devon.transform.rotation;
@@ -111,7 +111,7 @@ public class CharacterTransformer : MonoBehaviour
                 devon.SetActive(false);
                 malphas.SetActive(false);
                 transformation.SetActive(true);
-                // animaterScript.SetToMalphas(false);
+          //      animaterScript.SetToMalphas(false);
 
                 //set position and rotation to the previous character
                 transformation.transform.position = malphas.transform.position;
