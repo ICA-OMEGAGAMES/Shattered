@@ -76,9 +76,9 @@ public class MalphasScript : CharacterMovement
         //for development purposes
         skills.Add(new Teleport(skillSettings.teleportSettings, this));
         skills.Add(new Barrier(skillSettings.barrierSettings, stats, this));
-        skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
-        skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
-        skills.Add(new Possess(skillSettings.possessSettings, this));
+      //  skills.Add(new DemonicWave(skillSettings.demonicWaveSettings, this));
+       // skills.Add(new PsychicScream(skillSettings.psychicScreamSettings, this));
+        //skills.Add(new Possess(skillSettings.possessSettings, this));
 
     }
 
@@ -127,7 +127,6 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack1
             attack = Attack1(animator);
-            lastAttack = Constants.PUNCH_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
 
@@ -136,7 +135,6 @@ public class MalphasScript : CharacterMovement
         {
             //prefform attack2
             attack = Attack2(animator);
-            lastAttack = Constants.KICK_ATTACK;
             characterActionTimeStamp = Time.time + attack.cooldown;
             characterRooted = attack.rootable;
         }

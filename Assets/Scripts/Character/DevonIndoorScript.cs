@@ -44,7 +44,7 @@ public class DevonIndoorScript : MonoBehaviour
 
     //protected variables
     protected bool characterRooted = false;
-    protected bool characterControllable = true;
+    public bool characterControllable = true;
 
     public Animator animator;
     public CharacterController characterController;
@@ -80,18 +80,18 @@ public class DevonIndoorScript : MonoBehaviour
             {
                 RotateToCamera();
             }
+            if (characterRooted == false)
+            {
+                AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * movement.walkSpeed, Input.GetAxis(Constants.HORIZONTAL_AXIS) * movement.walkSpeed);
+                moveDirection.y -= physics.gravity * Time.deltaTime;
+                characterController.Move(moveDirection * Time.deltaTime);
+            }
         }
         else
             SetControllable(false);
-
-        //movement
-        if (characterRooted == false)
-        {
-            Animate(Input.GetAxis(Constants.VERTICAL_AXIS) * movement.walkSpeed, Input.GetAxis(Constants.HORIZONTAL_AXIS) * movement.walkSpeed);
-            moveDirection.y -= physics.gravity * Time.deltaTime;
-            characterController.Move(moveDirection * Time.deltaTime);
-        }
+        Animate();
     }
+        
 
     private void RotateToCamera()
     {
@@ -102,10 +102,14 @@ public class DevonIndoorScript : MonoBehaviour
     }
 
     //Animates the character and root motion handles the movement
-    public void Animate(float forward, float strafe)
+    public void AnimateMovement(float forward, float strafe)
     {
         animator.SetFloat(animations.verticalVelocityFloat, forward);
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
+    }
+
+    public void Animate()
+    {
         animator.SetBool(animations.groundedBool, IsFalling());
     }
 
@@ -125,7 +129,7 @@ public class DevonIndoorScript : MonoBehaviour
     }
 
     //returns if the player is grounded or not
-    private bool IsGrounded()
+    private bool IsGrounded() 
     {
         float distToGround = 0.1f;
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);

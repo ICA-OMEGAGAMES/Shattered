@@ -52,15 +52,35 @@ public class DevonScript : CharacterMovement
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
             case FSMState.LightMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 1);
-                return new ArmedMeleeCombat(animator, animations, weapon);
+                return new ArmedCombatSet(animator, animations, weapon);
             case FSMState.HeavyMeleeWeapon:
                 animator.SetInteger(animations.weaponSet, 2);
-                return new ArmedMeleeCombat(animator, animations, weapon);
+                return new ArmedCombatSet(animator, animations, weapon);
             default:
                 animator.SetInteger(animations.weaponSet, 0);
                 return new UnarmedCombat(animator, animations, unarmedCombatSettings);
         }
     }
+
+    private void WakeAnimator(Animator animator, AnimationSettings animations)
+    {
+        switch (curCombatSet)
+        {
+            case FSMState.Unarmed:
+                animator.SetInteger(animations.weaponSet, 0);
+                break;
+            case FSMState.LightMeleeWeapon:
+                animator.SetInteger(animations.weaponSet, 1);
+                break;
+            case FSMState.HeavyMeleeWeapon:
+                animator.SetInteger(animations.weaponSet, 2);
+                break;
+            default:
+                animator.SetInteger(animations.weaponSet, 0);
+                break;
+        }
+    }
+
 
     //interface for the different combat sets
     public interface ICombatSet
@@ -102,14 +122,14 @@ public class DevonScript : CharacterMovement
         }
     }
     /// <summary>
-    /// LightMelee combat set
+    /// Armed combat set
     /// </summary>
-    public class ArmedMeleeCombat : ICombatSet
+    public class ArmedCombatSet : ICombatSet
     {
         private AnimationSettings animations;
         private Weapon weapon;
 
-        public ArmedMeleeCombat(Animator animator, AnimationSettings animations, Weapon weapon)
+        public ArmedCombatSet(Animator animator, AnimationSettings animations, Weapon weapon)
         {
             this.animations = animations;
             this.weapon = weapon;
@@ -132,9 +152,9 @@ public class DevonScript : CharacterMovement
         }
     }
 
-
-    CharacterAttack attack;
-    MarkerManagerPlayer markerManager;
+    //add other combat sets here
+    private CharacterAttack attack;
+    private MarkerManagerPlayer markerManager;
     private float dodgeTimestamp;
 
     protected override void CharactertInitialize()
@@ -144,9 +164,10 @@ public class DevonScript : CharacterMovement
         markerManager.SetMarkers();
     }
 
-    protected override void CharactertAwake()
+    void OnEnable()
     {
-      //  combatSet = SetCombatSet(animator, animations, null); // todo: check if weapon, then change st to it
+        if(animator != null)
+            WakeAnimator(animator, animations);
     }
 
     protected override void CharacterOutOfCombatUpdate()

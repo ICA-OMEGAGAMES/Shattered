@@ -40,11 +40,11 @@ GameObject:
   - component: {fileID: 4707120979170742}
   - component: {fileID: 33859537976300536}
   - component: {fileID: 23552329517769136}
-  - component: {fileID: 95664099432530854}
+  - component: {fileID: 136190065646471640}
   - component: {fileID: 114982379246172266}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892914921834714}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.85355, y: 0.33, z: -19.079575}
+  m_LocalPosition: {x: 2.5222917, y: 0.214, z: -16.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723844151162272}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535453419777164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.062, y: 0.215, z: 0.017}
+  m_LocalPosition: {x: 0, y: 0.346, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4707120979170742}
@@ -157,24 +157,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892914921834714}
-  m_Mesh: {fileID: 4300000, guid: f7519b380d8ca5d43af57ce9b23ca630, type: 3}
---- !u!95 &95664099432530854
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892914921834714}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f7519b380d8ca5d43af57ce9b23ca630, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Mesh: {fileID: 4300000, guid: c3e5f2a995cd49b48a095489d80d9d38, type: 3}
 --- !u!114 &114515267358762836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,3 +193,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136190065646471640
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892914921834714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 0.7504528
+  m_Direction: 1
+  m_Center: {x: -0.0000000055879354, y: 0.37522647, z: 0}
