@@ -50,11 +50,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4053310746989444}
   - component: {fileID: 95246805797391768}
-  - component: {fileID: 64328855800085504}
   - component: {fileID: 114687206074725546}
   - component: {fileID: 195720155052570940}
   - component: {fileID: 114290103769612584}
   - component: {fileID: 114459159980757694}
+  - component: {fileID: 136674165631565378}
   m_Layer: 0
   m_Name: Thug_2
   m_TagString: Enemy
@@ -6666,20 +6666,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64328855800085504
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003477253823004}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
 --- !u!95 &95246805797391768
 Animator:
   serializedVersion: 3
@@ -6739,13 +6725,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
     groundedBool: isGrounded
-    dodgeBool: Dodging
+    dodge: Dodging
+    lookArounBool: isLooking
     isInCombat: isInCombat
     deadBool: isDead
+    blockBool: isBlocking
     verticalVelocityFloat: Forward
     weaponSet: WeaponSet
     attack1: Attack1
     attack2: Attack2
+    attacked: Hit
 --- !u!114 &114687206074725546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6782,6 +6771,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136674165631565378
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1003477253823004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137222810439874584
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

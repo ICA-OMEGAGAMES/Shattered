@@ -14,12 +14,14 @@ public class LeaveCombatDecision : Decision
 
     private bool Leave(AIManager manager)
     {
-        if ((Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.aiStats.unarmedCombatSettings.unarmedAttackRange)
+        if ((Vector3.Distance(manager.transform.position, manager.GetTargetPosition()) > manager.aiStats.unarmedCombatSettings.attackIdleRange)
             || !manager.IsTargetAlive())
         {
-            manager.GetTargetPosition();
+            manager.EnterAttackIdle();
             return true;
         }
+        
+        manager.LeaveAttackIdle();
         return false;
     }
 }

@@ -91,6 +91,7 @@
      <Compile Include="Assets\Scripts\AI\Implementation\PatrolAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\SwitchToAttackDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetAccessibleDecision.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\TargetAliveDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TargetReachedDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />

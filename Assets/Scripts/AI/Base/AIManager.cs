@@ -132,7 +132,7 @@ public class AIManager : MonoBehaviour
 
     public void SetAttackState(bool active)
     {
-        generalAiManager.AttackState(active);
+        generalAiManager.AttackState(active, transform);
     }
 
     public bool GeneralCooldownExpired()
@@ -177,9 +177,9 @@ public class AIManager : MonoBehaviour
         navMeshAgent.isStopped = true;
     }
 
-    public bool Dodge(bool dodge, float duration)
+    public bool Dodge(bool dodge)
     {
-        return animationManager.Dodge(dodge, duration);
+        return animationManager.Dodge(dodge);
     }
 
     public bool Block(bool block, float duration)
@@ -290,11 +290,12 @@ public class AIManager : MonoBehaviour
         if(animationManager.IsBlocking())
         {
             amount =  (amount * aiStats.unarmedCombatSettings.blockPercentage);
+        } else {
+            animationManager.HitRegistered();
         }
         
         currentHealth -=  amount;
         attackCooldownTimestamp = Time.time + aiStats.unarmedCombatSettings.stunDuration;
-        //TODO add visuals of stumbling
         if (currentHealth <= 0)
         {
             StopMovement();
@@ -304,6 +305,7 @@ public class AIManager : MonoBehaviour
             }
             controller.Die();
             animationManager.Die();
+            LeaveAttackIdle();
         }
     }
 
@@ -403,5 +405,25 @@ public class AIManager : MonoBehaviour
     public string GetAttackMode()
     {
         return animationManager.GetLastAttack();
+    }
+
+    public void LookForPlayer(float duration)
+    {
+        animationManager.LookAround(duration);
+    }
+
+    public void StopLookingForPlayer()
+    {
+        animationManager.StopLooking();
+    }
+
+    public bool IsLookingForPlayer()
+    {
+        return animationManager.IsLooking();
+    }
+
+    public void ResetTimerDecision()
+    {
+        isTimestampSet = false;
     }
 }

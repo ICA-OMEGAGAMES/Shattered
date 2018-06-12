@@ -54449,7 +54449,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.375
+  - time: 0.33333334
     functionName: EnableMarkers
     data: 
     objectReferenceParameter: {fileID: 0}

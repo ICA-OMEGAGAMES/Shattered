@@ -6,30 +6,31 @@ using UnityEngine.AI;
 
 public class GeneralAIManager : MonoBehaviour
 {
-    private int attackingAIs;
     private float attackCooldownTimestamp;
     private List<Transform> waitingAIs;
+    private List<Transform> attackingAIs;
 
     void Start()
     {
         waitingAIs = new List<Transform>();
+        attackingAIs = new List<Transform>();
     }
 
-    public void AttackState(bool enabled)
+    public void AttackState(bool enabled, Transform enemy)
     {
-        if (enabled)
+        if (enabled && !attackingAIs.Contains(enemy))
         {
-            Debug.Log("EnableCalled");
-            attackingAIs++;
+            attackingAIs.Add(enemy);
             return;
+        } else if (!enabled)
+        {
+            attackingAIs.Remove(enemy);
         }
-         Debug.Log("DisableCalled");
-        attackingAIs--;
     }
 
     public int GetAttackingAIS()
     {
-        return attackingAIs;
+        return attackingAIs.Count;
     }
 
     public void SetCooldown(float duration)
@@ -46,28 +47,17 @@ public class GeneralAIManager : MonoBehaviour
     {
        if(!waitingAIs.Contains(enemy))
        {
-           Debug.Log("EnableIdle");
            waitingAIs.Add(enemy);
        }
     }
 
     public void LeaveAttackIdle(Transform enemy)
     {
-        
-        bool test = waitingAIs.Remove(enemy);
-
-        if(test)
-        {
-            Debug.Log("DisbleIdle");
-        }
+        waitingAIs.Remove(enemy);
     }
 
     public int GetWaitingAIs()
     {
-        if(waitingAIs.Count > 0)
-        {
-            Debug.Log("Waiting AIs: " + waitingAIs.Count);
-        }
         return waitingAIs.Count;
     }
 }

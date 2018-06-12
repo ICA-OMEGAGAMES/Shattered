@@ -366,7 +366,7 @@ public class CharacterMovement : MonoBehaviour
 
         //start animation death scene
         animator.SetTrigger(animations.hit);
-        //force death animation
+        //force stun animation
         animator.Play(Constants.ANIMATIONSTATE_HIT);
 
         yield return new WaitForSeconds(duration);
