@@ -38,7 +38,6 @@ public class LookDecision : Decision
 
             if(Physics.Raycast(manager.eyes.transform.position, targetDirection.normalized, out hit, lookRange, layerMask))
             {
-                Debug.Log(hit.transform.name);
                 return hit.transform.CompareTag(Constants.PLAYER_TAG);
             }
             //if the player is in the field of view and not occluded by an object return true

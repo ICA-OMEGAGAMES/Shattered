@@ -17,7 +17,7 @@ public class AIAnimationManager : MonoBehaviour
     {
         //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
         public string groundedBool = "isGrounded";
-        public string dodgeBool = "isDodging";
+        public string dodgeBool = "Dodging";
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
         public string verticalVelocityFloat = "Forward";
@@ -40,17 +40,20 @@ public class AIAnimationManager : MonoBehaviour
         {
             blocking = false;
         }
-        if(dodging && dodgingTimestamp < Time.time)
+        /*if(dodging && dodgingTimestamp < Time.time)
         {
             dodging = false;
-        }
+        }*/
     }
 
     public void Animate(float walkingSpeed)
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
         animator.SetBool(animations.groundedBool, IsFalling());
-        animator.SetBool(animations.dodgeBool, dodging);
+        if(dodging){
+            animator.SetTrigger(animations.dodgeBool);
+            dodging = false;
+        }
     }
 
     public void SetFightingAnimation(int fightMode, string attack)

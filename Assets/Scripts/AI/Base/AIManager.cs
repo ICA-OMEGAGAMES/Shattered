@@ -135,6 +135,16 @@ public class AIManager : MonoBehaviour
         generalAiManager.AttackState(active);
     }
 
+    public bool GeneralCooldownExpired()
+    {
+        return generalAiManager.IsCooldownExpired();
+    }
+
+    public void SetGeneralCooldown(float time)
+    {
+        generalAiManager.SetCooldown(time);
+    }
+
     public bool IsAttackModeCooldownExpired()
     {
         return attackModeCooldownTimestamp < Time.time;
@@ -281,6 +291,7 @@ public class AIManager : MonoBehaviour
             animationManager.Die();
         }
     }
+
     public void EnableMarkers()
     {   
         if(!IsPossessed())
@@ -294,22 +305,6 @@ public class AIManager : MonoBehaviour
     public void DisableMarkers()
     {
         markerManager.DisableMarkers();
-    }
-
-    public void SetAttackTimestamp(float seconds)
-    {
-        attackTimestamp = Time.time + seconds;
-        attackTimestampSet = true;
-    }
-
-    public bool IsAttackTimestampExpired()
-    {
-        if(attackTimestampSet && Time.time > attackTimestamp)
-        {
-            attackTimestampSet = false;
-            return true;
-        }
-        return false;
     }
 
     public void ResetAttackTimer()

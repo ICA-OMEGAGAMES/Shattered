@@ -15,8 +15,9 @@ public class AIStats : ScriptableObject
     public class MovementStats
     {
         public float moveSpeed = 4f;
-        public float runSpeed = 8.0F;
-        public float dodgeCooldown = 2;
+        public float runSpeed = 8.0f;
+        public float dodgeCooldown = 1;
+        public float dodgeLock = 5;
         public float reachedDistance = 0.75f;
         public float reachedTollerance = 0.25f;
     }
@@ -35,6 +36,7 @@ public class AIStats : ScriptableObject
         public float lightAttackDuration = 0.5f;
         public float heavyAttackDuration = 0.5f;
         public float cooldown = 2f;
+        public float generalCooldown = 0.75f;
         public float possessionDuration = 10f;
         public float attackingDuration = 7.5f;
         public float attackModeCooldown = 3.75f;

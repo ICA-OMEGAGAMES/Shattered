@@ -34,8 +34,13 @@ public class StateController : MonoBehaviour
             return;
         }
         currentState.UpdateState(this, manager);
+    }
+
+    void LateUpdate()
+    {
         animationManager.Animate(manager.navMeshAgent.velocity.magnitude);
     }
+
     public void TransitionToState(State nextState)
     {
         if (nextState != remainState)
