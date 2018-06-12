@@ -3,9 +3,11 @@ tags:
 colorID: 0
 position: 436,254
 ---
-    //Devon looks over at the wall of photo’s and the picture on the cabinet. (A tear rolls down his face)
-<<setsprite FaceImage devon>>
-    Devon (thought): Can’t believe you’re gone.
-    //Devon searches for his wallet to buy a drink.
-    Devon (thought): Where is my wallet?
+<<setName DialoguePhase3_Research devonThought>>
+<<setVoice DialoguePhase3_Research devon01>>
+    Can’t believe you’re gone.
+<<setVoice DialoguePhase3_Research devon02>>
+    Where is my wallet?
+
+<<setVoice DialoguePhase3_Research dialogueFinished>>
 ===
