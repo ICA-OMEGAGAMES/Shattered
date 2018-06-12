@@ -8,11 +8,13 @@ using UnityEngine;
 public class MainMenuManagement : MonoBehaviour {
 
 	private string noSettingsFoundMessage = " - No saved settings found.";
+	public PlayVideo backgroundVideo;
 
 	void Start () {
 		LoadGraphicsSettings();
 		LoadSoundSettings();
 		LoadControlSettings();
+		backgroundVideo.StartVideo();
 	}
 
 	//Loads and applies stored settings from the config file	

@@ -21,4 +21,4 @@ MonoBehaviour:
   attack2Damage: 30
   attack2Duration: 2
   attack2Rootable: 1
-  weaponType: 1
+  weaponType: 2

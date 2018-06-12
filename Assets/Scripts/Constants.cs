@@ -51,7 +51,7 @@
 	// CONFIG
 	public const string GRAPHICS_JSON = "/graphicsettings.json";
 	public const string SOUND_JSON = "/soundsettings.json";
-	public const string SKILLTREE_JSON = "Assets/Scripts/Skill Tree/TreeData/skilltree.json";
+	public const string SKILLTREE_JSON = "skillTree.json";
 	public const string NODEDATA_JSON = "Assets/Scripts/Skill Tree/TreeData/nodeData.json";
 
 	// OBJECTNAMES
@@ -72,4 +72,10 @@
 	// ENVIRONMENT
 	public const string REGULAR_RAIN = "Regular";
 	public const string BLOOD_RAIN = "Blood";
+
+
+	// MUSIC
+	public const string MUFFLED_AUDIOSOURCE = "MusicMuffled";
+	public const string HEAD_AUDIOSOURCE = "MusicHead";
+
 }
