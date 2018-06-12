@@ -14024,12 +14024,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.020004272, y: -0.13999939}
   m_SizeDelta: {x: -0.9700012, y: -0.11000061}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &696162754 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114631393705178556, guid: d704fe904ce8f7340a9967243569483a,
-    type: 2}
-  m_PrefabInternal: {fileID: 769518961}
-  m_Script: {fileID: 11500000, guid: 00ac246b5605e7940930e679301ea175, type: 3}
 --- !u!1001 &696234445
 Prefab:
   m_ObjectHideFlags: 0
@@ -15191,6 +15185,14 @@ Prefab:
     - target: {fileID: 1894981521280070, guid: d704fe904ce8f7340a9967243569483a, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894981521280070, guid: d704fe904ce8f7340a9967243569483a, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422631695219924, guid: d704fe904ce8f7340a9967243569483a, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d704fe904ce8f7340a9967243569483a, type: 2}
@@ -24352,7 +24354,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: -0.5, y: 1, z: 0}
 --- !u!114 &1400154395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24366,7 +24368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camFollow: {fileID: 1965005900}
   camCollision: {fileID: 2139524693}
-  charMovement: {fileID: 696162754}
+  charMovement: {fileID: 1482967912}
   apSwap: {fileID: 1637300106}
   zoom: {fileID: 1433065972}
 --- !u!1 &1401751425
@@ -25783,6 +25785,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1480287817}
+--- !u!114 &1482967912 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114995535001121380, guid: d704fe904ce8f7340a9967243569483a,
+    type: 2}
+  m_PrefabInternal: {fileID: 769518961}
+  m_Script: {fileID: 11500000, guid: 00ac246b5605e7940930e679301ea175, type: 3}
 --- !u!1 &1485689689
 GameObject:
   m_ObjectHideFlags: 0

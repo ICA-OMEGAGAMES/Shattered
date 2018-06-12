@@ -70,6 +70,7 @@ namespace Yarn.Unity.Shattered
 
         /// Tests to see if the dialogue is running
         public bool isDialogueRunning { get; private set; }
+        public static bool isRunning = false;
 
         public bool automaticCommands = true;
 
@@ -235,6 +236,7 @@ namespace Yarn.Unity.Shattered
         {
             // Mark that we're in conversation.
             isDialogueRunning = true;
+            isRunning = true;
 
             // Signal that we're starting up.
             yield return StartCoroutine(this.dialogueUI.DialogueStarted());
@@ -298,6 +300,7 @@ namespace Yarn.Unity.Shattered
             // to allow time for any animations that might run while transitioning
             // out of a conversation (ie letterboxing going away, etc)
             isDialogueRunning = false;
+            isRunning = false;
 
             //Disable the DialogueCanvas
             this.dialogueCanvas.SetActive(false);
@@ -319,6 +322,7 @@ namespace Yarn.Unity.Shattered
         public void Stop()
         {
             isDialogueRunning = false;
+            isRunning = false;
             dialogue.Stop();
         }
 

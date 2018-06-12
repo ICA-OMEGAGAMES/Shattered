@@ -10,7 +10,7 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("doJump")]
         public void jump(string jumpheight)
         {
-            Debug.Log("Command --> doJump");
+            // Debug.Log("Command --> doJump");
 
             // simulate the Jump function
             Vector3 originalPos = transform.position;
@@ -20,7 +20,7 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("startPressureTimer")]
         public void pressureTimer(string parameters)
         {
-            Debug.Log("Command --> startPressureTimer");
+            // Debug.Log("Command --> startPressureTimer");
 
             //We get all parameters and split them, so that we can use these later
             var para = parameters.Split(',');
@@ -43,7 +43,7 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("startHelpTimer")]
         public void helpTimer(string parameters)
         {
-            Debug.Log("Command --> startHelpTimer");
+            // Debug.Log("Command --> startHelpTimer");
             var para = parameters.Split(',');
 
             //We get all parameters and split them, so that we can use these later
@@ -66,7 +66,7 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("openSkillTree")]
         public void openSkillTree(string parameters)
         {
-            Debug.Log("Command --> openSkillTree");
+            // Debug.Log("Command --> openSkillTree");
 
             FindObjectOfType<SkillTreeMenu>().openWithinDialogueSystem();
         }
