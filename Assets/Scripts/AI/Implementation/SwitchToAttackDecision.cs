@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "PluggableAI/Decisions/Switch To Attack")]
 public class SwitchToAttackDecision : Decision
 {
+    public float concurrentlyAttackingAIs = 2;
 
     public override bool Decide(AIManager manager)
     {
@@ -15,8 +16,9 @@ public class SwitchToAttackDecision : Decision
 
     private bool SwitchToAttack(AIManager manager)
     {
-        if ((manager.GetAttackingAis() < 2) && manager.IsAttackModeCooldownExpired())
+        if ((manager.GetAttackingAis() < concurrentlyAttackingAIs) && manager.IsAttackModeCooldownExpired())
         {
+            manager.LeaveAttackIdle();
             manager.SetAttackState(true);
             return true;
         }

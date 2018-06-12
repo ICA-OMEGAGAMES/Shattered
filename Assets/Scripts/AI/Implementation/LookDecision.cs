@@ -15,6 +15,7 @@ public class LookDecision : Decision
     {
         if (!manager.IsTargetAlive())
         {
+            manager.LeaveAttackIdle();
             return false;
         }
         Vector3 target = manager.GetTargetPosition(); 
@@ -30,6 +31,7 @@ public class LookDecision : Decision
 
             if(Vector3.Distance(target, manager.transform.position) >= lookRange)
             {
+                manager.LeaveAttackIdle();
                 return false;
             }
 
@@ -38,10 +40,22 @@ public class LookDecision : Decision
 
             if(Physics.Raycast(manager.eyes.transform.position, targetDirection.normalized, out hit, lookRange, layerMask))
             {
-                return hit.transform.CompareTag(Constants.PLAYER_TAG);
+                bool player = hit.transform.CompareTag(Constants.PLAYER_TAG);
+                
+                if(!player)
+                {
+                    manager.LeaveAttackIdle();
+                }
+
+                return player;
+            } 
+            else 
+            {
+                return true;
             }
             //if the player is in the field of view and not occluded by an object return true
         }
+        manager.LeaveAttackIdle();
         return false;
     }
 }

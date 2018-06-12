@@ -145,6 +145,21 @@ public class AIManager : MonoBehaviour
         generalAiManager.SetCooldown(time);
     }
 
+    public void EnterAttackIdle()
+    {
+        generalAiManager.EnterAttackIdle(transform.parent);
+    }
+
+    public void LeaveAttackIdle()
+    {
+        generalAiManager.LeaveAttackIdle(transform.parent);
+    }
+
+    public int GetWaitingAIs()
+    {
+        return generalAiManager.GetWaitingAIs();
+    }
+
     public bool IsAttackModeCooldownExpired()
     {
         return attackModeCooldownTimestamp < Time.time;

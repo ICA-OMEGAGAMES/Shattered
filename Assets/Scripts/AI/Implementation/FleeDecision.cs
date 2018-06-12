@@ -18,6 +18,7 @@ public class FleeDecision : Decision
         if(manager.IsPsychicScreamAffected())
         {
             manager.GetTargetPosition();
+            manager.LeaveAttackIdle();
             return true;
         }
         return false;

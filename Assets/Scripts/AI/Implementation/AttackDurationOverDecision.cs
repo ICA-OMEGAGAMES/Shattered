@@ -13,10 +13,15 @@ public class AttackDurationOver : Decision
 
     private bool DurationOver(AIManager manager)
     {
+        if(manager.GetWaitingAIs() < 1)
+        {
+            return false;
+        }
         if(manager.IsAttackDurationOver())
         {
             manager.ResetAttackTimer();
             manager.SetAttackState(false);
+            manager.EnterAttackIdle();
             return true;
         }
         return false;
