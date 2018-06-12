@@ -45,6 +45,16 @@ public class AIManager : MonoBehaviour
         {
             aiStats = ScriptableObject.CreateInstance<AIStats>();
         }
+
+        if (wayPointList.Count == 0)
+        {
+            var tempList = GameObject.FindGameObjectsWithTag("Waypoint");
+
+            for (int i=0; i < tempList.Length; i++)
+            {
+                wayPointList.Add(tempList[i].transform);
+            }
+        }
         bool active = false;
         this.controller = controller;
         currentHealth = aiStats.maxHealth;
