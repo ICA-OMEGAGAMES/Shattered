@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 15c721457770a0241b23a821a856b399
-timeCreated: 1528710066
+guid: a0bf703bc3c73ed4e88c83f215f54ffb
+timeCreated: 1528798064
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -311,7 +311,7 @@ ModelImporter:
     400300: Spine02_J
     400302: Spine03_J
     400304: Torso_Locator
-    7400000: Block
+    7400000: KnifeBlock
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -341,10 +341,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Block
+      name: KnifeBlock
       takeName: Take 001
-      firstFrame: 2
-      lastFrame: 13.3
+      firstFrame: 1
+      lastFrame: 12.2
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

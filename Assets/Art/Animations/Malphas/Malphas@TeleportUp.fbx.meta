@@ -1,86 +1,86 @@
 fileFormatVersion: 2
-guid: 15c721457770a0241b23a821a856b399
-timeCreated: 1528710066
+guid: 7cd91c2fda7c3294ba2a0ef28576a104
+timeCreated: 1528797884
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Head_J
-    100004: Head_Locator
-    100006: HeadTop_J
-    100008: Hip_J
-    100010: L_Ankle_Fk_J
-    100012: L_Ankle_Ik_J
-    100014: L_Ankle_Skel_J
-    100016: L_ArmFKIK_Switch_Ctrl
-    100018: L_Collar_J
-    100020: L_Cup_J
-    100022: L_Elbow_FK_J
-    100024: L_Elbow_IK_J
-    100026: L_Elbow_J
-    100028: L_Foot_Fk_J
-    100030: L_Foot_Ik_J
-    100032: L_Foot_Skel_J
-    100034: L_FootEnd_Fk_J
-    100036: L_FootEnd_Ik_J
-    100038: L_FootEnd_Skel_J
-    100040: L_Hand_Ctrl
-    100042: L_Hip_Fk_J
-    100044: L_Hip_Ik_J
-    100046: L_Hip_Skel_J
-    100048: L_Index01_J
-    100050: L_Index02_J
-    100052: L_Index03_J
-    100054: L_Index04_J
-    100056: L_IndexFist_grp
-    100058: L_IndexFist_grp1
-    100060: L_IndexFist_grp2
-    100062: L_IndexSpread_grp
-    100064: L_Knee_Fk_J
-    100066: L_Knee_Ik_J
-    100068: L_Knee_Skel_J
-    100070: L_Leg_Ik_Fk_Switch
-    100072: L_Lit01_J
-    100074: L_Lit02_J
-    100076: L_Lit03_J
-    100078: L_Lit04_J
-    100080: L_Middle01_J
-    100082: L_Middle02_J
-    100084: L_Middle03_J
-    100086: L_Middle04_J
-    100088: L_MidFist_grp
-    100090: L_MidFist_grp1
-    100092: L_MidFist_grp2
-    100094: L_MidSpread_grp
-    100096: L_PinkyFist_grp
-    100098: L_PinkyFist_grp1
-    100100: L_PinkyFist_grp2
-    100102: L_PinkySpread_grp
-    100104: L_Ring01_J
-    100106: L_Ring02_J
-    100108: L_Ring03_J
-    100110: L_Ring04_J
-    100112: L_RingFist_grp
-    100114: L_RingFist_grp1
-    100116: L_RingFist_grp2
-    100118: L_RingSpread_grp
-    100120: L_Shoulder_FK_J
-    100122: L_Shoulder_IK_J
-    100124: L_Shoulder_J
-    100126: L_Thumb01_J
-    100128: L_Thumb02_J
-    100130: L_Thumb03_J
-    100132: L_Thumb04_J
-    100134: L_ThumbFist_grp
-    100136: L_ThumbFist_grp1
-    100138: L_ThumbFist_grp2
-    100140: L_ThumbSpread_grp
-    100142: L_Wrist_FK_J
-    100144: L_Wrist_IK_J
-    100146: L_Wrist_J
-    100148: Left_Foot_Locator
-    100150: Left_Hand_Attachment_Locator
+    100000: Head_J
+    100002: Head_Locator
+    100004: HeadTop_J
+    100006: Hip_J
+    100008: L_Ankle_Fk_J
+    100010: L_Ankle_Ik_J
+    100012: L_Ankle_Skel_J
+    100014: L_ArmFKIK_Switch_Ctrl
+    100016: L_Collar_J
+    100018: L_Cup_J
+    100020: L_Elbow_FK_J
+    100022: L_Elbow_IK_J
+    100024: L_Elbow_J
+    100026: L_Foot_Fk_J
+    100028: L_Foot_Ik_J
+    100030: L_Foot_Skel_J
+    100032: L_FootEnd_Fk_J
+    100034: L_FootEnd_Ik_J
+    100036: L_FootEnd_Skel_J
+    100038: L_Hand_Ctrl
+    100040: L_Hip_Fk_J
+    100042: L_Hip_Ik_J
+    100044: L_Hip_Skel_J
+    100046: L_Index01_J
+    100048: L_Index02_J
+    100050: L_Index03_J
+    100052: L_Index04_J
+    100054: L_IndexFist_grp
+    100056: L_IndexFist_grp1
+    100058: L_IndexFist_grp2
+    100060: L_IndexSpread_grp
+    100062: L_Knee_Fk_J
+    100064: L_Knee_Ik_J
+    100066: L_Knee_Skel_J
+    100068: L_Leg_Ik_Fk_Switch
+    100070: L_Lit01_J
+    100072: L_Lit02_J
+    100074: L_Lit03_J
+    100076: L_Lit04_J
+    100078: L_Middle01_J
+    100080: L_Middle02_J
+    100082: L_Middle03_J
+    100084: L_Middle04_J
+    100086: L_MidFist_grp
+    100088: L_MidFist_grp1
+    100090: L_MidFist_grp2
+    100092: L_MidSpread_grp
+    100094: L_PinkyFist_grp
+    100096: L_PinkyFist_grp1
+    100098: L_PinkyFist_grp2
+    100100: L_PinkySpread_grp
+    100102: L_Ring01_J
+    100104: L_Ring02_J
+    100106: L_Ring03_J
+    100108: L_Ring04_J
+    100110: L_RingFist_grp
+    100112: L_RingFist_grp1
+    100114: L_RingFist_grp2
+    100116: L_RingSpread_grp
+    100118: L_Shoulder_FK_J
+    100120: L_Shoulder_IK_J
+    100122: L_Shoulder_J
+    100124: L_Thumb01_J
+    100126: L_Thumb02_J
+    100128: L_Thumb03_J
+    100130: L_Thumb04_J
+    100132: L_ThumbFist_grp
+    100134: L_ThumbFist_grp1
+    100136: L_ThumbFist_grp2
+    100138: L_ThumbSpread_grp
+    100140: L_Wrist_FK_J
+    100142: L_Wrist_IK_J
+    100144: L_Wrist_J
+    100146: Left_Foot_Locator
+    100148: Left_Hand_Attachment_Locator
+    100150: //RootNode
     100152: Neck_J
     100154: R_Ankle_Fk_J
     100156: R_Ankle_Ik_J
@@ -158,82 +158,82 @@ ModelImporter:
     100300: Spine02_J
     100302: Spine03_J
     100304: Torso_Locator
-    400000: //RootNode
-    400002: Head_J
-    400004: Head_Locator
-    400006: HeadTop_J
-    400008: Hip_J
-    400010: L_Ankle_Fk_J
-    400012: L_Ankle_Ik_J
-    400014: L_Ankle_Skel_J
-    400016: L_ArmFKIK_Switch_Ctrl
-    400018: L_Collar_J
-    400020: L_Cup_J
-    400022: L_Elbow_FK_J
-    400024: L_Elbow_IK_J
-    400026: L_Elbow_J
-    400028: L_Foot_Fk_J
-    400030: L_Foot_Ik_J
-    400032: L_Foot_Skel_J
-    400034: L_FootEnd_Fk_J
-    400036: L_FootEnd_Ik_J
-    400038: L_FootEnd_Skel_J
-    400040: L_Hand_Ctrl
-    400042: L_Hip_Fk_J
-    400044: L_Hip_Ik_J
-    400046: L_Hip_Skel_J
-    400048: L_Index01_J
-    400050: L_Index02_J
-    400052: L_Index03_J
-    400054: L_Index04_J
-    400056: L_IndexFist_grp
-    400058: L_IndexFist_grp1
-    400060: L_IndexFist_grp2
-    400062: L_IndexSpread_grp
-    400064: L_Knee_Fk_J
-    400066: L_Knee_Ik_J
-    400068: L_Knee_Skel_J
-    400070: L_Leg_Ik_Fk_Switch
-    400072: L_Lit01_J
-    400074: L_Lit02_J
-    400076: L_Lit03_J
-    400078: L_Lit04_J
-    400080: L_Middle01_J
-    400082: L_Middle02_J
-    400084: L_Middle03_J
-    400086: L_Middle04_J
-    400088: L_MidFist_grp
-    400090: L_MidFist_grp1
-    400092: L_MidFist_grp2
-    400094: L_MidSpread_grp
-    400096: L_PinkyFist_grp
-    400098: L_PinkyFist_grp1
-    400100: L_PinkyFist_grp2
-    400102: L_PinkySpread_grp
-    400104: L_Ring01_J
-    400106: L_Ring02_J
-    400108: L_Ring03_J
-    400110: L_Ring04_J
-    400112: L_RingFist_grp
-    400114: L_RingFist_grp1
-    400116: L_RingFist_grp2
-    400118: L_RingSpread_grp
-    400120: L_Shoulder_FK_J
-    400122: L_Shoulder_IK_J
-    400124: L_Shoulder_J
-    400126: L_Thumb01_J
-    400128: L_Thumb02_J
-    400130: L_Thumb03_J
-    400132: L_Thumb04_J
-    400134: L_ThumbFist_grp
-    400136: L_ThumbFist_grp1
-    400138: L_ThumbFist_grp2
-    400140: L_ThumbSpread_grp
-    400142: L_Wrist_FK_J
-    400144: L_Wrist_IK_J
-    400146: L_Wrist_J
-    400148: Left_Foot_Locator
-    400150: Left_Hand_Attachment_Locator
+    400000: Head_J
+    400002: Head_Locator
+    400004: HeadTop_J
+    400006: Hip_J
+    400008: L_Ankle_Fk_J
+    400010: L_Ankle_Ik_J
+    400012: L_Ankle_Skel_J
+    400014: L_ArmFKIK_Switch_Ctrl
+    400016: L_Collar_J
+    400018: L_Cup_J
+    400020: L_Elbow_FK_J
+    400022: L_Elbow_IK_J
+    400024: L_Elbow_J
+    400026: L_Foot_Fk_J
+    400028: L_Foot_Ik_J
+    400030: L_Foot_Skel_J
+    400032: L_FootEnd_Fk_J
+    400034: L_FootEnd_Ik_J
+    400036: L_FootEnd_Skel_J
+    400038: L_Hand_Ctrl
+    400040: L_Hip_Fk_J
+    400042: L_Hip_Ik_J
+    400044: L_Hip_Skel_J
+    400046: L_Index01_J
+    400048: L_Index02_J
+    400050: L_Index03_J
+    400052: L_Index04_J
+    400054: L_IndexFist_grp
+    400056: L_IndexFist_grp1
+    400058: L_IndexFist_grp2
+    400060: L_IndexSpread_grp
+    400062: L_Knee_Fk_J
+    400064: L_Knee_Ik_J
+    400066: L_Knee_Skel_J
+    400068: L_Leg_Ik_Fk_Switch
+    400070: L_Lit01_J
+    400072: L_Lit02_J
+    400074: L_Lit03_J
+    400076: L_Lit04_J
+    400078: L_Middle01_J
+    400080: L_Middle02_J
+    400082: L_Middle03_J
+    400084: L_Middle04_J
+    400086: L_MidFist_grp
+    400088: L_MidFist_grp1
+    400090: L_MidFist_grp2
+    400092: L_MidSpread_grp
+    400094: L_PinkyFist_grp
+    400096: L_PinkyFist_grp1
+    400098: L_PinkyFist_grp2
+    400100: L_PinkySpread_grp
+    400102: L_Ring01_J
+    400104: L_Ring02_J
+    400106: L_Ring03_J
+    400108: L_Ring04_J
+    400110: L_RingFist_grp
+    400112: L_RingFist_grp1
+    400114: L_RingFist_grp2
+    400116: L_RingSpread_grp
+    400118: L_Shoulder_FK_J
+    400120: L_Shoulder_IK_J
+    400122: L_Shoulder_J
+    400124: L_Thumb01_J
+    400126: L_Thumb02_J
+    400128: L_Thumb03_J
+    400130: L_Thumb04_J
+    400132: L_ThumbFist_grp
+    400134: L_ThumbFist_grp1
+    400136: L_ThumbFist_grp2
+    400138: L_ThumbSpread_grp
+    400140: L_Wrist_FK_J
+    400142: L_Wrist_IK_J
+    400144: L_Wrist_J
+    400146: Left_Foot_Locator
+    400148: Left_Hand_Attachment_Locator
+    400150: //RootNode
     400152: Neck_J
     400154: R_Ankle_Fk_J
     400156: R_Ankle_Ik_J
@@ -311,7 +311,7 @@ ModelImporter:
     400300: Spine02_J
     400302: Spine03_J
     400304: Torso_Locator
-    7400000: Block
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -339,35 +339,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Block
-      takeName: Take 001
-      firstFrame: 2
-      lastFrame: 13.3
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
