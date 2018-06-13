@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAudioController : MonoBehaviour {
+public class CharacterAudioFacade : MonoBehaviour {
 
     public AudioManagerSkills skills;
     public AudioManagerCombat combat;
@@ -14,35 +14,35 @@ public class PlayerAudioController : MonoBehaviour {
 
     public void PlaySoundBlink()
     {
-        skills.PlaySoundBlink();
+        skills.InvokePlaySoundBlink();
     }
 
     public void PlaySoundPossession()
     {
-        skills.PlaySoundPossession();
+        skills.InvokePlaySoundPossession();
     }
 
     public void PlaySoundScream()
     {
 
-        skills.PlaySoundScream();
+        skills.InvokePlaySoundScream();
     }
 
     public void PlaySoundTeleportStart()
     {
 
-        skills.PlaySoundTeleportStart();
+        skills.InvokePlaySoundTeleportStart();
     }
 
     public void PlaySoundTeleportEnd()
     {
 
-        skills.PlaySoundTeleportEnd();
+        skills.InvokePlaySoundTeleportEnd();
     }
 
-    public void PlaySoundTransform()
+    public void PlaySoundTransformToMalphas()
     {
-        skills.PlaySoundTransform();
+        skills.InvokePlaySoundTransform();
     }
 
     public void PlaySoundDeathDevon()

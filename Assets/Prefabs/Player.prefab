@@ -4223,8 +4223,8 @@ GameObject:
   - component: {fileID: 95448045397611322}
   - component: {fileID: 143834096280422914}
   - component: {fileID: 114895258690907110}
-  - component: {fileID: 114349516156426534}
   - component: {fileID: 54768157322355718}
+  - component: {fileID: 114211902398615632}
   m_Layer: 0
   m_Name: Malphas
   m_TagString: Untagged
@@ -6097,8 +6097,8 @@ GameObject:
   - component: {fileID: 114995535001121380}
   - component: {fileID: 114283931827417648}
   - component: {fileID: 114096362314229884}
-  - component: {fileID: 114304431225206478}
   - component: {fileID: 54287961899619474}
+  - component: {fileID: 114163485508626506}
   m_Layer: 0
   m_Name: Devon
   m_TagString: Untagged
@@ -12543,8 +12543,6 @@ GameObject:
   - component: {fileID: 114005256783479890}
   - component: {fileID: 114253749765196884}
   - component: {fileID: 114197360707008450}
-  - component: {fileID: 82184859580938944}
-  - component: {fileID: 114131208397654268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -15025,8 +15023,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894981521280070}
-  m_LocalRotation: {x: -0, y: -0.74402934, z: -0, w: 0.668147}
-  m_LocalPosition: {x: -3.39, y: 0.96, z: 2.67}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.20658194, y: 1.14, z: -27.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4729747881210906}
@@ -27573,86 +27571,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82184859580938944
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1894981521280070}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &82208168063166984
 AudioSource:
   m_ObjectHideFlags: 1
@@ -28073,7 +27991,6 @@ MonoBehaviour:
   devon: {fileID: 1422631695219924}
   malphas: {fileID: 1294593828064316}
   transformation: {fileID: 1701571693823480}
-  audio: {fileID: 114789776129757724}
   currentForm: 0
 --- !u!114 &114021174225538490
 MonoBehaviour:
@@ -28101,28 +28018,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRadius: 2
---- !u!114 &114131208397654268
+--- !u!114 &114163485508626506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1894981521280070}
+  m_GameObject: {fileID: 1422631695219924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb28ac9983113de428ca9811d9c56ab3, type: 3}
+  m_Script: {fileID: 11500000, guid: f2bda0343cb7b3f41b83e86a6fb2785e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSounds:
-  - {fileID: 8300000, guid: cdda1a6f0b6531b42b00500561e04164, type: 3}
-  - {fileID: 8300000, guid: 6ebd8b4222681c44cb63d0df57b50158, type: 3}
-  - {fileID: 8300000, guid: 3ef5f58a88dad2b46b7c98f6cd5d4f91, type: 3}
-  - {fileID: 8300000, guid: ed6beef8a9f64014fb6f0aa119d06fb8, type: 3}
-  - {fileID: 8300000, guid: a57c2953c67434f4ebbe1131b1c8e2cd, type: 3}
-  - {fileID: 8300000, guid: b90ced8ed6f77ba47a362d02464c7150, type: 3}
-  - {fileID: 8300000, guid: 1df6c8aaa64083841a94c2f7cdb49103, type: 3}
-  - {fileID: 8300000, guid: b5feeed00e92d1849834fba94b7c48f8, type: 3}
-  - {fileID: 8300000, guid: fb38df9b3c2ab1743a9f640cf51f1b00, type: 3}
-  isRunning: 0
+  skills: {fileID: 114789776129757724}
+  combat: {fileID: 114753893062066372}
 --- !u!114 &114164719594947408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28159,6 +28067,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67eb8e90b42c054a89389e7788092e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114211902398615632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294593828064316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bda0343cb7b3f41b83e86a6fb2785e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills: {fileID: 114789776129757724}
+  combat: {fileID: 114753893062066372}
 --- !u!114 &114225576272942204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28257,28 +28178,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &114304431225206478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1422631695219924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb28ac9983113de428ca9811d9c56ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkingSounds:
-  - {fileID: 8300000, guid: cdda1a6f0b6531b42b00500561e04164, type: 3}
-  - {fileID: 8300000, guid: 6ebd8b4222681c44cb63d0df57b50158, type: 3}
-  - {fileID: 8300000, guid: 3ef5f58a88dad2b46b7c98f6cd5d4f91, type: 3}
-  - {fileID: 8300000, guid: ed6beef8a9f64014fb6f0aa119d06fb8, type: 3}
-  - {fileID: 8300000, guid: a57c2953c67434f4ebbe1131b1c8e2cd, type: 3}
-  - {fileID: 8300000, guid: b90ced8ed6f77ba47a362d02464c7150, type: 3}
-  - {fileID: 8300000, guid: 1df6c8aaa64083841a94c2f7cdb49103, type: 3}
-  - {fileID: 8300000, guid: b5feeed00e92d1849834fba94b7c48f8, type: 3}
-  - {fileID: 8300000, guid: fb38df9b3c2ab1743a9f640cf51f1b00, type: 3}
-  isRunning: 0
 --- !u!114 &114343041066132766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28290,28 +28189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244879eb0050941439dc21119ad99c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114349516156426534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1294593828064316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb28ac9983113de428ca9811d9c56ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkingSounds:
-  - {fileID: 8300000, guid: cdda1a6f0b6531b42b00500561e04164, type: 3}
-  - {fileID: 8300000, guid: 6ebd8b4222681c44cb63d0df57b50158, type: 3}
-  - {fileID: 8300000, guid: 3ef5f58a88dad2b46b7c98f6cd5d4f91, type: 3}
-  - {fileID: 8300000, guid: ed6beef8a9f64014fb6f0aa119d06fb8, type: 3}
-  - {fileID: 8300000, guid: a57c2953c67434f4ebbe1131b1c8e2cd, type: 3}
-  - {fileID: 8300000, guid: b90ced8ed6f77ba47a362d02464c7150, type: 3}
-  - {fileID: 8300000, guid: 1df6c8aaa64083841a94c2f7cdb49103, type: 3}
-  - {fileID: 8300000, guid: b5feeed00e92d1849834fba94b7c48f8, type: 3}
-  - {fileID: 8300000, guid: fb38df9b3c2ab1743a9f640cf51f1b00, type: 3}
-  isRunning: 0
 --- !u!114 &114418088662647598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -28561,11 +28438,7 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
-  audioManager:
-    movement: {fileID: 114767717754914242}
-    combat: {fileID: 114753893062066372}
-    sfx: {fileID: 114911440420142108}
-    skills: {fileID: 114789776129757724}
+  AMM: {fileID: 114767717754914242}
   combatState: 0
   characterControllable: 1
   animator: {fileID: 0}
@@ -28658,11 +28531,7 @@ MonoBehaviour:
   death:
     respawnTime: 5
     respawnHealth: 50
-  audioManager:
-    movement: {fileID: 114767717754914242}
-    combat: {fileID: 114753893062066372}
-    sfx: {fileID: 114911440420142108}
-    skills: {fileID: 114789776129757724}
+  AMM: {fileID: 114767717754914242}
   combatState: 0
   characterControllable: 1
   animator: {fileID: 0}
