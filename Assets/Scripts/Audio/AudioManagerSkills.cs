@@ -106,7 +106,6 @@ public class AudioManagerSkills : MonoBehaviour
     }
     public IEnumerator PlaySoundTransform()
     {
-        print("playSound");
         if (!isPlaying)
         {
             isPlaying = true;

@@ -7521,10 +7521,10 @@ MonoBehaviour:
   isRunning: 0
   isCrouching: 0
   isInCombat: 0
-  walkingAudioOffset: 0
-  runningAudioOffset: 1
-  crouchingAudioOffset: 2
-  combatAudioOffset: 3
+  walkingAudioOffset: 0.35
+  runningAudioOffset: 0.35
+  crouchingAudioOffset: 0.35
+  combatAudioOffset: 0.2
 --- !u!114 &114889161572086950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7539,7 +7539,7 @@ MonoBehaviour:
   SFXlist:
   - {fileID: 8300000, guid: a08a0209e121b2941ae20f5cf1009300, type: 3}
   - {fileID: 8300000, guid: e5767a4d5448ca44dbe7b5ddab33d3d3, type: 3}
-  - {fileID: 8300000, guid: d3b3dc78b574dad4cbdab1e4b4c0953d, type: 3}
+  - {fileID: 8300000, guid: c3cd714e6587dc5478e2ab3eba3bb4a8, type: 3}
   - {fileID: 8300000, guid: d3b3dc78b574dad4cbdab1e4b4c0953d, type: 3}
   - {fileID: 8300000, guid: 42149f815370eac41b7a12892663b9d1, type: 3}
 --- !u!114 &114893871805708964
