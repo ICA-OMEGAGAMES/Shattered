@@ -24,8 +24,6 @@ public class SceneTransition : MonoBehaviour {
     {
         if(other.gameObject.tag == Constants.PLAYER_TAG)
         {
-            //increment by 1 to load the next scene.
-			Time.timeScale = 0f;
 			StartCoroutine(LoadingScreen());
 		}
     }

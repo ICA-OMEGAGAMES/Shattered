@@ -164,9 +164,10 @@ public class DevonScript : CharacterMovement
         markerManager.SetMarkers();
     }
 
-    void OnEnable()
+    protected override void CharacterEnable()
     {
-        if(animator != null)
+        AMM.isMalphas = false;
+        if (animator != null)
             WakeAnimator(animator, animations);
     }
 
