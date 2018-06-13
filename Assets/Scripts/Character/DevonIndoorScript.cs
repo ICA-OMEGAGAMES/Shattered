@@ -44,21 +44,25 @@ public class DevonIndoorScript : MonoBehaviour
 
     //protected variables
     protected bool characterRooted = false;
-    public bool characterControllable = true;
 
+    //public variables
+    public bool characterControllable = true;
     public Animator animator;
     public CharacterController characterController;
+    public AudioManagerMovement AMM;
+
+    //private variables
     private Vector3 moveDirection;
     private Statistics statistics;
-    public CharacterAudioFacade characterAudio;
+    
 
     void Start()
     {
         statistics = this.transform.root.GetComponentInChildren<Statistics>();
-        characterAudio = this.transform.root.GetComponent<CharacterAudioFacade>();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         moveDirection = Vector3.zero;
+        AMM.isInside = true;
     }
 
     void Update()
@@ -69,10 +73,6 @@ public class DevonIndoorScript : MonoBehaviour
 
             //Apply movementDirections
             moveDirection = new Vector3(Input.GetAxis(Constants.HORIZONTAL_AXIS), 0, Input.GetAxis(Constants.VERTICAL_AXIS));
-            if (moveDirection != Vector3.zero)
-            {
-                characterAudio.InvokeWalkingSoundsCoroutine();
-            }
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= movement.walkSpeed;
             
@@ -80,7 +80,11 @@ public class DevonIndoorScript : MonoBehaviour
             {
                 RotateToCamera();
             }
-            if (characterRooted == false)
+            if (moveDirection != Vector3.zero & !characterRooted && AMM != null)
+            {
+                AMM.InvokeWalkingSoundsCoroutine();
+            }
+            if (!characterRooted)
             {
                 AnimateMovement(Input.GetAxis(Constants.VERTICAL_AXIS) * movement.walkSpeed, Input.GetAxis(Constants.HORIZONTAL_AXIS) * movement.walkSpeed);
                 moveDirection.y -= physics.gravity * Time.deltaTime;
