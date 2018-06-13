@@ -6,7 +6,6 @@ public class TransformAnimationScript : MonoBehaviour {
 
     public Animator devonAnimator;
     public Animator malphasAnimator;
-
     public string animationParemeter = "isToMalphas";
     // Use this for initialization
     void Start()

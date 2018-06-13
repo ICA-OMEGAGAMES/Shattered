@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 82602060672755090}
   - component: {fileID: 114492463104613886}
   - component: {fileID: 114742917056601002}
+  - component: {fileID: 114475202109815072}
   m_Layer: 0
   m_Name: DialoguePhase4_MomentOfWeakness
   m_TagString: Untagged
@@ -67,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894896241027312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.07, y: 1.2187445, z: 3.4959233}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.98, y: -5.08, z: -6.39}
+  m_LocalScale: {x: 0.17462838, y: 1, z: 1}
   m_Children:
   - {fileID: 4282775050009996}
   m_Father: {fileID: 0}
@@ -187,7 +188,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -208,11 +209,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887713750081768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c044c2c4f59d05479e938b0845a02d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 46132a65829efe1488c306c54eb45e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   yarnFileName: Phase4_MomentOfWeakness
   scriptToLoad: {fileID: 0}
+--- !u!114 &114475202109815072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894896241027312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e3db1fdd494f04e94d60c59086f67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationForStartingCutscene: 35
+  malphasCutsceneImage: {fileID: 0}
+  malphasCutsceneAudio: {fileID: 8300000, guid: 093f7cc67bae71b46977633ccd4ccedd,
+    type: 3}
 --- !u!114 &114492463104613886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,24 +237,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894896241027312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405d0571dea301f409f40817801b1d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: c6792e70768fe9d408356cf53d367bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   voices:
   - name: homless01
-    voice: {fileID: 8300000, guid: d1981ecf5c12962478252e326e9a57d3, type: 3}
+    voice: {fileID: 8300000, guid: 002d761484d536542a9ad036b22d9717, type: 3}
   - name: gangMember01
-    voice: {fileID: 8300000, guid: 733daf0df23b0264d8d80123797f685f, type: 3}
+    voice: {fileID: 8300000, guid: ba05637e400650448b42b767fa6bc1c8, type: 3}
   - name: gangMember02
-    voice: {fileID: 8300000, guid: cb3a003fafb8602418d3a0ce9ae60301, type: 3}
-  - name: devon01
-    voice: {fileID: 8300000, guid: feb5335a0ddff2c499f31231f6dd90bd, type: 3}
-  - name: devon02
-    voice: {fileID: 8300000, guid: a598dbb11a02add40884f571bcac2f41, type: 3}
+    voice: {fileID: 8300000, guid: 02e309938e928924ea6a9538e2eb08a5, type: 3}
   - name: gangMember03
-    voice: {fileID: 8300000, guid: 427e46fd391b46340a27e229d86be9e4, type: 3}
+    voice: {fileID: 8300000, guid: 0f60f59fc362005489de07ad6cffaca3, type: 3}
+  - name: devon01
+    voice: {fileID: 8300000, guid: c462502c88430b841a9834e8c2a5b236, type: 3}
+  - name: devon02
+    voice: {fileID: 8300000, guid: a16e2b58386948a4880f2c3a330ee751, type: 3}
   - name: devon03
-    voice: {fileID: 8300000, guid: cdccbe2e469501a49b24d8250fceb36d, type: 3}
+    voice: {fileID: 8300000, guid: 66d841a7ae9d9a843b8171ffd5c76339, type: 3}
 --- !u!114 &114742917056601002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,15 +263,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894896241027312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23fcabd3ef870f42959ec225bce9537, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ff08b16ce38d1b4c80cf999cbff5135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   talkingName: {fileID: 0}
   displayingNames:
   - name: homeless
-    showingName: Homeless victim (begging)
+    showingName: Homeless
   - name: gangMember
-    showingName: Gang member
+    showingName: Gang Member
   - name: devonThought
     showingName: Devon (thought)
   - name: devon

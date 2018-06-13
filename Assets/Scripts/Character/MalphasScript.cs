@@ -82,6 +82,11 @@ public class MalphasScript : CharacterMovement
 
     }
 
+    protected override void CharacterEnable()
+    {
+        AMM.isMalphas = true;
+    }
+
     protected override void CharacterOutOfCombatUpdate()
     {
         //todo: teleport skill

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //Script to start the game by clicking on play
-public class LoadSceneOnClick : MonoBehaviour {
+public class LoadSceneOnClick : SceneTransition {
 
 	public int sceneIndex;
 
@@ -16,6 +16,6 @@ public class LoadSceneOnClick : MonoBehaviour {
 
 	public void LoadByIndex(int index)
 	{
-		SceneManager.LoadScene(index);
+		StartCoroutine (LoadingScreen());
 	}
 }

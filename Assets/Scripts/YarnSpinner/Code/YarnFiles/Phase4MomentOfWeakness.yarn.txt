@@ -33,4 +33,6 @@ position: 540,244
 
 <<setVoice DialoguePhase4_MomentOfWeakness dialogueFinished>>
 
+<<startMalphasCutscene DialoguePhase4_MomentOfWeakness start>>
+
 ===

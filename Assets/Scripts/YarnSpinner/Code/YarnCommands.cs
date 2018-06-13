@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Yarn.Unity.Shattered
 {
@@ -7,11 +8,19 @@ namespace Yarn.Unity.Shattered
     public class YarnCommands : MonoBehaviour
     {
 
+        private IEnumerator coroutine;
+        public float durationForStartingCutscene = 35.0f;
+        public GameObject malphasCutsceneImage;
+        public AudioClip malphasCutsceneAudio;
+
+        void Start()
+        {
+            coroutine = WaitForUnitlSoundIsFinished();
+        }
+
         [YarnCommand("doJump")]
         public void jump(string jumpheight)
         {
-            // Debug.Log("Command --> doJump");
-
             // simulate the Jump function
             Vector3 originalPos = transform.position;
             transform.position = new Vector3(originalPos.x, originalPos.y, originalPos.z + 1.0f);
@@ -20,8 +29,6 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("startPressureTimer")]
         public void pressureTimer(string parameters)
         {
-            // Debug.Log("Command --> startPressureTimer");
-
             //We get all parameters and split them, so that we can use these later
             var para = parameters.Split(',');
 
@@ -43,7 +50,6 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("startHelpTimer")]
         public void helpTimer(string parameters)
         {
-            // Debug.Log("Command --> startHelpTimer");
             var para = parameters.Split(',');
 
             //We get all parameters and split them, so that we can use these later
@@ -66,9 +72,51 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("openSkillTree")]
         public void openSkillTree(string parameters)
         {
-            // Debug.Log("Command --> openSkillTree");
-
             FindObjectOfType<SkillTreeMenu>().openWithinDialogueSystem();
+        }
+
+        [YarnCommand("startMalphasCutscene")]
+        public void StartMalphasCutscene(string voiceName)
+        {
+            //Freeze game when cutscene shows off
+            Time.timeScale = 0.0f;
+
+            StartCoroutine(WaitForUnitlSoundIsFinished());
+        }
+
+        IEnumerator WaitForUnitlSoundIsFinished()
+        {
+            yield return StartCoroutine(WaitForCutscene());
+
+            //Set Image visible
+            malphasCutsceneImage.SetActive(true);
+
+            //Play Audio
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.clip = malphasCutsceneAudio;
+            audio.Play();
+            float duration = malphasCutsceneAudio.length;
+
+            yield return StartCoroutine(WaitForAudio(duration));
+
+            //Unfreeze Game
+            Time.timeScale = 1.0f;
+
+            //After audio disable Image
+            malphasCutsceneImage.SetActive(false);
+
+            //Transform into Melphas
+            //TODOO
+        }
+
+        IEnumerator WaitForCutscene()
+        {
+            yield return new WaitForSeconds(durationForStartingCutscene);
+        }
+
+        IEnumerator WaitForAudio(float duration)
+        {
+            yield return new WaitForSeconds(duration);
         }
     }
 }
