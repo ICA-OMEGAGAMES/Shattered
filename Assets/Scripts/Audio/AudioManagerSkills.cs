@@ -58,12 +58,12 @@ public class AudioManagerSkills : MonoBehaviour
     //barrier
     public void InvokePlaySoundBarrierStart()
     {
-        StartCoroutine(PlaySoundTeleportEnd());
+        StartCoroutine(PlaySoundBarrierStart());
     }
 
     public void InvokePlaySoundBarrierEnd()
     {
-        StartCoroutine(PlaySoundTeleportEnd());
+        StartCoroutine(PlaySoundBarrierEnd());
     }
 
 
@@ -169,9 +169,10 @@ public class AudioManagerSkills : MonoBehaviour
     }
     public IEnumerator PlaySoundBarrierEnd()
     {
+        audioSource.Stop();
+        isPlaying = false;
         if (!isPlaying)
         {
-            audioSource.Stop();
             isPlaying = true;
             audioSource.clip = SFXlist[3];
             audioSource.Play();
