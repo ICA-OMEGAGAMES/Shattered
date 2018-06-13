@@ -51,12 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_scenes\Development\DialogueScene\DialogueTrigger.cs" />
-     <Compile Include="Assets\_scenes\Development\DialogueScene\SpriteSwitcher.cs" />
-     <Compile Include="Assets\_scenes\Development\DialogueScene\VoiceSwitcher.cs" />
-     <Compile Include="Assets\_scenes\Development\Sprint04\TeleportSkill.cs" />
-     <Compile Include="Assets\_scenes\Development\Sprint04\TimeManager.cs" />
-     <Compile Include="Assets\_scenes\Development\TestVideo\OpenTestVideo.cs" />
+     <Compile Include="Assets\_Scenes\Development\Sprint04\TeleportSkill.cs" />
+     <Compile Include="Assets\_Scenes\Development\Sprint04\TimeManager.cs" />
+     <Compile Include="Assets\_Scenes\Development\TestVideo\OpenTestVideo.cs" />
      <Compile Include="Assets\Art\Imports\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
      <Compile Include="Assets\Art\Imports\GE Common Assets\Scripts\GE_UIResponder.cs" />
      <Compile Include="Assets\Art\Imports\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
@@ -96,7 +93,12 @@
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\UnarmedAttackAction.cs" />
+     <Compile Include="Assets\Scripts\Audio\AddThisToEverytScriptThatCallsAudio.cs" />
      <Compile Include="Assets\Scripts\Audio\AppartmentMusicSwap.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManagerCombat.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManagerMovement.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManagerSFX.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManagerSkills.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraSettings.cs" />
@@ -113,6 +115,7 @@
      <Compile Include="Assets\Scripts\Character\Abilities\SkillSettings.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Teleport.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterAudioController.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterAudioFacade.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMovement.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterTransformer.cs" />
      <Compile Include="Assets\Scripts\Character\DevonIndoorScript.cs" />
@@ -123,6 +126,7 @@
      <Compile Include="Assets\Scripts\Character\Models\CharacterAttack.cs" />
      <Compile Include="Assets\Scripts\Character\SpawnpointScript.cs" />
      <Compile Include="Assets\Scripts\Character\Statistics.cs" />
+     <Compile Include="Assets\Scripts\Character\TransformAnimationScript.cs" />
      <Compile Include="Assets\Scripts\Character\WeaponHandler.cs" />
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\DummyScript.cs" />
@@ -163,6 +167,9 @@
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeReader.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\UnlockButton.cs" />
      <Compile Include="Assets\Scripts\SkipCutscene.cs" />
+     <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\DialogueTrigger.cs" />
+     <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\NameSwitcher.cs" />
+     <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\VoiceSwitcher.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueNPC.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialoguePlayer.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueRunner.cs" />
@@ -195,6 +202,7 @@
      <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Phase4MomentOfWeakness.yarn.txt" />
      <None Include="Assets\Shaders\ShieldFX.shader" />
      <None Include="Assets\Art\Imports\PostProcessing\Shaders\API\PSSL.hlsl" />
+     <None Include="Assets\Scripts\YarnSpinner\Code\YarnFiles\Tutorial.yarn.txt" />
      <None Include="Assets\Art\Imports\PostProcessing\Shaders\Debug\Vectorscope.shader" />
      <None Include="Assets\Art\Imports\PostProcessing\Shaders\Builtins\GaussianDownsample.compute" />
      <None Include="Assets\Placeholder\Prefabs.txt" />
@@ -327,40 +335,40 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="ShaderForge">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Art/Imports/ShaderForge/Editor/ShaderForge.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/Desktop/Informatik/Auslandssemester/Unity - Projects/Shattered/Assets/Art/Imports/ShaderForge/Editor/ShaderForge.dll</HintPath>
  </Reference>
  <Reference Include="Antlr4.Runtime.Standard">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/Desktop/Informatik/Auslandssemester/Unity - Projects/Shattered/Assets/Scripts/YarnSpinner/Code/Antlr4.Runtime.Standard.dll</HintPath>
  </Reference>
  <Reference Include="CsvHelper">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/Desktop/Informatik/Auslandssemester/Unity - Projects/Shattered/Assets/Scripts/YarnSpinner/Code/CsvHelper.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/Desktop/Informatik/Auslandssemester/Unity - Projects/Shattered/Assets/Scripts/YarnSpinner/Code/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="YarnSpinner">
- <HintPath>C:/Users/julia/Documents/GitHub/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/Desktop/Informatik/Auslandssemester/Unity - Projects/Shattered/Assets/Scripts/YarnSpinner/Code/YarnSpinner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Analytics">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
- <HintPath>C:/Users/julia/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/Benjamin/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
