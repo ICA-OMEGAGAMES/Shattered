@@ -7,7 +7,6 @@ public class Barrier : ISkill
     private SkillSettings settings;
     private Statistics statistics;
     private MonoBehaviour mono;
-    private MalphasScript.SkillAnimations skillAnimations = new MalphasScript.SkillAnimations();
 
     private float cooldownTimestamp;
 
@@ -23,10 +22,6 @@ public class Barrier : ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            if (animator != null)
-            {
-                animator.SetTrigger("SkillBarrier");
-            }
             mono.StartCoroutine(ActivateShield());
 
             mono.StartCoroutine(mono.GetComponent<MalphasScript>().RootCharacter(settings.rootDuration));

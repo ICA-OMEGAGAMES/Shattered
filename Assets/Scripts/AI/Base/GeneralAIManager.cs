@@ -6,22 +6,31 @@ using UnityEngine.AI;
 
 public class GeneralAIManager : MonoBehaviour
 {
-    private int attackingAIs;
     private float attackCooldownTimestamp;
+    private List<Transform> waitingAIs;
+    private List<Transform> attackingAIs;
 
-    public void AttackState(bool enabled)
+    void Start()
     {
-        if (enabled)
+        waitingAIs = new List<Transform>();
+        attackingAIs = new List<Transform>();
+    }
+
+    public void AttackState(bool enabled, Transform enemy)
+    {
+        if (enabled && !attackingAIs.Contains(enemy))
         {
-            attackingAIs++;
+            attackingAIs.Add(enemy);
             return;
+        } else if (!enabled)
+        {
+            attackingAIs.Remove(enemy);
         }
-        attackingAIs--;
     }
 
     public int GetAttackingAIS()
     {
-        return attackingAIs;
+        return attackingAIs.Count;
     }
 
     public void SetCooldown(float duration)
@@ -32,5 +41,23 @@ public class GeneralAIManager : MonoBehaviour
     public bool IsCooldownExpired()
     {
         return Time.time > attackCooldownTimestamp;
+    }
+
+    public void EnterAttackIdle(Transform enemy)
+    {
+       if(!waitingAIs.Contains(enemy))
+       {
+           waitingAIs.Add(enemy);
+       }
+    }
+
+    public void LeaveAttackIdle(Transform enemy)
+    {
+        waitingAIs.Remove(enemy);
+    }
+
+    public int GetWaitingAIs()
+    {
+        return waitingAIs.Count;
     }
 }

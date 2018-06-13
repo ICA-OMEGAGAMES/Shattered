@@ -14,6 +14,11 @@ public class TargetReachedDecision : Decision
 
     private bool Reached(AIManager manager)
     {
-        return (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.aiStats.movementStats.reachedDistance && !manager.navMeshAgent.pathPending);
+        bool reached = (Vector3.Distance(manager.transform.position, manager.walkTarget) <= manager.aiStats.movementStats.reachedDistance && !manager.navMeshAgent.pathPending);
+        if(reached)
+        {
+            manager.EnterAttackIdle();
+        }
+        return reached;
     }
 }

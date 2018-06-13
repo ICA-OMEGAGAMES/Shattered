@@ -6,9 +6,10 @@ public class AIAnimationManager : MonoBehaviour
 {
     public Animator animator { get; private set; }
 
-    private bool dodging;
-    private float dodgingTimestamp;
-    private bool blocking;
+    private bool isDodging;
+    private bool isLooking;
+    private float lookingTimestamp;
+    private bool isBlocking;
     private float blockingTimestamp;
     private string lastAttack;
 
@@ -17,13 +18,16 @@ public class AIAnimationManager : MonoBehaviour
     {
         //Use these names to change the parameters value's of the  animator, to change the animation to it's inteded state.
         public string groundedBool = "isGrounded";
-        public string dodgeBool = "isDodging";
+        public string dodge = "Dodging";
+        public string lookArounBool = "isLooking";
         public string isInCombat = "isInCombat";
         public string deadBool = "isDead";
+        public string blockBool = "isBlocking";
         public string verticalVelocityFloat = "Forward";
         public string weaponSet = "WeaponSet";
         public string attack1 = "Attack1";
         public string attack2 = "Attack2";
+        public string attacked = "Hit";
     }
 
     [SerializeField]
@@ -36,13 +40,13 @@ public class AIAnimationManager : MonoBehaviour
 
     void Update()
     {
-        if(blocking && blockingTimestamp < Time.time)
+        if(isBlocking && blockingTimestamp < Time.time)
         {
-            blocking = false;
+            isBlocking = false;
         }
-        if(dodging && dodgingTimestamp < Time.time)
+        if(isLooking && lookingTimestamp < Time.time)
         {
-            dodging = false;
+            isLooking = false;
         }
     }
 
@@ -50,7 +54,12 @@ public class AIAnimationManager : MonoBehaviour
     {
         animator.SetFloat(animations.verticalVelocityFloat, walkingSpeed);
         animator.SetBool(animations.groundedBool, IsFalling());
-        animator.SetBool(animations.dodgeBool, dodging);
+        if(isDodging){
+            animator.SetTrigger(animations.dodge);
+            isDodging = false;
+        }
+        animator.SetBool(animations.lookArounBool, isLooking);
+        animator.SetBool(animations.blockBool, isBlocking);
     }
 
     public void SetFightingAnimation(int fightMode, string attack)
@@ -82,29 +91,47 @@ public class AIAnimationManager : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distToGround);
     }
 
-    public bool Dodge(bool dodge, float duration)
+    public bool Dodge(bool dodge)
     {
-        dodging = dodge;
-        if(dodging)
-        {
-            dodgingTimestamp = Time.time + duration;
-        }
-        return dodging;
+        isDodging = dodge;
+        return isDodging;
     }
 
     public bool Block(bool block, float duration)
     {
-        blocking = block;
-        if(blocking)
+        isBlocking = block;
+        if(isBlocking)
         {
             blockingTimestamp = Time.time + duration;
         }
-        return blocking;
+        return isBlocking;
+    }
+
+    public void LookAround(float duration)
+    {
+        isLooking = true;
+        lookingTimestamp = Time.time + duration;
+    }
+
+     public void StopLooking()
+    {
+        isLooking = false;
     }
 
     public bool IsBlocking()
     {
-        return blocking;
+        return isBlocking;
+    }
+
+    public bool IsLooking()
+    {
+        return isLooking;
+    }
+
+    public void HitRegistered()
+    {
+        animator.SetTrigger(animations.attacked);
+        animator.Play(Constants.ANIMATIONSTATE_HIT);
     }
 
     public string GetLastAttack()

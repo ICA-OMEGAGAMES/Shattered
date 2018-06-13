@@ -15,6 +15,8 @@ public class LookDecision : Decision
     {
         if (!manager.IsTargetAlive())
         {
+            manager.LeaveAttackIdle();
+            manager.SetAttackState(false);
             return false;
         }
         Vector3 target = manager.GetTargetPosition(); 
@@ -23,26 +25,38 @@ public class LookDecision : Decision
         
         float angleToPlayer = Vector3.Angle(targetDirection, manager.transform.forward);
 
-        if ((angleToPlayer >= (manager.aiStats.FOV * -0.5)) && (angleToPlayer <= (manager.aiStats.FOV * 0.5)))
+        if (manager.IsLookingForPlayer() || ((angleToPlayer >= (manager.aiStats.FOV * -0.5)) && (angleToPlayer <= (manager.aiStats.FOV * 0.5))))
         {   
-            RaycastHit hit;
             float lookRange = manager.aiStats.lookRange;
 
             if(Vector3.Distance(target, manager.transform.position) >= lookRange)
             {
+                manager.LeaveAttackIdle();
+                manager.SetAttackState(false);
                 return false;
             }
 
-            int layerMask = 1 << 9;
-            layerMask = ~layerMask;
-
+            int layerMask =~ LayerMask.GetMask(Constants.AI_LAYER);
+            RaycastHit hit;
             if(Physics.Raycast(manager.eyes.transform.position, targetDirection.normalized, out hit, lookRange, layerMask))
             {
-                Debug.Log(hit.transform.name);
-                return hit.transform.CompareTag(Constants.PLAYER_TAG);
-            }
+                bool player = hit.transform.CompareTag(Constants.PLAYER_TAG);
+                
+                if(!player)
+                {
+                    manager.LeaveAttackIdle();
+                    manager.SetAttackState(false);
+                } else {
+                    manager.StopLookingForPlayer();
+                    manager.ResetTimerDecision();
+                }
+               
+                return player;
+            } 
             //if the player is in the field of view and not occluded by an object return true
         }
+        manager.LeaveAttackIdle();
+        manager.SetAttackState(false);
         return false;
     }
 }

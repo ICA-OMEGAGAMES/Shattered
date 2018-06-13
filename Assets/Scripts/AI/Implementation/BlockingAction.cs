@@ -16,7 +16,7 @@ public class BlockingAction : Action
             return;
         }
 
-        if (manager.Block(UnityEngine.Random.Range(0.0f, 10.0f) >= 9, manager.aiStats.unarmedCombatSettings.blockDuration))
+        if (manager.Block(UnityEngine.Random.Range(0.0f, 10.0f) >= 9.5, manager.aiStats.unarmedCombatSettings.blockDuration))
         {
             // block based on chance
             manager.SetAttackCooldown(manager.aiStats.unarmedCombatSettings.blockDuration);

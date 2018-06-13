@@ -17,6 +17,11 @@ public class TimerDecision : Decision
         {
             manager.SetTimestamp(manager.aiStats.searchTime);
         }
-        return manager.IsTimestampExpired();
+        if (manager.IsTimestampExpired())
+        {
+            manager.StopLookingForPlayer();
+            return true;
+        }
+        return false;
     }
 }

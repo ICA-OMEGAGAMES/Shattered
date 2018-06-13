@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableAI/Actions/Turn")]
 public class TurnAction : Action
 {
+    public float duration = 5f;
     public override void Act(AIManager manager)
     {
         Turn(manager);
@@ -12,6 +13,9 @@ public class TurnAction : Action
 
     private void Turn(AIManager manager)
     {
-        manager.transform.Rotate(new Vector3(0, 3, 0));
+        if(!manager.IsLookingForPlayer())
+        {
+            manager.LookForPlayer(duration);
+        }
     }
 }

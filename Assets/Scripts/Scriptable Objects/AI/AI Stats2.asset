@@ -20,10 +20,11 @@ MonoBehaviour:
     moveSpeed: 4
     runSpeed: 8
     dodgeCooldown: 2
+    dodgeLock: 5
     reachedDistance: 0.75
     reachedTollerance: 0.25
   unarmedCombatSettings:
-    blockDuration: 3
+    blockDuration: 2
     blockPercentage: 0.5
     attackIdleRange: 8
     unarmedAttackRange: 5
@@ -31,6 +32,7 @@ MonoBehaviour:
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
     cooldown: 2
+    generalCooldown: 0.75
     possessionDuration: 10
     attackingDuration: 7.5
     attackModeCooldown: 3.75
