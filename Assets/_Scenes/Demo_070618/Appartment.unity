@@ -1903,7 +1903,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25cefc39919c97e41b5839eb5c66c8fc, type: 2}
+  - {fileID: 2100000, guid: 63a9f9344952c9e4090158ca685aa4dc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -2002,7 +2002,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1341330822
+  randomSeed: 1429131236
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4523,7 +4523,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 108716400632277072, guid: b2782f0967f0042478ed605d2d8716f8, type: 2}
+    light: {fileID: 2012768308}
     randomDistribution: 0
     color: 0
     range: 1
@@ -24511,7 +24511,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25cefc39919c97e41b5839eb5c66c8fc, type: 2}
+  - {fileID: 2100000, guid: 63a9f9344952c9e4090158ca685aa4dc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -24610,7 +24610,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2063556752
+  randomSeed: -1743792955
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -27131,7 +27131,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 1
-    light: {fileID: 108716400632277072, guid: b2782f0967f0042478ed605d2d8716f8, type: 2}
+    light: {fileID: 62040769}
     randomDistribution: 0
     color: 0
     range: 1
@@ -34686,6 +34686,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f7d8d150ae00c134fa2963cbca7f02f3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3643f9a2cbd1b1b498487caed0e61b5f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7d8d150ae00c134fa2963cbca7f02f3, type: 3}
   m_IsPrefabParent: 0
