@@ -1,0 +1,18 @@
+title: Tutorial
+tags: 
+colorID: 0
+position: 436,254
+---
+
+<<setName DialoguePhase0_SkillMaster tutorial>>
+Hi, Player!
+<<if $first_skill_unlocked is false>>
+    You can unlock your first skill
+    <<openSkillTree DialoguePhase0_SkillMaster 0>>
+    <<set $first_skill_unlocked to true>>
+    So, you can use your skills from now one.
+<<endif>>
+If you ever want to open the tree, just press 'i'!
+
+<<setName DialoguePhase0_SkillMaster dialogueFinished>>
+===
