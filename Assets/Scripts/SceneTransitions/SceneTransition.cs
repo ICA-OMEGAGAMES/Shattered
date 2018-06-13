@@ -31,7 +31,7 @@ public class SceneTransition : MonoBehaviour {
     }
 
 
-	IEnumerator LoadingScreen(){
+	public IEnumerator LoadingScreen(){
 		loadingScreenObj.SetActive (true);
 		backgroundVideo.StartVideo();
 		async = SceneManager.LoadSceneAsync (currentScene +1);
