@@ -10,6 +10,7 @@ public class CharacterTransformer : MonoBehaviour
     public GameObject devon;
     public GameObject malphas;
     public GameObject transformation;
+    public AudioManagerSkills audio;
     private TransformAnimationScript animaterScript;
 
     //forms
@@ -86,6 +87,7 @@ public class CharacterTransformer : MonoBehaviour
                 malphas.SetActive(false);
                 transformation.SetActive(true);
                 animaterScript.SetToMalphas(true);
+                audio.InvokePlaySoundTransform();
                 //set position and rotation to the previous character
                 transformation.transform.position = devon.transform.position;
                 transformation.transform.rotation = devon.transform.rotation;
@@ -112,6 +114,7 @@ public class CharacterTransformer : MonoBehaviour
                 malphas.SetActive(false);
                 transformation.SetActive(true);
                 animaterScript.SetToMalphas(false);
+                audio.InvokePlaySoundTransform();
 
                 //set position and rotation to the previous character
                 transformation.transform.position = malphas.transform.position;
