@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4500782891903270}
-  - component: {fileID: 114415711103136286}
   - component: {fileID: 114017823947039014}
   - component: {fileID: 82101703860968702}
+  - component: {fileID: 114064526012122936}
   m_Layer: 0
   m_Name: DialoguePhase3_Research
   m_TagString: Untagged
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1201634762460832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44498968, y: 1.2187445, z: 3.4959233}
+  m_LocalPosition: {x: 0.27, y: 1.2187445, z: -8.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4708513408950894}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388539123497154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.6, z: -0}
+  m_LocalPosition: {x: 0, y: -1.6, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4500782891903270}
@@ -208,13 +208,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201634762460832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23fcabd3ef870f42959ec225bce9537, type: 3}
+  m_Script: {fileID: 11500000, guid: c6792e70768fe9d408356cf53d367bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkingName: {fileID: 0}
-  displayingNames:
-  - name: devonThought
-    showingName: Devon (thought)
+  voices:
+  - name: devon01
+    voice: {fileID: 8300000, guid: ca64670c75f2e3146a115e982b434196, type: 3}
+  - name: devon02
+    voice: {fileID: 8300000, guid: ded0fadc68818ef48b2155a419c3b764, type: 3}
 --- !u!114 &114054575926680136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,12 +224,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1388539123497154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c044c2c4f59d05479e938b0845a02d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 46132a65829efe1488c306c54eb45e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   yarnFileName: Phase3_Research
   scriptToLoad: {fileID: 0}
---- !u!114 &114415711103136286
+--- !u!114 &114064526012122936
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -236,11 +237,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201634762460832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405d0571dea301f409f40817801b1d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ff08b16ce38d1b4c80cf999cbff5135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voices:
-  - name: devon01
-    voice: {fileID: 8300000, guid: f15f71aeb7cd52445b6e69692b29eb02, type: 3}
-  - name: devon02
-    voice: {fileID: 8300000, guid: 6d188dc41ea55f74e9f27cc7b9cb0484, type: 3}
+  talkingName: {fileID: 0}
+  displayingNames:
+  - name: devonThought
+    showingName: Devon (thought)
