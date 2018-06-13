@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-public class PlayVideo : MonoBehaviour
+public class PlayVideo : SceneTransition
 {
     public RawImage image;
     public VideoClip videoToPlay;
@@ -72,7 +72,7 @@ public class PlayVideo : MonoBehaviour
             audioSource.Play();
 			if (transitionAfterVideo) {
 				yield return new WaitForSeconds ((float)videoPlayer.clip.length);
-				SceneManager.LoadScene(currentScene +1);
+				StartCoroutine (LoadingScreen ());
 			} else {
 				while (videoPlayer.isPlaying) {
 					yield return null;

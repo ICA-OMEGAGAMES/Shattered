@@ -5,38 +5,24 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
-public class SkipCutscene : MonoBehaviour
+public class SkipCutscene : SceneTransition
 {
     public GameObject skipText;
-    private int currentScene;
-    private bool textIsVisible;
-
-    void Awake()
-    {
-        currentScene = SceneManager.GetActiveScene().buildIndex;
-        textIsVisible = false;
-    }
 
     void Update()
     {
-        if (!textIsVisible && Input.anyKeyDown)
+        StartCoroutine(ShowSkippingText());
+        
+        if (Input.GetButtonDown("Submit"))
         {
-            skipText.SetActive(true);
-            textIsVisible = true;
-            StartCoroutine(ShowSkippingText());
-        }
-
-        if (textIsVisible && Input.GetButtonDown("Submit"))
-        {
-            SceneManager.LoadScene(currentScene + 1);
+			GetComponent<PlayVideo> ().image.enabled = false;
+			StartCoroutine (LoadingScreen());
         }
     }
 
     IEnumerator ShowSkippingText()
     {
         yield return new WaitForSeconds(2);
-
-        textIsVisible = false;
         skipText.SetActive(false);
     }
 }
