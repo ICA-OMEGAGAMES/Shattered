@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 30
   cooldown: 15
-  value: 1
+  value: 20
   rootDuration: 1
   skillEffect: {fileID: 0}

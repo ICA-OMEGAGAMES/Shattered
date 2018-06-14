@@ -21,6 +21,7 @@ public class PsychicScream : ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
+            animator.SetTrigger(skillAnimations.psychicScream);
             //("PsychicScream Used");
         }
     }

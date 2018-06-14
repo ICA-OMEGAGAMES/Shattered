@@ -20,7 +20,8 @@ public class Possess : ISkill
         if (!IsOnCooldown())
         {
             cooldownTimestamp = Time.time + settings.cooldown;
-            float shortestDistance = float.MaxValue;
+            animator.SetTrigger(skillAnimations.possess);
+            float shortestDistance = settings.value; //value as max spell range
             GameObject closestEnemy = null;
             foreach(GameObject enemy in GameObject.FindGameObjectsWithTag(Constants.ENEMY_TAG))
             {
@@ -31,8 +32,8 @@ public class Possess : ISkill
                     shortestDistance = distance;
                 }
             }
-
-            closestEnemy.GetComponent<AIManager>().Possess();
+            if(closestEnemy != null)
+                closestEnemy.GetComponent<AIManager>().Possess();
         }
     }
 
