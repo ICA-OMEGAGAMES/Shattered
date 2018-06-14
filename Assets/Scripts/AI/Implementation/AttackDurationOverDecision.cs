@@ -17,7 +17,7 @@ public class AttackDurationOver : Decision
         {
             return false;
         }
-        if(manager.IsAttackDurationOver())
+        if(!manager.IsPossessed() && manager.IsAttackDurationOver())
         {
             manager.ResetAttackTimer();
             manager.SetAttackState(false);

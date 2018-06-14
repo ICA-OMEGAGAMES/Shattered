@@ -21,12 +21,12 @@ MonoBehaviour:
   - decision: {fileID: 11400000, guid: 7ca5c947e71973a49af223b3fde73013, type: 2}
     trueState: {fileID: 11400000, guid: 6afee3af2bc404445b19088878e4f68c, type: 2}
     falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
-  - decision: {fileID: 11400000, guid: 89eb5cc832b1ecf478cebb695344ee87, type: 2}
+  - decision: {fileID: 11400000, guid: 47ae46382bd58d145ad5645cdb9281ea, type: 2}
     trueState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
     falseState: {fileID: 11400000, guid: 47e971885b2ae694db071a995e2f9c3b, type: 2}
   - decision: {fileID: 11400000, guid: 6204921e3634f2c498eb2ef31243d80b, type: 2}
     trueState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
     falseState: {fileID: 11400000, guid: 4bb52edf7351c42448c1c945188585c0, type: 2}
-  - decision: {fileID: 0}
+  - decision: {fileID: 11400000, guid: f2a6c0d9856e6a54b9a006f29bf3f827, type: 2}
     trueState: {fileID: 11400000, guid: 47e971885b2ae694db071a995e2f9c3b, type: 2}
     falseState: {fileID: 11400000, guid: 5854e005aceae3a4ba743ba5dd6735bf, type: 2}
