@@ -7319,7 +7319,7 @@ Animator:
   m_GameObject: {fileID: 1166724433127350}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 12f5fe43c23def143b04213fa5424b78, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3c9958feeda64d64eb0b8b9df9b18b9b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2b070b803de897947bea57e975398c8d, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -7539,7 +7539,7 @@ MonoBehaviour:
   SFXlist:
   - {fileID: 8300000, guid: a08a0209e121b2941ae20f5cf1009300, type: 3}
   - {fileID: 8300000, guid: e5767a4d5448ca44dbe7b5ddab33d3d3, type: 3}
-  - {fileID: 8300000, guid: c3cd714e6587dc5478e2ab3eba3bb4a8, type: 3}
+  - {fileID: 8300000, guid: d3b3dc78b574dad4cbdab1e4b4c0953d, type: 3}
   - {fileID: 8300000, guid: d3b3dc78b574dad4cbdab1e4b4c0953d, type: 3}
   - {fileID: 8300000, guid: 42149f815370eac41b7a12892663b9d1, type: 3}
 --- !u!114 &114893871805708964

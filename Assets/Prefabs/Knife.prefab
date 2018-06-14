@@ -40,8 +40,8 @@ GameObject:
   - component: {fileID: 4707120979170742}
   - component: {fileID: 33859537976300536}
   - component: {fileID: 23552329517769136}
-  - component: {fileID: 136190065646471640}
-  - component: {fileID: 114982379246172266}
+  - component: {fileID: 136784089496719604}
+  - component: {fileID: 114572228733456434}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Weapon
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892914921834714}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5222917, y: 0.214, z: -16.66}
+  m_LocalPosition: {x: 2.645934, y: 7.821704e-18, z: -16.66291}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723844151162272}
@@ -69,8 +69,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535453419777164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.346, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.351, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4707120979170742}
@@ -90,7 +90,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8cd8428c18da79e4f9f3ca414cbf6222, type: 2}
+  - {fileID: 2100000, guid: af398637ea8d38740a8bbac801ef0a34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,7 +157,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1892914921834714}
-  m_Mesh: {fileID: 4300000, guid: c3e5f2a995cd49b48a095489d80d9d38, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 2da3011f5415cae429ca2cee12f696d5, type: 3}
 --- !u!114 &114515267358762836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244879eb0050941439dc21119ad99c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114982379246172266
+--- !u!114 &114572228733456434
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -193,7 +193,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136190065646471640
+--- !u!136 &136784089496719604
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -205,4 +205,4 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 0.7504528
   m_Direction: 1
-  m_Center: {x: -0.0000000055879354, y: 0.37522647, z: 0}
+  m_Center: {x: -0.000000005587935, y: 0.3752265, z: 0}

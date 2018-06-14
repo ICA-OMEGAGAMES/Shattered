@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterTransformer : MonoBehaviour
 {
     public float transformationDuration = 1f;
+    public bool malphasUnlocked = true;
     
     public GameObject devon;
     public GameObject malphas;
@@ -34,7 +35,7 @@ public class CharacterTransformer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton(Constants.TRANSFORM_BUTTON) && transformationTimeStamp <= Time.time)
+        if (Input.GetButton(Constants.TRANSFORM_BUTTON) && malphasUnlocked && transformationTimeStamp <= Time.time)
         {
             SwitchForm();
             transformationTimeStamp = Time.time + transformationDuration;
