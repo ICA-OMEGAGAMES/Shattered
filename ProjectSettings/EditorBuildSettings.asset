@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Final/City.unity
     guid: ce8c513e49679ea4b8ef195564a55dd9
+  - enabled: 1
+    path: Assets/_Scenes/endgame.unity
+    guid: 32ba604002f8d8c4eba823a49e408c93

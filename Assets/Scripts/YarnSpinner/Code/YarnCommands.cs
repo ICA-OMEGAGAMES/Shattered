@@ -2,10 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 namespace Yarn.Unity.Shattered
 {
 
-    public class YarnCommands : MonoBehaviour
+    public class YarnCommands : SceneTransition
     {
 
         private IEnumerator coroutine;
@@ -14,10 +16,12 @@ namespace Yarn.Unity.Shattered
         public GameObject malphasCutsceneImage;
         public AudioClip malphasCutsceneAudio;
         private float combatTimestamp;
+        private int currentScene;
 
         void Start()
         {
             coroutine = WaitForUnitlSoundIsFinished();
+            currentScene = SceneManager.GetActiveScene().buildIndex;
         }
 
         [YarnCommand("doJump")]
@@ -142,6 +146,14 @@ namespace Yarn.Unity.Shattered
 
 			// Kick off the dialogue at this node.
             FindObjectOfType<DialogueRunner>().StartDialogue("Phase6_Temptation");
+        }
+
+        [YarnCommand("changeToEndgame")]
+        public void ChangeToEndgame(string parameters)
+        {
+            Debug.Log("start yarn transition");  
+
+            StartCoroutine(LoadingScreen());
         }
     }
 }

@@ -133,8 +133,8 @@ position: 315,367
 <<setVoice DialoguePhase6_Temptation devon12>>
     Great it even has a name.
 
+<<changeToEndgame DialoguePhase4_MomentOfWeakness change>>
 <<setVoice DialoguePhase6_Temptation dialogueFinished>>
-// ChangeScene TODOO
 ===
 
 title: Option2
@@ -156,6 +156,6 @@ position: 682,367
 <<setVoice DialoguePhase6_Temptation malphas17>>
     If that is what you want. But remember, my offer still stands when you change your mind eventually.
 
+<<changeToEndgame DialoguePhase4_MomentOfWeakness change>>
 <<setVoice DialoguePhase6_Temptation dialogueFinished>>
-// ChangeScene TODOO
 ===

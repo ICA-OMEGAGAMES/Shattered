@@ -55,6 +55,11 @@ public class UnlockButton : MonoBehaviour
             {
                 unlockButton.interactable = false;
                 unlockButtonText.text = "PURCHASED";
+
+                //TODOO SANDER
+                //Here we unlocked the Skill and set the Text/Button to Purchased
+                //So we can linkt the unlocking here...
+                
             }
         }
     }

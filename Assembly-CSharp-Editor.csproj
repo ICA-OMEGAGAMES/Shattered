@@ -164,8 +164,12 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{718305B0-563B-D4EA-F147-AF6F613C81AA}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{F7F54397-C251-A613-F42C-B7122B7DCF8B}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{F269B310-9075-28DB-A14D-F4522E86CD45}</Project>      <Name>Assembly-CSharp-Editor-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="com.unity.postprocessing.Editor.csproj">
       <Project>{7AE71DD8-BA3D-F6F2-14E0-12FA3532AFB7}</Project>      <Name>com.unity.postprocessing.Editor</Name>    </ProjectReference>
     <ProjectReference Include="com.unity.postprocessing.Runtime.csproj">
