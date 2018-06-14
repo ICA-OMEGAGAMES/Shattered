@@ -93,6 +93,7 @@
      <Compile Include="Assets\Scripts\AI\Implementation\TimerDecision.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\TurnAction.cs" />
      <Compile Include="Assets\Scripts\AI\Implementation\UnarmedAttackAction.cs" />
+     <Compile Include="Assets\Scripts\AI\Implementation\WaitForDialogueFinished.cs" />
      <Compile Include="Assets\Scripts\Audio\AddThisToEverytScriptThatCallsAudio.cs" />
      <Compile Include="Assets\Scripts\Audio\AppartmentMusicSwap.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManagerCombat.cs" />
@@ -103,6 +104,7 @@
      <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraSettings.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraZoom.cs" />
+     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\CanvasManager.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\Barrier.cs" />
      <Compile Include="Assets\Scripts\Character\Abilities\DarkClaw.cs" />
@@ -158,6 +160,8 @@
      <Compile Include="Assets\Scripts\MarkerManager.cs" />
      <Compile Include="Assets\Scripts\MarkerScript.cs" />
      <Compile Include="Assets\Scripts\PlayVideo.cs" />
+     <Compile Include="Assets\Scripts\Popups\PopupShow.cs" />
+     <Compile Include="Assets\Scripts\Popups\WalletPickup.cs" />
      <Compile Include="Assets\Scripts\SceneTransitions\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\Skill.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\SkillButton.cs" />
@@ -167,8 +171,10 @@
      <Compile Include="Assets\Scripts\Skill Tree\SkillTreeReader.cs" />
      <Compile Include="Assets\Scripts\Skill Tree\UnlockButton.cs" />
      <Compile Include="Assets\Scripts\SkipCutscene.cs" />
+     <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\BackgroundSwitcher.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\DialogueTrigger.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\NameSwitcher.cs" />
+     <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\SpriteSwitcher.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\Dialogue\VoiceSwitcher.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialogueNPC.cs" />
      <Compile Include="Assets\Scripts\YarnSpinner\Code\DialoguePlayer.cs" />
@@ -246,8 +252,8 @@
      <None Include="Assets\Art\Imports\PostProcessing\Shaders\Builtins\DeferredFog.shader" />
      <None Include="Assets\UnityUISample\Materials\UI-Default-No-Alpha.shader" />
      <None Include="Assets\Animations\Animations.txt" />
-     <None Include="Assets\Art\Animations\Animations.txt" />
      <None Include="Assets\Scripts\YarnSpinner\Code\SkillMaster.yarn.txt" />
+     <None Include="Assets\Art\Animations\Animations.txt" />
      <None Include="Assets\Scripts\YarnSpinner\README.txt" />
      <None Include="Assets\Art\Images\UI\LOGO COLOR FONT\COLORS.txt" />
      <None Include="Assets\Art\Imports\PostProcessing\Shaders\API\D3D9.hlsl" />

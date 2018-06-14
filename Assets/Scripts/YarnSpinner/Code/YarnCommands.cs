@@ -10,8 +10,10 @@ namespace Yarn.Unity.Shattered
 
         private IEnumerator coroutine;
         public float durationForStartingCutscene = 35.0f;
+        public bool isHomelessDialogueFinished;
         public GameObject malphasCutsceneImage;
         public AudioClip malphasCutsceneAudio;
+        private float combatTimestamp;
 
         void Start()
         {
@@ -78,6 +80,10 @@ namespace Yarn.Unity.Shattered
         [YarnCommand("startMalphasCutscene")]
         public void StartMalphasCutscene(string voiceName)
         {
+            //Start AI
+            isHomelessDialogueFinished = true;
+
+            
             //Freeze game when cutscene shows off
             // Time.timeScale = 0.0f;
 
@@ -111,7 +117,16 @@ namespace Yarn.Unity.Shattered
 
         IEnumerator WaitForCutscene()
         {
-            yield return new WaitForSeconds(durationForStartingCutscene);
+            combatTimestamp = Time.time + durationForStartingCutscene;
+            while(Time.time < combatTimestamp)
+            {
+                if(GameObject.FindObjectOfType<Statistics>().health <= 0)
+                {
+                    yield return new WaitForSeconds(2.5f);
+                    break;
+                }
+                yield return null;
+            }
         }
 
         IEnumerator WaitForAudio(float duration)

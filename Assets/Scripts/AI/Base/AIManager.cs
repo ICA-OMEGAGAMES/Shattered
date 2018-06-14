@@ -392,7 +392,7 @@ public class AIManager : MonoBehaviour
 
     public bool IsTargetAlive()
     {
-        Statistics statistics = currentChaseTarget.transform.root.GetComponent<Statistics>();
+        Statistics statistics = currentChaseTarget.transform.root.GetComponentInChildren<Statistics>();
 
         if (statistics == null)
         {

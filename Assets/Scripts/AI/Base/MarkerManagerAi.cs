@@ -16,7 +16,7 @@ public class MarkerManagerAi : MarkerManager
             hitBySwing.Add(hitTarget.gameObject);
             if (hitTarget.transform.tag == Constants.PLAYER_TAG)
             {
-                hitTarget.transform.root.GetComponent<Statistics>().ReduceHealth(damage);
+                hitTarget.transform.root.GetComponentInChildren<Statistics>().ReduceHealth(damage);
                 return;
             }
 

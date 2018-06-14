@@ -38,6 +38,6 @@ public class MarkerScript : MonoBehaviour {
 
     private MarkerManager GetManager()
     {
-        return this.transform.root.GetComponent<MarkerManager>();
+        return this.transform.root.GetComponentInChildren<MarkerManager>();
     }
 }

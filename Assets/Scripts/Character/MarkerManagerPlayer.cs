@@ -13,14 +13,6 @@ public class MarkerManagerPlayer : MarkerManager{
         {
             hitBySwing.Add(hitTarget.gameObject);
 
-            //TODO: Dummyscript is just for demo so the if can be removed later on
-            Component component = hitTarget.transform.root.GetComponentInChildren<AIManager>();
-            if(component == null)
-            {
-                component = hitTarget.transform.root.GetComponent<DummyScript>();
-                ((DummyScript) component).TakeDamage(damage);
-                return;
-            }
             string attackMode;
             DevonScript devonScript = GetComponentInChildren<DevonScript>();
             if(devonScript == null || !devonScript.isActiveAndEnabled)
@@ -30,7 +22,7 @@ public class MarkerManagerPlayer : MarkerManager{
             } else {
                 attackMode = devonScript.GetAttackMode();
             }
-            ((AIManager) component).TakeDamage(damage, attackMode);
+            hitTarget.transform.root.GetComponentInChildren<AIManager>().TakeDamage(damage, attackMode);
         }
     }
 }

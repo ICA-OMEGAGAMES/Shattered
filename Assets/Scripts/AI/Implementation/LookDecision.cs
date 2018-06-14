@@ -50,7 +50,6 @@ public class LookDecision : Decision
                     manager.StopLookingForPlayer();
                     manager.ResetTimerDecision();
                 }
-               
                 return player;
             } 
             //if the player is in the field of view and not occluded by an object return true

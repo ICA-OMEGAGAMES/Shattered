@@ -278,7 +278,7 @@ MonoBehaviour:
   loadingScreenObj: {fileID: 1723124307}
   backgroundVideo: {fileID: 1723124309}
   image: {fileID: 151177063}
-  videoToPlay: {fileID: 32900000, guid: a0ad633a39302f84e9a98d0a7fe31e45, type: 3}
+  videoToPlay: {fileID: 32900000, guid: ebf1b85bdf839fb4a843b504030657b3, type: 3}
   isPrepared: 0
   transitionAfterVideo: 1
 --- !u!114 &921368582

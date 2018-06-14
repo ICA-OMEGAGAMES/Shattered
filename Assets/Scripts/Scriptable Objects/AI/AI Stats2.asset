@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5f2b36964936049b173c646b5d828f, type: 3}
   m_Name: AI Stats2
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   searchTime: 5
   lookSpeed: 1
   lookRange: 40
@@ -26,9 +26,9 @@ MonoBehaviour:
   unarmedCombatSettings:
     blockDuration: 2
     blockPercentage: 0.5
-    attackIdleRange: 8
-    unarmedAttackRange: 5
-    unarmedAttackDamage: 5
+    attackIdleRange: 4
+    unarmedAttackRange: 3
+    unarmedAttackDamage: 200
     lightAttackDuration: 0.5
     heavyAttackDuration: 0.5
     cooldown: 2

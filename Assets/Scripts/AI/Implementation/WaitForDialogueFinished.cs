@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Yarn.Unity.Shattered;
+
 [CreateAssetMenu(menuName = "PluggableAI/Decisions/WaitForDialogue")]
 public class WaitForDialogueFinished : Decision
 {
@@ -13,6 +15,6 @@ public class WaitForDialogueFinished : Decision
 
     private bool WaitForDialogue()
     {
-        return false;
+        return GameObject.FindObjectOfType<YarnCommands>().isHomelessDialogueFinished;
     }
 }
