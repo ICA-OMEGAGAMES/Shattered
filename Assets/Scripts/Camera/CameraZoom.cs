@@ -20,7 +20,7 @@ public class CameraZoom : MonoBehaviour {
 
 	void Update(){
 		if (playerInRange) {
-			if (Input.GetButtonDown (Constants.PICKUP_BUTTON)){
+			if (Input.GetButtonDown (Constants.EXAMINE_BUTTON)){
 				if( mainCamera.enabled) {
 					camFollow.enabled = false;
 					camCollision.enabled = false;

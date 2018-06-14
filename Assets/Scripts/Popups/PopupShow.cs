@@ -22,7 +22,7 @@ public class PopupShow : MonoBehaviour {
 	{
 		popupShown = true;
 		popup.SetActive (true);
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(4);
 		popup.SetActive(false);
 	}
 }
