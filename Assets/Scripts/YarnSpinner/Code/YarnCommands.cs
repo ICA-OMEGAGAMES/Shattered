@@ -79,7 +79,7 @@ namespace Yarn.Unity.Shattered
         public void StartMalphasCutscene(string voiceName)
         {
             //Freeze game when cutscene shows off
-            Time.timeScale = 0.0f;
+            // Time.timeScale = 0.0f;
 
             StartCoroutine(WaitForUnitlSoundIsFinished());
         }
@@ -100,13 +100,13 @@ namespace Yarn.Unity.Shattered
             yield return StartCoroutine(WaitForAudio(duration));
 
             //Unfreeze Game
-            Time.timeScale = 1.0f;
+            // Time.timeScale = 1.0f;
 
             //After audio disable Image
-            malphasCutsceneImage.SetActive(false);
+            // malphasCutsceneImage.SetActive(false);
 
-            //Transform into Melphas
-            //TODOO
+            //From here on start the Dialogue with Malphas!!
+            startMalphasDialogue();
         }
 
         IEnumerator WaitForCutscene()
@@ -117,6 +117,16 @@ namespace Yarn.Unity.Shattered
         IEnumerator WaitForAudio(float duration)
         {
             yield return new WaitForSeconds(duration);
+        }
+
+        void startMalphasDialogue()
+        {
+            Debug.LogError("StartMalphasDialogue");
+            //Activate the DialogueCanvas..
+            FindObjectOfType<DialogueRunner>().dialogueCanvas.SetActive(true);
+
+			// Kick off the dialogue at this node.
+            FindObjectOfType<DialogueRunner>().StartDialogue("Phase6_Temptation");
         }
     }
 }
