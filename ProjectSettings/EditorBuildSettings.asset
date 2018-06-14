@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/_Scenes/Demo_130618/MainMenu.unity
+  - enabled: 1
+    path: Assets/_Scenes/Final/MainMenu.unity
     guid: ca672e320683d7a43bb98bea6db91d9f
-  - enabled: 0
-    path: Assets/_Scenes/Demo_130618/OpeningCutscene.unity
+  - enabled: 1
+    path: Assets/_Scenes/Final/OpeningCutscene.unity
     guid: 7507d72eef52d664898b7fc860fdd13f
-  - enabled: 0
-    path: Assets/_Scenes/Demo_130618/Appartment.unity
+  - enabled: 1
+    path: Assets/_Scenes/Final/Appartment.unity
     guid: 254a20f8b5d555343854ea90c34bcb42
   - enabled: 1
-    path: Assets/_Scenes/Demo_130618/City.unity
-    guid: 365d9bdf186fefb46a3e69154258000f
+    path: Assets/_Scenes/Final/City.unity
+    guid: de63025cf02eec944b00c737dded5d07
