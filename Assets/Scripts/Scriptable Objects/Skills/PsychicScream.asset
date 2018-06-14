@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Name: PsychicScream
   m_EditorClassIdentifier: 
   duration: 3
-  cooldown: 2
+  cooldown: 10
+  value: 3
+  rootDuration: 1
+  skillEffect: {fileID: 0}

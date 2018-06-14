@@ -90,7 +90,6 @@ public class CharacterMovement : MonoBehaviour
 	public CharacterController characterController;
 	private Vector3 moveDirection;
     private Statistics statistics;
-	//public CharacterAudioController characterAudio;
     public float pushPower = 2.0f;
 
     //characterscript spesific updates
@@ -253,7 +252,14 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    //Animates the character and root motion handles the movement
+    public void Animate()
+    {
+        animator.SetBool(animations.isBlocking, blocking);
+        animator.SetBool(animations.isInCombat, combatState);
+        animator.SetBool(animations.groundedBool, IsFalling());
+        AMM.isInCombat = CombatState;
+    }
+
     public void AnimateMovement(float forward, float strafe)
     {
         animator.SetFloat(animations.verticalVelocityFloat, forward);
@@ -268,14 +274,6 @@ public class CharacterMovement : MonoBehaviour
     {
         animator.SetFloat(animations.verticalVelocityFloat, 0);
         animator.SetFloat(animations.horizontalVelocityFloat, 0);
-    }
-
-    public void Animate()
-    {
-        animator.SetBool(animations.isBlocking, blocking);
-        animator.SetBool(animations.isInCombat, combatState);
-        animator.SetBool(animations.groundedBool, IsFalling());
-        AMM.isInCombat = CombatState;
     }
 
     private void SetControllable(bool active)
@@ -315,9 +313,10 @@ public class CharacterMovement : MonoBehaviour
             return speed = movement.crouchSpeed;
         }
         else
-            speed = movement.walkSpeed;
-        AMM.isRunning = false;
-        return speed;
+        {
+            AMM.isRunning = false;
+            return speed = movement.walkSpeed;
+        }
     }
 
     private void Jump()

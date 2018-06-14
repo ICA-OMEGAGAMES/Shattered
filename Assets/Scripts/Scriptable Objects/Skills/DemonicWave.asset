@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: DemonicWave
   m_EditorClassIdentifier: 
   duration: 3
-  cooldown: 2
+  cooldown: 10
   value: 60
+  rootDuration: 1
   skillEffect: {fileID: 1337000762397622, guid: b7e2bac7479925c408d0a548455e4fb2,
     type: 2}

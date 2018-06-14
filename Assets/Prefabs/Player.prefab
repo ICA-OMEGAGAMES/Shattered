@@ -28182,7 +28182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
-  barierAudio: {fileID: 114668793505775452}
+  barrierAudio: {fileID: 114668793505775452}
   health: 0
   hitStunDuration: 0.5
   shield: {fileID: 1854638647503496}
@@ -28559,10 +28559,10 @@ MonoBehaviour:
     possess: SkillPossess
     barrier: SkillBarrier
   basicCombatSettings:
-    attack1Damage: 10
+    attack1Damage: 25
     attack1Duration: 0.5
     attack1Rootable: 1
-    attack2Damage: 20
+    attack2Damage: 40
     attack2Duration: 0.5
     attack2Rootable: 1
   blinkSettings:
@@ -28571,7 +28571,7 @@ MonoBehaviour:
     blinkSpeed: 5
   skillSettings:
     teleportSettings: {fileID: 11400000, guid: 18b7e37e9b09b4b488c6a7890fb44bf7, type: 2}
-    barrierSettings: {fileID: 11400000, guid: 89a81bcdbae80634a94d750915d65abd, type: 2}
+    barrierSettings: {fileID: 11400000, guid: 523843eaa60ce604d970079288381dee, type: 2}
     psychicScreamSettings: {fileID: 11400000, guid: ee70cfc5e5667d34e96c158585d581e1,
       type: 2}
     demonicWaveSettings: {fileID: 11400000, guid: 8e6ca7c9b4879b34f8a7187990d6be8b,

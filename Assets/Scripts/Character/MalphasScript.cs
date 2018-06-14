@@ -25,10 +25,10 @@ public class MalphasScript : CharacterMovement
     [Serializable]
     public class BasicCombatSettings
     {
-        public float attack1Damage = 10;
+        public float attack1Damage = 25;
         public float attack1Duration = 0.5f;
         public bool attack1Rootable = true;
-        public float attack2Damage = 20;
+        public float attack2Damage = 40;
         public float attack2Duration = 0.5f;
         public bool attack2Rootable = true;
     }

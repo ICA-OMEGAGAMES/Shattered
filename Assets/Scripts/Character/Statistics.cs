@@ -7,7 +7,7 @@ public class Statistics : MonoBehaviour {
 
 	public Slider healthbar;
 
-    public AudioManagerSkills barierAudio;
+    public AudioManagerSkills barrierAudio;
 
 	public float health;
     public float hitStunDuration = 0.5f;
@@ -97,9 +97,9 @@ public class Statistics : MonoBehaviour {
         shield.SetActive(activation);
         if (activation)
 
-            barierAudio.InvokePlaySoundBarrierStart();
+            barrierAudio.InvokePlaySoundBarrierStart();
         else
-            barierAudio.InvokePlaySoundBarrierEnd();
+            barrierAudio.InvokePlaySoundBarrierEnd();
     }
 
     private void Stun(float duration)
