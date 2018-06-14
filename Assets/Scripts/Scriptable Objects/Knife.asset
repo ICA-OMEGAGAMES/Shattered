@@ -15,10 +15,10 @@ MonoBehaviour:
   itemDescription: Stabstab
   interactable: 1
   image: {fileID: 0}
-  attack1Damage: 1
+  attack1Damage: 10
   attack1Duration: 0.5
   attack1Rootable: 1
-  attack2Damage: 1
+  attack2Damage: 30
   attack2Duration: 0.5
   attack2Rootable: 1
   weaponType: 1

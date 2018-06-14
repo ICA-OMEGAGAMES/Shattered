@@ -17,8 +17,11 @@ public class SpriteSwitcher : MonoBehaviour
 
     public SpriteInfo[] sprites;
 
+	public Image faceImage;
+	public GameObject faceCanvas;
+
     /// Create a command to use on a sprite
-    [YarnCommand("setsprite")]
+    [YarnCommand("setSprite")]
     public void UseSprite(string spriteName)
     {
         Sprite s = null;
@@ -35,7 +38,8 @@ public class SpriteSwitcher : MonoBehaviour
             Debug.LogErrorFormat("Can't find sprite named {0}!", spriteName);
             return;
         }
-    
-        GetComponent<Image>().sprite = s;
+
+		faceCanvas.SetActive(true);
+        faceImage.sprite = s;
     }
 }
