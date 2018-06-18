@@ -343,8 +343,8 @@ ModelImporter:
     - serializedVersion: 16
       name: LandHighFall
       takeName: Take 001
-      firstFrame: 42
-      lastFrame: 58
+      firstFrame: 45
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
