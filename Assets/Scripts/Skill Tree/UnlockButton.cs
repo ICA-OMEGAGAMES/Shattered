@@ -7,11 +7,14 @@ public class UnlockButton : MonoBehaviour
 {
     public Button unlockButton;
     public Text unlockButtonText;
+    public GameObject Malphas;
     private SkillButton currentSkillButton;
+
 
     void Start()
     {
         unlockButton.onClick.AddListener(BuySkill);
+        Malphas = GameObject.Find("Malphas");
     }
 
     void OnEnable()
@@ -56,11 +59,35 @@ public class UnlockButton : MonoBehaviour
                 unlockButton.interactable = false;
                 unlockButtonText.text = "PURCHASED";
 
-                //TODOO SANDER
-                //Here we unlocked the Skill and set the Text/Button to Purchased
-                //So we can linkt the unlocking here...
-                
+                if(Malphas != null)
+                {
+                    //According to UnitysForm game object dont HAVE to be active to get to their scripts, not able to test
+                    Malphas.GetComponent<MalphasScript>().LearnSkill(TeachMalphas(currentSkillButton.skillId));
+                }
             }
         }
+    }
+
+    public string TeachMalphas(int skillID) {
+        switch (skillID)
+        {
+            case 0:
+                return "Teleport";
+            case 1:
+                return "Barrier";
+            case 2:
+                return "PsychicScream";
+            case 3:
+                return "DevineAura";
+            case 4:
+                return "DemonicWave";
+            case 5:
+                return "Possess";
+            case 6:
+                return "DarkClaw";
+            default:
+                return "None";
+        }
+
     }
 }
